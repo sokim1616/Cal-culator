@@ -1,0 +1,20 @@
+{
+  "name": "im20-project-cal-culator",
+  "version": "1.0.0",
+  "description": "Project Cal-culator",
+  "main": "estimated_time.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/im20-project-cal-culator.git"
+  },
+  "keywords": ["calorie", "calculator", "diet planner"],
+  "author": "team Hell-thy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates/im20-project-cal-culator/issues"
+  },
+  "homepage": "https://github.com/codestates/im20-project-cal-culator#readme"
+}
