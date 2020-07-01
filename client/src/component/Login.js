@@ -67,18 +67,14 @@ function Login() {
                 >
                     <button onClick={closeModal}>close</button>
                     <div>E-mail:</div>
-                    <form>
-                        <input type="email" />
-                    </form>
+                    <input type="email" />
                     <div>Password:</div>
-                    <form>
-                        <input type="password" />
-                        <button onClick={loginState}>Get in!</button>
-                    </form>
+                    <input type="password" />
+                    <button onClick={loginState}>Get in!</button>
                 </form>
             </Modal>
         </div>
     );
 }
 
-export default withRouter(Login);
+export default Login;
