@@ -29,28 +29,30 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const MainPage = () => {
     return (
-        <div>
-            <nav className="nav">
-                <h2 className="title">Cal-culator</h2>
-                <div className="desc">
-                    a web application that calculates your daily food intake.
+        <body>
+            <div>
+                <nav className="nav">
+                    <h2 className="title">Cal-culator</h2>
+                    <div className="desc">
+                        a web application that calculates your daily food intake.
                 </div>
-                <ul className="subdesc">
-                    Some of its features:
+                    <ul className="subdesc">
+                        Some of its features:
                     <li>
-                        Creates an archive to visulaize your calorie intake history
+                            Creates an archive to visulaize your calorie intake history
                     </li>
-                    <li>
-                        Recommend a diet plan based on your nutrition status
+                        <li>
+                            Recommend a diet plan based on your nutrition status
                     </li>
-                </ul>
-                <header className="header"></header>
-            </nav>
-            <main>
-                <div>
-                </div>
-            </main>
-        </div>
+                    </ul>
+                    <header className="header"></header>
+                </nav>
+                <main>
+                    <div>
+                    </div>
+                </main>
+            </div>
+        </body>
     );
 }
 
