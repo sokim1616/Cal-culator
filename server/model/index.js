@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
-const Sequelize = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 const basename = path.basename(__filename);
 
 dotenv.config({ path: path.join(__dirname, "../.env") });
@@ -17,6 +17,8 @@ let sequelize = new Sequelize(
   config
 );
 
+sequelize.sync();
+
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
@@ -24,10 +26,17 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    var model = sequelize["import"](path.join(__dirname, file));
+    var model = require(path.join(__dirname, file))(sequelize, DataTypes);
     db[model.name] = model;
   });
 
-sequelize.sync();
+Object.keys(db).forEach((modelName) => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
-module.exports = { sequelize, DataTypes };
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

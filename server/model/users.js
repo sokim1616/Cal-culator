@@ -1,9 +1,8 @@
-// const { sequelize, DataTypes } = require("./index");
-// const { food_user } = require("./food_user");
+"use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const users = sequelize.define(
-    "users",
+  const User = sequelize.define(
+    "User",
     {
       username: DataTypes.STRING,
       email: DataTypes.STRING,
@@ -18,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  users.associate = function (models) {
-    models.users.hasMany(models.food_user);
+  User.associate = function (models) {
+    models.User.hasMany(models.Food_user);
   };
 
-  return users;
+  return User;
 };
