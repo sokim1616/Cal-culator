@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // const fs = require("fs");
+=======
+>>>>>>> 4456355b1121dec15835095d6f0f0221e5716671
 const path = require("path");
 const dotenv = require("dotenv");
 const { Sequelize, DataTypes } = require("sequelize");
@@ -15,6 +18,7 @@ let sequelize = new Sequelize(
 );
 
 sequelize.sync();
+<<<<<<< HEAD
 
 const users = sequelize.define(
   "users",
@@ -58,3 +62,6 @@ const foods = sequelize.define(
 );
 
 // module.exports = db;
+=======
+module.exports = { sequelize, DataTypes };
+>>>>>>> 4456355b1121dec15835095d6f0f0221e5716671
