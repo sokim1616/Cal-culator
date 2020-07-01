@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/codestates/im20-project-cal-culator.git"
   },
-  "keywords": ["calorie", "calculator", "diet planner"],
+  "keywords": [
+    "calorie",
+    "calculator",
+    "diet planner"
+  ],
   "author": "team Hell-thy",
   "license": "ISC",
   "bugs": {
