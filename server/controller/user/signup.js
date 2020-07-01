@@ -19,7 +19,7 @@ module.exports = {
       if (!created) {
         return res.status(409).send("user already exists!");
       }
-      const data = await User.get({ plain: true });
+      const data = await user.get({ plain: true });
       res.status(200).json(data);
     });
   },
