@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignUp from "./component/Signup"
 import Summary from "./component/Summary/Summary"
 import Login from "./component/Login"
+import Header from './component/Header'
+import Footer from './component/Footer'
 
 const App = () => {
 
@@ -13,6 +15,7 @@ const App = () => {
   }
     return (
       <div>
+      <Header />
         <Switch>
           <Route
             path='/signup'
@@ -31,6 +34,7 @@ const App = () => {
             render = {() => <div>메인페이지</div>}
           />
         </Switch>
+        <Footer />
       </div>
     )
   }
