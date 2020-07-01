@@ -6,6 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const users = require("./model/users");
 
+const foodRouter = require("./routes/food");
+
 const PORT = process.env.PORT || 4000;
 
 const app = express();
@@ -78,5 +80,7 @@ function checkToken(req, res, next) {
     res.sendStatus(403);
   }
 }
+
+app.use("/food", foodRouter);
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
