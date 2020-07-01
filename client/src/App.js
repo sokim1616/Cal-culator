@@ -6,6 +6,11 @@ import Summary from "./component/Summary"
 import MainPage from "./component/Main_page"
 
 const App = () => {
+
+  // const [isLogin, setIsLogin] = useState(false);
+  // const [isMember, setIsMember] = useState(false);
+  // const [pageShift, setPageShift] = useState(0)
+
   return (
     <div>
       <Switch>

@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.body__title {
-  font
+.title {
+  justify-content: flex-end;
 }
