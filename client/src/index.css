@@ -1,135 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+	padding: 5px 0;
+	text-align: center;
+  color: #27ac27;
+	background-color: rgb(235,245,232);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --mdc-theme-primary: #27ac27;
+  --mdc-theme-secondary: #03dac4;
+  --mdc-theme-error: #b00020;
+  --mdc-theme-background: #fff;
+  --mdc-theme-surface: #fff;
+  --mdc-theme-on-primary: rgba(255, 255, 255, 1);
+  --mdc-theme-on-secondary: rgba(0, 0, 0, 0.87);
+  --mdc-theme-on-surface: rgba(0, 0, 0, 0.87);
+  --mdc-theme-on-error: #fff;
+  --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
+  --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-text-primary-on-dark: white;
+  --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
+  --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
 }
-
-.Summary {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Summary-header {
- background-color: lightgray
-}
-
-.Summary-Header-Tab-Home {
-  position: relative;
-  margin: 0;
-  display: block;
-  float: left;
-}
-
-.Summary-Header-Tab-Home-Span {
-  display: block;
-  line-height: 30px;
-  padding: 0 20px;
-  white-space: nowrap;
-  border-right-width: 1px;
-  border-style: solid;
-  border-radius: 10%;
-  border-color: olive;
-  background-color: olive
-}
-
-.Summary-Header-Tab-Summary{
-  position: relative;
-  margin: 0;
-  display: block;
-  float: left;
-}
-
-.Summary-Header-Tab-Summary-Span {
-  display: block;
-  line-height: 30px;
-  padding: 0 20px;
-  white-space: nowrap;
-  border-right-width: 1px;
-  border-style: solid;
-  border-radius: 10%;
-  border-color: cornflowerblue;
-  background-color: cornflowerblue;
-}
-
-.Summary-Header-Tab-Calculator{
-  position: relative;
-  margin: 0;
-  display: block;
-  float: left;
-}
-
-.Summary-Header-Tab-Calculator-Span {
-  display: block;
-  line-height: 30px;
-  padding: 0 20px;
-  white-space: nowrap;
-  border-right-width: 1px;
-  border-style: solid;
-  border-radius: 10%;
-  border-color: chocolate;
-  background-color: chocolate;
-}
-
-.Summary-Header-Tab-Solution{
-  position: relative;
-  margin: 0;
-  display: block;
-  float: left;
-}
-
-.Summary-Header-Tab-Solution-Span {
-  display: block;
-  line-height: 30px;
-  padding: 0 20px;
-  white-space: nowrap;
-  border-right-width: 1px;
-  border-style: solid;
-  border-radius: 10%;
-  border-color: cadetblue;
-  background-color: cadetblue;
-}
-
-.Summary-Header-Tab-Login{
-  position: relative;
-  margin: 0;
-  display: block;
-  float: right;
-}
-
-.Summary-Header-Tab-Login-Span {
-  display: block;
-  line-height: 30px;
-  padding: 0 20px;
-  white-space: nowrap;
-  border-right-width: 1px;
-  border-style: solid;
-  border-radius: 10%;
-  border-color: cadetblue;
-  background-color: cadetblue;
-}
-
-.Summary-main {
-  flex: 1;
-}
-
-.Summary-footer {
-  background-color: blueviolet;
-}
-
-/* .nav {
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-} */
 
 .nav {
   /* display: grid; */

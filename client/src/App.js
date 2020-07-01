@@ -14,15 +14,10 @@ const App = () => {
   const loginState = () => {
     setIsLogin(true)
   }
-
   return (
-    // TODO: header랑 body부분 나눠지도록 하기
     <div>
-      <header>
-        <Header />
-      </header>
-      <div>.</div>
-      <body>
+      <Header />
+      <div>
         <Switch>
           <Route
             path='/signup'
@@ -37,11 +32,11 @@ const App = () => {
             render={() => <Summary />}
           />
           <Route
-            path='/'
+            path='/mainpage'
             render={() => <MainPage />}
           />
         </Switch>
-      </body>
+      </div>
       <Footer />
     </div>
   )

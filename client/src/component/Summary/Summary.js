@@ -1,12 +1,12 @@
 import React from 'react';
 import Chart from "./Chart"
-
+import ChartPolar from './Polar-area-chart'
 const Summary = () => {
 
     return (
         <div className="Summary">
             <main className="Summary-main">
-                <Chart />
+                <ChartPolar />
             </main>
         </div>
     )
