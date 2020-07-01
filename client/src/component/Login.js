@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, memo } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import Modal from 'react-modal';
 const axios = require('axios');
@@ -17,10 +17,10 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root')
 
-function Login() {
+const Login = memo(({loginState}) => {
     var subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [isLogin, setIsLogin] = React.useState(false);
+
     function openModal() {
         setIsOpen(true);
     }
@@ -32,10 +32,6 @@ function Login() {
 
     function closeModal() {
         setIsOpen(false);
-    }
-
-    function loginState() {
-        setIsLogin(true);
     }
 
     return (
@@ -67,18 +63,14 @@ function Login() {
                 >
                     <button onClick={closeModal}>close</button>
                     <div>E-mail:</div>
-                    <form>
                         <input type="email" />
-                    </form>
                     <div>Password:</div>
-                    <form>
                         <input type="password" />
                         <button onClick={loginState}>Get in!</button>
-                    </form>
                 </form>
             </Modal>
         </div>
     );
-}
+})
 
 export default withRouter(Login);

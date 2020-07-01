@@ -11,3 +11,112 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Summary {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Summary-header {
+ background-color: lightgray
+}
+
+.Summary-Header-Tab-Home {
+  position: relative;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+.Summary-Header-Tab-Home-Span {
+  display: block;
+  line-height: 30px;
+  padding: 0 20px;
+  white-space: nowrap;
+  border-right-width: 1px;
+  border-style: solid;
+  border-color: olive;
+  background-color: olive
+}
+
+.Summary-Header-Tab-Summary{
+  position: relative;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+.Summary-Header-Tab-Summary-Span {
+  display: block;
+  line-height: 30px;
+  padding: 0 20px;
+  white-space: nowrap;
+  border-right-width: 1px;
+  border-style: solid;
+  border-radius: 10%;
+  border-color: cornflowerblue;
+  background-color: cornflowerblue;
+}
+
+.Summary-Header-Tab-Calculator{
+  position: relative;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+.Summary-Header-Tab-Calculator-Span {
+  display: block;
+  line-height: 30px;
+  padding: 0 20px;
+  white-space: nowrap;
+  border-right-width: 1px;
+  border-style: solid;
+  border-color: chocolate;
+  background-color: chocolate;
+}
+
+.Summary-Header-Tab-Solution{
+  position: relative;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+.Summary-Header-Tab-Solution-Span {
+  display: block;
+  line-height: 30px;
+  padding: 0 20px;
+  white-space: nowrap;
+  border-right-width: 1px;
+  border-style: solid;
+  border-color: cadetblue;
+  background-color: cadetblue;
+}
+
+.Summary-Header-Tab-Login{
+  position: relative;
+  margin: 0;
+  display: block;
+  float: right;
+}
+
+.Summary-Header-Tab-Login-Span {
+  display: block;
+  line-height: 30px;
+  padding: 0 20px;
+  white-space: nowrap;
+  border-right-width: 1px;
+  border-style: solid;
+  border-color: cadetblue;
+  background-color: cadetblue;
+}
+
+.Summary-main {
+  flex: 1;
+}
+
+.Summary-footer {
+  background-color: blueviolet;
+}
