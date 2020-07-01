@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignUp from "./component/Signup"
+import Summary from "./component/Summary"
 
 const App = () => {
     return (
@@ -10,9 +11,13 @@ const App = () => {
             path='/signup'
             render = {() => <SignUp />}
           />
-          <Route 
+          {/*<Route 
             path='/login'
             render = {() => <Login />}
+          /> */}
+          <Route 
+            path='/summary'
+            render = {() => <Summary />}
           />
           <Route 
             path='/'
