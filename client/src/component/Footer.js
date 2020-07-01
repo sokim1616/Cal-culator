@@ -2,7 +2,11 @@ import React from 'react';
 
 const Footer = () => {
     return(
-        <footer className="Summary-footer">발</footer>
+        <div>
+            <footer className="footer">
+            Copyright ⓒ 2020 Hell-thy / All rights reserved  
+            </footer>
+        </div>
     )
 }
 

@@ -5,6 +5,7 @@ import Summary from "./component/Summary/Summary"
 import Login from "./component/Login"
 import Header from './component/Header'
 import Footer from './component/Footer'
+import MainPage from './component/Main_page'
 
 const App = () => {
 
@@ -15,25 +16,27 @@ const App = () => {
   }
     return (
       <div>
-      <Header />
-        <Switch>
-          <Route
-            path='/signup'
-            render = {() => <SignUp />}
-          />
-          <Route 
-            path='/login'
-            render = {() => <Login isLogin={isLogin} loginState={loginState} />}
-          />
-          <Route 
-            path='/summary'
-            render = {() => <Summary />}
-          />
-          <Route 
-            path='/'
-            render = {() => <div>메인페이지</div>}
-          />
-        </Switch>
+        <Header />
+          <div>
+            <Switch>
+              <Route
+                path='/signup'
+                render = {() => <SignUp />}
+              />
+              <Route 
+                path='/login'
+                render = {() => <Login isLogin={isLogin} loginState={loginState} />}
+              />
+              <Route 
+                path='/summary'
+                render = {() => <Summary />}
+              />
+              <Route 
+                path='/mainpage'
+                render = {() => <MainPage />}
+              />
+            </Switch>
+          </div>
         <Footer />
       </div>
     )
