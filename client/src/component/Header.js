@@ -1,15 +1,16 @@
 import React from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Router, Redirect } from 'react-router-dom';
 import { Tab, TabBar } from '@rmwc/tabs'
 import '@rmwc/tabs/styles';
 
-const Header = (setSendRequest) => {
+const Header = ({ changeTab }) => {
     return (
         <div>
             <header>
                 <TabBar>
-                    <Tab onClick={() => setSendRequest} >Home</Tab>
-                    <Tab onClick={() => setSendRequest} >Summary</Tab>
+                    <Tab onInteraction={changeTab}>Home</Tab>
+                    {/* <Tab onInteraction><Route path='./component/Home/Home' />Home</Tab> */}
+                    <Tab>Summary</Tab>
                     <Tab>Calculator</Tab>
                     <Tab>Solution</Tab>
                 </TabBar>

@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Switch, Route, Router, Redirect, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Switch, Route, Router, Redirect } from 'react-router-dom';
 import Home from './component/Home/Home'
 import SignUp from './component/Signup'
 import Summary from './component/Summary/Summary'
@@ -9,25 +9,30 @@ import Footer from './component/Footer'
 
 const App = () => {
 
-  const [sendRequest, setSendRequest] = useState('summary');
+  const [sendRequest, setSendRequest] = useState('home');
   const [isLogin, setIsLogin] = useState(false);
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
 
   const loginState = () => {
     setIsLogin(true)
   }
 
-  useEffect(() => {
-    document.title = `You clicked ${count} times`
+  const changeTab = () => {
+    setSendRequest(console.log('hiii'))
+    // setSendRequest(<Switch><Redirect to='/Home'></Redirect></Switch>)
+  }
+
+  function useEffect() {
+    setSendRequest();
     // if (sendRequest) {
     //   setSendRequest(true)
     //   console.log("hi")
     // }
-  })
+  }
 
   return (
     <div>
-      <Header useEffect={useEffect} />
+      <Header changeTab={changeTab} />
       <div>
         <Switch>
           <Route
