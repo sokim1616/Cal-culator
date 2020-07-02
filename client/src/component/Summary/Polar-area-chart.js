@@ -2,7 +2,7 @@ import React from 'react';
 import { Polar } from 'react-chartjs-2';
 
 const state = {
-    labels: ['calorie', 'fat', 'carb', 'sugar', 'protein', 'sodium', 'cholesterol', 'iron', 'calcium', 'zinc', 'V_a', 'V_c'],
+    labels: ['calorie(%)', 'fat', 'carb', 'sugar', 'protein', 'sodium', 'cholesterol', 'iron', 'calcium', 'zinc', 'V_a', 'V_c'],
     datasets: [
       {
         label: 'Total Consumed Calorie',
@@ -21,7 +21,7 @@ const state = {
                         ],
         borderColor: 'rgba(0,0,1,1)',
         borderWidth: 0.5,
-        data: [80, 36, 23, 43, 25, 36, 43, 34, 52, 64, 24, 50]
+        data: [100, 36.5, 23, 43, 25, 36, 43, 34, 52, 64, 24, 50]
       }
     ]
   }
@@ -32,8 +32,8 @@ const ChartPolar = () => {
         <div>
         <Polar
           data={state}
-          width={10}
-          height={400}
+          width={1}
+          height={500}
           options={{
             title:{
               display:true,

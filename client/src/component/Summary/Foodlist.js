@@ -9,10 +9,16 @@ import {
     DataTableCell
 } from '@rmwc/data-table';
 import '@rmwc/data-table/styles';
-const FoodList = () => {
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+    const FoodList = () => {
     const [sortDir, setSortDir] = React.useState(null);
+    const [startDate, setStartDate] = React.useState(new Date());
 
     return (
+      <div>
+      <div>
         <DataTable 
         style={{ height: '300px', width: '375px' }}
         >
@@ -67,6 +73,11 @@ const FoodList = () => {
         </DataTableBody>
       </DataTableContent>
     </DataTable>
+    </div>
+    <div>
+        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+    </div>
+    </div>
     )
 }
 
