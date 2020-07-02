@@ -7,7 +7,7 @@ import Login from './component/Login'
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Calculator from './component/Calculator/Calculator'
-import DoDont from './component/Solution/Dodont'
+import DoDont from './component/Dodont/Dodont'
 
 const App = () => {
 
