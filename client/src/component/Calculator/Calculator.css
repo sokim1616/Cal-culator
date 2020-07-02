@@ -1,0 +1,23 @@
+.search-input {
+    margin-top: 20px;
+    margin-left: 220px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.search-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 280px;
+    float: right;
+}
+
+.food {
+    width: 50%;
+    float: left;
+}
+
+.addtocart-button {
+    margin-left: 220px;
+    margin-top: 20px;
+}

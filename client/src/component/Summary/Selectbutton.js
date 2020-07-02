@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '@rmwc/button/styles';
 import { Button } from '@rmwc/button';
 
 const Selectbutton = () => {
+    const [dailyIsOpen, setDailyIsOpen] = useState(false);
     return (
+
         <div className="button">
-  <Button label="Daily" raised />
-  <Button label="Weekly" raised />
-  <Button label="Monthly" raised />
-</div>
+            {!dailyIsOpen ?
+                <Button onClick={() => setDailyIsOpen(true)} label="Daily" outlined />
+                :
+                <Button onClick={() => setDailyIsOpen(false)} label="Daily" raised />
+            }
+
+
+            <Button label="Weekly" outlined />
+            <Button label="Monthly" outlined />
+        </div>
     )
 }
 
