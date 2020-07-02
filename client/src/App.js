@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Home from './component/Home/Home'
+import SignUp from './component/Signup'
+import Summary from './component/Summary/Summary'
+import Login from './component/Login'
+import Header from './component/Header'
+import Footer from './component/Footer'
 
-function App() {
+const App = () => {
+
+  const [isLogin, setIsLogin] = React.useState(false);
+
+  const loginState = () => {
+    setIsLogin(true)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <div>
+        <Switch>
+          <Route
+            path='/signup'
+            render={() => <SignUp />}
+          />
+          <Route
+            path='/login'
+            render={() => <Login isLogin={isLogin} loginState={loginState} />}
+          />
+          <Route
+            path='/summary'
+            render={() => <Summary />}
+          />
+          <Route
+            path='/home'
+            render={() => <Home />}
+          />
+        </Switch>
+      </div>
+      <Footer />
     </div>
-  );
+  )
 }
 
 export default App;
