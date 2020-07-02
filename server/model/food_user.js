@@ -12,21 +12,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  // User.associate = function (models) {
-  //   models.User.hasMany(models.Task);
-  // };
+  Food_user.associate = function (models) {
+    models.Food_user.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    models.Food_user.belongsTo(models.Foods, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
   return Food_user;
 };
-
-// const food_user = sequelize.define(
-//   "food_user",
-//   {
-//     amount: DataTypes.INTEGER,
-//     time: DataTypes.DATE,
-//   },
-//   {
-//     charset: "utf8",
-//     collate: "utf8_unicode_ci",
-//   }
-// );

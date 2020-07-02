@@ -15,7 +15,7 @@ module.exports = {
         return res.status(404).send("invalid email or password");
       }
       sess.userid = result.id;
-
+      console.log(req.session.userid);
       res.status(200).json({
         id: result.id,
       });
