@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Switch, Route, Router, Redirect } from 'react-router-dom';
 import Home from './component/Home/Home'
 import SignUp from './component/Signup'
 import Summary from './component/Summary/Summary'
@@ -7,16 +7,18 @@ import Login from './component/Login'
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Calculator from './component/Calculator/Calculator'
+import DoDont from './component/Solution/Dodont'
 
 const App = () => {
 
-  const [isLogin, setIsLogin] = React.useState(false);
+  const [isLogin, setIsLogin] = useState(false);
 
   const loginState = () => {
     setIsLogin(true)
   }
+
   return (
-    <div className="root">
+    <div>
       <Header />
       <div>
         <Switch>
@@ -37,14 +39,16 @@ const App = () => {
             render={() => <Calculator />}
           />
           <Route
+            path='/dodont'
+            render={() => <DoDont />}
+          />
+          <Route
             path='/home'
             render={() => <Home />}
           />
         </Switch>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   )
 }

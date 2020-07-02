@@ -1,6 +1,6 @@
 import React from 'react';
-import ChartBar from "./Chart"
-import ChartPolar from './Polar-area-chart'
+import ChartBar from "./Chart-weekly"
+import ChartPolar from './Polar-area-chart-weekly'
 import FoodList from './Foodlist'
 import SelectButton from './Selectbutton'
 import './Summary.css'
@@ -23,6 +23,6 @@ const Summary = () => {
             </span>
         </div>
     )
-} 
+}
 
 export default Summary;

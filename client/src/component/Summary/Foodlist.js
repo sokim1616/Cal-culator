@@ -9,13 +9,15 @@ import {
     DataTableCell
 } from '@rmwc/data-table';
 import '@rmwc/data-table/styles';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import '@rmwc/textfield/styles';
+import { TextField } from '@rmwc/textfield'
 
     const FoodList = () => {
     const [sortDir, setSortDir] = React.useState(null);
-    const [startDate, setStartDate] = React.useState(new Date());
-
+    const [startDate, setStartDate] = React.useState();
+    const [startWeek, setStartWeek] = React.useState();
+    const [startMonth, setStartMonth] = React.useState();
+      
     return (
       <div>
       <div>
@@ -75,7 +77,13 @@ import "react-datepicker/dist/react-datepicker.css";
     </DataTable>
     </div>
     <div>
-        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+      <TextField selected={startDate} onChange={e => setStartDate(e.target.value)} label="date" type="date" />
+    </div>
+    <div>
+      <TextField selected={startWeek} onChange={e => setStartWeek(e.target.value)} label="week" type="week" />
+    </div>
+    <div>
+      <TextField selected={startMonth} onChange={e => setStartMonth(e.target.value)} label="month" type="month" />
     </div>
     </div>
     )
