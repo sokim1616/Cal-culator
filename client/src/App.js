@@ -6,6 +6,7 @@ import Summary from './component/Summary/Summary'
 import Login from './component/Login'
 import Header from './component/Header'
 import Footer from './component/Footer'
+import Calculator from './component/Calculator/Calculator'
 
 const App = () => {
 
@@ -15,7 +16,7 @@ const App = () => {
     setIsLogin(true)
   }
   return (
-    <div>
+    <div className="root">
       <Header />
       <div>
         <Switch>
@@ -32,12 +33,18 @@ const App = () => {
             render={() => <Summary />}
           />
           <Route
+            path='/calculator'
+            render={() => <Calculator />}
+          />
+          <Route
             path='/home'
             render={() => <Home />}
           />
         </Switch>
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   )
 }

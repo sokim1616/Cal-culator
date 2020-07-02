@@ -1,36 +1,36 @@
 import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 const state = {
     labels: ['Mon', 'Tue', 'Wed',
              'Thu', 'Fri', 'Sat', "Sun"],
     datasets: [
       {
-        label: 'Total Consumed Calorie',
-        backgroundColor: 'rgba(75,192,192,1)',
-        borderColor: 'rgba(0,0,0,1)',
+        label: 'Calorie',
+        backgroundColor: 'rgba(140,211,65,0.5)',
+        borderColor: 'rgba(0,0,0,0.5)',
         borderWidth: 2,
-        data: [5000, 6000, 7000, 8000, 2000, 4000, 9000]
+        data: [23, 34, 45, 12, 23, 14, 34]
       }
     ]
   }
 
-const Chart = () => {
+const ChartBar = () => {
 
     return (
         <div>
         <Bar
           data={state}
-          width={50}
+          width={10}
           height={200}
           options={{
             title:{
               display:true,
-              text:'Weekly Report',
+              text:'Weekly Calrorie Report',
               fontSize:25
             },
             legend:{
-              display:true,
+              display:false,
               position:'right'
             },
             scales: {
@@ -49,4 +49,4 @@ const Chart = () => {
     )
 }
 
-export default Chart;
+export default ChartBar;
