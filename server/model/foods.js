@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const Foods = sequelize.define(
-    "Foods",
+  const Food = sequelize.define(
+    "Food",
     {
       food_name: DataTypes.STRING,
       calories: DataTypes.FLOAT,
@@ -24,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Foods.associate = function (models) {
-    models.Foods.hasMany(models.Food_user);
+  Food.associate = function (models) {
+    models.Food.hasMany(models.Food_user);
   };
 
-  return Foods;
+  return Food;
 };
