@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom';
-import MainPage from './component/Main_page'
+import Home from './component/Home'
 import SignUp from './component/Signup'
 import Summary from './component/Summary/Summary'
 import Login from './component/Login'
@@ -32,8 +32,8 @@ const App = () => {
             render={() => <Summary />}
           />
           <Route
-            path='/mainpage'
-            render={() => <MainPage />}
+            path='/home'
+            render={() => <Home />}
           />
         </Switch>
       </div>
