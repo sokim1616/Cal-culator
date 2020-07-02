@@ -1,18 +1,38 @@
 const express = require("express");
+const session = require("express-session");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
-const app = express();
-app.use(cors());
+const userRouter = require("./routes/user");
 
-app.get("/", (req, res) => {
-  res.send("testing");
-});
+const app = express();
+
+// use cors with credentials
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+// use session with secret key
+app.use(
+  session({
+    secret: "secretKey",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use("/user", userRouter);
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
-console.log(process.env.PASSWORD);
+module.exports = app;

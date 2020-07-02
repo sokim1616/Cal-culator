@@ -1,28 +1,32 @@
-const { sequelize, DataTypes } = require("./index");
+"use strict";
 
-const foods = sequelize.define(
-  "foods",
-  {
-    user_id: DataTypes.STRING,
-    food_name: DataTypes.STRING,
-    date: DataTypes.DATE,
-    calories: DataTypes.FLOAT,
-    fat: DataTypes.FLOAT,
-    carbohydrates: DataTypes.FLOAT,
-    sugar: DataTypes.FLOAT,
-    protein: DataTypes.FLOAT,
-    sodium: DataTypes.FLOAT,
-    cholesterol: DataTypes.FLOAT,
-    iron: DataTypes.FLOAT,
-    calcium: DataTypes.FLOAT,
-    vitamin_A: DataTypes.FLOAT,
-    vitamin_D: DataTypes.FLOAT,
-    zinc: DataTypes.FLOAT,
-  },
-  {
-    charset: "utf8",
-    collate: "utf8_unicode_ci",
-  }
-);
+module.exports = (sequelize, DataTypes) => {
+  const Foods = sequelize.define(
+    "Foods",
+    {
+      food_name: DataTypes.STRING,
+      calories: DataTypes.FLOAT,
+      fat: DataTypes.FLOAT,
+      carbohydrates: DataTypes.FLOAT,
+      sugar: DataTypes.FLOAT,
+      protein: DataTypes.FLOAT,
+      sodium: DataTypes.FLOAT,
+      cholesterol: DataTypes.FLOAT,
+      iron: DataTypes.FLOAT,
+      calcium: DataTypes.FLOAT,
+      vitamin_A: DataTypes.FLOAT,
+      vitamin_D: DataTypes.FLOAT,
+      zinc: DataTypes.FLOAT,
+    },
+    {
+      charset: "utf8",
+      collate: "utf8_unicode_ci",
+    }
+  );
 
-module.exports = foods;
+  Foods.associate = function (models) {
+    models.Foods.hasMany(models.Food_user);
+  };
+
+  return Foods;
+};
