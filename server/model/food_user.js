@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Food_user.associate = function (models) {
-    models.Food_user.belongsTo(models.User, {
+    models.Food_user.belongsTo(models.Users, {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: false,

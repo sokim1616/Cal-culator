@@ -1,4 +1,4 @@
-const { Food } = require("../../model");
+const { Foods } = require("../../model");
 
 const axios = require("axios");
 
@@ -17,7 +17,7 @@ module.exports = {
 
     // findOne 하고 찾으면 database 가져다 쓰고 아니면 api 불러와서 create로 database 넣어주기.
 
-    let foodExistenceStatus = await Food.findOne({
+    let foodExistenceStatus = await Foods.findOne({
       where: {
         food_name: food_name,
       },
@@ -42,7 +42,7 @@ module.exports = {
           // console.log(nutrition["Vitamin C"]);
 
           // 2. create database
-          Food.create({
+          Foods.create({
             food_name: food_name,
             calories: nutrition["Calories"] || 0,
             fat: nutrition["Fat"] || 0,

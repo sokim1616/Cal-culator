@@ -1,11 +1,11 @@
-const { User } = require("../../model");
+const { Users } = require("../../model");
 
 module.exports = {
   post: (req, res) => {
     const { email, password } = req.body;
     const sess = req.session;
 
-    User.findOne({
+    Users.findOne({
       where: {
         email,
         password,
