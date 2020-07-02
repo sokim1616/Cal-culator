@@ -8,12 +8,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
-<<<<<<< HEAD
-    "chart.js": "^2.9.3",
-    "node-sass": "^4.14.1",
-=======
     "dotenv": "^8.2.0",
->>>>>>> 91121e7a770d7a55649ea53c1c0d50ff6bf5c554
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
