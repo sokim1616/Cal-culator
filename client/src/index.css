@@ -35,14 +35,3 @@
   --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
 }
-
-.nav {
-  /* display: grid; */
-  font-family: Lobster;
-  margin-left: 20px;
-  padding-top: 20px;
-}
-
-.desc {
-  font-family: 'Times New Roman', Times, serif;
-}

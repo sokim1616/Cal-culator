@@ -24,10 +24,10 @@
 // }
 
 import React from "react";
-import '../index.css';
+import './Home.css'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const MainPage = () => {
+const Home = () => {
     return (
         <body>
             <div>
@@ -56,4 +56,4 @@ const MainPage = () => {
     );
 }
 
-export default MainPage;
+export default Home;
