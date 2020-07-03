@@ -21,7 +21,7 @@ const Search = () => {
         <div className='search'>
             <center>
                 <span className='search-input'>
-                    <TextField onChange={e => setSearchInput(e.target.value)} style={{ width: '50rem'}} outlined placeholder="What did you eat today...?" />
+                    <TextField onChange={e => setSearchInput(e.target.value)} style={{ width: '30rem'}} outlined placeholder="What did you eat today...?" />
                 </span>
                 <span className='search-button'>
                     <Button type='submit' style={{ height: "3.5rem"}} label="Search" outlined />

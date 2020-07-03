@@ -8,6 +8,7 @@ import Header from './component/Header'
 import Footer from './component/Footer'
 import Calculator from './component/Calculator/Calculator'
 import DoDont from './component/Solution/Dodont'
+import About from './component/About/About'
 
 const App = () => {
 
@@ -29,6 +30,10 @@ const App = () => {
           <Route
             path='/login'
             render={() => <Login isLogin={isLogin} loginState={loginState} />}
+          />
+          <Route
+            path='/about'
+            render={() => <About />}
           />
           <Route
             path='/summary'
