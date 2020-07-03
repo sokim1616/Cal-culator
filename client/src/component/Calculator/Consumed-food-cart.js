@@ -10,12 +10,8 @@ import {
   DataTableBody,
   DataTableCell,
 } from "@rmwc/data-table";
-import "@rmwc/select/styles";
-import { Select } from "@rmwc/select";
 import "@rmwc/checkbox/styles";
 import { Checkbox } from "@rmwc/checkbox";
-import "@rmwc/switch/styles";
-import { Switch } from "@rmwc/switch";
 import { SimpleDialog } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
 import { Button } from "@rmwc/button";
@@ -25,7 +21,7 @@ const Cart = () => {
   const [checked, setChecked] = React.useState({});
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
-  const sampleRows = new Array(5).fill(undefined);
+  const sampleRows = new Array(3).fill(undefined); // Cart 행의 갯수
 
   return (
     <div>
@@ -35,12 +31,10 @@ const Cart = () => {
             <DataTableHead>
               <DataTableRow>
                 <DataTableHeadCell hasFormControl>
-                  <Checkbox />
                 </DataTableHeadCell>
-                <DataTableHeadCell>Label</DataTableHeadCell>
-                <DataTableHeadCell>Header</DataTableHeadCell>
-                <DataTableHeadCell>Header</DataTableHeadCell>
-                <DataTableHeadCell>Toggle</DataTableHeadCell>
+                <DataTableHeadCell>Food Name</DataTableHeadCell>
+                <DataTableHeadCell>Weight (g)</DataTableHeadCell>
+                <DataTableHeadCell>Calorie (kcal)</DataTableHeadCell>
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
@@ -55,17 +49,9 @@ const Cart = () => {
                       }}
                     />
                   </DataTableCell>
-                  <DataTableCell>Label</DataTableCell>
-                  <DataTableCell>
-                    <Select
-                      placeholder="--Select--"
-                      options={["Cookies", "Pizza", "Icecream"]}
-                    />
-                  </DataTableCell>
-                  <DataTableCell>R{i} C3</DataTableCell>
-                  <DataTableCell>
-                    <Switch />
-                  </DataTableCell>
+                  <DataTableCell>Apple</DataTableCell>
+                  <DataTableCell>1000</DataTableCell>
+                  <DataTableCell>1000</DataTableCell>
                 </DataTableRow>
               ))}
             </DataTableBody>
@@ -75,7 +61,7 @@ const Cart = () => {
       <div className="total-calorie">
         <SimpleDataTable data={[["Total Calorie", "3000 kcal"]]} />
       </div>
-      <div>
+      <div className='cart-button'>
         <span>
           <SimpleDialog
             title="DELETE"
