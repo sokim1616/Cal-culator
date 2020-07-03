@@ -1,4 +1,6 @@
 import React from "react";
+import AddCart from './calculator-add-cart'
+
 import "@rmwc/data-table/styles";
 import {
   SimpleDataTable,
@@ -18,57 +20,42 @@ import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
 import { TextField } from "@rmwc/textfield";
 import "@rmwc/textfield/styles";
+// import stcp from "styled-components"
 
-
-const Cart = () => {
-  const [checked, setChecked] = React.useState({});
+const Cart = ({searchResult, startDate, resultSave}) => {
+  
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
-  const [startDate, setStartDate] = React.useState();
-  const sampleRows = new Array(3).fill(undefined); // Cart 행의 갯수
+
+  // const DataTable = stcp(DataTableHead)`border: 1px solid black`;
 
   return (
     <div>
-    <div>
-    <TextField selected={startDate} onChange={e => setStartDate(e.target.value)} label="date" type="date" />
-    </div>
       <div>
-        <DataTable>
+        <DataTable className="cart-table" style={{width:"800px"}}>
           <DataTableContent>
-            <DataTableHead>
+            <DataTableHead >
               <DataTableRow>
-                <DataTableHeadCell hasFormControl>
-                </DataTableHeadCell>
+                <DataTableHeadCell hasFormControl></DataTableHeadCell>
+                <DataTableHeadCell>Date</DataTableHeadCell>
                 <DataTableHeadCell>Food Name</DataTableHeadCell>
-                <DataTableHeadCell>Weight (g)</DataTableHeadCell>
-                <DataTableHeadCell>Calorie (kcal)</DataTableHeadCell>
+                <DataTableHeadCell>Amout (per serving)</DataTableHeadCell>
+                <DataTableHeadCell>Calorie (cal)</DataTableHeadCell>
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
-              {sampleRows.map((v, i) => (
-                <DataTableRow key={i} selected={checked[i]}>
-                  <DataTableCell hasFormControl>
-                    <Checkbox
-                      checked={checked[i]}
-                      onChange={(evt) => {
-                        checked[i] = evt.currentTarget.checked;
-                        setChecked({ ...checked });
-                      }}
-                    />
-                  </DataTableCell>
-                  <DataTableCell>Apple</DataTableCell>
-                  <DataTableCell>1000</DataTableCell>
-                  <DataTableCell>1000</DataTableCell>
-                </DataTableRow>
-              ))}
-            </DataTableBody>
+        <AddCart 
+          searchResult={searchResult}
+          startDate={startDate}
+          resultSave={resultSave} />
+      </DataTableBody>
           </DataTableContent>
         </DataTable>
       </div>
       <div className="total-calorie">
         <SimpleDataTable data={[["Total Calorie", "3000 kcal"]]} />
       </div>
-      <div className='cart-button'>
+      <div className="cart-button">
         <span>
           <SimpleDialog
             title="DELETE"
