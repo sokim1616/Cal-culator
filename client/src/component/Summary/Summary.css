@@ -1,0 +1,10 @@
+.summary-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    width: 40vh;
+    height: 68vh;
+
+}
