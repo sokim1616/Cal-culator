@@ -1,32 +1,31 @@
-import React from 'react';
-import ChartBar from "./Chart-weekly"
-import ChartLineMonthly from "./Chart-monthly"
-import ChartPolar from './Polar-area-chart-weekly'
-import FoodList from './Foodlist'
-import SelectButton from './Selectbutton'
-import './Summary.css'
+import React from "react";
+import ChartBarWeekly from "./summary-chart-weekly";
+import ChartLineMonthly from "./summary-chart-monthly";
+import ChartPolarDaily from "./summary-chart-daily";
+import FoodList from "./summary-foodlist";
+import SelectButton from "./summary-select-button";
+import "./Summary.css";
 
 const Summary = () => {
-
-    return (
-        <div className="summary-container">
-            <div>
-                <ChartPolar />
-            </div>
-            <div>
-                <ChartBar />
-            </div>
-            <div>
-                <ChartLineMonthly />
-            </div>
-            <div>
-                <FoodList />
-            </div>
-            <span>
-                <SelectButton />
-            </span>
-        </div>
-    )
-}
+  return (
+    <div className="summary-container">
+      <div>
+        <ChartPolarDaily />
+      </div>
+      <div>
+        <ChartBarWeekly />
+      </div>
+      <div>
+        <ChartLineMonthly />
+      </div>
+      <div>
+        <FoodList />
+      </div>
+      <span>
+        <SelectButton />
+      </span>
+    </div>
+  );
+};
 
 export default Summary;

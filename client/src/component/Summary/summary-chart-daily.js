@@ -26,7 +26,7 @@ const state = {
   ]
 }
 
-const ChartPolarWeekly = () => {
+const ChartPolarDaily = () => {
 
   return (
     <div>
@@ -61,4 +61,4 @@ const ChartPolarWeekly = () => {
   )
 }
 
-export default ChartPolarWeekly;
+export default ChartPolarDaily;
