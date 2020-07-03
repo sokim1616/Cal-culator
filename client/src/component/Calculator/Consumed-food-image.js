@@ -13,10 +13,13 @@ import { SimpleDialog } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
+import { TextField } from "@rmwc/textfield";
+import "@rmwc/textfield/styles";
 
 const FoodImage = () => {
   const [sortDir, setSortDir] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const [startDate, setStartDate] = React.useState();
 
   return (
     <>
@@ -67,6 +70,9 @@ const FoodImage = () => {
           </DataTableContent>
         </DataTable>
       </div>
+      <div>
+    <TextField selected={startDate} onChange={e => setStartDate(e.target.value)} label="date" type="date" />
+    </div>
       <div className="addtocart-button">
         <SimpleDialog
           title="ADD TO CART"

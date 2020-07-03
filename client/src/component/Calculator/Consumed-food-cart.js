@@ -16,15 +16,22 @@ import { SimpleDialog } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
+import { TextField } from "@rmwc/textfield";
+import "@rmwc/textfield/styles";
+
 
 const Cart = () => {
   const [checked, setChecked] = React.useState({});
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
+  const [startDate, setStartDate] = React.useState();
   const sampleRows = new Array(3).fill(undefined); // Cart 행의 갯수
 
   return (
     <div>
+    <div>
+    <TextField selected={startDate} onChange={e => setStartDate(e.target.value)} label="date" type="date" />
+    </div>
       <div>
         <DataTable>
           <DataTableContent>
