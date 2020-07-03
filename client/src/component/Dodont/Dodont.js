@@ -15,7 +15,7 @@ const DoDont = () => {
         <List>
             <CollapsibleList
                 handle={
-                    <SimpleListItem
+                    <SimpleListItem className='head'
                         text="What to eat"
                     // graphic="favorite"
                     // metaIcon="chevron_right"
