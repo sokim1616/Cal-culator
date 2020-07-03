@@ -43,7 +43,7 @@ const App = () => {
             render={() => <DoDont />}
           />
           <Route
-            path='/home'
+            path='/'
             render={() => <Home />}
           />
         </Switch>

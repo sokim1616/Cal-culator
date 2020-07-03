@@ -1,7 +1,7 @@
 import React from 'react';
 import ChartBar from "./Chart-weekly"
 import ChartLineMonthly from "./Chart-monthly"
-import ChartPolar from './Polar-area-chart-weekly'
+import ChartPolar from './Polar-area-chart'
 import FoodList from './Foodlist'
 import SelectButton from './Selectbutton'
 import './Summary.css'

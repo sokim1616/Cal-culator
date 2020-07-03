@@ -13,7 +13,7 @@ const Header = () => {
         <div>
             <header>
                 <TabBar>
-                    <Tab onClick={() => history.push("/home")}>Home</Tab>
+                    <Tab onClick={() => history.push("/")}>Home</Tab>
                     <Tab onClick={() => history.push("/summary")}>Summary</Tab>
                     <Tab onClick={() => history.push("/calculator")}>Calculator</Tab>
                     <Tab onClick={() => history.push("/dodont")}>DO & DON`T</Tab>
