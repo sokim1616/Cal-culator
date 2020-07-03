@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/codestates/im20-project-cal-culator#readme",
   "dependencies": {
+    "@rmwc/list": "^6.1.3",
     "@rmwc/typography": "^6.1.3"
   }
 }
