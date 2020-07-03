@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 
+const foodRouter = require("./routes/food");
+
 const PORT = process.env.PORT || 4000;
 
 const userRouter = require("./routes/user");
@@ -32,6 +34,8 @@ app.use(
 );
 
 app.use("/user", userRouter);
+
+app.use("/food", foodRouter);
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
