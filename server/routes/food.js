@@ -3,6 +3,9 @@ const router = express.Router();
 
 const { foodController } = require("../controller");
 
+// * GET /foodtrivia
+router.get("/foodtrivia", foodController.food_trivia.get);
+
 // * POST /foodinfo
 router.post("/foodinfo", foodController.food_info.post);
 

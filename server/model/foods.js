@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Foods.associate = function (models) {
-    models.Foods.hasMany(models.Food_user);
+    models.Foods.hasMany(models.Food_users);
   };
 
   return Foods;

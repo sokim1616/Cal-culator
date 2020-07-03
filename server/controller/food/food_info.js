@@ -40,7 +40,7 @@ module.exports = {
             nutrition[i.title] = i.amount;
           }
 
-          // 2. create database
+          // 2. create
           Foods.create({
             food_name: food_name,
             image: nutrition["image"],
