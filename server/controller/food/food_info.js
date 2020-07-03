@@ -1,4 +1,4 @@
-const { Food } = require("../../model");
+const { Foods } = require("../../model");
 
 const axios = require("axios");
 
@@ -17,7 +17,7 @@ module.exports = {
 
     // findOne 하고 찾으면 database 가져다 쓰고 아니면 api 불러와서 create로 database 넣어주기.
 
-    let foodExistenceStatus = await Food.findOne({
+    let foodExistenceStatus = await Foods.findOne({
       where: {
         food_name: food_name,
       },
@@ -32,18 +32,18 @@ module.exports = {
         )
         .then((response) => {
           let nutritionInfo = response.data.results[0].nutrition.nutrients;
-          // console.log("info : ", nutritionInfo);
+
+          // nutrition 객체에 food image와 nutrition 정보 넣어주기.
+          nutrition["image"] = response.data.results[0].image;
 
           for (let i of nutritionInfo) {
             nutrition[i.title] = i.amount;
           }
-          // console.log(nutrition);
-          // console.log(nutrition.Sugar);
-          // console.log(nutrition["Vitamin C"]);
 
-          // 2. create database
-          Food.create({
+          // 2. create
+          Foods.create({
             food_name: food_name,
+            image: nutrition["image"],
             calories: nutrition["Calories"] || 0,
             fat: nutrition["Fat"] || 0,
             carbohydrates: nutrition["Carbohydrates"] || 0,

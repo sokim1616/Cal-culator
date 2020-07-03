@@ -7,7 +7,7 @@ router.post("/signin", userController.signin.post);
 
 router.post("/signout", userController.signout.post);
 
-// router.get("/infoDay", userController.user_info_day.get);
+router.get("/infoDay", userController.user_info_day.post);
 
 // router.get("/infoWeek", userController.user_info_week.get);
 
