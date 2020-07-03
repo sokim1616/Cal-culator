@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       gender: DataTypes.STRING,
-      height: DataTypes.INTEGER,
-      weight: DataTypes.INTEGER,
+      age: DataTypes.STRING,
     },
     {
       charset: "utf8",
@@ -23,3 +22,8 @@ module.exports = (sequelize, DataTypes) => {
 
   return Users;
 };
+
+// setresultSave((prevState) => {
+//   ...prevState,
+//     {date, foodname, calories}
+// })
