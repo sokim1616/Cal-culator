@@ -8,7 +8,7 @@ import "./Summary.css";
 
 const Summary = () => {
   return (
-    <div className="summary-container">
+    <div className='summary-container'>
       <div>
         <ChartPolarDaily />
       </div>
