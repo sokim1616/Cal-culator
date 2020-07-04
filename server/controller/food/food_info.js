@@ -56,9 +56,9 @@ module.exports = {
             vitamin_A: nutrition["Vitamin A"] || 0,
             vitamin_D: nutrition["Vitamin D"] || 0,
             zinc: nutrition["Zinc"] || 0,
+          }).then((result) => {
+            res.send(result.dataValues);
           });
-
-          res.send(nutrition);
         });
     } else {
       // 음식이 database에 존재할 때
