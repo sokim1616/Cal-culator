@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import Modal from "react-modal";
-//const axios = require('axios');
+const axios = require('axios');
 
 const customStyles = {
   content: {
@@ -16,26 +16,20 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
-const Login = memo(({ loginState }) => {
+const Login = memo(({ loginState, modalIsOpen, openSUModal, closeModal }) => {
   var subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+
+
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     subtitle.style.color = "#h00";
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <div>
-      <button onClick={openModal}>Log In!</button>
+      {/* <button onClick={openModal}>Log In!</button> */}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -43,6 +37,7 @@ const Login = memo(({ loginState }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
+
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Welcome back!</h2>
         <form
           onSubmit={(e) => {
@@ -65,6 +60,9 @@ const Login = memo(({ loginState }) => {
           <div>Password:</div>
           <input type="password" />
           <button onClick={loginState}>Get in!</button>
+          <div>
+            <button onClick={openSUModal}>Sign in!</button>
+          </div>
         </form>
       </Modal>
     </div>

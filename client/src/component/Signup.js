@@ -17,9 +17,9 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-function Signup() {
+function Signup({ openSUModal, SUModalIsOpen, setSUIsOpen }) {
   var subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+
   const [userEmail, setEmail] = React.useState();
   const [userPassword, setPassword] = React.useState();
   const [userName, setName] = React.useState();
@@ -29,9 +29,7 @@ function Signup() {
 
   let stateValue = {};
 
-  function openModal() {
-    setIsOpen(true);
-  }
+
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -39,7 +37,7 @@ function Signup() {
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setSUIsOpen(false);
   }
 
   const submitValue = () => {
@@ -56,9 +54,9 @@ function Signup() {
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openSUModal}>Open Modal</button> */}
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={SUModalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
