@@ -8,73 +8,75 @@ const Selectbutton = () => {
     weekly: false,
     monthly: false,
   });
+
+  const btnClicked = (dwm, dwmStatus) => {
+    if (!dwmStatus) {
+      setDwmIsOpen((prevState) => {
+        {
+          return { ...prevState, [dwm]: false };
+        }
+      });
+    }
+  };
+
   return (
     <div className='button'>
       {dwmIsOpen.daily ? (
         <Button
-          onClick={() => {
-            if (!dwmIsOpen.daily) {
-              setDwmIsOpen((prevState) => {
-                {
-                  return { ...prevState, daily: false };
-                }
-              });
-            }
+          onClick={(e) => {
+            btnClicked(e.target.nextSibling.textContent, dwmIsOpen.daily);
           }}
-          label='Daily'
           raised
-        />
+        >
+          daily
+        </Button>
       ) : (
         <Button
           onClick={() =>
             setDwmIsOpen({ daily: true, weekly: false, monthly: false })
           }
-          label='Daily'
           outlined
-        />
+        >
+          daily
+        </Button>
       )}
       {dwmIsOpen.weekly ? (
         <Button
-          onClick={() => {
-            if (!dwmIsOpen.weekly) {
-              setDwmIsOpen((prevState) => {
-                return { ...prevState, weekly: false };
-              });
-            }
+          onClick={(e) => {
+            btnClicked(e.target.nextSibling.textContent, dwmIsOpen.weekly);
           }}
-          name='weekly'
-          label='Weekly'
           raised
-        />
+        >
+          weekly
+        </Button>
       ) : (
         <Button
           onClick={() =>
             setDwmIsOpen({ daily: false, weekly: true, monthly: false })
           }
-          label='Weekly'
           outlined
-        />
+        >
+          weekly
+        </Button>
       )}
       {dwmIsOpen.monthly ? (
         <Button
-          onClick={() => {
-            if (!dwmIsOpen.monthly) {
-              setDwmIsOpen((prevState) => {
-                return { ...prevState, monthly: false };
-              });
-            }
+          onClick={(e) => {
+            btnClicked(e.target.nextSibling.textContent, dwmIsOpen.month);
           }}
-          label='Monthly'
           raised
-        />
+        >
+          monthly
+        </Button>
       ) : (
         <Button
           onClick={() =>
             setDwmIsOpen({ daily: false, weekly: false, monthly: true })
           }
-          label='Monthly'
           outlined
-        />
+        >
+          monthly
+        </Button>
       )}
     </div>
   );
