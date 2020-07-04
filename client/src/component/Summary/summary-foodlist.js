@@ -11,8 +11,9 @@ import {
 import "@rmwc/data-table/styles";
 import "@rmwc/textfield/styles";
 import { TextField } from "@rmwc/textfield";
+import TableRow from "./TableRow";
 
-const FoodList = () => {
+const FoodList = ({ food }) => {
   const [sortDir, setSortDir] = React.useState(null);
   const [startDate, setStartDate] = React.useState();
   const [startWeek, setStartWeek] = React.useState();
@@ -34,42 +35,22 @@ const FoodList = () => {
                     console.log(sortDir);
                   }}
                 >
-                  Weight (g)
+                  Serving(s)
                 </DataTableHeadCell>
-                <DataTableHeadCell alignEnd>Calorie (kcal)</DataTableHeadCell>
+                <DataTableHeadCell alignEnd>Calories (kcal)</DataTableHeadCell>
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
-              <DataTableRow>
-                <DataTableCell>Cookies</DataTableCell>
-                <DataTableCell alignEnd>25</DataTableCell>
-                <DataTableCell alignEnd>3000</DataTableCell>
-              </DataTableRow>
-              <DataTableRow selected>
-                <DataTableCell>Pizza</DataTableCell>
-                <DataTableCell alignEnd>50</DataTableCell>
-                <DataTableCell alignEnd>500</DataTableCell>
-              </DataTableRow>
-              <DataTableRow>
-                <DataTableCell>Icecream</DataTableCell>
-                <DataTableCell alignEnd>10</DataTableCell>
-                <DataTableCell alignEnd>100</DataTableCell>
-              </DataTableRow>
-              <DataTableRow>
-                <DataTableCell>Icecream</DataTableCell>
-                <DataTableCell alignEnd>10</DataTableCell>
-                <DataTableCell alignEnd>100</DataTableCell>
-              </DataTableRow>
-              <DataTableRow>
-                <DataTableCell>Icecream</DataTableCell>
-                <DataTableCell alignEnd>10</DataTableCell>
-                <DataTableCell alignEnd>100</DataTableCell>
-              </DataTableRow>
-              <DataTableRow>
-                <DataTableCell>Icecream</DataTableCell>
-                <DataTableCell alignEnd>10</DataTableCell>
-                <DataTableCell alignEnd>100</DataTableCell>
-              </DataTableRow>
+              {food.map((item, idx) => (
+                <TableRow
+                  key={idx}
+                  foodData={{
+                    food_name: item.food_name,
+                    amount: item.amount,
+                    calories: item.calories,
+                  }}
+                />
+              ))}
             </DataTableBody>
           </DataTableContent>
         </DataTable>
@@ -78,24 +59,24 @@ const FoodList = () => {
         <TextField
           selected={startDate}
           onChange={(e) => setStartDate(e.target.value)}
-          label="date"
-          type="date"
+          label='date'
+          type='date'
         />
       </div>
       <div>
         <TextField
           selected={startWeek}
           onChange={(e) => setStartWeek(e.target.value)}
-          label="week"
-          type="week"
+          label='week'
+          type='week'
         />
       </div>
       <div>
         <TextField
           selected={startMonth}
           onChange={(e) => setStartMonth(e.target.value)}
-          label="month"
-          type="month"
+          label='month'
+          type='month'
         />
       </div>
     </div>
