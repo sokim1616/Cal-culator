@@ -18,16 +18,14 @@ import '@rmwc/switch/styles'
 import { Switch } from '@rmwc/switch'
 
 const About = () => {
-    
-  const [checked, setChecked] = React.useState({0:false, 1:false, 2:false});
   const sampleRows = new Array(5).fill(undefined);
-
-  const initObj = (i) => {
-        setChecked({
-            ...checked,
-            [i]: false
-        })
-    }
+  const initObj = {};
+  for(let i=0; i<sampleRows.length; i++){
+    initObj[i] = false
+  }
+  const [checked, setChecked] = React.useState(initObj);
+ 
+  
 
   return (
     <div>
@@ -46,13 +44,12 @@ const About = () => {
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
+            
               {sampleRows.map((v, i) => (
                 <DataTableRow key={i} selected={checked[i]}>
                   <DataTableCell hasFormControl>
                     <Checkbox
-                      
                       checked={checked[i]}
-                      
                       onChange={(evt) => setChecked({
                           ...checked,
                           [i]: evt.currentTarget.checked

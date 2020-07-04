@@ -18,21 +18,45 @@ import { SimpleDialog } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
-import { TextField } from "@rmwc/textfield";
-import "@rmwc/textfield/styles";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  DialogButton,
+} from "@rmwc/dialog";
+import "@rmwc/dialog/styles";
 // import stcp from "styled-components"
 
-const Cart = ({searchResult, startDate, resultSave}) => {
-  
+const Cart = ({ searchResult, startDate, resultSave, setResultSave }) => {
+
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
+  const [checked, setChecked] = React.useState({0:false});
+
+  const checkedHandle = () => {
+    setChecked({ ...checked })
+  }
+
+  const deleteButtonHandle = () => {
+    for (let key in checked) {
+      if (checked[key] === true) {
+        setChecked({[key]:false})
+        setResultSave(resultSave.filter((ele, idx) => ele.key !== key))
+      }
+    }
+  }
+
+  const confirmButtonHandle = () => {
+    
+  }
 
   // const DataTable = stcp(DataTableHead)`border: 1px solid black`;
 
   return (
     <div>
       <div>
-        <DataTable className="cart-table" style={{width:"800px"}}>
+        <DataTable className="cart-table" style={{ width: "800px" }}>
           <DataTableContent>
             <DataTableHead >
               <DataTableRow>
@@ -44,11 +68,13 @@ const Cart = ({searchResult, startDate, resultSave}) => {
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
-        <AddCart 
-          searchResult={searchResult}
-          startDate={startDate}
-          resultSave={resultSave} />
-      </DataTableBody>
+              <AddCart
+                checked={checked}
+                checkedHandle={checkedHandle}
+                searchResult={searchResult}
+                startDate={startDate}
+                resultSave={resultSave} />
+            </DataTableBody>
           </DataTableContent>
         </DataTable>
       </div>
@@ -57,32 +83,50 @@ const Cart = ({searchResult, startDate, resultSave}) => {
       </div>
       <div className="cart-button">
         <span>
-          <SimpleDialog
-            title="DELETE"
-            body="레알 지울까요?"
+          <Dialog
             open={deleteOpen}
-            onClose={(evt) => {
+            onClose={evt => {
               console.log(evt.detail.action);
               setDeleteOpen(false);
             }}
-          />
+            onClosed={evt => console.log(evt.detail.action)}
+          >
+            <DialogTitle>Delete</DialogTitle>
+            <DialogContent>Do you really want to delete the selected item(s)...? really...?</DialogContent>
+            <DialogActions>
+              <DialogButton action="close">Cancel</DialogButton>
+              <DialogButton onClick={deleteButtonHandle} action="accept" isDefaultAction>
+                Delete
+      </DialogButton>
+            </DialogActions>
+          </Dialog>
+
           <Button raised onClick={() => setDeleteOpen(true)}>
             DELETE
-          </Button>
+  </Button>
         </span>
         <span>
-          <SimpleDialog
-            title="CONFIRM"
-            body="등록?"
+          <Dialog
             open={confirmOpen}
-            onClose={(evt) => {
+            onClose={evt => {
               console.log(evt.detail.action);
               setConfirmOpen(false);
             }}
-          />
+            onClosed={evt => console.log(evt.detail.action)}
+          >
+            <DialogTitle>Confirm</DialogTitle>
+            <DialogContent>Do you really want to confirm the selected item(s)...? really...?</DialogContent>
+            <DialogActions>
+              <DialogButton action="close">Cancel</DialogButton>
+              <DialogButton action="accept" isDefaultAction>
+                Confirm
+          </DialogButton>
+            </DialogActions>
+          </Dialog>
+
           <Button raised onClick={() => setConfirmOpen(true)}>
             CONFIRM
-          </Button>
+      </Button>
         </span>
       </div>
     </div>

@@ -22,7 +22,7 @@ const Calculator = () => {
     "zinc": 0.71,
     "createdAt": "2020-07-03T02:20:17.000Z",
     "updatedAt": "2020-07-03T02:20:17.000Z"
-});
+  });
   const [searchInput, setSearchInput] = React.useState();
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
@@ -42,10 +42,13 @@ const Calculator = () => {
   const addToCartButton = () => {
     setResultSave((prevState) => [
       ...prevState,
-      {date: startDate,
-      foodname: searchResult.food_name,
-      calories: searchResult.calories}
-      ])
+      {
+        id: searchResult.id,
+        date: startDate,
+        foodname: searchResult.food_name,
+        calories: searchResult.calories
+      }
+    ])
   }
 
   return (
@@ -58,16 +61,17 @@ const Calculator = () => {
         />
       </div>
       <div className="food">
-        <FoodList 
+        <FoodList
           searchResult={searchResult}
           addDateHandle={addDateHandle}
           addToCartButton={addToCartButton} />
       </div>
       <div className="cart">
-        <Cart 
+        <Cart
           searchResult={searchResult}
           startDate={startDate}
-          resultSave={resultSave} />
+          resultSave={resultSave}
+          setResultSave={setResultSave} />
       </div>
     </div>
   );
