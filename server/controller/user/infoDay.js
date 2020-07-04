@@ -17,7 +17,6 @@ module.exports = {
     Food_users.findAll({
       where: {
         UserId: id,
-        // time constraints exist!
         time: {
           [Op.between]: [startDay, endDay],
         },

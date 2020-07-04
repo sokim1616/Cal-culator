@@ -2,6 +2,8 @@ const { Food_users } = require("../../model");
 const { Foods } = require("../../model");
 const { Op } = require("sequelize");
 const getLastDayOfMonth = require("../helperFunction/getLastDayOfMonth");
+const formatDay = require("../helperFunction/formatDay");
+const makeDateObj = require("../helperFunction/makeDateObj");
 
 module.exports = {
   post: (req, res) => {
@@ -28,8 +30,16 @@ module.exports = {
           required: true,
         },
       ],
+      order: [["time", "ASC"]],
     }).then((result) => {
-      res.send(result);
+      const dateCalorieObj = makeDateObj(`${year}-${month}-01`, lastDay);
+      result.forEach((dateObj) => {
+        const dateStr = formatDay(dateObj.time);
+        dateCalorieObj[dateStr]
+          ? (dateCalorieObj[dateStr] += dateObj.Food.calories * dateObj.amount)
+          : (dateCalorieObj[dateStr] = dateObj.Food.calories * dateObj.amount);
+      });
+      res.send(dateCalorieObj);
     });
   },
 };
