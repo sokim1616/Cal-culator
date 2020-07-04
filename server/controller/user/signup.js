@@ -2,7 +2,7 @@ const { Users } = require("../../model");
 
 module.exports = {
   post: (req, res) => {
-    const { username, email, password, gender, height, weight } = req.body;
+    const { username, email, password, gender, age } = req.body;
 
     Users.findOrCreate({
       where: {
@@ -12,8 +12,7 @@ module.exports = {
         username,
         password,
         gender,
-        height,
-        weight,
+        age,
       },
     }).then(async ([user, created]) => {
       if (!created) {
@@ -83,13 +82,13 @@ module.exports = {
  * For createing food_user
  *
  */
-// const { Food_user } = require("../../model");
+// const { Food_users } = require("../../model");
 
 // module.exports = {
 //   post: (req, res) => {
 //     const { amount, time, UserId, FoodId } = req.body;
 
-//     Food_user.create({
+//     Food_users.create({
 //       amount,
 //       time,
 //       UserId,
