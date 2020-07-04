@@ -61,7 +61,7 @@ const Login = memo(({ loginState, modalIsOpen, openSUModal, closeModal }) => {
           <input type="password" />
           <button onClick={loginState}>Get in!</button>
           <div>
-            <button onClick={openSUModal}>Sign in!</button>
+            <button onClick={openSUModal}>Sign up!</button>
           </div>
         </form>
       </Modal>
