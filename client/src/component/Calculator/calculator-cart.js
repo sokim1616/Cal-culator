@@ -47,6 +47,10 @@ const Cart = ({ searchResult, startDate, resultSave, setResultSave }) => {
     }
   }
 
+  const confirmButtonHandle = () => {
+    
+  }
+
   // const DataTable = stcp(DataTableHead)`border: 1px solid black`;
 
   return (
