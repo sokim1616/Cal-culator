@@ -28,27 +28,20 @@ import {
 import "@rmwc/dialog/styles";
 // import stcp from "styled-components"
 
-const Cart = ({ searchResult, startDate, resultSave, setResultSave }) => {
+const Cart = ({ searchResult, startDate, resultSave, confirmButtonHandle, deleteButtonHandle, checked, setChecked, value, setValue }) => {
 
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
-  const [checked, setChecked] = React.useState({0:false});
 
   const checkedHandle = () => {
     setChecked({ ...checked })
   }
 
-  const deleteButtonHandle = () => {
-    for (let key in checked) {
-      if (checked[key] === true) {
-        setChecked({[key]:false})
-        setResultSave(resultSave.filter((ele, idx) => ele.key !== key))
-      }
-    }
-  }
-
-  const confirmButtonHandle = () => {
-    
+  const amountHandle = (i, ...arg) => {
+    setValue({
+      ...value,
+      [i]: arg
+    })
   }
 
   // const DataTable = stcp(DataTableHead)`border: 1px solid black`;
@@ -73,7 +66,11 @@ const Cart = ({ searchResult, startDate, resultSave, setResultSave }) => {
                 checkedHandle={checkedHandle}
                 searchResult={searchResult}
                 startDate={startDate}
-                resultSave={resultSave} />
+                resultSave={resultSave}
+                amountHandle={amountHandle}
+                value={value}
+                setValue={setValue}
+              />
             </DataTableBody>
           </DataTableContent>
         </DataTable>
@@ -118,7 +115,7 @@ const Cart = ({ searchResult, startDate, resultSave, setResultSave }) => {
             <DialogContent>Do you really want to confirm the selected item(s)...? really...?</DialogContent>
             <DialogActions>
               <DialogButton action="close">Cancel</DialogButton>
-              <DialogButton action="accept" isDefaultAction>
+              <DialogButton onClick={confirmButtonHandle} action="accept" isDefaultAction>
                 Confirm
           </DialogButton>
             </DialogActions>
