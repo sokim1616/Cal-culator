@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
+import Modal from "react-modal";
 import './style.css';
 
-const App = () => {
-  return (
-    <Signup />
-  );
-}
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
@@ -17,7 +12,7 @@ const validateForm = (errors) => {
   return valid;
 }
 
-const Signup = () => {
+const Signup = ({ SUModalIsOpen, closeModal }) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -87,45 +82,52 @@ const Signup = () => {
   }
 
   return (
-    <div className='wrapper'>
-      <div className='form-wrapper'>
-        <h2>Create Account</h2>
-        <form onSubmit={handleSubmit} noValidate>
-          <div className='email'>
-            <label htmlFor="email">Email</label>
-            <input type='email' name='email' onChange={handleChange} noValidate />
-            {errors.email.length > 0 &&
-              <span className='error'>{errors.email}</span>}
+    <div>
+      <Modal
+        isOpen={SUModalIsOpen}
+        onRequestClose={closeModal}
+      >
+        <div className='wrapper'>
+          <div className='form-wrapper'>
+            <h2>Create Account</h2>
+            <form onSubmit={handleSubmit} noValidate>
+              <div className='email'>
+                <label htmlFor="email">Email</label>
+                <input type='email' name='email' onChange={handleChange} noValidate />
+                {errors.email.length > 0 &&
+                  <span className='error'>{errors.email}</span>}
+              </div>
+              <div className='password'>
+                <label htmlFor="password">Password</label>
+                <input type='password' name='password' onChange={handleChange} noValidate />
+                {errors.password.length > 0 &&
+                  <span className='error'>{errors.password}</span>}
+              </div>
+              <div className='fullName'>
+                <label htmlFor="fullName">Full Name</label>
+                <input type='text' name='fullName' onChange={handleChange} noValidate />
+                {errors.fullName.length > 0 &&
+                  <span className='error'>{errors.fullName}</span>}
+              </div>
+              <div className='age'>
+                <label htmlFor="age">Age</label>
+                <input type='text' name='age' onChange={handleChange} noValidate />
+                {errors.age.length > 0 &&
+                  <span className='error'>{errors.age}</span>}
+              </div>
+              <div className='info'>
+                <small>Password must be eight characters in length.</small>
+              </div>
+              <div className='submit'>
+                <button>Create</button>
+              </div>
+              <div className='login'>
+                <button>LOG IN</button>
+              </div>
+            </form>
           </div>
-          <div className='password'>
-            <label htmlFor="password">Password</label>
-            <input type='password' name='password' onChange={handleChange} noValidate />
-            {errors.password.length > 0 &&
-              <span className='error'>{errors.password}</span>}
-          </div>
-          <div className='fullName'>
-            <label htmlFor="fullName">Full Name</label>
-            <input type='text' name='fullName' onChange={handleChange} noValidate />
-            {errors.fullName.length > 0 &&
-              <span className='error'>{errors.fullName}</span>}
-          </div>
-          <div className='age'>
-            <label htmlFor="age">Age</label>
-            <input type='text' name='age' onChange={handleChange} noValidate />
-            {errors.age.length > 0 &&
-              <span className='error'>{errors.age}</span>}
-          </div>
-          <div className='info'>
-            <small>Password must be eight characters in length.</small>
-          </div>
-          <div className='submit'>
-            <button>Create</button>
-          </div>
-          <div className='login'>
-            <button>LOG IN</button>
-          </div>
-        </form>
-      </div>
+        </div >
+      </Modal>
     </div>
   );
 }

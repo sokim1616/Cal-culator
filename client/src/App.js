@@ -13,7 +13,7 @@ import About from "./component/About/About";
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [SUModalIsOpen, setSUIsOpen] = React.useState(false);
+  const [SUModalIsOpen, setSUIsOpen] = useState(false);
 
 
   const loginState = () => {
