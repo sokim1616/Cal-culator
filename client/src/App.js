@@ -12,21 +12,42 @@ import About from "./component/About/About";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [SUModalIsOpen, setSUIsOpen] = useState(false);
+
 
   const loginState = () => {
     setIsLogin(true);
   };
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openSUModal() {
+    closeModal();
+    setSUIsOpen(true);
+  }
+
   return (
     <div>
-      <Header />
+      <Header openModal={openModal} />
+      <Login
+        isLogin={isLogin}
+        loginState={loginState}
+        modalIsOpen={modalIsOpen}
+        setIsOpen={setIsOpen}
+        openSUModal={openSUModal}
+        closeModal={closeModal} />
+      <SignUp
+        SUModalIsOpen={SUModalIsOpen}
+        setSUIsOpen={setSUIsOpen} />
       <div>
         <Switch>
-          <Route path="/signup" render={() => <SignUp />} />
-          <Route
-            path="/login"
-            render={() => <Login isLogin={isLogin} loginState={loginState} />}
-          />
           <Route path="/about" render={() => <About />} />
           <Route path="/summary" render={() => <Summary />} />
           <Route path="/calculator" render={() => <Calculator />} />
