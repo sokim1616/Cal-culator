@@ -29,6 +29,7 @@ import "@rmwc/typography/styles";
 const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
   const [open, setOpen] = React.useState(false);
   const [startDate, setStartDate] = React.useState();
+  
 
   return (
     <>

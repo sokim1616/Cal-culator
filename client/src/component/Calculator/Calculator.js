@@ -22,10 +22,13 @@ const Calculator = () => {
     "zinc": 0.71,
     "createdAt": "2020-07-03T02:20:17.000Z",
     "updatedAt": "2020-07-03T02:20:17.000Z"
-});
+  });
   const [searchInput, setSearchInput] = React.useState();
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
+  const [confirmData, setConfirmData] = React.useState([]);
+  const [checked, setChecked] = React.useState({ 0: false });
+  const [value, setValue] = React.useState({});
 
   const searchInputHandle = (e) => {
     setSearchInput(e);
@@ -42,10 +45,39 @@ const Calculator = () => {
   const addToCartButton = () => {
     setResultSave((prevState) => [
       ...prevState,
-      {date: startDate,
-      foodname: searchResult.food_name,
-      calories: searchResult.calories}
-      ])
+      {
+        id: searchResult.id,
+        date: startDate,
+        foodname: searchResult.food_name,
+        calories: searchResult.calories
+      }
+    ])
+  }
+
+  const confirmButtonHandle = () => {
+    for (let key in checked) {
+      if (checked[key]) {
+        setConfirmData((prevData) => [
+          ...prevData,
+          {
+            id: resultSave[key].id,
+            date: resultSave[key].date,
+            amount: value[key][0]
+          }
+        ])
+      }
+    }
+  }
+
+  const deleteButtonHandle = () => {
+    for (let key in checked) {
+      if (checked[key]) {
+        console.log(key)
+        setResultSave(resultSave.filter((ele, idx) =>
+          idx !== key))
+          setChecked( { [key] : false } )
+      }
+    }
   }
 
   return (
@@ -58,16 +90,22 @@ const Calculator = () => {
         />
       </div>
       <div className="food">
-        <FoodList 
+        <FoodList
           searchResult={searchResult}
           addDateHandle={addDateHandle}
           addToCartButton={addToCartButton} />
       </div>
       <div className="cart">
-        <Cart 
+        <Cart
           searchResult={searchResult}
           startDate={startDate}
-          resultSave={resultSave} />
+          resultSave={resultSave}
+          confirmButtonHandle={confirmButtonHandle}
+          deleteButtonHandle={deleteButtonHandle}
+          checked={checked}
+          setChecked={setChecked}
+          value={value}
+          setValue={setValue} />
       </div>
     </div>
   );

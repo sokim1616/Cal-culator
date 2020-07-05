@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import Modal from "react-modal";
-import './style.css';
+import './signupModal.css';
+
+import "@rmwc/button/styles"
+import { Button } from '@rmwc/button'
+import "@rmwc/radio/styles"
+import { Radio } from '@rmwc/radio'
+
+
+Modal.setAppElement("#root");
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-const validateForm = (errors) => {
-  let valid = true;
-  Object.values(errors).forEach(
-    (val) => val.length > 0 && (valid = false)
+const validateForm = (errors) => { // 이 함수의 역할은 입력받은 값들의 형식이 맞는지 확인하는 함수
+  let valid = true; // 디폴트 값은 형식이 맞다는 상태
+  Object.values(errors).forEach( // 객체의 값에 errors라는 인자가 들어온 상태에서 forEach문을 돌려서
+    (val) => val.length > 0 && (valid = false) // val 
   );
   return valid;
 }
 
-const Signup = ({ SUModalIsOpen, setSUIsOpen, closeSUModal }) => {
+const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
-  const [gender, setGender] = useState('');
+  const [value, setValue] = useState('');
+
   const [errors, setErrors] = useState({
     username: '',
     email: '',
     password: '',
     age: '',
-    gender: '' //null?
+    gender: false //null?
   })
 
   const handleChange = (event) => {
@@ -50,13 +59,13 @@ const Signup = ({ SUModalIsOpen, setSUIsOpen, closeSUModal }) => {
         break;
       case 'age':
         errors.age =
-          value.length > 3
+          Number(value).length > 3
             ? 'Please write your age in a correct form!'
             : '';
         break;
       case 'gender':
         errors.gender =
-          value
+          !value.disabled
             ? 'Please select your gender!'
             : '';
         break;
@@ -64,38 +73,38 @@ const Signup = ({ SUModalIsOpen, setSUIsOpen, closeSUModal }) => {
         break;
     }
 
-    // 아래 if else 문은 개선이 될 수 있을 것 같습니다..!
     if (name === 'username') {
       setUsername(value)
     }
-    else if (name === 'email') {
+    if (name === 'email') {
       setEmail(value)
     }
-    else if (name === 'password') {
+    if (name === 'password') {
       setPassword(value)
     }
-    else if (name === 'age') {
+    if (name === 'age') {
       setAge(value)
     }
-    else if (name === 'Male' || name === 'Female') {
-      setGender(value)
+    if (name === 'Male' || name === 'Female') {
+      setValue(value)
     }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validateForm(errors)) {
+      openLoginModal()
       console.info('Valid Form')
     } else {
       console.error('Invalid Form')
     }
   }
 
+
   return (
     <div>
       <Modal
-        isSUOpen={SUModalIsOpen}
-        onRequestSUClose={closeSUModal}
+        isOpen={signupModalOpen}
       >
         <div className='wrapper'>
           <div className='form-wrapper'>
@@ -125,21 +134,48 @@ const Signup = ({ SUModalIsOpen, setSUIsOpen, closeSUModal }) => {
                 {errors.age.length > 0 &&
                   <span className='error'>{errors.age}</span>}
               </div>
-              <div className='gender'>
-                <label htmlFor="gender">Gender</label>
-                <input type='checkbox' name='gender' onChange={handleChange} noValidate />
+              {/* <div className='gender'>
+                <label htmlFor="gender">Male</label>
+                <input type='radio' name='gender' onChange={handleChange} noValidate />
                 {errors.gender &&
                   <span className='error'>{errors.gender}</span>}
               </div>
-              <div className='submit'>
-                <button>Create</button>
+              <div className='gender'>
+                <label htmlFor="gender">Female</label>
+                <input type='radio' name='gender' onChange={handleChange} noValidate />
+                {errors.gender &&
+                  <span className='error'>{errors.gender}</span>}
+              </div> */}
+
+              {/* <div>
+                <label for="genderSelect">Gender</label>
+                <div><input type="radio" name="genderSelect" id="genderSelect" value="Male" />Male</div>
+                <div><input type="radio" name="genderSelect" id="genderSelect" value="Female" />Female</div>
+              </div> */}
+              <div className='gender'>
+                <Radio
+                  value="Male"
+                  checked={value === 'Male'}
+                  onChange={evt => setValue(String(evt.currentTarget.value))}
+                >
+                  Male
+              </Radio>
+
+                <Radio
+                  value="Female"
+                  checked={value === 'Female'}
+                  onChange={evt => setValue(String(evt.currentTarget.value))}
+                >
+                  Female
+              </Radio>
               </div>
-              <div className='login'>
-                <button>LOG IN</button>
+
+              <div className='createLogin'>
+                <Button>CREATE & LOG IN</Button>
               </div>
             </form>
           </div>
-        </div >
+        </div>
       </Modal>
     </div>
   );
