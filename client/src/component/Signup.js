@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Modal from "react-modal";
 import './style.css';
 
-
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
   let valid = true;
@@ -12,16 +11,18 @@ const validateForm = (errors) => {
   return valid;
 }
 
-const Signup = ({ SUModalIsOpen, closeModal }) => {
-  const [fullName, setFullName] = useState('');
+const Signup = ({ SUModalIsOpen, setSUIsOpen, closeSUModal }) => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
+  const [gender, setGender] = useState('');
   const [errors, setErrors] = useState({
-    fullName: '',
+    username: '',
     email: '',
     password: '',
-    age: ''
+    age: '',
+    gender: '' //null?
   })
 
   const handleChange = (event) => {
@@ -29,10 +30,10 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
     const { name, value } = event.target;
 
     switch (name) {
-      case 'fullName':
-        errors.fullName =
+      case 'username':
+        errors.username =
           value.length < 5
-            ? 'Full Name must be 5 characters long!'
+            ? 'Username must be 5 characters long!'
             : '';
         break;
       case 'email':
@@ -49,8 +50,14 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
         break;
       case 'age':
         errors.age =
-          value.length < 2
+          value.length > 3
             ? 'Please write your age in a correct form!'
+            : '';
+        break;
+      case 'gender':
+        errors.gender =
+          value
+            ? 'Please select your gender!'
             : '';
         break;
       default:
@@ -58,8 +65,8 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
     }
 
     // 아래 if else 문은 개선이 될 수 있을 것 같습니다..!
-    if (name === 'fullName') {
-      setFullName(value)
+    if (name === 'username') {
+      setUsername(value)
     }
     else if (name === 'email') {
       setEmail(value)
@@ -69,6 +76,9 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
     }
     else if (name === 'age') {
       setAge(value)
+    }
+    else if (name === 'Male' || name === 'Female') {
+      setGender(value)
     }
   }
 
@@ -84,8 +94,8 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
   return (
     <div>
       <Modal
-        isOpen={SUModalIsOpen}
-        onRequestClose={closeModal}
+        isSUOpen={SUModalIsOpen}
+        onRequestSUClose={closeSUModal}
       >
         <div className='wrapper'>
           <div className='form-wrapper'>
@@ -103,11 +113,11 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
                 {errors.password.length > 0 &&
                   <span className='error'>{errors.password}</span>}
               </div>
-              <div className='fullName'>
-                <label htmlFor="fullName">Full Name</label>
-                <input type='text' name='fullName' onChange={handleChange} noValidate />
-                {errors.fullName.length > 0 &&
-                  <span className='error'>{errors.fullName}</span>}
+              <div className='username'>
+                <label htmlFor="username">Username</label>
+                <input type='text' name='username' onChange={handleChange} noValidate />
+                {errors.username.length > 0 &&
+                  <span className='error'>{errors.username}</span>}
               </div>
               <div className='age'>
                 <label htmlFor="age">Age</label>
@@ -115,8 +125,11 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
                 {errors.age.length > 0 &&
                   <span className='error'>{errors.age}</span>}
               </div>
-              <div className='info'>
-                <small>Password must be eight characters in length.</small>
+              <div className='gender'>
+                <label htmlFor="gender">Gender</label>
+                <input type='checkbox' name='gender' onChange={handleChange} noValidate />
+                {errors.gender &&
+                  <span className='error'>{errors.gender}</span>}
               </div>
               <div className='submit'>
                 <button>Create</button>
@@ -206,7 +219,7 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
 //             // axios.post('http://localhost:4000/signin/', stateValue, {withCredentials: true})
 //             // .then(response => {
 //             //   if(response.status === 200){
-//             //     // isLogin => true, userInfo
+//             //     // isLoginn => true, userInfo
 //             //   }
 //             // })
 //             // .catch(error => {

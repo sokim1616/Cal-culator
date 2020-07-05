@@ -11,41 +11,44 @@ import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [SUModalIsOpen, setSUIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false); // 로그인 모달창이 떠있는지에 대한 유무를 판단하는 state (디폴트는 안 떠있는 상태)
+  const [isLogin, setIsLogin] = useState(false); // 로그인이 되어 있는지에 대한 유무를 판단하는 state (디폴트는 안 되있는 상태)
+  const [SUModalIsOpen, setSUIsOpen] = useState(false); // 회원가입 모달창이 떠있는지에 대한 유무를 판단하는 state (디폴트는 안 떠있는 상태)
 
-
-  const loginState = () => {
-    setIsLogin(true);
-  };
-
-  function openModal() {
+  function openModal() { // 모달창이 안떠있는 상태에서 떠있는 상태로 바꿔주는 함수
     setIsOpen(true);
   }
 
-  function closeModal() {
+  function closeModal() { // 모달창을 다시 안떠있는 상태로 바꿔주는 함수
     setIsOpen(false);
   }
 
-  function openSUModal() {
+  const loginState = () => { // 로그인이 안되어 있는 상태에서 된 상태로 바꿔주는 함수
+    setIsLogin(true);
+  };
+
+  function openSUModal() { // 회원가입 모달창이 뜨기 위해서 로그인 모달창이 닫히고 현재 떠있지 않은 회원가입 모달창이 뜨도록 하는 함수
     closeModal();
     setSUIsOpen(true);
+  }
+
+  function closeSUModal() { // 회원가입 모달창을 다시 안떠있는 상태로 바꿔주는 함수
+    setSUIsOpen(false);
   }
 
   return (
     <div>
       <Header openModal={openModal} />
       <Login
+        modalIsOpen={modalIsOpen}
         isLogin={isLogin}
         loginState={loginState}
-        modalIsOpen={modalIsOpen}
-        setIsOpen={setIsOpen}
         openSUModal={openSUModal}
         closeModal={closeModal} />
       <SignUp
         SUModalIsOpen={SUModalIsOpen}
-        setSUIsOpen={setSUIsOpen} />
+        setSUIsOpen={setSUIsOpen}
+        closeSUModal={closeSUModal} />
       <div>
         <Switch>
           <Route path="/about" render={() => <About />} />

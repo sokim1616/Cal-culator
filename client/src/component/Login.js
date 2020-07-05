@@ -16,11 +16,9 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
-const Login = memo(({ loginState, modalIsOpen, openSUModal, closeModal }) => {
+// TODO: isLogin이 true면 summary & calculator & dodont 창이 열릴 수 있도록 access 주기!!
+const Login = memo(({ modalIsOpen, isLogin, loginState, openSUModal, closeModal }) => {
   var subtitle;
-
-
-
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.

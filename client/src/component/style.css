@@ -1,6 +1,6 @@
-p, div {
+/* p, div {
   font-family: Lato;
-}
+} */
 
 /* 
   Colors:
@@ -104,11 +104,11 @@ input.error {
   display: relative;
 }
 
-.fullName {
+.username {
   margin-right: 1%;
 }
 
-.fullName,
+.username,
 .email,
 .password,
 .age {
@@ -117,7 +117,7 @@ input.error {
   margin-bottom: 15px;
 }
 
-.fullName, 
+.username, 
 .age {
   width: 100%;
 }
