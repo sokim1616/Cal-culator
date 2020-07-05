@@ -55,30 +55,6 @@ const FoodList = ({ food }) => {
           </DataTableContent>
         </DataTable>
       </div>
-      <div>
-        <TextField
-          selected={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          label='date'
-          type='date'
-        />
-      </div>
-      <div>
-        <TextField
-          selected={startWeek}
-          onChange={(e) => setStartWeek(e.target.value)}
-          label='week'
-          type='week'
-        />
-      </div>
-      <div>
-        <TextField
-          selected={startMonth}
-          onChange={(e) => setStartMonth(e.target.value)}
-          label='month'
-          type='month'
-        />
-      </div>
     </div>
   );
 };

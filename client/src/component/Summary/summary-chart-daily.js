@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Polar } from "react-chartjs-2";
 
-const ChartPolarDaily = () => {
+const ChartPolarDaily = ({ daily }) => {
   const [consumedDaily, setConsumedDaily] = useState({
     labels: [
       "calorie",
@@ -40,6 +40,13 @@ const ChartPolarDaily = () => {
       },
     ],
   });
+
+  useEffect(() => {
+    setConsumedDaily((prevState) => {
+      prevState.datasets[0].data = Object.values(daily);
+      return { ...prevState };
+    });
+  }, [daily]);
 
   return (
     <div>
