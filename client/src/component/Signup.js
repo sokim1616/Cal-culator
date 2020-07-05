@@ -126,7 +126,7 @@ const Signup = ({ SUModalIsOpen, closeModal }) => {
               </div>
             </form>
           </div>
-        </div >
+        </div>
       </Modal>
     </div>
   );

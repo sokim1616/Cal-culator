@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Router, Redirect } from "react-router-dom";
 import Home from "./component/Home/Home";
-import SignUp from "./component/Signup";
+// import SignUp from "./component/Signup";
 import Summary from "./component/Summary/Summary";
 import Login from "./component/Login";
 import Header from "./component/Header";
@@ -12,40 +12,28 @@ import About from "./component/About/About";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [SUModalIsOpen, setSUIsOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
 
   const loginState = () => {
     setIsLogin(true);
   };
 
-  function openModal() {
-    setIsOpen(true);
+  function openLoginModal() {
+    setLoginModalOpen(true);
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openSUModal() {
-    closeModal();
-    setSUIsOpen(true);
+  function closeLoginModal() {
+    setLoginModalOpen(false);
   }
 
   return (
     <div>
-      <Header openModal={openModal} />
+      <Header openLoginModal={openLoginModal} />
       <Login
-        isLogin={isLogin}
         loginState={loginState}
-        modalIsOpen={modalIsOpen}
-        setIsOpen={setIsOpen}
-        openSUModal={openSUModal}
-        closeModal={closeModal} />
-      <SignUp
-        SUModalIsOpen={SUModalIsOpen}
-        setSUIsOpen={setSUIsOpen} />
+        loginModalOpen={loginModalOpen}
+        closeLoginModal={closeLoginModal} />
       <div>
         <Switch>
           <Route path="/about" render={() => <About />} />
