@@ -5,21 +5,19 @@ import './loginModal.css'
 import "@rmwc/button/styles"
 import { Button } from '@rmwc/button'
 
-// const customStyles = {
-//   content: {
-//     top: "50%",
-//     left: "50%",
-//     right: "auto",
-//     bottom: "auto",
-//     marginRight: "-50%",
-//     transform: "translate(-50%, -50%)",
-//     background: '#EBF5E8',
-//     border: '2px solid #55A93E'
-//   },
-// };
+const customStyles = {
+  content: {
+    position: 'absolute',
+    top: '300px',
+    left: '300px',
+    right: '300px',
+    bottom: '300px',
+    boxShadow: '0px 8px 36px #222',
+    borderRadius: '6px'
+  }
+};
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-// Modal.setAppElement("#root");
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors) => {
@@ -31,7 +29,7 @@ const validateForm = (errors) => {
 }
 
 const Login = (({ loginState, loginModalOpen, closeLoginModal }) => {
-  
+
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [errors, setErrors] = React.useState({
@@ -93,6 +91,7 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal }) => {
       <Modal
         isOpen={loginModalOpen}
         onRequestClose={closeLoginModal}
+        style={customStyles}
         contentLabel="Login Modal"
       >
         <div className='wrapper'>
@@ -100,23 +99,26 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal }) => {
             <h2 className='title'>LOGIN</h2>
             <form onSubmit={handleSubmit} noValidate>
               <div className='email'>
-                <label htmlFor="email">Email</label>
-                <input type='email' name='email' onChange={handleChange} noValidate />
+                <label htmlFor="email">EMAIL</label>
+                <input placeholder={"너의 아이덴티티...널 알려줘..."} type='email' name='email' onChange={handleChange} noValidate />
                 {errors.email.length > 0 &&
                   <span className='error'>{errors.email}</span>}
               </div>
               <div className='password'>
-                <label htmlFor="password">Password</label>
-                <input type='password' name='password' onChange={handleChange} noValidate />
+                <label htmlFor="password" >PASSWORD</label>
+                <input placeholder={"써보시지 너의 비밀... 자신있다면..."} type='password' name='password' onChange={handleChange} noValidate />
                 {errors.password.length > 0 &&
                   <span className='error'>{errors.password}</span>}
               </div>
-              <div className='submit'>
-                <Button danger raised>Create</Button>
+              <div>
+                <span className='submit'>
+                  <Button raised >Create</Button>
+                </span>
+                <span className='login'>
+                  <Button raised>LOG IN</Button>
+                </span>
               </div>
-              <div className='loginnn'>
-                <Button danger raised>LOG IN</Button>
-              </div>
+              <div className="provider">provide by Kim SoHyun, 자신있다면 연락해... 010-...</div>
             </form>
           </div>
         </div>
