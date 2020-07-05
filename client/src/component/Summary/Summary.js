@@ -16,15 +16,28 @@ const thisWeek = today.getWeekNumber();
 
 const Summary = () => {
   const [sampleFood, setSampleFood] = useState([
-    // { food_name: "pasta", amount: 1, calories: 1000 },
-    // { food_name: "pizza", amount: 2, calories: 100 },
+    { food_name: "pasta", amount: 1, calories: 1000 },
+    { food_name: "pizza", amount: 2, calories: 100 },
   ]);
+  const [dailyCalorie, setDailyCalorie] = useState("");
   const [dailyNutrition, setDailyNutrition] = useState({});
   const [weeklyNutrition, setWeeklyNutrition] = useState({});
   const [monthlyNutrition, setMonthlyNutrition] = useState({});
   const [date, setDate] = useState(formatDay(today));
   const [week, setWeek] = useState(`2020-W${thisWeek}`);
   const [month, setMonth] = useState("2020-07");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/user/dailyCalorie", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        // withCredentials: true
+      })
+      .then((result) => {
+        setDailyCalorie(result.data);
+      });
+  });
 
   useEffect(() => {
     axios
@@ -99,7 +112,10 @@ const Summary = () => {
         />
       </div>
       <div>
-        <ChartLineMonthly monthly={monthlyNutrition} />
+        <ChartLineMonthly
+          monthly={monthlyNutrition}
+          dailyCalorie={dailyCalorie}
+        />
       </div>
       <div>
         <TextField
