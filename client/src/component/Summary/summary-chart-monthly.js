@@ -11,10 +11,9 @@ import getLastDayOfMonth from "../helperFunction/getLastDayOfMonth";
 //   currentDay++;
 // }
 
-const ChartLineMonthly = ({ monthly }) => {
-  const [dayArray, setDayArray] = useState([]);
+const ChartLineMonthly = ({ monthly, dailyCalorie }) => {
   const [consumedMonthly, setConsumedMonthly] = useState({
-    labels: dayArray,
+    labels: [],
     datasets: [
       {
         label: "Calorie Consumed",
@@ -44,10 +43,12 @@ const ChartLineMonthly = ({ monthly }) => {
       }
       prevState.labels = dayArr;
       prevState.datasets[0].data = Object.values(monthly);
-      prevState.datasets[1].data = Object.values(monthly).map(() => 100);
+      prevState.datasets[1].data = Object.values(monthly).map(
+        () => dailyCalorie
+      );
       return { ...prevState };
     });
-  }, [monthly]);
+  }, [monthly, dailyCalorie]);
 
   return (
     <div>
