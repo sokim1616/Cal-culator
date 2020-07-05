@@ -37,7 +37,7 @@ const Summary = () => {
       .then((result) => {
         setDailyCalorie(result.data);
       });
-  });
+  }, []);
 
   useEffect(() => {
     axios
