@@ -5,16 +5,22 @@ import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
 import "./Summary.css";
-const Summary = () => {
+const Summary = ({ setCurrentPageIndex }) => {
   const [sampleFood, setSampleFood] = useState([
     { food_name: "pasta", amount: 1, calories: 1000 },
     { food_name: "pizza", amount: 2, calories: 100 },
   ]);
+
   const [showDWM, setShowDWM] = useState({
     daily: true,
     weekly: false,
     monthly: false,
   });
+
+  useEffect(() => {
+    setCurrentPageIndex(2);
+  }, []);
+
   return (
     <div className='summary-container'>
       <div className='chart'>

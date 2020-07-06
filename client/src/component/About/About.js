@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -6,6 +7,10 @@ import {
   NavLink,
   useHistory
 } from "react-router-dom";
+=======
+import React, { useEffect } from "react";
+
+>>>>>>> finished tabs
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
 import AboutTeam from './AboutTeam'
@@ -23,24 +28,41 @@ const About = () => {
     history.push(`/AboutTeam`);
   };
 
+<<<<<<< HEAD
+=======
+const About = ({ openLoginModal, setCurrentPageIndex }) => {
+  useEffect(() => {
+    setCurrentPageIndex(1);
+  }, []);
+>>>>>>> finished tabs
 
   return (
     <div className='aboutButtons'>
       <Button
-        label="About Project"
+        label='About Project'
         raised
-        theme={['secondaryBg', 'onSecondary']}
+        theme={["secondaryBg", "onSecondary"]}
         //onClick 하면 About Project 페이지가 나오도록
+<<<<<<< HEAD
         onClick={() => {
 
         }}
+=======
+        onClick={<Dialog open={openLoginModal}></Dialog>}
+>>>>>>> finished tabs
       />
       <Button
-        label="About Team"
+        label='About Team'
         raised
+<<<<<<< HEAD
         theme={['secondaryBg', 'onSecondary']}
         //onClick 하면 About Team 페이지가 나오도록
         onClick={toAboutTeam}
+=======
+        theme={["secondaryBg", "onSecondary"]}
+        //onClick 하면 About Team 페이지가 나오도록
+        //onClick={}
+>>>>>>> finished tabs
       />
     </div>
   );
