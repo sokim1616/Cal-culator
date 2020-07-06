@@ -82,22 +82,20 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-    totalCaloriesHandle()
-  }, [value])
+    setCurrentPageIndex(3);
+  }, []);
+
+  useEffect(() => {
+    totalCaloriesHandle();
+  }, [value]);
 
   const totalCaloriesHandle = () => {
     for (let key in value) {
       setTotalCalories(
-        (resultSave[key].calories * value[key][0]) + totalCalories
-      )
+        resultSave[key].calories * value[key][0] + totalCalories
+      );
     }
-  }
-
-=======
-    setCurrentPageIndex(3);
-  }, []);
->>>>>>> finished tabs
+  };
 
   return (
     <div className='calculator'>
