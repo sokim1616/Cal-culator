@@ -69,17 +69,26 @@ const App = () => {
         <Switch>
           <Route
             path='/about'
+            render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
+          />
+          <Route
+            path='/summary'
+            render={() => <Summary setCurrentPageIndex={setCurrentPageIndex} />}
+          />
+          <Route
+            path='/calculator'
             render={() => (
-              <About
-                setCurrentPageIndex={setCurrentPageIndex}
-                currentPageIndex={currentPageIndex}
-              />
+              <Calculator setCurrentPageIndex={setCurrentPageIndex} />
             )}
           />
-          <Route path='/summary' render={() => <Summary />} />
-          <Route path='/calculator' render={() => <Calculator />} />
-          <Route path='/dodont' render={() => <DoDont />} />
-          <Route path='/' render={() => <Home />} />
+          <Route
+            path='/dodont'
+            render={() => <DoDont setCurrentPageIndex={setCurrentPageIndex} />}
+          />
+          <Route
+            path='/'
+            render={() => <Home setCurrentPageIndex={setCurrentPageIndex} />}
+          />
         </Switch>
       </div>
       <Footer />
