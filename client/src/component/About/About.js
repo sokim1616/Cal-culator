@@ -14,18 +14,18 @@ import "@rmwc/checkbox/styles";
 import { Checkbox } from "@rmwc/checkbox";
 import "@rmwc/select/styles";
 import { Select } from "@rmwc/select";
-import '@rmwc/switch/styles'
-import { Switch } from '@rmwc/switch'
+import "@rmwc/switch/styles";
+import { Switch } from "@rmwc/switch";
 
-const About = () => {
+const About = ({ currentPageIndex, setCurrentPageIndex }) => {
   const sampleRows = new Array(5).fill(undefined);
   const initObj = {};
-  for(let i=0; i<sampleRows.length; i++){
-    initObj[i] = false
+  for (let i = 0; i < sampleRows.length; i++) {
+    initObj[i] = false;
   }
   const [checked, setChecked] = React.useState(initObj);
- 
-  
+
+  React.useEffect(() => {});
 
   return (
     <div>
@@ -44,22 +44,23 @@ const About = () => {
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
-            
               {sampleRows.map((v, i) => (
                 <DataTableRow key={i} selected={checked[i]}>
                   <DataTableCell hasFormControl>
                     <Checkbox
                       checked={checked[i]}
-                      onChange={(evt) => setChecked({
+                      onChange={(evt) =>
+                        setChecked({
                           ...checked,
-                          [i]: evt.currentTarget.checked
-                      })}
+                          [i]: evt.currentTarget.checked,
+                        })
+                      }
                     />
                   </DataTableCell>
                   <DataTableCell>Label</DataTableCell>
                   <DataTableCell>
                     <Select
-                      placeholder="--Select--"
+                      placeholder='--Select--'
                       options={["Cookies", "Pizza", "Icecream"]}
                     />
                   </DataTableCell>
@@ -78,5 +79,3 @@ const About = () => {
 };
 
 export default About;
-
-

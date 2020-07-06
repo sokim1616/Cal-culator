@@ -15,7 +15,7 @@ const App = () => {
   const [isMember, setIsMember] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   const loginState = () => {
     setIsLogin(true);
@@ -49,23 +49,37 @@ const App = () => {
 
   return (
     <div>
-      <Header openLoginModal={openLoginModal} />
+      <Header
+        currentPageIndex={currentPageIndex}
+        setCurrentPageIndex={setCurrentPageIndex}
+        openLoginModal={openLoginModal}
+      />
       <Login
         loginState={loginState}
         loginModalOpen={loginModalOpen}
         closeLoginModal={closeLoginModal}
-        openSignupModal={openSignupModal} />
+        openSignupModal={openSignupModal}
+      />
       <Signup
         signupState={signupState}
         signupModalOpen={signupModalOpen}
-        openLoginModal={openLoginModal} />
+        openLoginModal={openLoginModal}
+      />
       <div>
         <Switch>
-          <Route path="/about" render={() => <About />} />
-          <Route path="/summary" render={() => <Summary />} />
-          <Route path="/calculator" render={() => <Calculator />} />
-          <Route path="/dodont" render={() => <DoDont />} />
-          <Route path="/" render={() => <Home />} />
+          <Route
+            path='/about'
+            render={() => (
+              <About
+                setCurrentPageIndex={setCurrentPageIndex}
+                currentPageIndex={currentPageIndex}
+              />
+            )}
+          />
+          <Route path='/summary' render={() => <Summary />} />
+          <Route path='/calculator' render={() => <Calculator />} />
+          <Route path='/dodont' render={() => <DoDont />} />
+          <Route path='/' render={() => <Home />} />
         </Switch>
       </div>
       <Footer />

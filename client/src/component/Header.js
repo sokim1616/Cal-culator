@@ -9,16 +9,15 @@ import {
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
-const Header = ({ openLoginModal }) => {
+const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal }) => {
   const history = useHistory();
-  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div>
       <header>
         <TabBar
-          activeTabIndex={activeTab}
-          onActivate={(evt) => setActiveTab(evt.detail.index)}
+          activeTabIndex={currentPageIndex}
+          onActivate={(evt) => setCurrentPageIndex(evt.detail.index)}
         >
           <Tab onClick={() => history.push("/")}>Home</Tab>
           <Tab onClick={() => history.push("/about")}>About</Tab>
