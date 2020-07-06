@@ -39,21 +39,21 @@ const Summary = () => {
       });
   }, []);
 
-  useEffect(() => {
-    axios
-      .post(
-        "http://localhost:4000/user/infoDay",
-        { date },
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          // withCredentials: true
-        }
-      )
-      .then((result) => {
-        setDailyNutrition(result.data);
-      });
-  }, [date]);
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       "http://localhost:4000/user/infoDay",
+  //       { date },
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         // withCredentials: true
+  //       }
+  //     )
+  //     .then((result) => {
+  //       setDailyNutrition(result.data);
+  //     });
+  // }, [date]);
 
   useEffect(() => {
     axios
@@ -90,15 +90,8 @@ const Summary = () => {
   return (
     <div className='summary-container'>
       <div>
-        <ChartPolarDaily daily={dailyNutrition} />
-      </div>
-      <div>
-        <TextField
-          selected={date}
-          onChange={(e) => setDate(e.target.value)}
-          label='date'
-          type='date'
-        />
+        {/* <ChartPolarDaily daily={dailyNutrition} /> */}
+        <ChartPolarDaily />
       </div>
       <div>
         <ChartBarWeekly weekly={weeklyNutrition} />
