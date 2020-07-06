@@ -65,7 +65,7 @@ input {
     flex-direction: column;
     width: 280px;
     max-width: 80%;
-    min-width: 100px;
+    min-width: 300px;
     min-height: 550px;
     padding: 20px 40px;
     border-radius: 6px;
