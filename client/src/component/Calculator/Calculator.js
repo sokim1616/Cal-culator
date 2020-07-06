@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
 import "./Calculator.css";
 
-const Calculator = () => {
+const Calculator = ({ setCurrentPageIndex }) => {
   const [searchResult, setSearchResult] = React.useState({
     id: 1,
     food_name: "pizza",
@@ -80,8 +80,12 @@ const Calculator = () => {
     }
   };
 
+  useEffect(() => {
+    setCurrentPageIndex(3);
+  }, []);
+
   return (
-    <div className="calculator">
+    <div className='calculator'>
       <div>
         <Search
           searchInputHandle={searchInputHandle}
@@ -89,15 +93,15 @@ const Calculator = () => {
           searchInput={searchInput}
         />
       </div>
-      <div className="food-cart">
-        <div className="food">
+      <div className='food-cart'>
+        <div className='food'>
           <FoodList
             searchResult={searchResult}
             addDateHandle={addDateHandle}
             addToCartButton={addToCartButton}
           />
         </div>
-        <div className="cart">
+        <div className='cart'>
           <Cart
             searchResult={searchResult}
             startDate={startDate}

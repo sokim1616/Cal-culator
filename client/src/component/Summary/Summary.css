@@ -5,6 +5,13 @@
   margin: 20px;
 }
 
+.button {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  width: 20%;
+}
+
 .summary-container {
   display: flex;
   justify-content: space-around;
@@ -29,9 +36,6 @@
 }
 .heightSizing {
   height: 700px;
-}
-.button {
-  margin: 20px;
 }
 
 .chart-daily {
