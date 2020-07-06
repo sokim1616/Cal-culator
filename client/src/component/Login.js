@@ -8,12 +8,13 @@ import { Button } from '@rmwc/button'
 const customStyles = {
   content: {
     position: 'absolute',
-    top: '300px',
-    left: '300px',
-    right: '300px',
-    bottom: '300px',
-    boxShadow: '0px 8px 36px #222',
-    borderRadius: '6px'
+    top: '55.25%',
+    left: '50%',
+    width: '320px',
+    height: '350px',
+    transform: 'translate(-50%,-50%)',
+    overflow: 'none',
+    border: '0px'
   }
 };
 
@@ -111,16 +112,14 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
                 {errors.password.length > 0 &&
                   <span className='error'>{errors.password}</span>}
               </div>
-
-              <div>
+              <div className='button-div'>
                 <span className='submit'>
-                  <Button onClick={openSignupModal}>Create</Button>
+                  <Button raised onClick={openSignupModal}>Create</Button>
                 </span>
                 <span className='loginnn'>
-                  <Button>LOG IN</Button>
+                  <Button raised>LOG IN</Button>
                 </span>
               </div>
-              <div className="provider">provide by Kim SoHyun, 자신있다면 연락해... 010-...</div>
             </form>
           </div>
         </div>

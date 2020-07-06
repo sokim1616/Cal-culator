@@ -19,6 +19,19 @@ const validateForm = (errors) => { // 이 함수의 역할은 입력받은 값�
   return valid;
 }
 
+const customStyles = {
+  content: {
+    position: 'absolute',
+    top: '65%',
+    left: '50%',
+    width: '320px',
+    height: '500px',
+    transform: 'translate(-50%,-50%)',
+    overflow: 'none',
+    border: '0px'
+  }
+};
+
 const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -105,6 +118,7 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
     <div>
       <Modal
         isOpen={signupModalOpen}
+        style={customStyles}
       >
         <div className='wrapper'>
           <div className='form-wrapper'>
@@ -153,25 +167,29 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
                 <div><input type="radio" name="genderSelect" id="genderSelect" value="Female" />Female</div>
               </div> */}
               <div className='gender'>
-                <Radio
-                  value="Male"
+              <label htmlFor="gender">Gender</label>
+              <div className='gender-radio'>
+              <Radio
+                  className="male-radio"
+                  value="MALE"
                   checked={value === 'Male'}
                   onChange={evt => setValue(String(evt.currentTarget.value))}
                 >
                   Male
               </Radio>
-
                 <Radio
-                  value="Female"
+                  className='female-radio'
+                  value="FEMALE"
                   checked={value === 'Female'}
                   onChange={evt => setValue(String(evt.currentTarget.value))}
                 >
                   Female
               </Radio>
               </div>
-
+                
+              </div>
               <div className='createLogin'>
-                <Button>CREATE & LOG IN</Button>
+                <Button raised>CREATE || LOG IN</Button>
               </div>
             </form>
           </div>
