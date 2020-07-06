@@ -1,12 +1,28 @@
 import React from "react";
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  useHistory
+} from "react-router-dom";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
-import { Dialog } from "@rmwc/dialog";
-import "@rmwc/dialog/styles";
+import AboutTeam from './AboutTeam'
 
-const About = ({ openLoginModal }) => {
-  //const []
+const About = () => {
+  const history = useHistory();
+
+  const [flipped, setFlipped] = React.useState(false);
+
+  function flipCard() {
+    setFlipped(true);
+  }
+
+  function toAboutTeam() {
+    history.push(`/AboutTeam`);
+  };
+
 
   return (
     <div className='aboutButtons'>
@@ -15,16 +31,16 @@ const About = ({ openLoginModal }) => {
         raised
         theme={['secondaryBg', 'onSecondary']}
         //onClick 하면 About Project 페이지가 나오도록
-        onClick={
-          <Dialog open={openLoginModal}></Dialog>
-        }
+        onClick={() => {
+
+        }}
       />
       <Button
         label="About Team"
         raised
         theme={['secondaryBg', 'onSecondary']}
-      //onClick 하면 About Team 페이지가 나오도록
-      //onClick={}
+        //onClick 하면 About Team 페이지가 나오도록
+        onClick={toAboutTeam}
       />
     </div>
   );
