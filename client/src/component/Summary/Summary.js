@@ -16,20 +16,23 @@ const Summary = () => {
     monthly: false,
   });
   return (
-    <div className='summary-container'>
-      <div className='chart'>
-        {showDWM.daily ? (
-          <ChartPolarDaily />
-        ) : showDWM.weekly ? (
-          <ChartBarWeekly />
-        ) : (
-          <ChartLineMonthly />
-        )}
-      </div>
-      <div className='foodlist'>
-        <FoodList className='spacer' food={sampleFood} />
-        <SelectButton selectDWM={setShowDWM} />
-        <FoodList food={sampleFood} />
+    <div className="summary">
+      <SelectButton selectDWM={setShowDWM} />
+      <div className="summary-container">
+        <div className="chart">
+          {showDWM.daily ? (
+            <ChartPolarDaily />
+          ) : showDWM.weekly ? (
+            <ChartBarWeekly />
+          ) : (
+            <ChartLineMonthly />
+          )}
+        </div>
+        <div className="foodlist">
+          <h2>언제 뭘 처먹었나.</h2>
+          {/* <SelectButton selectDWM={setShowDWM} /> */}
+          <FoodList food={sampleFood} />
+        </div>
       </div>
     </div>
   );
