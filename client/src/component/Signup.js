@@ -148,7 +148,7 @@ const Signup = ({
             <h2>Create Account</h2>
             <form onSubmit={handleSubmit} noValidate>
               <div className="email">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">EMAIL</label>
                 <input
                   type="email"
                   name="email"
@@ -160,7 +160,7 @@ const Signup = ({
                 )}
               </div>
               <div className="password">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">PASSWORD</label>
                 <input
                   type="password"
                   name="password"
@@ -172,7 +172,7 @@ const Signup = ({
                 )}
               </div>
               <div className="username">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">USERNAME</label>
                 <input
                   type="text"
                   name="username"
@@ -184,7 +184,7 @@ const Signup = ({
                 )}
               </div>
               <div className="age">
-                <label htmlFor="age">Age</label>
+                <label htmlFor="age">AGE</label>
                 <input
                   type="text"
                   name="age"
@@ -196,7 +196,7 @@ const Signup = ({
                 )}
               </div>
               <div className="gender">
-                <label htmlFor="gender">Gender</label>
+                <label htmlFor="gender">GENDER</label>
                 <div className="gender-radio">
                   <Radio
                     className="male-radio"

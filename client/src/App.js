@@ -12,17 +12,12 @@ import About from "./component/About/About";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
-  const [isMember, setIsMember] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
   const loginState = () => {
     setIsLogin(true);
-  };
-
-  const signupState = () => {
-    setIsMember(true);
   };
 
   function openLoginModal() {
@@ -43,10 +38,6 @@ const App = () => {
     setSignupModalOpen(false);
   }
 
-  // function closeSUModal() { // 회원가입 모달창을 다시 안떠있는 상태로 바꿔주는 함수
-  //   setSUIsOpen(false);
-  // }
-
   return (
     <div>
       <Header
@@ -61,9 +52,9 @@ const App = () => {
         openSignupModal={openSignupModal}
       />
       <Signup
-        signupState={signupState}
         signupModalOpen={signupModalOpen}
         openLoginModal={openLoginModal}
+        closeSignupModal={closeSignupModal}
       />
       <div>
         <Switch>
@@ -73,17 +64,17 @@ const App = () => {
           />
           <Route
             path='/summary'
-            render={() => <Summary setCurrentPageIndex={setCurrentPageIndex} />}
+            render={() => <Summary isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}
           />
           <Route
             path='/calculator'
             render={() => (
-              <Calculator setCurrentPageIndex={setCurrentPageIndex} />
+              <Calculator isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />
             )}
           />
           <Route
             path='/dodont'
-            render={() => <DoDont setCurrentPageIndex={setCurrentPageIndex} />}
+            render={() => {<DoDont isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}}
           />
           <Route
             path='/'
