@@ -5,7 +5,6 @@ import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
 import "./Summary.css";
-
 const Summary = () => {
   const [sampleFood, setSampleFood] = useState([
     { food_name: "pasta", amount: 1, calories: 1000 },
@@ -16,7 +15,6 @@ const Summary = () => {
     weekly: false,
     monthly: false,
   });
-
   return (
     <div className='summary-container'>
       <div className='chart'>
@@ -29,11 +27,11 @@ const Summary = () => {
         )}
       </div>
       <div className='foodlist'>
+        <FoodList className='spacer' food={sampleFood} />
         <SelectButton selectDWM={setShowDWM} />
         <FoodList food={sampleFood} />
       </div>
     </div>
   );
 };
-
 export default Summary;
