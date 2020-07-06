@@ -1,49 +1,29 @@
-// import React from 'react';
-
-// const MainPage = () => {
-//     const [, setIsOpen] = React.useState(false);
-
-//     function openModal() {
-//         setIsOpen(true);
-//     }
-
-//     return (
-//         <div>
-//             <button onClick={}>close</button>
-//             <div>E-mail:</div>
-//             <form>
-//                 <input type="email" />
-//             </form>
-//             <div>Password:</div>
-//             <form>
-//                 <input type="password" />
-//                 <button onClick={loginState}>Get in!</button>
-//             </form>
-//         </div>
-//     )
-// }
-
 import React from "react";
 import './Home.css'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import '@rmwc/typography/styles';
+import { Typography } from '@rmwc/typography'
+
 
 const Home = () => {
     return (
-        <body>
+        <div>
             <div>
                 <nav className="nav">
-                    <h2 className="title">Cal-culator</h2>
-                    <div className="desc">
-                        a web application that calculates your daily food intake.
-                </div>
+                    <div className="title">Cal-culator</div>
+                    <div>
+                        <Typography use="headline1" className="desc">
+                            a web application that calculates your daily food intake.
+                </Typography>
+                    </div>
+
                     <ul className="subdesc">
                         Some of its features:
-                    <li>
+                        <li>
                             Creates an archive to visulaize your calorie intake history
-                    </li>
+                        </li>
                         <li>
                             Recommend a diet plan based on your nutrition status
-                    </li>
+                        </li>
                     </ul>
                     <header className="header"></header>
                 </nav>
@@ -52,7 +32,7 @@ const Home = () => {
                     </div>
                 </main>
             </div>
-        </body>
+        </div>
     );
 }
 
