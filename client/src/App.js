@@ -61,7 +61,7 @@ const App = () => {
         openLoginModal={openLoginModal} />
       <div>
         <Switch>
-          <Route path="/about" render={() => <About />} />
+          <Route path="/about" openLoginModal={openLoginModal} render={() => <About />} />
           <Route path="/summary" render={() => <Summary />} />
           <Route path="/calculator" render={() => <Calculator />} />
           <Route path="/dodont" render={() => <DoDont />} />

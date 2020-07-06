@@ -16,7 +16,7 @@ module.exports = {
       },
     }).then(async ([user, created]) => {
       if (!created) {
-        return res.status(409).send("user already exists!");
+        return res.send("conflict");
       }
       const data = await user.get({ plain: true });
       res.status(200).json(data);
