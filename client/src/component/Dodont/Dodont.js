@@ -10,36 +10,46 @@ const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
 
 const DoDont = ({ setCurrentPageIndex }) => {
-  const [date] = useState(formatDay(yesterday));
+  // const [date] = useState(formatDay(yesterday));
+  const [date] = useState("2020-07-01");
   const [whatToEat, setWhatToEat] = useState([]);
 
   useEffect(() => {
     setCurrentPageIndex(4);
   }, []);
 
-  useEffect(() => {
-    axios
-      .post(
-        "http://localhost:4000/user/infoDay",
-        { date },
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          withCredentials: true,
-        }
-      )
-      .then((result) => {
-        if (typeof requiredNutrients(result.data) === "string") {
-          setWhatToEat(["Aren't you hungry? Eat whatever you want!"]);
-        } else {
-          result.forEach((item) => {
-            axios.get("");
-          });
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       "http://localhost:4000/user/infoDay",
+  //       { date },
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-type": "application/json",
+  //         },
+  //         withCredentials: true,
+  //       }
+  //     )
+  //     .then((result) => {
+  //       if (typeof requiredNutrients(result.data) === "string") {
+  //         setWhatToEat(["Aren't you hungry? Eat whatever you want!"]);
+  //       } else {
+  //         const threeRequiredNutrients = requiredNutrients(result.data);
+  //         threeRequiredNutrients.forEach((nutrient) => {
+  //           axios
+  //             .get("http://localhost:4000/food/findmaxnutrient", {
+  //               params: {
+  //                 nutrient: nutrient[0],
+  //               },
+  //             })
+  //             .then((result) => {
+  //               setWhatToEat((prevState) => [...prevState, result.data]);
+  //             });
+  //         });
+  //       }
+  //     });
+  // }, []);
 
   return (
     <center>
@@ -53,12 +63,14 @@ const DoDont = ({ setCurrentPageIndex }) => {
           onOpen={() => console.log("open")}
           onClose={() => console.log("close")}
         >
-          {whatToEat.map((food) => {
-            return <SimpleListItem />;
-          })}
-          {/* <SimpleListItem text='Water' />
-          <SimpleListItem text='Avocado' />
-          <SimpleListItem text='Olives' /> */}
+          {/* {whatToEat.map((food) => {
+            return (
+              <>
+                <SimpleListItem text={food.title} />
+                <img src={food.image} alt='foodImage' />
+              </>
+            );
+          })} */}
         </CollapsibleList>
 
         <CollapsibleList
