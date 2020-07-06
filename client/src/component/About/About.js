@@ -29,7 +29,7 @@ const About = () => {
         label='About Project'
         raised
         theme={["secondaryBg", "onSecondary"]}
-        //onClick 하면 About Project 페이지가 나오도록
+      //onClick 하면 About Project 페이지가 나오도록
       />
       <Button
         label='About Team'
