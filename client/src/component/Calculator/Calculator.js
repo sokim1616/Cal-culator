@@ -6,6 +6,9 @@ import axios from 'axios';
 import calImg from './cal_culator.jpg'
 import "./Calculator.css";
 
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar"
+import '@rmwc/snackbar/styles'
+
 const Calculator = ({ setCurrentPageIndex }) => {
   const [searchResult, setSearchResult] = React.useState({
     calcium: 0,
@@ -33,6 +36,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const [checked, setChecked] = React.useState({ 0: false });
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
 
   const searchInputHandle = (e) => {
     setSearchInput({
@@ -77,9 +81,10 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   const userFoodSender = () => {
     console.log(confirmData)
-    axios.post('http://localhost:4000/food/addfooduser', {food_info:confirmData}, {withCredentials: true})
+    axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
       .then(response => {
-        if(response.data === 'success'){
+        if (response.data === 'success') {
+          setOpen(!open)
           console.log('좋아')
         }
       })
@@ -87,7 +92,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   useEffect(() => {
     userFoodSender()
-  },[confirmData])
+  }, [confirmData])
 
   const deleteButtonHandle = () => {
     for (let key in checked) {
@@ -145,6 +150,23 @@ const Calculator = ({ setCurrentPageIndex }) => {
             setValue={setValue}
             totalCalories={totalCalories}
             userFoodSender={userFoodSender}
+          />
+        </div>
+        <div>
+          <Snackbar
+            open={open}
+            onClose={evt => setOpen(false)}
+            message="Successfully registerd..."
+            dismissesOnAction
+            action={
+              <SnackbarAction
+              style={
+                {color: '#ffff'}
+              }
+                label="Dismiss"
+                onClick={() => console.log('Click Me')}
+              />
+            }
           />
         </div>
       </div>

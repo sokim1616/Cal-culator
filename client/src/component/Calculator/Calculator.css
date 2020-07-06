@@ -103,3 +103,12 @@ h2 {
   margin-top: -10px;
   margin-right: 5px;
 }
+
+.mdc-snackbar__surface {
+  background-color: #27ac27 !important;
+}
+
+.mdc-snackbar__label{
+  font-size: medium !important;
+  font-weight: bold !important;
+}
