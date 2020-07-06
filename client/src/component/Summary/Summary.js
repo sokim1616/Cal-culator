@@ -32,10 +32,6 @@ const Summary = () => {
         <SelectButton selectDWM={setShowDWM} />
         <FoodList food={sampleFood} />
       </div>
-
-      {/* <span className='selectBtn'>
-        <SelectButton selectDWM={setShowDWM} />
-      </span> */}
     </div>
   );
 };

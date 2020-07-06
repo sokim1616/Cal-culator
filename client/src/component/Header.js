@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Switch,
   Route,
@@ -11,11 +11,15 @@ import "@rmwc/tabs/styles";
 
 const Header = ({ openLoginModal }) => {
   const history = useHistory();
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div>
       <header>
-        <TabBar>
+        <TabBar
+          activeTabIndex={activeTab}
+          onActivate={(evt) => setActiveTab(evt.detail.index)}
+        >
           <Tab onClick={() => history.push("/")}>Home</Tab>
           <Tab onClick={() => history.push("/about")}>About</Tab>
           <Tab onClick={() => history.push("/summary")}>Summary</Tab>
