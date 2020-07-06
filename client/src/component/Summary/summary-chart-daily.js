@@ -7,7 +7,7 @@ import "./Summary.css";
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
 
-const ChartPolarDaily = () => {
+const ChartPolarDaily = ({ setDailyEaten }) => {
   const [date, setDate] = useState(formatDay(today));
   const [dailyNutrition, setDailyNutrition] = useState({});
   const [consumedDaily, setConsumedDaily] = useState({
@@ -48,6 +48,7 @@ const ChartPolarDaily = () => {
       },
     ],
   });
+
   useEffect(() => {
     axios
       .post(
@@ -61,6 +62,20 @@ const ChartPolarDaily = () => {
       )
       .then((result) => {
         setDailyNutrition(result.data);
+      });
+
+    axios
+      .post(
+        "http://localhost:4000/user/dailyEatenItems",
+        { date },
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          // withCredentials: true,
+        }
+      )
+      .then((result) => {
+        setDailyEaten(result.data);
       });
   }, [date]);
 

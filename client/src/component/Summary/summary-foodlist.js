@@ -42,16 +42,20 @@ const FoodList = ({ food }) => {
               </DataTableRow>
             </DataTableHead>
             <DataTableBody>
-              {food.map((item, idx) => (
-                <TableRow
-                  key={idx}
-                  foodData={{
-                    food_name: item.food_name,
-                    amount: item.amount,
-                    calories: item.calories,
-                  }}
-                />
-              ))}
+              {food.length === 0 ? (
+                <></>
+              ) : (
+                food.map((item, idx) => (
+                  <TableRow
+                    key={idx}
+                    foodData={{
+                      food_name: item.food_name,
+                      amount: item.amount,
+                      calories: item.calories,
+                    }}
+                  />
+                ))
+              )}
             </DataTableBody>
           </DataTableContent>
         </DataTable>
