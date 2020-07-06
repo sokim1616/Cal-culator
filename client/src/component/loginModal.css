@@ -2,10 +2,6 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 } */
 
-.title {
-  text-align: center;
-}
-
 input {
   padding: 10px 10px;
   border-radius: 5px;
@@ -66,7 +62,7 @@ label {
   justify-content: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: lighter;
-  margin-top: 0.25em;
+  margin-top: 1em;
   color: #222;
 }
 
@@ -83,9 +79,10 @@ form {
   text-align-last: right;
 }
 
-.submit {
-  margin: 3em;
-}
+/* .submit {
+  margin: 1em;
+} */
+
 
 input.error {
   border: 1px solid #EADAE4;

@@ -1,79 +1,31 @@
 import React from "react";
 
-import "@rmwc/data-table/styles";
-import {
-  DataTable,
-  DataTableContent,
-  DataTableHead,
-  DataTableRow,
-  DataTableHeadCell,
-  DataTableBody,
-  DataTableCell,
-} from "@rmwc/data-table";
-import "@rmwc/checkbox/styles";
-import { Checkbox } from "@rmwc/checkbox";
-import "@rmwc/select/styles";
-import { Select } from "@rmwc/select";
-import "@rmwc/switch/styles";
-import { Switch } from "@rmwc/switch";
+import { Button } from "@rmwc/button";
+import "@rmwc/button/styles";
+import { Dialog } from "@rmwc/dialog";
+import "@rmwc/dialog/styles";
 
-const About = ({ currentPageIndex, setCurrentPageIndex }) => {
-  const sampleRows = new Array(5).fill(undefined);
-  const initObj = {};
-  for (let i = 0; i < sampleRows.length; i++) {
-    initObj[i] = false;
-  }
-  const [checked, setChecked] = React.useState(initObj);
-
-  React.useEffect(() => {});
+const About = ({ openLoginModal }) => {
+  //const []
 
   return (
-    <div>
-      <center>
-        <DataTable>
-          <DataTableContent>
-            <DataTableHead>
-              <DataTableRow>
-                <DataTableHeadCell hasFormControl>
-                  <Checkbox />
-                </DataTableHeadCell>
-                <DataTableHeadCell>Label</DataTableHeadCell>
-                <DataTableHeadCell>Header</DataTableHeadCell>
-                <DataTableHeadCell>Header</DataTableHeadCell>
-                <DataTableHeadCell>Toggle</DataTableHeadCell>
-              </DataTableRow>
-            </DataTableHead>
-            <DataTableBody>
-              {sampleRows.map((v, i) => (
-                <DataTableRow key={i} selected={checked[i]}>
-                  <DataTableCell hasFormControl>
-                    <Checkbox
-                      checked={checked[i]}
-                      onChange={(evt) =>
-                        setChecked({
-                          ...checked,
-                          [i]: evt.currentTarget.checked,
-                        })
-                      }
-                    />
-                  </DataTableCell>
-                  <DataTableCell>Label</DataTableCell>
-                  <DataTableCell>
-                    <Select
-                      placeholder='--Select--'
-                      options={["Cookies", "Pizza", "Icecream"]}
-                    />
-                  </DataTableCell>
-                  <DataTableCell>R{i} C3</DataTableCell>
-                  <DataTableCell>
-                    <Switch />
-                  </DataTableCell>
-                </DataTableRow>
-              ))}
-            </DataTableBody>
-          </DataTableContent>
-        </DataTable>
-      </center>
+    <div className='aboutButtons'>
+      <Button
+        label="About Project"
+        raised
+        theme={['secondaryBg', 'onSecondary']}
+        //onClick 하면 About Project 페이지가 나오도록
+        onClick={
+          <Dialog open={openLoginModal}></Dialog>
+        }
+      />
+      <Button
+        label="About Team"
+        raised
+        theme={['secondaryBg', 'onSecondary']}
+      //onClick 하면 About Team 페이지가 나오도록
+      //onClick={}
+      />
     </div>
   );
 };

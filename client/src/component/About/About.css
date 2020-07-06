@@ -1,0 +1,4 @@
+.aboutButtons {
+    display: flex;
+    justify-content: space-around;
+}

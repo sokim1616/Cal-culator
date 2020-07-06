@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import axios from 'axios';
 import './loginModal.css'
 
 import "@rmwc/button/styles"
@@ -7,13 +8,14 @@ import { Button } from '@rmwc/button'
 
 const customStyles = {
   content: {
-    position: 'absolute',
-    top: '300px',
-    left: '300px',
-    right: '300px',
-    bottom: '300px',
-    boxShadow: '0px 8px 36px #222',
-    borderRadius: '6px'
+    position: 'fixed',
+    top: '55.25%',
+    left: '50%',
+    width: '320px',
+    height: '350px',
+    transform: 'translate(-50%,-50%)',
+    overflow: 'none',
+    border: '0px'
   }
 };
 
@@ -37,6 +39,11 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
     email: '',
     password: ''
   })
+
+  const userState = {
+    email: email,
+    password: password
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -82,6 +89,19 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
     event.preventDefault();
     if (validateForm(errors)) {
       console.info('Valid Form')
+      axios.post('http://localhost:4000/user/signin', userState, { withCredentials: true })
+        .then(response => {
+          if (response.data === 'invalid') {
+            alert("Invalid Email or Password ")
+          } else {
+            if (response.status === 200) {
+              console.log("OK")
+            }
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     } else {
       console.error('Invalid Form')
     }
@@ -111,16 +131,14 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
                 {errors.password.length > 0 &&
                   <span className='error'>{errors.password}</span>}
               </div>
-
-              <div>
+              <div className='button-div'>
                 <span className='submit'>
-                  <Button onClick={openSignupModal}>Create</Button>
+                  <Button raised onClick={openSignupModal}>Create</Button>
                 </span>
                 <span className='loginnn'>
-                  <Button>LOG IN</Button>
+                  <Button type="submit" raised>LOG IN</Button>
                 </span>
               </div>
-              <div className="provider">provide by Kim SoHyun, 자신있다면 연락해... 010-...</div>
             </form>
           </div>
         </div>

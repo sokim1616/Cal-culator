@@ -12,7 +12,7 @@ module.exports = {
       },
     }).then((result) => {
       if (!result) {
-        return res.status(404).send("invalid email or password");
+        return res.send("invalid");
       }
       sess.userid = result.id;
       sess.userage = result.age;
