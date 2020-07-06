@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ChartBarWeekly from "./summary-chart-weekly";
 import ChartLineMonthly from "./summary-chart-monthly";
 import ChartPolarDaily from "./summary-chart-daily";
@@ -7,22 +7,32 @@ import SelectButton from "./summary-select-button";
 import "./Summary.css";
 
 const Summary = () => {
+  const [sampleFood, setSampleFood] = useState([
+    { food_name: "pasta", amount: 1, calories: 1000 },
+    { food_name: "pizza", amount: 2, calories: 100 },
+  ]);
+  const [showDWM, setShowDWM] = useState({
+    daily: true,
+    weekly: false,
+    monthly: false,
+  });
+
   return (
-    <div className="summary-container">
-      <div>
-        <ChartPolarDaily />
+    <div className='summary-container'>
+      <div className='chart'>
+        {showDWM.daily ? (
+          <ChartPolarDaily />
+        ) : showDWM.weekly ? (
+          <ChartBarWeekly />
+        ) : (
+          <ChartLineMonthly />
+        )}
       </div>
-      <div>
-        <ChartBarWeekly />
+      <div className='foodlist'>
+        <FoodList food={sampleFood} />
       </div>
-      <div>
-        <ChartLineMonthly />
-      </div>
-      <div>
-        <FoodList />
-      </div>
-      <span>
-        <SelectButton />
+      <span className='selectBtn'>
+        <SelectButton selectDWM={setShowDWM} />
       </span>
     </div>
   );

@@ -9,7 +9,7 @@ import {
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
-const Header = () => {
+const Header = ({ openLoginModal }) => {
   const history = useHistory();
 
   return (
@@ -21,7 +21,7 @@ const Header = () => {
           <Tab onClick={() => history.push("/summary")}>Summary</Tab>
           <Tab onClick={() => history.push("/calculator")}>Calculator</Tab>
           <Tab onClick={() => history.push("/dodont")}>DO & DON`T</Tab>
-          <Tab>LOGIN</Tab>
+          <Tab onClick={openLoginModal}>LOGIN</Tab>
         </TabBar>
       </header>
     </div>
