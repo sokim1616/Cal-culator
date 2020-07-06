@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from "react-modal";
+import axios from 'axios';
 import './signupModal.css';
 
 import "@rmwc/button/styles"
@@ -22,7 +23,7 @@ const validateForm = (errors) => { // 이 함수의 역할은 입력받은 값�
 const customStyles = {
   content: {
     position: 'absolute',
-    top: '65%',
+    top: '65.75%',
     left: '50%',
     width: '320px',
     height: '500px',
@@ -32,20 +33,27 @@ const customStyles = {
   }
 };
 
-const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
+const Signup = ({ signupState, signupModalOpen, openLoginModal, closeSignupModal }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
   const [value, setValue] = useState('');
-
   const [errors, setErrors] = useState({
     username: '',
     email: '',
     password: '',
     age: '',
-    gender: false //null?
+    gender: false
   })
+
+  const userState = {
+    email: email,
+    username: username,
+    password: password,
+    gender: value,
+    age: age
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -106,8 +114,22 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validateForm(errors)) {
-      openLoginModal()
+      // openLoginModal()
       console.info('Valid Form')
+      console.log(userState)
+      axios.post('http://localhost:4000/user/signup', userState)
+        .then(response => {
+          if(response.data === 'conflict'){
+            alert("Email already exists...")
+          } else {
+            if(response.status === 200){
+              console.log("OK")
+            }
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     } else {
       console.error('Invalid Form')
     }
@@ -118,6 +140,7 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
     <div>
       <Modal
         isOpen={signupModalOpen}
+        onRequestClose={closeSignupModal}
         style={customStyles}
       >
         <div className='wrapper'>
@@ -148,48 +171,30 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
                 {errors.age.length > 0 &&
                   <span className='error'>{errors.age}</span>}
               </div>
-              {/* <div className='gender'>
-                <label htmlFor="gender">Male</label>
-                <input type='radio' name='gender' onChange={handleChange} noValidate />
-                {errors.gender &&
-                  <span className='error'>{errors.gender}</span>}
-              </div>
               <div className='gender'>
-                <label htmlFor="gender">Female</label>
-                <input type='radio' name='gender' onChange={handleChange} noValidate />
-                {errors.gender &&
-                  <span className='error'>{errors.gender}</span>}
-              </div> */}
+                <label htmlFor="gender">Gender</label>
+                <div className='gender-radio'>
+                  <Radio
+                    className="male-radio"
+                    value="Male"
+                    checked={value === 'Male'}
+                    onChange={evt => setValue(String(evt.currentTarget.value))}
+                  >
+                    MALE
+              </Radio>
+                  <Radio
+                    className='female-radio'
+                    value="Female"
+                    checked={value === 'Female'}
+                    onChange={evt => setValue(String(evt.currentTarget.value))}
+                  >
+                    FEMALE
+              </Radio>
+                </div>
 
-              {/* <div>
-                <label for="genderSelect">Gender</label>
-                <div><input type="radio" name="genderSelect" id="genderSelect" value="Male" />Male</div>
-                <div><input type="radio" name="genderSelect" id="genderSelect" value="Female" />Female</div>
-              </div> */}
-              <div className='gender'>
-              <label htmlFor="gender">Gender</label>
-              <div className='gender-radio'>
-              <Radio
-                  className="male-radio"
-                  value="MALE"
-                  checked={value === 'Male'}
-                  onChange={evt => setValue(String(evt.currentTarget.value))}
-                >
-                  Male
-              </Radio>
-                <Radio
-                  className='female-radio'
-                  value="FEMALE"
-                  checked={value === 'Female'}
-                  onChange={evt => setValue(String(evt.currentTarget.value))}
-                >
-                  Female
-              </Radio>
-              </div>
-                
               </div>
               <div className='createLogin'>
-                <Button raised>CREATE || LOG IN</Button>
+                <Button type='submit' raised>CREATE || LOG IN</Button>
               </div>
             </form>
           </div>

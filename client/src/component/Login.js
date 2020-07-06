@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import axios from 'axios';
 import './loginModal.css'
 
 import "@rmwc/button/styles"
@@ -38,6 +39,11 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
     email: '',
     password: ''
   })
+
+  const userState = {
+    email: email,
+    password: password
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -83,6 +89,19 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
     event.preventDefault();
     if (validateForm(errors)) {
       console.info('Valid Form')
+      axios.post('http://localhost:4000/user/signin', userState, {withCredentials: true})
+        .then(response => {
+          if(response.data === 'invalid'){
+            alert("Invalid Email or Password ")
+          } else {
+            if(response.status === 200){
+              console.log("OK")
+            }
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     } else {
       console.error('Invalid Form')
     }
@@ -117,7 +136,7 @@ const Login = (({ loginState, loginModalOpen, closeLoginModal, openSignupModal }
                   <Button raised onClick={openSignupModal}>Create</Button>
                 </span>
                 <span className='loginnn'>
-                  <Button raised>LOG IN</Button>
+                  <Button type="submit" raised>LOG IN</Button>
                 </span>
               </div>
             </form>

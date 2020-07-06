@@ -41,6 +41,7 @@ const App = () => {
 
   function closeSignupModal() {
     setSignupModalOpen(false);
+    setLoginModalOpen(true)
   }
 
   // function closeSUModal() { // 회원가입 모달창을 다시 안떠있는 상태로 바꿔주는 함수
@@ -58,7 +59,8 @@ const App = () => {
       <Signup
         signupState={signupState}
         signupModalOpen={signupModalOpen}
-        openLoginModal={openLoginModal} />
+        openLoginModal={openLoginModal}
+        closeSignupModal={closeSignupModal} />
       <div>
         <Switch>
           <Route path="/about" render={() => <About />} />
