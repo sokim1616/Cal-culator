@@ -26,18 +26,25 @@ import { TextField } from "@rmwc/textfield";
 import "@rmwc/textfield/styles";
 import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
+import { Tab, TabBar } from "@rmwc/tabs";
+import "@rmwc/tabs/styles";
 
 const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
   const [open, setOpen] = React.useState(false);
   const [startDate, setStartDate] = React.useState();
 
+  const addToCartHandle = () => {
+    setOpen(true);
+  }
+
   return (
     <>
-      <h2>{searchResult.food_name.toUpperCase()}</h2>
+      <Tab style={{fontSize:"50px"}}>{searchResult.food_name.toUpperCase()}</Tab>
       <div>
         <img
+          className='food--image'
           src={`${searchResult.image}`}
-          alt="pasta"
+          alt={searchResult.food_name}
           height="300"
           width="375"
         />
@@ -88,8 +95,7 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
               </DialogButton>
             </DialogActions>
           </Dialog>
-
-          <Button raised onClick={() => setOpen(true)}>
+          <Button raised onClick={addToCartHandle}>
             ADD TO CART
           </Button>
         </div>

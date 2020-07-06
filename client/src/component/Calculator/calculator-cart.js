@@ -27,6 +27,8 @@ import {
   DialogButton,
 } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
+import { Tab, TabBar } from "@rmwc/tabs";
+import "@rmwc/tabs/styles";
 // import stcp from "styled-components"
 
 const Cart = ({
@@ -40,6 +42,7 @@ const Cart = ({
   setChecked,
   value,
   setValue,
+  totalCalories
 }) => {
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
@@ -48,15 +51,6 @@ const Cart = ({
     setChecked({ ...checked });
   };
 
-  // const deleteButtonHandle = () => {
-  //   for (let key in checked) {
-  //     if (checked[key] === true) {
-  //       setChecked({ [key]: false });
-  //       setResultSave(resultSave.filter((ele, idx) => ele.key !== key));
-  //     }
-  //   }
-  // };
-
   const amountHandle = (i, ...arg) => {
     setValue({
       ...value,
@@ -64,15 +58,15 @@ const Cart = ({
     });
   };
 
-  // const DataTable = stcp(DataTableHead)`border: 1px solid black`;
+  // const TabStyle = stcp(Tab)`border: 1px solid black`;
 
   return (
     <>
-      <h1>CART</h1>
+    <Tab style={{ fontSize: "50px" }}>CART</Tab>
       <div className="cart--foodlist">
         <DataTable
           className="cart-table"
-          style={{ height: "550px", width: "100%" }}
+          style={{ height: "600px", width: "100%" }}
         >
           <DataTableContent>
             <DataTableHead>
@@ -101,7 +95,7 @@ const Cart = ({
       </div>
       <div className="cart--confirm">
         <div className="total-calorie">
-          <SimpleDataTable data={[["Total Calorie", "3000 kcal"]]} />
+          <SimpleDataTable data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]} />
         </div>
         <div className="cart-button">
           <div className="cart-button__delete">

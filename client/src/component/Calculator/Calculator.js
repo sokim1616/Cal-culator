@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
@@ -30,6 +30,7 @@ const Calculator = () => {
   const [confirmData, setConfirmData] = React.useState([]);
   const [checked, setChecked] = React.useState({ 0: false });
   const [value, setValue] = React.useState({});
+  const [totalCalories, setTotalCalories] = React.useState(0);
 
   const searchInputHandle = (e) => {
     setSearchInput(e);
@@ -80,6 +81,19 @@ const Calculator = () => {
     }
   };
 
+  useEffect(() => {
+    totalCaloriesHandle()
+  }, [value])
+
+  const totalCaloriesHandle = () => {
+    for (let key in value) {
+      setTotalCalories(
+        (resultSave[key].calories * value[key][0]) + totalCalories
+      )
+    }
+  }
+
+
   return (
     <div className="calculator">
       <div>
@@ -108,6 +122,7 @@ const Calculator = () => {
             setChecked={setChecked}
             value={value}
             setValue={setValue}
+            totalCalories={totalCalories}
           />
         </div>
       </div>
