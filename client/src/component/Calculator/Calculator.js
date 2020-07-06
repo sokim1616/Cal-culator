@@ -83,7 +83,6 @@ const Calculator = ({ setCurrentPageIndex }) => {
           console.log('좋아')
         }
       })
-
   }
 
   useEffect(() => {

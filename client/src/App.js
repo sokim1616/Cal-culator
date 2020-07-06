@@ -11,7 +11,7 @@ import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -44,6 +44,7 @@ const App = () => {
         currentPageIndex={currentPageIndex}
         setCurrentPageIndex={setCurrentPageIndex}
         openLoginModal={openLoginModal}
+        isLogin={isLogin}
       />
       <Login
         loginState={loginState}
@@ -74,7 +75,7 @@ const App = () => {
           />
           <Route
             path='/dodont'
-            render={() => {<DoDont isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}}
+            render={() => <DoDont isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}
           />
           <Route
             path='/'
