@@ -8,12 +8,13 @@ import { Button } from '@rmwc/button'
 const customStyles = {
   content: {
     position: 'absolute',
-    top: '300px',
-    left: '300px',
-    right: '300px',
-    bottom: '300px',
-    boxShadow: '0px 8px 36px #222',
-    borderRadius: '6px'
+    top: '50%',
+    left: '50%',
+    width: '320px',
+    height: '350px',
+    transform: 'translate(-50%,-50%)',
+    overflow: 'none',
+    border: '0px'
   }
 };
 

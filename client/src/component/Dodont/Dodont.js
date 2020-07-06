@@ -9,17 +9,17 @@ import './Dodont.css'
 const DoDont = () => {
 
     // 각 테이블들에 대한 useState 지정해주기
-    //const [] = React.useState();
+    // const [] = React.useState();
+    // axios로 데이터 가져와서 그 정보에 맞는 추천해주기
 
     return (
         <center>
             <List className='list'>
+                <div>Click on each box to see what you are recommended to eat, to avoid eating, and to do.</div>
                 <CollapsibleList
                     handle={
                         <SimpleListItem className='head1'
                             text="What to eat"
-                        // graphic="favorite"
-                        // metaIcon="chevron_right"
                         />
                     }
                     onOpen={() => console.log('open')}
@@ -34,8 +34,6 @@ const DoDont = () => {
                     handle={
                         <SimpleListItem className='head2'
                             text="What NOT to eat"
-                        // graphic="local_pizza"
-                        // metaIcon="chevron_right"
                         />
                     }
                 >
@@ -48,8 +46,6 @@ const DoDont = () => {
                     handle={
                         <SimpleListItem className='head3'
                             text="What to do"
-                        // graphic="star"
-                        // metaIcon="chevron_right"
                         />
                     }
                 >

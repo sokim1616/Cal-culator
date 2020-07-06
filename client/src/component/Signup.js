@@ -7,6 +7,18 @@ import { Button } from '@rmwc/button'
 import "@rmwc/radio/styles"
 import { Radio } from '@rmwc/radio'
 
+const customStyles = {
+  content: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width: '320px',
+    height: '350px',
+    transform: 'translate(-50%,-50%)',
+    overflow: 'none',
+    border: '0px'
+  }
+};
 
 Modal.setAppElement("#root");
 
@@ -42,7 +54,7 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
       case 'username':
         errors.username =
           value.length < 5
-            ? 'Username must be 5 characters long!'
+            ? 'Username must be 5 characters long...'
             : '';
         break;
       case 'email':
@@ -54,19 +66,19 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
       case 'password':
         errors.password =
           value.length < 8
-            ? 'Password must be 8 characters long!'
+            ? 'Password must be 8 characters long...'
             : '';
         break;
       case 'age':
         errors.age =
           Number(value).length > 3
-            ? 'Please write your age in a correct form!'
+            ? 'Please write your age in a correct form...'
             : '';
         break;
       case 'gender':
         errors.gender =
           !value.disabled
-            ? 'Please select your gender!'
+            ? 'Please select your gender...'
             : '';
         break;
       default:
@@ -105,6 +117,7 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
     <div>
       <Modal
         isOpen={signupModalOpen}
+        style={customStyles}
       >
         <div className='wrapper'>
           <div className='form-wrapper'>
@@ -134,25 +147,8 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
                 {errors.age.length > 0 &&
                   <span className='error'>{errors.age}</span>}
               </div>
-              {/* <div className='gender'>
-                <label htmlFor="gender">Male</label>
-                <input type='radio' name='gender' onChange={handleChange} noValidate />
-                {errors.gender &&
-                  <span className='error'>{errors.gender}</span>}
-              </div>
               <div className='gender'>
-                <label htmlFor="gender">Female</label>
-                <input type='radio' name='gender' onChange={handleChange} noValidate />
-                {errors.gender &&
-                  <span className='error'>{errors.gender}</span>}
-              </div> */}
-
-              {/* <div>
-                <label for="genderSelect">Gender</label>
-                <div><input type="radio" name="genderSelect" id="genderSelect" value="Male" />Male</div>
-                <div><input type="radio" name="genderSelect" id="genderSelect" value="Female" />Female</div>
-              </div> */}
-              <div className='gender'>
+                <label htmlFor="gender">Gender</label>
                 <Radio
                   value="Male"
                   checked={value === 'Male'}
@@ -171,7 +167,7 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal }) => {
               </div>
 
               <div className='createLogin'>
-                <Button>CREATE & LOG IN</Button>
+                <Button onClick={handleSubmit}>CREATE & LOG IN</Button>
               </div>
             </form>
           </div>
