@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
+import { TextField } from "@rmwc/textfield";
+import axios from "axios";
+import formatDay from "../helperFunction/formatDay";
+import "../helperFunction/getTodaysWeekNum";
 
-const ChartBarWeekly = ({ weekly }) => {
+const today = new Date();
+const thisWeek = today.getWeekNumber();
+
+const ChartBarWeekly = () => {
+  const [weeklyNutrition, setWeeklyNutrition] = useState({});
+  const [week, setWeek] = useState(`2020-W${thisWeek}`);
   const [consumedWeekly, setConsumedWeekly] = useState({
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -25,10 +34,26 @@ const ChartBarWeekly = ({ weekly }) => {
 
   useEffect(() => {
     setConsumedWeekly((prevState) => {
-      prevState.datasets[0].data = Object.values(weekly);
+      prevState.datasets[0].data = Object.values(weeklyNutrition);
       return { ...prevState };
     });
-  }, [weekly]);
+  }, [weeklyNutrition]);
+
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:4000/user/infoWeek",
+        { date: week },
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          // withCredentials: true
+        }
+      )
+      .then((result) => {
+        setWeeklyNutrition(result.data);
+      });
+  }, [week]);
 
   return (
     <div>
@@ -59,6 +84,14 @@ const ChartBarWeekly = ({ weekly }) => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
+      <div>
+        <TextField
+          selected={week}
+          onChange={(e) => setWeek(e.target.value)}
+          label='week'
+          type='week'
+        />
+      </div>
     </div>
   );
 };

@@ -20,11 +20,7 @@ const Summary = () => {
     { food_name: "pizza", amount: 2, calories: 100 },
   ]);
   const [dailyCalorie, setDailyCalorie] = useState("");
-  const [dailyNutrition, setDailyNutrition] = useState({});
   const [weeklyNutrition, setWeeklyNutrition] = useState({});
-  const [monthlyNutrition, setMonthlyNutrition] = useState({});
-  const [date, setDate] = useState(formatDay(today));
-  const [week, setWeek] = useState(`2020-W${thisWeek}`);
   const [month, setMonth] = useState("2020-07");
 
   useEffect(() => {
@@ -42,8 +38,8 @@ const Summary = () => {
   // useEffect(() => {
   //   axios
   //     .post(
-  //       "http://localhost:4000/user/infoDay",
-  //       { date },
+  //       "http://localhost:4000/user/infoMonth",
+  //       { date: month },
   //       {
   //         method: "POST",
   //         headers: { "Content-Type": "application/json" },
@@ -51,41 +47,9 @@ const Summary = () => {
   //       }
   //     )
   //     .then((result) => {
-  //       setDailyNutrition(result.data);
+  //       setMonthlyNutrition(result.data);
   //     });
-  // }, [date]);
-
-  useEffect(() => {
-    axios
-      .post(
-        "http://localhost:4000/user/infoWeek",
-        { date: week },
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          // withCredentials: true
-        }
-      )
-      .then((result) => {
-        setWeeklyNutrition(result.data);
-      });
-  }, [week]);
-
-  useEffect(() => {
-    axios
-      .post(
-        "http://localhost:4000/user/infoMonth",
-        { date: month },
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          // withCredentials: true
-        }
-      )
-      .then((result) => {
-        setMonthlyNutrition(result.data);
-      });
-  }, [month]);
+  // }, [month]);
 
   return (
     <div className='summary-container'>
@@ -94,30 +58,22 @@ const Summary = () => {
         <ChartPolarDaily />
       </div>
       <div>
-        <ChartBarWeekly weekly={weeklyNutrition} />
+        <ChartBarWeekly />
       </div>
-      <div>
-        <TextField
-          selected={week}
-          onChange={(e) => setWeek(e.target.value)}
-          label='week'
-          type='week'
-        />
-      </div>
-      <div>
+      {/* <div>
         <ChartLineMonthly
           monthly={monthlyNutrition}
           dailyCalorie={dailyCalorie}
         />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <TextField
           selected={month}
           onChange={(e) => setMonth(e.target.value)}
           label='month'
           type='month'
         />
-      </div>
+      </div> */}
       <div>
         <FoodList food={sampleFood} />
       </div>
