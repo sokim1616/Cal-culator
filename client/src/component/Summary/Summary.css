@@ -1,34 +1,33 @@
-.summary-container{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
+.summary-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  height: 800px;
 }
-
-.button {
-    width: 40vh;
-    height: 68vh;
-}
-
 .chart {
-    position: absolute;
-    top: 10%;
-    left: 1%;
-    width: 60%;
-    max-height: 65%;
-    overflow: none;
+  width: 50%;
+  height: 800px;
 }
-
 .foodlist {
-    position: absolute;
-    top:25%;
-    right:3%;
-    width: 30%;
-    height: 50%;
-    overflow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  float: right;
+}
+.heightSizing {
+  height: 700px;
+}
+.button {
+  margin: 20px;
 }
 
-/* .center {
-    display: block;
-
-} */
+.chart-daily {
+  display: flex;
+  justify-content: center;
+}
