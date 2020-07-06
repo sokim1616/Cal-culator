@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
 
-const Selectbutton = () => {
+const Selectbutton = ({ selectDWM }) => {
   const [dwmIsOpen, setDwmIsOpen] = useState({
     daily: true,
     weekly: false,
@@ -18,6 +18,10 @@ const Selectbutton = () => {
       });
     }
   };
+
+  useEffect(() => {
+    selectDWM(dwmIsOpen);
+  }, [dwmIsOpen]);
 
   return (
     <div className='button'>
