@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,7 +30,6 @@ const About = () => {
         raised
         theme={["secondaryBg", "onSecondary"]}
         //onClick 하면 About Project 페이지가 나오도록
-        onClick={() => {}}
       />
       <Button
         label='About Team'

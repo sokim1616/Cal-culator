@@ -22,19 +22,23 @@ const Summary = ({ setCurrentPageIndex }) => {
   }, []);
 
   return (
-    <div className='summary-container'>
-      <div className='chart'>
-        {showDWM.daily ? (
-          <ChartPolarDaily />
-        ) : showDWM.weekly ? (
-          <ChartBarWeekly />
-        ) : (
-          <ChartLineMonthly />
-        )}
-      </div>
-      <div className='foodlist'>
-        <FoodList className='spacer' food={sampleFood} />
-        <SelectButton selectDWM={setShowDWM} />
+    <div className='summary'>
+      <SelectButton selectDWM={setShowDWM} />
+      <div className='summary-container'>
+        <div className='chart'>
+          {showDWM.daily ? (
+            <ChartPolarDaily />
+          ) : showDWM.weekly ? (
+            <ChartBarWeekly />
+          ) : (
+            <ChartLineMonthly />
+          )}
+        </div>
+        <div className='foodlist'>
+          <h2>언제 뭘 먹었나.</h2>
+          {/* <SelectButton selectDWM={setShowDWM} /> */}
+          <FoodList food={sampleFood} />
+        </div>
       </div>
     </div>
   );

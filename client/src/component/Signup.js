@@ -1,141 +1,140 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import axios from 'axios';
-import './signupModal.css';
+import axios from "axios";
+import "./signupModal.css";
 
-import "@rmwc/button/styles"
-import { Button } from '@rmwc/button'
-import "@rmwc/radio/styles"
-import { Radio } from '@rmwc/radio'
-
+import "@rmwc/button/styles";
+import { Button } from "@rmwc/button";
+import "@rmwc/radio/styles";
+import { Radio } from "@rmwc/radio";
 
 Modal.setAppElement("#root");
 
-const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-const validateForm = (errors) => { // 이 함수의 역할은 입력받은 값들의 형식이 맞는지 확인하는 함수
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+const validateForm = (errors) => {
+  // 이 함수의 역할은 입력받은 값들의 형식이 맞는지 확인하는 함수
   let valid = true; // 디폴트 값은 형식이 맞다는 상태
-  Object.values(errors).forEach( // 객체의 값에 errors라는 인자가 들어온 상태에서 forEach문을 돌려서
-    (val) => val.length > 0 && (valid = false) // val 
+  Object.values(errors).forEach(
+    // 객체의 값에 errors라는 인자가 들어온 상태에서 forEach문을 돌려서
+    (val) => val.length > 0 && (valid = false) // val
   );
   return valid;
-}
+};
 
 const customStyles = {
   content: {
-    position: 'fixed',
-    top: '80%',
-    left: '50%',
-    width: '320px',
-    height: '500px',
-    transform: 'translate(-50%,-50%)',
-    overflow: 'none',
-    border: '0px'
-  }
+    position: "fixed",
+    top: "60%",
+    left: "50%",
+    width: "360px",
+    height: "540px",
+    transform: "translate(-50%,-50%)",
+    overflow: "none",
+    border: "0px",
+  },
 };
 
-const Signup = ({ signupState, signupModalOpen, openLoginModal, closeSignupModal }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [age, setAge] = useState('');
-  const [value, setValue] = useState('');
+const Signup = ({
+  signupState,
+  signupModalOpen,
+  openLoginModal,
+  closeSignupModal,
+}) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [age, setAge] = useState("");
+  const [value, setValue] = useState("");
   const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    age: '',
-    gender: false
-  })
+    username: "",
+    email: "",
+    password: "",
+    age: "",
+    gender: false,
+  });
 
   const userState = {
     email: email,
     username: username,
     password: password,
     gender: value,
-    age: age
-  }
+    age: age,
+  };
 
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
 
     switch (name) {
-      case 'username':
+      case "username":
         errors.username =
-          value.length < 5
-            ? 'Username must be 5 characters long...'
-            : '';
+          value.length < 5 ? "Username must be 5 characters long..." : "";
         break;
-      case 'email':
-        errors.email =
-          validEmailRegex.test(value)
-            ? ''
-            : 'Email is not valid...';
+      case "email":
+        errors.email = validEmailRegex.test(value)
+          ? ""
+          : "Email is not valid...";
         break;
-      case 'password':
+      case "password":
         errors.password =
-          value.length < 8
-            ? 'Password must be 8 characters long...'
-            : '';
+          value.length < 8 ? "Password must be 8 characters long..." : "";
         break;
-      case 'age':
+      case "age":
         errors.age =
           Number(value).length > 3
-            ? 'Please write your age in a correct form...'
-            : '';
+            ? "Please write your age in a correct form..."
+            : "";
         break;
-      case 'gender':
-        errors.gender =
-          !value.disabled
-            ? 'Please select your gender...'
-            : '';
+      case "gender":
+        errors.gender = !value.disabled ? "Please select your gender..." : "";
         break;
       default:
         break;
     }
 
-    if (name === 'username') {
-      setUsername(value)
+    if (name === "username") {
+      setUsername(value);
     }
-    if (name === 'email') {
-      setEmail(value)
+    if (name === "email") {
+      setEmail(value);
     }
-    if (name === 'password') {
-      setPassword(value)
+    if (name === "password") {
+      setPassword(value);
     }
-    if (name === 'age') {
-      setAge(value)
+    if (name === "age") {
+      setAge(value);
     }
-    if (name === 'Male' || name === 'Female') {
-      setValue(value)
+    if (name === "Male" || name === "Female") {
+      setValue(value);
     }
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validateForm(errors)) {
-
-      console.info('Valid Form')
-      console.log(userState)
-      axios.post('http://localhost:4000/user/signup', userState)
-        .then(response => {
-          if (response.data === 'conflict') {
-            alert("Email already exists...")
+      console.info("Valid Form");
+      console.log(userState);
+      axios
+        .post("http://localhost:4000/user/signup", userState)
+        .then((response) => {
+          if (response.data === "conflict") {
+            alert("Email already exists...");
           } else {
             if (response.status === 200) {
-              openLoginModal()
-              console.log("OK")
+              openLoginModal();
+              console.log("OK");
             }
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     } else {
-      console.error('Invalid Form')
+      console.error("Invalid Form");
     }
-  }
-
+  };
 
   return (
     <div>
@@ -144,58 +143,87 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal, closeSignupModal
         onRequestClose={closeSignupModal}
         style={customStyles}
       >
-        <div className='wrapper'>
-          <div className='form-wrapper'>
+        <div className="wrapper">
+          <div className="form-wrapper">
             <h2>Create Account</h2>
             <form onSubmit={handleSubmit} noValidate>
-              <div className='email'>
+              <div className="email">
                 <label htmlFor="email">Email</label>
-                <input type='email' name='email' onChange={handleChange} noValidate />
-                {errors.email.length > 0 &&
-                  <span className='error'>{errors.email}</span>}
+                <input
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.email.length > 0 && (
+                  <span className="error">{errors.email}</span>
+                )}
               </div>
-              <div className='password'>
+              <div className="password">
                 <label htmlFor="password">Password</label>
-                <input type='password' name='password' onChange={handleChange} noValidate />
-                {errors.password.length > 0 &&
-                  <span className='error'>{errors.password}</span>}
+                <input
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.password.length > 0 && (
+                  <span className="error">{errors.password}</span>
+                )}
               </div>
-              <div className='username'>
+              <div className="username">
                 <label htmlFor="username">Username</label>
-                <input type='text' name='username' onChange={handleChange} noValidate />
-                {errors.username.length > 0 &&
-                  <span className='error'>{errors.username}</span>}
+                <input
+                  type="text"
+                  name="username"
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.username.length > 0 && (
+                  <span className="error">{errors.username}</span>
+                )}
               </div>
-              <div className='age'>
+              <div className="age">
                 <label htmlFor="age">Age</label>
-                <input type='text' name='age' onChange={handleChange} noValidate />
-                {errors.age.length > 0 &&
-                  <span className='error'>{errors.age}</span>}
+                <input
+                  type="text"
+                  name="age"
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.age.length > 0 && (
+                  <span className="error">{errors.age}</span>
+                )}
               </div>
-              <div className='gender'>
+              <div className="gender">
                 <label htmlFor="gender">Gender</label>
-                <div className='gender-radio'>
+                <div className="gender-radio">
                   <Radio
                     className="male-radio"
                     value="Male"
-                    checked={value === 'Male'}
-                    onChange={evt => setValue(String(evt.currentTarget.value))}
+                    checked={value === "Male"}
+                    onChange={(evt) =>
+                      setValue(String(evt.currentTarget.value))
+                    }
                   >
                     MALE
-              </Radio>
+                  </Radio>
                   <Radio
-                    className='female-radio'
+                    className="female-radio"
                     value="Female"
-                    checked={value === 'Female'}
-                    onChange={evt => setValue(String(evt.currentTarget.value))}
+                    checked={value === "Female"}
+                    onChange={(evt) =>
+                      setValue(String(evt.currentTarget.value))
+                    }
                   >
                     FEMALE
-              </Radio>
+                  </Radio>
                 </div>
-
               </div>
-              <div className='createLogin'>
-                <Button type='submit' raised>CREATE || LOG IN</Button>
+              <div className="createLogin">
+                <Button type="submit" raised>
+                  CREATE || LOG IN
+                </Button>
               </div>
             </form>
           </div>
@@ -203,7 +231,7 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal, closeSignupModal
       </Modal>
     </div>
   );
-}
+};
 
 // import React from "react";
 // // import ReactDOM from 'react-dom';
@@ -235,8 +263,6 @@ const Signup = ({ signupState, signupModalOpen, openLoginModal, closeSignupModal
 //   const [userWeight, setWeight] = React.useState();
 
 //   let stateValue = {};
-
-
 
 //   function afterOpenModal() {
 //     // references are now sync'd and can be accessed.
