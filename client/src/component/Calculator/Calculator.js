@@ -26,6 +26,9 @@ const Calculator = () => {
   const [searchInput, setSearchInput] = React.useState();
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
+  const [confirmData, setConfirmData] = React.useState([]);
+  const [checked, setChecked] = React.useState({ 0: false });
+  const [value, setValue] = React.useState({});
 
   const searchInputHandle = (e) => {
     setSearchInput(e);
@@ -51,6 +54,32 @@ const Calculator = () => {
     ])
   }
 
+  const confirmButtonHandle = () => {
+    for (let key in checked) {
+      if (checked[key]) {
+        setConfirmData((prevData) => [
+          ...prevData,
+          {
+            id: resultSave[key].id,
+            date: resultSave[key].date,
+            amount: value[key][0]
+          }
+        ])
+      }
+    }
+  }
+
+  const deleteButtonHandle = () => {
+    for (let key in checked) {
+      if (checked[key]) {
+        console.log(key)
+        setResultSave(resultSave.filter((ele, idx) =>
+          idx !== key))
+          setChecked( { [key] : false } )
+      }
+    }
+  }
+
   return (
     <div>
       <div>
@@ -71,7 +100,12 @@ const Calculator = () => {
           searchResult={searchResult}
           startDate={startDate}
           resultSave={resultSave}
-          setResultSave={setResultSave} />
+          confirmButtonHandle={confirmButtonHandle}
+          deleteButtonHandle={deleteButtonHandle}
+          checked={checked}
+          setChecked={setChecked}
+          value={value}
+          setValue={setValue} />
       </div>
     </div>
   );
