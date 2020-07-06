@@ -5,6 +5,8 @@ import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
 import "./Summary.css";
+import axios from "axios";
+
 const Summary = ({ setCurrentPageIndex }) => {
   const [sampleFood, setSampleFood] = useState([
     { food_name: "pasta", amount: 1, calories: 1000 },
