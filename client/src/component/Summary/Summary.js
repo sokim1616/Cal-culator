@@ -29,11 +29,12 @@ const Summary = () => {
         )}
       </div>
       <div className='foodlist'>
-        <FoodList food={sampleFood} />
-      </div>
-      <span className='selectBtn'>
+        <FoodList className='spacer' food={sampleFood} />
         <SelectButton selectDWM={setShowDWM} />
-      </span>
+      </div>
+      {/* <span className='selectBtn'>
+        <SelectButton selectDWM={setShowDWM} />
+      </span> */}
     </div>
   );
 };

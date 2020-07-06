@@ -74,7 +74,7 @@ const ChartPolarDaily = () => {
     <div>
       <Polar
         data={consumedDaily}
-        width={10}
+        width={1000}
         height={400}
         options={{
           title: {
@@ -102,6 +102,7 @@ const ChartPolarDaily = () => {
       />
       <div>
         <TextField
+          className='center'
           selected={date}
           onChange={(e) => setDate(e.target.value)}
           label='date'
