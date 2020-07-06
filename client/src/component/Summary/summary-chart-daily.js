@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Polar } from "react-chartjs-2";
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
+import "./Summary.css";
 
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
@@ -71,10 +72,10 @@ const ChartPolarDaily = () => {
   }, [dailyNutrition]);
 
   return (
-    <div>
+    <div className='heightSizing'>
       <Polar
         data={consumedDaily}
-        width={10}
+        width={1000}
         height={400}
         options={{
           title: {
@@ -100,8 +101,9 @@ const ChartPolarDaily = () => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div>
+      <div className='chart-daily'>
         <TextField
+          className='center'
           selected={date}
           onChange={(e) => setDate(e.target.value)}
           label='date'
