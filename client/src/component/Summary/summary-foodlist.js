@@ -21,8 +21,9 @@ const FoodList = ({ food }) => {
 
   return (
     <div>
+      <h2>뭘 처먹었나.</h2>
       <div>
-        <DataTable style={{ height: "300px", width: "375px" }}>
+        <DataTable style={{ height: "400px", width: "475px" }}>
           <DataTableContent>
             <DataTableHead>
               <DataTableRow>

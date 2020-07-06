@@ -1,5 +1,6 @@
 import React from "react";
 import AddFoodList from "./calculator-add-foodlist";
+import "./Calculator.css";
 
 import "@rmwc/data-table/styles";
 import {
@@ -29,17 +30,16 @@ import "@rmwc/typography/styles";
 const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
   const [open, setOpen] = React.useState(false);
   const [startDate, setStartDate] = React.useState();
-  
 
   return (
     <>
-      <Typography use="headline2">{searchResult.food_name}</Typography>
+      <h2>{searchResult.food_name.toUpperCase()}</h2>
       <div>
         <img
           src={`${searchResult.image}`}
           alt="pasta"
-          height="200"
-          width="280"
+          height="300"
+          width="375"
         />
       </div>
       <div>
@@ -57,40 +57,42 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
           </DataTableContent>
         </DataTable>
       </div>
-      <div>
-        <TextField
-          selected={startDate}
-          onChange={(e) => addDateHandle(e.target.value)}
-          label="date"
-          type="date"
-        />
-      </div>
-      <div className="addtocart-button">
-        <Dialog
-          open={open}
-          onClose={(evt) => {
-            console.log(evt.detail.action);
-            setOpen(false);
-          }}
-          onClosed={(evt) => console.log(evt.detail.action)}
-        >
-          <DialogTitle>ADD TO CART</DialogTitle>
-          <DialogContent>Did you really eat this...?</DialogContent>
-          <DialogActions>
-            <DialogButton action="close">Cancel</DialogButton>
-            <DialogButton
-              onClick={addToCartButton}
-              action="accept"
-              isDefaultAction
-            >
-              Of Course!!
-            </DialogButton>
-          </DialogActions>
-        </Dialog>
+      <div className="food--addtocart">
+        <div>
+          <TextField
+            selected={startDate}
+            onChange={(e) => addDateHandle(e.target.value)}
+            label="date"
+            type="date"
+          />
+        </div>
+        <div className="addtocart-button">
+          <Dialog
+            open={open}
+            onClose={(evt) => {
+              console.log(evt.detail.action);
+              setOpen(false);
+            }}
+            onClosed={(evt) => console.log(evt.detail.action)}
+          >
+            <DialogTitle>ADD TO CART</DialogTitle>
+            <DialogContent>Did you really eat this...?</DialogContent>
+            <DialogActions>
+              <DialogButton action="close">Cancel</DialogButton>
+              <DialogButton
+                onClick={addToCartButton}
+                action="accept"
+                isDefaultAction
+              >
+                Of Course!!
+              </DialogButton>
+            </DialogActions>
+          </Dialog>
 
-        <Button raised onClick={() => setOpen(true)}>
-          ADD TO CART
-        </Button>
+          <Button raised onClick={() => setOpen(true)}>
+            ADD TO CART
+          </Button>
+        </div>
       </div>
     </>
   );

@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Polar } from "react-chartjs-2";
+import { TextField } from "@rmwc/textfield";
+import axios from "axios";
+import "./Summary.css";
 
-const ChartPolarDaily = ({ daily }) => {
+import formatDay from "../helperFunction/formatDay";
+const today = new Date();
+
+const ChartPolarDaily = () => {
+  const [date, setDate] = useState(formatDay(today));
+  const [dailyNutrition, setDailyNutrition] = useState({});
   const [consumedDaily, setConsumedDaily] = useState({
     labels: [
       "calorie",
@@ -40,19 +48,34 @@ const ChartPolarDaily = ({ daily }) => {
       },
     ],
   });
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:4000/user/infoDay",
+        { date },
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          // withCredentials: true
+        }
+      )
+      .then((result) => {
+        setDailyNutrition(result.data);
+      });
+  }, [date]);
 
   useEffect(() => {
     setConsumedDaily((prevState) => {
-      prevState.datasets[0].data = Object.values(daily);
+      prevState.datasets[0].data = Object.values(dailyNutrition);
       return { ...prevState };
     });
-  }, [daily]);
+  }, [dailyNutrition]);
 
   return (
-    <div>
+    <div className='heightSizing'>
       <Polar
         data={consumedDaily}
-        width={10}
+        width={1000}
         height={400}
         options={{
           title: {
@@ -78,6 +101,15 @@ const ChartPolarDaily = ({ daily }) => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
+      <div className='chart-daily'>
+        <TextField
+          className='center'
+          selected={date}
+          onChange={(e) => setDate(e.target.value)}
+          label='date'
+          type='date'
+        />
+      </div>
     </div>
   );
 };

@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import getLastDayOfMonth from "../helperFunction/getLastDayOfMonth";
+import { TextField } from "@rmwc/textfield";
+import axios from "axios";
 
-// let today = new Date("2020-02-02");
-// const dayCount = getLastDayOfMonth(today.getMonth() + 1, today.getFullYear());
-// let currentDay = 1;
-// const dayArray = [];
-// while (currentDay <= dayCount) {
-//   dayArray.push(String(currentDay));
-//   currentDay++;
-// }
-
-const ChartLineMonthly = ({ monthly, dailyCalorie }) => {
+const ChartLineMonthly = () => {
+  const [dailyCalorie, setDailyCalorie] = useState("");
+  const [month, setMonth] = useState("2020-07");
+  const [monthlyNutrition, setMonthlyNutrition] = useState({});
   const [consumedMonthly, setConsumedMonthly] = useState({
     labels: [],
     datasets: [
@@ -20,21 +16,49 @@ const ChartLineMonthly = ({ monthly, dailyCalorie }) => {
         backgroundColor: "rgba(144, 193, 227, 0.5)",
         borderColor: "rgba(0,0,0,0.5)",
         borderWidth: 2,
-        data: Object.values(monthly),
+        data: Object.values(monthlyNutrition),
       },
       {
         label: "Calorie suggested",
         backgroundColor: "rgba(0, 0, 0, 0)",
         borderColor: "rgba(235, 146, 133, 1)",
         borderWidth: 2,
-        data: Object.values(monthly).map((el) => 100),
+        data: Object.values(monthlyNutrition).map((el) => 100),
       },
     ],
   });
 
   useEffect(() => {
+    axios
+      .get("http://localhost:4000/user/dailyCalorie", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        // withCredentials: true
+      })
+      .then((result) => {
+        setDailyCalorie(result.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:4000/user/infoMonth",
+        { date: month },
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          // withCredentials: true
+        }
+      )
+      .then((result) => {
+        setMonthlyNutrition(result.data);
+      });
+  }, [month]);
+
+  useEffect(() => {
     setConsumedMonthly((prevState) => {
-      let numberOfDays = Object.keys(monthly).length;
+      let numberOfDays = Object.keys(monthlyNutrition).length;
       let count = 1;
       const dayArr = [];
       while (count <= numberOfDays) {
@@ -42,16 +66,16 @@ const ChartLineMonthly = ({ monthly, dailyCalorie }) => {
         count++;
       }
       prevState.labels = dayArr;
-      prevState.datasets[0].data = Object.values(monthly);
-      prevState.datasets[1].data = Object.values(monthly).map(
+      prevState.datasets[0].data = Object.values(monthlyNutrition);
+      prevState.datasets[1].data = Object.values(monthlyNutrition).map(
         () => dailyCalorie
       );
       return { ...prevState };
     });
-  }, [monthly, dailyCalorie]);
+  }, [monthlyNutrition, dailyCalorie]);
 
   return (
-    <div>
+    <div className='heightSizing'>
       <Line
         data={consumedMonthly}
         width={10}
@@ -79,6 +103,14 @@ const ChartLineMonthly = ({ monthly, dailyCalorie }) => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
+      <div className='chart-daily'>
+        <TextField
+          selected={month}
+          onChange={(e) => setMonth(e.target.value)}
+          label='month'
+          type='month'
+        />
+      </div>
     </div>
   );
 };

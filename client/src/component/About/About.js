@@ -31,5 +31,3 @@ const About = ({ openLoginModal }) => {
 };
 
 export default About;
-
-
