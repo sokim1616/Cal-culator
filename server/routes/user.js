@@ -7,10 +7,12 @@ router.post("/signin", userController.signin.post);
 
 router.post("/signout", userController.signout.post);
 
-// router.get("/infoDay", userController.user_info_day.get);
+router.post("/infoDay", userController.infoDay.post);
 
-// router.get("/infoWeek", userController.user_info_week.get);
+router.post("/infoWeek", userController.infoWeek.post);
 
-// router.get("/infoMonth", userController.user_info_month.get);
+router.post("/infoMonth", userController.infoMonth.post);
+
+router.get("/dailyCalorie", userController.dailyCalorie.get);
 
 module.exports = router;

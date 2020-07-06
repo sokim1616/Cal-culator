@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <div>
                 <nav className="nav">
-                    <Typography use="headline3" className="title">Cal-culator</Typography>
+                    <div className="title">Cal-culator</div>
                     <div>
                         <Typography use="headline1" className="desc">
                             a web application that calculates your daily food intake.
@@ -18,15 +18,12 @@ const Home = () => {
 
                     <ul className="subdesc">
                         Some of its features:
-                    <li>
-                            <div>
-                                <Typography use="headline5">Creates an archive to visulaize your calorie intake history</Typography>
-                            </div>
-
+                        <li>
+                            Creates an archive to visulaize your calorie intake history
                         </li>
                         <li>
                             Recommend a diet plan based on your nutrition status
-                    </li>
+                        </li>
                     </ul>
                     <header className="header"></header>
                 </nav>

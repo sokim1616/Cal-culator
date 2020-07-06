@@ -1,5 +1,3 @@
-const { User } = require("../../model");
-
 module.exports = {
   post: (req, res) => {
     const sess = req.session;

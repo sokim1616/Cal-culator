@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  var Food_user = sequelize.define(
-    "Food_user",
+  var Food_users = sequelize.define(
+    "Food_users",
     {
       amount: DataTypes.INTEGER,
       time: DataTypes.DATE,
@@ -12,21 +12,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  // User.associate = function (models) {
-  //   models.User.hasMany(models.Task);
-  // };
+  Food_users.associate = function (models) {
+    models.Food_users.belongsTo(models.Users, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    models.Food_users.belongsTo(models.Foods, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
-  return Food_user;
+  return Food_users;
 };
-
-// const food_user = sequelize.define(
-//   "food_user",
-//   {
-//     amount: DataTypes.INTEGER,
-//     time: DataTypes.DATE,
-//   },
-//   {
-//     charset: "utf8",
-//     collate: "utf8_unicode_ci",
-//   }
-// );
