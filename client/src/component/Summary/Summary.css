@@ -6,8 +6,9 @@
 }
 
 .button {
-    width: 40vh;
-    height: 68vh;
+    /* width: 40vh;
+    height: 68vh; */
+    margin-bottom: 5%;
 }
 
 .chart {
@@ -28,7 +29,6 @@
     overflow: none;
 }
 
-/* .center {
-    display: block;
-
-} */
+.heightSizing {
+    max-height: 100%
+}

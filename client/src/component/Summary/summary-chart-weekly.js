@@ -56,7 +56,7 @@ const ChartBarWeekly = () => {
   }, [week]);
 
   return (
-    <div>
+    <div className='heightSizing'>
       <Bar
         data={consumedWeekly}
         width={10}

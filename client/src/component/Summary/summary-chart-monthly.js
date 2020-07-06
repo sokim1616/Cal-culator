@@ -75,7 +75,7 @@ const ChartLineMonthly = () => {
   }, [monthlyNutrition, dailyCalorie]);
 
   return (
-    <div>
+    <div className='heightSizing'>
       <Line
         data={consumedMonthly}
         width={10}
