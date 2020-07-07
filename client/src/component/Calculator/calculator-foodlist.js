@@ -9,8 +9,7 @@ import {
   DataTableHead,
   DataTableRow,
   DataTableHeadCell,
-  DataTableBody,
-  DataTableCell,
+  DataTableBody
 } from "@rmwc/data-table";
 import {
   Dialog,
