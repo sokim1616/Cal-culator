@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import "./Home.css";
 // import React from "react";
+import React from "react";
 import './Home.scss';
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
@@ -22,9 +23,12 @@ const Home = () => {
             A web application that calculates <br /> Your daily food intake!!
           </Typography>
         </li>
+<<<<<<< HEAD
         <div>
           <Typography use='headline1' className='home__text homeTrivia'><span>Food Trivia</span><br/> {trivia}</Typography>
         </div>
+=======
+>>>>>>> client css in progress
       </ul>
     </div>
   );
