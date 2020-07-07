@@ -102,18 +102,20 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const confirmButtonHandle = () => {
-    
     for (let key in checked) {
-      if (checked[key]) {
-        setConfirmData((prevData) => [
-          ...prevData,
-          {
-            FoodId: resultSave[key].id,
-            date: resultSave[key].date,
-            amount: value[key][0],
-          },
-        ]);
-      }
+      if (Object.keys(value).length === 0) {
+        console.log("please select AMOUT of food")
+      } else
+        if (checked[key]) {
+          setConfirmData((prevData) => [
+            ...prevData,
+            {
+              FoodId: resultSave[key].id,
+              date: resultSave[key].date,
+              amount: value[key][0],
+            },
+          ]);
+        }
     }
   };
 
