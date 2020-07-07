@@ -5,41 +5,51 @@ import {
   Route,
   NavLink,
   useHistory,
+  withRouter
 } from "react-router-dom";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
-import { Snackbar, SnackbarAction } from "@rmwc/snackbar"
-import '@rmwc/snackbar/styles'
+import "./About.css";
 import AboutTeam from "./AboutTeam";
+import AboutProject from './AboutProject';
 
 const About = () => {
   const history = useHistory();
 
-  const [flipped, setFlipped] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  //const [flipped, setFlipped] = React.useState(false);
+  const [teamModalOpen, setTeamModalOpen] = React.useState(false)
 
-  function flipCard() {
-    setFlipped(true);
+  // const flipCard = () => {
+  //   setFlipped(true);
+  // }
+  const openTeamModal = () => {
+    setTeamModalOpen(true);
   }
 
-  function toAboutTeam() {
-    history.push(`/AboutTeam`);
+  const closeTeamModal = () => {
+    setTeamModalOpen(false);
+  }
+
+  const toAboutProject = () => {
+    history.push('./AboutProject')
   }
 
   return (
-    <div className='aboutButtons'>
+    <div>
+      <AboutTeam teamModalOpen={teamModalOpen} closeTeamModal={closeTeamModal} />
       <Button
-        label='About Project'
+        label='About this App'
         raised
         theme={["secondaryBg", "onSecondary"]}
-      //onClick 하면 About Project 페이지가 나오도록
+        //onClick 하면 About Project 페이지가 나오도록
+        onClick={toAboutProject}
       />
       <Button
         label='About Team'
         raised
         theme={["secondaryBg", "onSecondary"]}
         //onClick 하면 About Team 페이지가 나오도록
-        onClick={toAboutTeam}
+        onClick={openTeamModal}
       />
       <div>
         <Snackbar
@@ -65,4 +75,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default withRouter(About);
