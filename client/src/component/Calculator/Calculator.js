@@ -2,38 +2,46 @@ import React, { useEffect } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
+import axios from "axios";
+import calImg from "./cal_culator.jpg";
 import "./Calculator.css";
+
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
+import "@rmwc/snackbar/styles";
 
 const Calculator = ({ setCurrentPageIndex }) => {
   const [searchResult, setSearchResult] = React.useState({
-    id: 1,
-    food_name: "pizza",
-    image: "https://spoonacular.com/recipeImages/210327-312x231.jpg",
-    calories: 363.65,
-    fat: 13.08,
-    carbohydrates: 51.83,
-    sugar: 2.38,
-    protein: 9.71,
-    sodium: 14.76,
-    cholesterol: 5.04,
-    iron: 3.17,
-    calcium: 69.59,
-    vitamin_A: 359.53,
+    calcium: 0,
+    calories: 0,
+    carbohydrates: 0,
+    cholesterol: 0,
+    createdAt: "",
+    fat: 0,
+    food_name: "CAL-CULATOR",
+    id: 0,
+    image: calImg,
+    iron: 0,
+    protein: 0,
+    sodium: 0,
+    sugar: 0,
+    updatedAt: "",
+    vitamin_A: 0,
     vitamin_D: 0,
-    zinc: 0.71,
-    createdAt: "2020-07-03T02:20:17.000Z",
-    updatedAt: "2020-07-03T02:20:17.000Z",
+    zinc: 0,
   });
-  const [searchInput, setSearchInput] = React.useState();
+  const [searchInput, setSearchInput] = React.useState({});
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
   const [confirmData, setConfirmData] = React.useState([]);
-  const [checked, setChecked] = React.useState({ 0: false });
+  const [checked, setChecked] = React.useState({});
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
 
   const searchInputHandle = (e) => {
-    setSearchInput(e);
+    setSearchInput({
+      food_name: e,
+    });
   };
 
   const searchResultHandle = (e) => {
@@ -54,6 +62,13 @@ const Calculator = ({ setCurrentPageIndex }) => {
         calories: searchResult.calories,
       },
     ]);
+    setChecked((prevState) => {
+      let count = Object.keys(checked).length;
+      return {
+        ...prevState,
+        [count]: false,
+      };
+    });
   };
 
   const confirmButtonHandle = () => {
@@ -62,7 +77,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
         setConfirmData((prevData) => [
           ...prevData,
           {
-            id: resultSave[key].id,
+            FoodId: resultSave[key].id,
             date: resultSave[key].date,
             amount: value[key][0],
           },
@@ -71,14 +86,58 @@ const Calculator = ({ setCurrentPageIndex }) => {
     }
   };
 
-  const deleteButtonHandle = () => {
-    for (let key in checked) {
-      if (checked[key]) {
-        console.log(key);
-        setResultSave(resultSave.filter((ele, idx) => idx !== key));
-        setChecked({ [key]: false });
+  const userFoodSender = () => {
+    axios
+      .post(
+        "http://localhost:4000/food/addfooduser",
+        { food_info: confirmData },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        if (response.data === "success") {
+          setOpen(!open);
+        }
+      });
+  };
+
+  useEffect(() => {
+    userFoodSender();
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return !checked[idx];
+      });
+    });
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
       }
-    }
+      return returnObj;
+    });
+  }, [confirmData]);
+
+  const deleteButtonHandle = () => {
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return checked[idx] === false;
+      });
+    });
+
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
+      }
+      return returnObj;
+    });
   };
 
   useEffect(() => {
@@ -126,6 +185,22 @@ const Calculator = ({ setCurrentPageIndex }) => {
             value={value}
             setValue={setValue}
             totalCalories={totalCalories}
+            userFoodSender={userFoodSender}
+          />
+        </div>
+        <div>
+          <Snackbar
+            open={open}
+            onClose={(evt) => setOpen(false)}
+            message='Successfully registerd...'
+            dismissesOnAction
+            action={
+              <SnackbarAction
+                style={{ color: "#ffff" }}
+                label='Dismiss'
+                onClick={() => console.log("Click Me")}
+              />
+            }
           />
         </div>
       </div>

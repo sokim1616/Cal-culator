@@ -2,7 +2,7 @@ const { Food_users } = require("../../model");
 
 module.exports = {
   post: async (req, res) => {
-    const id = req.session.userid;
+    // const id = req.session.userid;
     const { food_info } = req.body;
     /* 배열에 담긴 객체
     [
@@ -24,7 +24,7 @@ module.exports = {
       Food_users.create({
         amount: i.amount,
         time: i.date,
-        UserId: id,
+        UserId: 1,
         FoodId: i.FoodId,
       });
     }

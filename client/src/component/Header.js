@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios'
 import {
   Switch,
   Route,
@@ -9,8 +10,50 @@ import {
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
-const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal }) => {
+const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin }) => {
   const history = useHistory();
+
+  const summaryAuth = () => {
+    if(isLogin === false){
+      openLoginModal();
+    } else if(isLogin === true){
+      history.push('/summary')
+    }
+  }
+
+  const calculatorAuth = () => {
+    if(isLogin === false){
+      openLoginModal();
+    } else if(isLogin === true){
+      history.push('/calculator')
+    }
+  }
+
+  const dodontAuth = () => {
+    if(isLogin === false){
+      openLoginModal();
+    } else if(isLogin === true){
+      history.push('/dodont')
+    }
+  }
+  
+  const destroyAuth = () => {
+    axios.post('http://localhost:4000/user/signout', {withCredential: true})
+      .then(response => {
+        if(response.data === "signed out"){
+          console.log("SIGN OUT")
+        }
+      })
+  }
+
+  const loginLogout = () => {
+    if(isLogin === true){
+      destroyAuth()
+    } else if(isLogin === false){
+      openLoginModal()
+    }
+  }
+
 
   return (
     <div>
@@ -21,10 +64,10 @@ const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal }) => {
         >
           <Tab onClick={() => history.push("/")}>Home</Tab>
           <Tab onClick={() => history.push("/about")}>About</Tab>
-          <Tab onClick={() => history.push("/summary")}>Summary</Tab>
-          <Tab onClick={() => history.push("/calculator")}>Calculator</Tab>
-          <Tab onClick={() => history.push("/dodont")}>DO & DON`T</Tab>
-          <Tab onClick={openLoginModal}>LOGIN</Tab>
+          <Tab onClick={summaryAuth}>Summary</Tab>
+          <Tab onClick={calculatorAuth}>Calculator</Tab>
+          <Tab onClick={dodontAuth}>DO & DON`T</Tab>
+          <Tab onClick={loginLogout}>{!isLogin ? 'LOGIN' : 'LOGOUT'}</Tab>
         </TabBar>
       </header>
     </div>

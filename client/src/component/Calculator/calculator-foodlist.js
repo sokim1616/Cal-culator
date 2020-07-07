@@ -10,7 +10,6 @@ import {
   DataTableRow,
   DataTableHeadCell,
   DataTableBody,
-  DataTableCell,
 } from "@rmwc/data-table";
 import {
   Dialog,
@@ -35,18 +34,18 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
 
   const addToCartHandle = () => {
     setOpen(true);
-  }
+  };
 
   return (
     <>
-      <Tab style={{fontSize:"50px"}}>{searchResult.food_name.toUpperCase()}</Tab>
+      <Tab style={{ fontSize: "50px" }}>{searchResult.food_name}</Tab>
       <div>
         <img
           className='food--image'
           src={`${searchResult.image}`}
           alt={searchResult.food_name}
-          height="300"
-          width="375"
+          height='300'
+          width='375'
         />
       </div>
       <div>
@@ -64,38 +63,42 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
           </DataTableContent>
         </DataTable>
       </div>
-      <div className="food--addtocart">
+      <div className='food--addtocart'>
         <div>
           <TextField
             selected={startDate}
             onChange={(e) => addDateHandle(e.target.value)}
-            label="date"
-            type="date"
+            label='date'
+            type='date'
           />
         </div>
-        <div className="addtocart-button">
+        <div className='addtocart-button'>
           <Dialog
             open={open}
             onClose={(evt) => {
-              console.log(evt.detail.action);
               setOpen(false);
             }}
-            onClosed={(evt) => console.log(evt.detail.action)}
+            // onClosed={(evt) => console.log(evt.detail.action)}
           >
             <DialogTitle>ADD TO CART</DialogTitle>
             <DialogContent>Did you really eat this...?</DialogContent>
             <DialogActions>
-              <DialogButton action="close">Cancel</DialogButton>
+              <DialogButton action='close'>Cancel</DialogButton>
               <DialogButton
                 onClick={addToCartButton}
-                action="accept"
+                action='accept'
                 isDefaultAction
               >
                 Of Course!!
               </DialogButton>
             </DialogActions>
           </Dialog>
-          <Button raised onClick={addToCartHandle}>
+          <Button
+            className='add--to--cart--button'
+            style={{ height: "55px" }}
+            onClick={addToCartHandle}
+            raised
+          >
             ADD TO CART
           </Button>
         </div>

@@ -15,11 +15,15 @@ const Search = ({ searchInputHandle, searchResultHandle, searchInput }) => {
           e.preventDefault();
           console.log(searchInput);
           axios
-            .post("http://localhost:4000/foodinfo/", searchInput, {
+            .post("http://localhost:4000/food/foodinfo/", searchInput, {
               withCredentials: true,
             })
             .then((response) => {
-              searchResultHandle(response);
+              console.log(response)
+              searchResultHandle(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
             });
         }}
       >

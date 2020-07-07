@@ -33,7 +33,7 @@ const AddCart = ({ resultSave, checked, checkedHandle, amountHandle, value }) =>
         />
       </DataTableCell>
       <DataTableCell>{v.date}</DataTableCell>
-      <DataTableCell>{v.foodname}</DataTableCell>
+      <DataTableCell>{v.foodname.toUpperCase()}</DataTableCell>
       <DataTableCell>
         <Select
           placeholder="--Select--"
