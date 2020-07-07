@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
-import axios from 'axios';
-import calImg from './cal_culator.jpg'
+import axios from "axios";
+import calImg from "./cal_culator.jpg";
 import "./Calculator.css";
 
-import { Snackbar, SnackbarAction } from "@rmwc/snackbar"
-import '@rmwc/snackbar/styles'
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
+import "@rmwc/snackbar/styles";
 
 const Calculator = ({ setCurrentPageIndex }) => {
   const [searchResult, setSearchResult] = React.useState({
@@ -27,7 +27,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
     updatedAt: "",
     vitamin_A: 0,
     vitamin_D: 0,
-    zinc: 0
+    zinc: 0,
   });
   const [searchInput, setSearchInput] = React.useState({});
   const [startDate, setStartDate] = React.useState();
@@ -40,7 +40,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   const searchInputHandle = (e) => {
     setSearchInput({
-      food_name: e
+      food_name: e,
     });
   };
 
@@ -72,27 +72,42 @@ const Calculator = ({ setCurrentPageIndex }) => {
           {
             FoodId: resultSave[key].id,
             date: resultSave[key].date,
-            amount: value[key][0]
-          }],
-        );
+            amount: value[key][0],
+          },
+        ]);
       }
     }
   };
 
+  useEffect(() => {
+    const checkedIndex = Object.keys(checked).filter(
+      (item) => checked[item] === true
+    );
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) =>
+        checkedIndex.includes(idx.toString())
+      );
+    });
+  }, [confirmData]);
+
   const userFoodSender = () => {
-    console.log(confirmData)
-    axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
-      .then(response => {
-        if (response.data === 'success') {
-          setOpen(!open)
-          console.log('좋아')
+    console.log(confirmData);
+    axios
+      .post(
+        "http://localhost:4000/food/addfooduser",
+        { food_info: confirmData },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        if (response.data === "success") {
+          setOpen(!open);
         }
-      })
-  }
+      });
+  };
 
   useEffect(() => {
-    userFoodSender()
-  }, [confirmData])
+    userFoodSender();
+  }, [confirmData]);
 
   const deleteButtonHandle = () => {
     for (let key in checked) {
@@ -155,16 +170,14 @@ const Calculator = ({ setCurrentPageIndex }) => {
         <div>
           <Snackbar
             open={open}
-            onClose={evt => setOpen(false)}
-            message="Successfully registerd..."
+            onClose={(evt) => setOpen(false)}
+            message='Successfully registerd...'
             dismissesOnAction
             action={
               <SnackbarAction
-              style={
-                {color: '#ffff'}
-              }
-                label="Dismiss"
-                onClick={() => console.log('Click Me')}
+                style={{ color: "#ffff" }}
+                label='Dismiss'
+                onClick={() => console.log("Click Me")}
               />
             }
           />
