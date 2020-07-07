@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
@@ -10,6 +10,7 @@ import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/snackbar/styles";
 
 const Calculator = ({ setCurrentPageIndex }) => {
+  const inputRef = useRef();
   const [searchResult, setSearchResult] = React.useState({
     calcium: 0,
     calories: 0,
@@ -37,12 +38,32 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+  const [autoComplete, setAutoComplete] = React.useState([]);
 
   const searchInputHandle = (e) => {
     setSearchInput({
       food_name: e,
     });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputRef.current.children[1].value == searchInput.food_name) {
+        axios
+          .get("http://localhost:4000/food/foodautocomplete", {
+            params: {
+              query: searchInput.food_name,
+            },
+          })
+          .then((result) => {
+            setAutoComplete(result.data);
+          });
+      }
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchInput, inputRef]);
 
   const searchResultHandle = (e) => {
     setSearchResult(e);
@@ -163,6 +184,11 @@ const Calculator = ({ setCurrentPageIndex }) => {
           searchInputHandle={searchInputHandle}
           searchResultHandle={searchResultHandle}
           searchInput={searchInput}
+          inputRef={inputRef}
+          autoComplete={autoComplete}
+          setSearchResult={setSearchResult}
+          setSearchInput={setSearchInput}
+          setAutoComplete={setAutoComplete}
         />
       </div>
       <div className='food-cart'>
