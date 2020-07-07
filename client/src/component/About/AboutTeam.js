@@ -5,6 +5,7 @@ import '@rmwc/card/styles'
 import { Typography } from '@rmwc/typography'
 import '@rmwc/typography/styles'
 import philip from './image/philip.jpg'
+import douhyun from './image/douhyun.jpg'
 import junseob from './image/junseob.jpg'
 import sohyun from './image/sohyun.jpg'
 
@@ -33,39 +34,40 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                     <div className='form-wrapper'>
                         <h2 className='title'>MEMBERS OF HELL-THY</h2>
                         {/* <form onSubmit={handleSubmit} noValidate> */}
-                        <div className='choikyung'>
-                            <div>
-                                <label htmlFor='hwaejang'>회장</label>
+                        <div className='fullstack'>
+                            <div className='hwaejang'>
+                                <div htmlFor='hwaejang'><center>회장</center></div>
+                                <div>
+                                    <img src={philip} />
+                                </div>
                             </div>
-                            <div>
-                                <img src={philip} />
-                            </div>
-                            <div>
-                                <label htmlFor='gongjangjang'>공장장</label>
-                            </div>
-                            <div>
-                                <img src={sohyun} />
+                            <div className='bujang'>
+                                <div htmlFor='bujang'><center>부장</center></div>
+                                <div>
+                                    <img src={junseob} />
+                                </div>
                             </div>
                         </div>
-                        <div className='kims'>
-                            <div>
-                                <label htmlFor='bujang'>부장</label>
+
+                        <div className='frontend'>
+                            <div className='gongjangjang'>
+                                <div htmlFor='gongjangjang'><center>공장장</center></div>
+                                <div>
+                                    <img src={douhyun} />
+                                </div>
                             </div>
-                            <div>
-                                <img src={junseob} />
-                            </div>
-                            <div>
-                                <label htmlFor='employee'>직원</label>
-                            </div>
-                            <div>
-                                <img src={sohyun} />
+                            <div className='employee'>
+                                <div htmlFor='employee'><center>직원</center></div>
+                                <div>
+                                    <img src={sohyun} />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </Modal>
 
-        </div>
+        </div >
         // <Card style={{ width: '12.5rem' }}>
         //     <CardPrimaryAction>
         //         <CardMedia

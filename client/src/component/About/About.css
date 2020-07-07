@@ -23,16 +23,41 @@
 }
 
 .aboutButtons {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.choikyung {
+.fullstack {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-around;
 }
 
-.kims {
+.frontend {
   display: flex;
-  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.hwaejang {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bujang {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gongjangjang {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.employee {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
