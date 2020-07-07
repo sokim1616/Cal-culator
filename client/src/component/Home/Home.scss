@@ -1,0 +1,56 @@
+  .home {
+    // padding: 0px 10px 50px 50px;
+    position: relative;
+
+    // sbackground-color: rgba(234, 245, 234, 1);
+    ul {
+
+      li {
+        display: flex;
+        flex-direction: column;
+
+        .home__text {
+          text-shadow: 5px -5px 2.5px #d3d3d3;
+        }
+
+        .homeTitle {
+          span {
+            color: black;
+            transition: 1s all ease-in;
+            padding: 100px;
+            line-height: 2;
+
+            // box-shadow: 0 0px 0px 0px rgb(234,245,234) inset;
+            &:hover {
+              box-shadow: 0 250px 0px 0px rgb(234, 245, 234) inset;
+            }
+          }
+        }
+
+        .homeDesc {
+          color: rgb(104, 170, 57);
+          font-weight: 300;
+          padding: 0px 0px 0px 50px;
+
+        }
+      }
+
+      div {
+        position: absolute;
+        left: 1050px;
+        top: 500px;
+        width: 50%;
+        .home__Text {
+        }
+
+        .homeTrivia {
+          font-size: 40px;
+          text-shadow: 5px -5px 2.5px #d3d3d3;
+          span {
+            color: rgb(104, 170, 57);
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
