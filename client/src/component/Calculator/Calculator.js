@@ -77,6 +77,9 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const addToCartButton = () => {
     if (startDate === undefined) {
       setOpenError(!openError)
+    } else
+    if (searchResult.food_name === 'CAL-CULATOR'){
+      setOpenError(!openError)
     } else {
       setResultSave((prevState) => [
         ...prevState,
