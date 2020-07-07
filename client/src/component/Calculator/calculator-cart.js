@@ -58,11 +58,15 @@ const Cart = ({
     });
   };
 
+  const confirmButton = () => {
+    confirmButtonHandle();
+  }
+
   // const TabStyle = stcp(Tab)`border: 1px solid black`;
 
   return (
     <>
-    <Tab style={{ fontSize: "50px" }}>CART</Tab>
+      <Tab style={{ fontSize: "50px" }}>CART</Tab>
       <div className="cart--foodlist">
         <DataTable
           className="cart-table"
@@ -95,7 +99,7 @@ const Cart = ({
       </div>
       <div className="cart--confirm">
         <div className="total-calorie">
-          <SimpleDataTable data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]} />
+          <SimpleDataTable style={{ height: '55px' }} data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]} />
         </div>
         <div className="cart-button">
           <div className="cart-button__delete">
@@ -123,7 +127,7 @@ const Cart = ({
               </DialogActions>
             </Dialog>
 
-            <Button raised onClick={() => setDeleteOpen(true)}>
+            <Button className='cart-delete-button' style={{ height: "55px" }} raised onClick={() => setDeleteOpen(true)}>
               DELETE
             </Button>
           </div>
@@ -144,7 +148,7 @@ const Cart = ({
               <DialogActions>
                 <DialogButton action="close">Cancel</DialogButton>
                 <DialogButton
-                  onClick={confirmButtonHandle}
+                  onClick={confirmButton}
                   action="accept"
                   isDefaultAction
                 >
@@ -152,8 +156,7 @@ const Cart = ({
                 </DialogButton>
               </DialogActions>
             </Dialog>
-
-            <Button raised onClick={() => setConfirmOpen(true)}>
+            <Button className='cart-confirm-button' style={{ height: "55px" }} raised onClick={() => setConfirmOpen(true)}>
               CONFIRM
             </Button>
           </div>

@@ -9,8 +9,7 @@ import {
   DataTableHead,
   DataTableRow,
   DataTableHeadCell,
-  DataTableBody,
-  DataTableCell,
+  DataTableBody
 } from "@rmwc/data-table";
 import {
   Dialog,
@@ -39,7 +38,7 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
 
   return (
     <>
-      <Tab style={{fontSize:"50px"}}>{searchResult.food_name.toUpperCase()}</Tab>
+      <Tab style={{ fontSize: "50px" }}>{searchResult.food_name}</Tab>
       <div>
         <img
           className='food--image'
@@ -95,7 +94,12 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
               </DialogButton>
             </DialogActions>
           </Dialog>
-          <Button raised onClick={addToCartHandle}>
+          <Button
+            className='add--to--cart--button'
+            style={{ height: "55px" }}
+            onClick={addToCartHandle}
+            raised
+            >
             ADD TO CART
           </Button>
         </div>
