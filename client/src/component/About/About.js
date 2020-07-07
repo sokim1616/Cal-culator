@@ -35,7 +35,7 @@ const About = () => {
   }
 
   return (
-    <div>
+    <div className='aboutButtons'>
       <AboutTeam teamModalOpen={teamModalOpen} closeTeamModal={closeTeamModal} />
       <Button
         label='About this App'
@@ -51,26 +51,6 @@ const About = () => {
         //onClick 하면 About Team 페이지가 나오도록
         onClick={openTeamModal}
       />
-      <div>
-        <Snackbar
-          open={open}
-          onClose={evt => setOpen(false)}
-          message="This is a new message"
-          dismissesOnAction
-          action={
-            <SnackbarAction
-              label="Dismiss"
-              onClick={() => console.log('Click Me')}
-            />
-          }
-        />
-
-        <Button
-          raised
-          label="Show snackbar"
-          onClick={evt => setOpen(!open)}
-        />
-      </div>
     </div>
   );
 };
