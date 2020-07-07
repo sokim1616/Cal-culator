@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
+import axios from "axios";
 
 const Home = () => {
+  const [trivia, setTrivia] = useState("");
+  useEffect(() => {
+    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+      setTrivia(result.data);
+    });
+  }, []);
   return (
     <div>
       <div>
         <nav className='nav'>
           <div className='title'>Cal-culator</div>
-          <div>
-            <Typography use='headline1' className='desc'>
-              a web application that calculates your daily food intake.
-            </Typography>
-          </div>
+          <Typography use='headline1' className='desc'>
+            a web application that calculates your daily food intake.
+          </Typography>
+          <Typography use='headline2' className='trivia'>
+            {trivia}
+          </Typography>
 
-          <ul className='subdesc'>
-            Some of its features:
-            <li>Creates an archive to visulaize your calorie intake history</li>
-            <li>Recommend a diet plan based on your nutrition status</li>
-          </ul>
           <header className='header'></header>
         </nav>
         <main>

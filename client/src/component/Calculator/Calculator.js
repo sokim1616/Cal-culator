@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
-import axios from 'axios';
-import calImg from './cal_culator.jpg'
+import axios from "axios";
+import calImg from "./cal_culator.jpg";
 import "./Calculator.css";
 
-import { Snackbar, SnackbarAction } from "@rmwc/snackbar"
-import '@rmwc/snackbar/styles'
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
+import "@rmwc/snackbar/styles";
 
 const Calculator = ({ setCurrentPageIndex }) => {
   const [searchResult, setSearchResult] = React.useState({
@@ -27,20 +27,20 @@ const Calculator = ({ setCurrentPageIndex }) => {
     updatedAt: "",
     vitamin_A: 0,
     vitamin_D: 0,
-    zinc: 0
+    zinc: 0,
   });
   const [searchInput, setSearchInput] = React.useState({});
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
   const [confirmData, setConfirmData] = React.useState([]);
-  const [checked, setChecked] = React.useState({ 0: false });
+  const [checked, setChecked] = React.useState({});
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
   const searchInputHandle = (e) => {
     setSearchInput({
-      food_name: e
+      food_name: e,
     });
   };
 
@@ -62,6 +62,13 @@ const Calculator = ({ setCurrentPageIndex }) => {
         calories: searchResult.calories,
       },
     ]);
+    setChecked((prevState) => {
+      let count = Object.keys(checked).length;
+      return {
+        ...prevState,
+        [count]: false,
+      };
+    });
   };
 
   const confirmButtonHandle = () => {
@@ -72,36 +79,65 @@ const Calculator = ({ setCurrentPageIndex }) => {
           {
             FoodId: resultSave[key].id,
             date: resultSave[key].date,
-            amount: value[key][0]
-          }],
-        );
+            amount: value[key][0],
+          },
+        ]);
       }
     }
   };
 
   const userFoodSender = () => {
-    console.log(confirmData)
-    axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
-      .then(response => {
-        if (response.data === 'success') {
-          setOpen(!open)
-          console.log('좋아')
+    axios
+      .post(
+        "http://localhost:4000/food/addfooduser",
+        { food_info: confirmData },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        if (response.data === "success") {
+          setOpen(!open);
         }
-      })
-  }
+      });
+  };
 
   useEffect(() => {
-    userFoodSender()
-  }, [confirmData])
+    userFoodSender();
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return !checked[idx];
+      });
+    });
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
+      }
+      return returnObj;
+    });
+  }, [confirmData]);
 
   const deleteButtonHandle = () => {
-    for (let key in checked) {
-      if (checked[key]) {
-        console.log(key);
-        setResultSave(resultSave.filter((ele, idx) => idx !== key));
-        setChecked({ [key]: false });
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return checked[idx] === false;
+      });
+    });
+
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
       }
-    }
+      return returnObj;
+    });
   };
 
   useEffect(() => {
@@ -155,16 +191,14 @@ const Calculator = ({ setCurrentPageIndex }) => {
         <div>
           <Snackbar
             open={open}
-            onClose={evt => setOpen(false)}
-            message="Successfully registerd..."
+            onClose={(evt) => setOpen(false)}
+            message='Successfully registerd...'
             dismissesOnAction
             action={
               <SnackbarAction
-              style={
-                {color: '#ffff'}
-              }
-                label="Dismiss"
-                onClick={() => console.log('Click Me')}
+                style={{ color: "#ffff" }}
+                label='Dismiss'
+                onClick={() => console.log("Click Me")}
               />
             }
           />

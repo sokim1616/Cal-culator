@@ -65,17 +65,30 @@ const App = () => {
           />
           <Route
             path='/summary'
-            render={() => <Summary isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}
+            render={() => (
+              <Summary
+                isLogin={isLogin}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />
+            )}
           />
           <Route
             path='/calculator'
             render={() => (
-              <Calculator isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />
+              <Calculator
+                isLogin={isLogin}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />
             )}
           />
           <Route
             path='/dodont'
-            render={() => <DoDont isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}
+            render={() => (
+              <DoDont
+                isLogin={isLogin}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />
+            )}
           />
           <Route
             path='/'

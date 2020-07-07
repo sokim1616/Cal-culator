@@ -19,5 +19,14 @@ body {
 
 .desc {
   color: greenyellow;
+  width: 80%;
 }
 
+.trivia {
+  position: absolute;
+  text-align: right;
+  width: 70%;
+  bottom: 3%;
+  right: 3%;
+  color: darkseagreen;
+}
