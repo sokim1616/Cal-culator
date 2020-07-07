@@ -39,6 +39,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const [totalCalories, setTotalCalories] = React.useState(0);
   const [open, setOpen] = React.useState(false);
   const [autoComplete, setAutoComplete] = React.useState([]);
+  const [openError, setOpenError] = React.useState(false);
 
   const searchInputHandle = (e) => {
     setSearchInput({
@@ -74,22 +75,26 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const addToCartButton = () => {
-    setResultSave((prevState) => [
-      ...prevState,
-      {
-        id: searchResult.id,
-        date: startDate,
-        foodname: searchResult.food_name,
-        calories: searchResult.calories,
-      },
-    ]);
-    setChecked((prevState) => {
-      let count = Object.keys(checked).length;
-      return {
+    if (startDate === undefined) {
+      setOpenError(!openError)
+    } else {
+      setResultSave((prevState) => [
         ...prevState,
-        [count]: false,
-      };
-    });
+        {
+          id: searchResult.id,
+          date: startDate,
+          foodname: searchResult.food_name,
+          calories: searchResult.calories,
+        },
+      ]);
+      setChecked((prevState) => {
+        let count = Object.keys(checked).length;
+        return {
+          ...prevState,
+          [count]: false,
+        };
+      });
+    }
   };
 
   const confirmButtonHandle = () => {
@@ -111,7 +116,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
     console.log(confirmData)
     axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
       .then(response => {
-        if(response.data === "empty array") {
+        if (response.data === "empty array") {
           console.log(response)
           console.log("SERVER OK")
         } else if (response.data === 'success') {
@@ -197,6 +202,8 @@ const Calculator = ({ setCurrentPageIndex }) => {
             searchResult={searchResult}
             addDateHandle={addDateHandle}
             addToCartButton={addToCartButton}
+            openError={openError}
+            setOpenError={setOpenError}
           />
         </div>
         <div className='cart'>
