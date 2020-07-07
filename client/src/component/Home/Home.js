@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import "./Home.css";
-// import React from "react";
+import React from "react";
 import './Home.scss';
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
