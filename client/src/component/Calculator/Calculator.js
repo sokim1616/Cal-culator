@@ -33,7 +33,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
   const [confirmData, setConfirmData] = React.useState([]);
-  const [checked, setChecked] = React.useState({ 0: false });
+  const [checked, setChecked] = React.useState({});
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
   const [open, setOpen] = React.useState(false);
@@ -62,6 +62,13 @@ const Calculator = ({ setCurrentPageIndex }) => {
         calories: searchResult.calories,
       },
     ]);
+    setChecked((prevState) => {
+      let count = Object.keys(checked).length;
+      return {
+        ...prevState,
+        [count]: false,
+      };
+    });
   };
 
   const confirmButtonHandle = () => {
@@ -79,19 +86,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
     }
   };
 
-  useEffect(() => {
-    const checkedIndex = Object.keys(checked).filter(
-      (item) => checked[item] === true
-    );
-    setResultSave((prevState) => {
-      return prevState.filter((item, idx) =>
-        checkedIndex.includes(idx.toString())
-      );
-    });
-  }, [confirmData]);
-
   const userFoodSender = () => {
-    console.log(confirmData);
     axios
       .post(
         "http://localhost:4000/food/addfooduser",
@@ -107,16 +102,42 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   useEffect(() => {
     userFoodSender();
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return !checked[idx];
+      });
+    });
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
+      }
+      return returnObj;
+    });
   }, [confirmData]);
 
   const deleteButtonHandle = () => {
-    for (let key in checked) {
-      if (checked[key]) {
-        console.log(key);
-        setResultSave(resultSave.filter((ele, idx) => idx !== key));
-        setChecked({ [key]: false });
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return checked[idx] === false;
+      });
+    });
+
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
       }
-    }
+      return returnObj;
+    });
   };
 
   useEffect(() => {
