@@ -27,8 +27,10 @@ import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
+import '@rmwc/snackbar/styles';
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 
-const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
+const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, setOpenError }) => {
   const [open, setOpen] = React.useState(false);
   const [startDate, setStartDate] = React.useState();
 
@@ -78,7 +80,7 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
             onClose={(evt) => {
               setOpen(false);
             }}
-            // onClosed={(evt) => console.log(evt.detail.action)}
+          // onClosed={(evt) => console.log(evt.detail.action)}
           >
             <DialogTitle>ADD TO CART</DialogTitle>
             <DialogContent>Did you really eat this...?</DialogContent>
@@ -101,6 +103,19 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton }) => {
           >
             ADD TO CART
           </Button>
+          <Snackbar
+            open={openError}
+            onClose={evt => setOpenError(false)}
+            message="Please select date..."
+            dismissesOnAction
+            action={
+              <SnackbarAction
+                style={{ color: "#ffff" }}
+                label="Dismiss"
+                onClick={() => console.log('Click Me')}
+              />
+            }
+          />
         </div>
       </div>
     </>
