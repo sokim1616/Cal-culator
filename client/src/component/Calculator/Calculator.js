@@ -78,26 +78,26 @@ const Calculator = ({ setCurrentPageIndex }) => {
     if (startDate === undefined) {
       setOpenError(!openError)
     } else
-    if (searchResult.food_name === 'CAL-CULATOR'){
-      setOpenError(!openError)
-    } else {
-      setResultSave((prevState) => [
-        ...prevState,
-        {
-          id: searchResult.id,
-          date: startDate,
-          foodname: searchResult.food_name,
-          calories: searchResult.calories,
-        },
-      ]);
-      setChecked((prevState) => {
-        let count = Object.keys(checked).length;
-        return {
+      if (searchResult.food_name === 'CAL-CULATOR') {
+        setOpenError(!openError)
+      } else {
+        setResultSave((prevState) => [
           ...prevState,
-          [count]: false,
-        };
-      });
-    }
+          {
+            id: searchResult.id,
+            date: startDate,
+            foodname: searchResult.food_name,
+            calories: searchResult.calories,
+          },
+        ]);
+        setChecked((prevState) => {
+          let count = Object.keys(checked).length;
+          return {
+            ...prevState,
+            [count]: false,
+          };
+        });
+      }
   };
 
   const confirmButtonHandle = () => {
