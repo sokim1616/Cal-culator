@@ -17,10 +17,6 @@ const Search = ({
   setSearchInput,
   setAutoComplete,
 }) => {
-  // useEffect(() => {
-  //   setSearchInput({});
-  // }, [searchResult]);
-
   const clickSearch = (value) => {
     axios
       .post(
