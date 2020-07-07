@@ -106,7 +106,7 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, se
           <Snackbar
             open={openError}
             onClose={evt => setOpenError(false)}
-            message="Please select date..."
+            message="Please search food or select date..."
             dismissesOnAction
             action={
               <SnackbarAction
