@@ -12,6 +12,7 @@
     "@rmwc/icon-button": "^6.1.3",
     "@rmwc/radio": "^6.1.3",
     "@rmwc/select": "^6.1.3",
+    "@rmwc/snackbar": "^6.1.3",
     "@rmwc/switch": "^6.1.3",
     "@rmwc/tabs": "^6.1.3",
     "@rmwc/textfield": "^6.1.3",
