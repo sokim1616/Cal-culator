@@ -5,11 +5,18 @@ import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
 import "./Summary.css";
+import axios from "axios";
+import formatDay from "../helperFunction/formatDay";
+const today = new Date();
+
 const Summary = ({ setCurrentPageIndex }) => {
   const [sampleFood, setSampleFood] = useState([
     { food_name: "pasta", amount: 1, calories: 1000 },
     { food_name: "pizza", amount: 2, calories: 100 },
   ]);
+
+  const [date, setDate] = useState(formatDay(today));
+  const [foodEaten, setFoodEaten] = useState();
 
   const [showDWM, setShowDWM] = useState({
     daily: true,
@@ -20,6 +27,10 @@ const Summary = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     setCurrentPageIndex(2);
   }, []);
+
+  // useEffect(() => {
+  //   axios.post('http://localhost:4000/')
+  // })
 
   return (
     <div className='summary'>
