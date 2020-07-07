@@ -15,7 +15,7 @@ const Summary = ({ setCurrentPageIndex }) => {
     { food_name: "pizza", amount: 2, calories: 100 },
   ]);
 
-  const [date, setDate] = useState(formatDay(today));
+  const [mainDate, setMainDate] = useState(formatDay(today));
   const [foodEaten, setFoodEaten] = useState();
 
   const [showDWM, setShowDWM] = useState({
@@ -28,9 +28,23 @@ const Summary = ({ setCurrentPageIndex }) => {
     setCurrentPageIndex(2);
   }, []);
 
-  // useEffect(() => {
-  //   axios.post('http://localhost:4000/')
-  // })
+  useEffect(() => {
+    axios
+      .post(
+        "http://localhost:4000/user/eatenFoodDay",
+        { date: mainDate },
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // withCredentials: true
+        }
+      )
+      .then((result) => {
+        setFoodEaten(result.data);
+      });
+  }, [mainDate]);
 
   return (
     <div className='summary'>
@@ -38,7 +52,7 @@ const Summary = ({ setCurrentPageIndex }) => {
       <div className='summary-container'>
         <div className='chart'>
           {showDWM.daily ? (
-            <ChartPolarDaily />
+            <ChartPolarDaily setMainDate={setMainDate} foodEaten={foodEaten} />
           ) : showDWM.weekly ? (
             <ChartBarWeekly />
           ) : (
@@ -47,7 +61,6 @@ const Summary = ({ setCurrentPageIndex }) => {
         </div>
         <div className='foodlist'>
           <h2>언제 뭘 먹었나.</h2>
-          {/* <SelectButton selectDWM={setShowDWM} /> */}
           <FoodList food={sampleFood} />
         </div>
       </div>

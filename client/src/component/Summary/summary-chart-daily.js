@@ -7,7 +7,7 @@ import "./Summary.css";
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
 
-const ChartPolarDaily = () => {
+const ChartPolarDaily = ({ setMainDate, foodEaten }) => {
   const [date, setDate] = useState(formatDay(today));
   const [dailyNutrition, setDailyNutrition] = useState({});
   const [consumedDaily, setConsumedDaily] = useState({
