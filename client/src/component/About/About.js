@@ -11,17 +11,16 @@ import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
 import "./About.css";
 import AboutTeam from "./AboutTeam";
-import AboutProject from './AboutProject';
+import AboutApp from './AboutApp';
 
 const About = () => {
   const history = useHistory();
 
   //const [flipped, setFlipped] = React.useState(false);
   const [teamModalOpen, setTeamModalOpen] = React.useState(false)
+  const [appModalOpen, setAppModalOpen] = React.useState(false)
 
-  // const flipCard = () => {
-  //   setFlipped(true);
-  // }
+
   const openTeamModal = () => {
     setTeamModalOpen(true);
   }
@@ -30,19 +29,24 @@ const About = () => {
     setTeamModalOpen(false);
   }
 
-  const toAboutProject = () => {
-    history.push('./AboutProject')
+  const openAppModal = () => {
+    setAppModalOpen(true);
+  }
+
+  const closeAppModal = () => {
+    setAppModalOpen(false);
   }
 
   return (
     <div className='aboutButtons'>
       <AboutTeam teamModalOpen={teamModalOpen} closeTeamModal={closeTeamModal} />
+      <AboutApp appModalOpen={appModalOpen} closeAppModal={closeAppModal} />
       <Button
         label='About this App'
         raised
         theme={["secondaryBg", "onSecondary"]}
         //onClick 하면 About Project 페이지가 나오도록
-        onClick={toAboutProject}
+        onClick={openAppModal}
       />
       <div className="divider" />
       <Button
