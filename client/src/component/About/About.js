@@ -44,7 +44,9 @@ const About = () => {
         //onClick 하면 About Project 페이지가 나오도록
         onClick={toAboutProject}
       />
+      <div className="divider" />
       <Button
+        style={{ width: '10rem' }}
         label='About Team'
         raised
         theme={["secondaryBg", "onSecondary"]}
