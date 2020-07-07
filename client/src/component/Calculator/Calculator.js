@@ -30,6 +30,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
     vitamin_D: 0,
     zinc: 0,
   });
+
   const [searchInput, setSearchInput] = React.useState({});
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
@@ -49,7 +50,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (inputRef.current.children[1].value == searchInput.food_name) {
+      if (inputRef.current.children[1].value === searchInput.food_name) {
         axios
           .get("http://localhost:4000/food/foodautocomplete", {
             params: {
@@ -101,6 +102,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const confirmButtonHandle = () => {
+    
     for (let key in checked) {
       if (checked[key]) {
         setConfirmData((prevData) => [
@@ -116,15 +118,12 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const userFoodSender = () => {
-    console.log(confirmData)
     axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
       .then(response => {
-        if (response.data === "empty array") {
-          console.log(response)
+        if (response.data === "init response") {
           console.log("SERVER OK")
         } else if (response.data === 'success') {
           setOpen(!open)
-          console.log(response)
         }
       });
   };
@@ -136,6 +135,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
         return !checked[idx];
       });
     });
+
     setChecked((prevState) => {
       let checkedKeys = Object.keys(prevState);
       let count = checkedKeys.filter((item) => {
