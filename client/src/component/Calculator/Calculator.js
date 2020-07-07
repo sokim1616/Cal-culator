@@ -108,15 +108,15 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const userFoodSender = () => {
-    axios
-      .post(
-        "http://localhost:4000/food/addfooduser",
-        { food_info: confirmData },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        if (response.data === "success") {
-          setOpen(!open);
+    console.log(confirmData)
+    axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
+      .then(response => {
+        if(response.data === "empty array") {
+          console.log(response)
+          console.log("SERVER OK")
+        } else if (response.data === 'success') {
+          setOpen(!open)
+          console.log(response)
         }
       });
   };
