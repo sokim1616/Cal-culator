@@ -3,6 +3,7 @@ import './Home.scss';
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
 import axios from "axios";
+import { useState, useEffect } from 'react';
 
 const Home = () => {
   const [trivia, setTrivia] = useState("");
