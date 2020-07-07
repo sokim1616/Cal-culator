@@ -24,16 +24,24 @@
 
 .aboutButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  padding: 20%;
+
 }
 
-.fullstack {
+.divider{
+  width:30%;
+  height:auto;
+  display:inline-block;
+}
+
+.choikyung {
   display: flex;
   justify-content: space-around;
 }
 
-.frontend {
+.kims {
   display: flex;
   justify-content: space-around;
 }

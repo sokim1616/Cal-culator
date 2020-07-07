@@ -34,26 +34,28 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                     <div className='form-wrapper'>
                         <h2 className='title'>MEMBERS OF HELL-THY</h2>
                         {/* <form onSubmit={handleSubmit} noValidate> */}
-                        <div className='fullstack'>
-                            <div className='hwaejang'>
-                                <div htmlFor='hwaejang'><center>회장</center></div>
+                        <div className='choikyung'>
+                            <div>
+                                <div className='hwaejang' htmlFor='hwaejang'><center>회장</center></div>
                                 <div>
                                     <img src={philip} />
+                                    <span>Name: PHILIP CHOI</span>
+                                    <span>Position: Full-stack</span>
                                 </div>
                             </div>
-                            <div className='bujang'>
-                                <div htmlFor='bujang'><center>부장</center></div>
-                                <div>
-                                    <img src={junseob} />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='frontend'>
                             <div className='gongjangjang'>
                                 <div htmlFor='gongjangjang'><center>공장장</center></div>
                                 <div>
                                     <img src={douhyun} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='kims'>
+                            <div className='bujang'>
+                                <div htmlFor='bujang'><center>부장</center></div>
+                                <div>
+                                    <img src={junseob} />
                                 </div>
                             </div>
                             <div className='employee'>
