@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
@@ -10,6 +10,7 @@ import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/snackbar/styles";
 
 const Calculator = ({ setCurrentPageIndex }) => {
+  const inputRef = useRef();
   const [searchResult, setSearchResult] = React.useState({
     calcium: 0,
     calories: 0,
@@ -37,12 +38,33 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+  const [autoComplete, setAutoComplete] = React.useState([]);
+  const [openError, setOpenError] = React.useState(false);
 
   const searchInputHandle = (e) => {
     setSearchInput({
       food_name: e,
     });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputRef.current.children[1].value == searchInput.food_name) {
+        axios
+          .get("http://localhost:4000/food/foodautocomplete", {
+            params: {
+              query: searchInput.food_name,
+            },
+          })
+          .then((result) => {
+            setAutoComplete(result.data);
+          });
+      }
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchInput, inputRef]);
 
   const searchResultHandle = (e) => {
     setSearchResult(e);
@@ -53,22 +75,29 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const addToCartButton = () => {
-    setResultSave((prevState) => [
-      ...prevState,
-      {
-        id: searchResult.id,
-        date: startDate,
-        foodname: searchResult.food_name,
-        calories: searchResult.calories,
-      },
-    ]);
-    setChecked((prevState) => {
-      let count = Object.keys(checked).length;
-      return {
+    if (startDate === undefined) {
+      setOpenError(!openError)
+    } else
+    if (searchResult.food_name === 'CAL-CULATOR'){
+      setOpenError(!openError)
+    } else {
+      setResultSave((prevState) => [
         ...prevState,
-        [count]: false,
-      };
-    });
+        {
+          id: searchResult.id,
+          date: startDate,
+          foodname: searchResult.food_name,
+          calories: searchResult.calories,
+        },
+      ]);
+      setChecked((prevState) => {
+        let count = Object.keys(checked).length;
+        return {
+          ...prevState,
+          [count]: false,
+        };
+      });
+    }
   };
 
   const confirmButtonHandle = () => {
@@ -87,15 +116,15 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const userFoodSender = () => {
-    axios
-      .post(
-        "http://localhost:4000/food/addfooduser",
-        { food_info: confirmData },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        if (response.data === "success") {
-          setOpen(!open);
+    console.log(confirmData)
+    axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
+      .then(response => {
+        if (response.data === "empty array") {
+          console.log(response)
+          console.log("SERVER OK")
+        } else if (response.data === 'success') {
+          setOpen(!open)
+          console.log(response)
         }
       });
   };
@@ -163,6 +192,11 @@ const Calculator = ({ setCurrentPageIndex }) => {
           searchInputHandle={searchInputHandle}
           searchResultHandle={searchResultHandle}
           searchInput={searchInput}
+          inputRef={inputRef}
+          autoComplete={autoComplete}
+          setSearchResult={setSearchResult}
+          setSearchInput={setSearchInput}
+          setAutoComplete={setAutoComplete}
         />
       </div>
       <div className='food-cart'>
@@ -171,6 +205,8 @@ const Calculator = ({ setCurrentPageIndex }) => {
             searchResult={searchResult}
             addDateHandle={addDateHandle}
             addToCartButton={addToCartButton}
+            openError={openError}
+            setOpenError={setOpenError}
           />
         </div>
         <div className='cart'>

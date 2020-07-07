@@ -119,7 +119,7 @@ const Login = ({
               <div className='email'>
                 <label htmlFor='email'>EMAIL</label>
                 <input
-                  placeholder={"너의 아이덴티티...널 알려줘..."}
+                  placeholder={""}
                   type='email'
                   name='email'
                   onChange={handleChange}
@@ -132,7 +132,7 @@ const Login = ({
               <div className='password'>
                 <label htmlFor='password'>PASSWORD</label>
                 <input
-                  placeholder={"써보시지 너의 비밀... 자신있다면..."}
+                  placeholder={""}
                   type='password'
                   name='password'
                   onChange={handleChange}

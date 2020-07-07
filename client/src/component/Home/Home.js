@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css";
+import './Home.scss';
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
 import axios from "axios";
@@ -12,23 +12,22 @@ const Home = () => {
     });
   }, []);
   return (
-    <div>
-      <div>
-        <nav className='nav'>
-          <div className='title'>Cal-culator</div>
-          <Typography use='headline1' className='desc'>
-            a web application that calculates your daily food intake.
+    <div className='home'>
+      <ul>
+        <li>
+          <Typography use='headline1' className='home__text homeTitle'><br /><span>Cal-culator</span></Typography>
+          <Typography use='headline1' className='home__text homeDesc'>
+            A web application that calculates <br /> Your daily food intake!!
           </Typography>
-          <Typography use='headline2' className='trivia'>
-            {trivia}
-          </Typography>
+        </li>
 
-          <header className='header'></header>
-        </nav>
-        <main>
-          <div></div>
-        </main>
-      </div>
+        <div>
+          <Typography use='headline1' className='home__text homeTrivia'><span>Food Trivia</span><br/> {trivia}</Typography>
+        </div>
+        <div>
+          <Typography use='headline1' className='home__text homeTrivia'><span>Food Trivia</span><br/> {trivia}</Typography>
+        </div>
+      </ul>
     </div>
   );
 };

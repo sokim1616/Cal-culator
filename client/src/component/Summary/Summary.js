@@ -16,7 +16,7 @@ const Summary = ({ setCurrentPageIndex }) => {
   ]);
 
   const [mainDate, setMainDate] = useState(formatDay(today));
-  const [foodEaten, setFoodEaten] = useState();
+  const [foodEaten, setFoodEaten] = useState([]);
 
   const [showDWM, setShowDWM] = useState({
     daily: true,
@@ -52,7 +52,7 @@ const Summary = ({ setCurrentPageIndex }) => {
       <div className='summary-container'>
         <div className='chart'>
           {showDWM.daily ? (
-            <ChartPolarDaily setMainDate={setMainDate} foodEaten={foodEaten} />
+            <ChartPolarDaily setMainDate={setMainDate} />
           ) : showDWM.weekly ? (
             <ChartBarWeekly />
           ) : (
@@ -61,7 +61,7 @@ const Summary = ({ setCurrentPageIndex }) => {
         </div>
         <div className='foodlist'>
           <h2>언제 뭘 먹었나.</h2>
-          <FoodList food={sampleFood} />
+          <FoodList food={foodEaten} />
         </div>
       </div>
     </div>
