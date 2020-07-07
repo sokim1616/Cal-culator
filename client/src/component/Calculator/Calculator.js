@@ -119,11 +119,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
     console.log(confirmData)
     axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
       .then(response => {
-<<<<<<< HEAD
         if (response.data === "empty array") {
-=======
-        if(response.data === "empty array") {
->>>>>>> client css in progress
           console.log(response)
           console.log("SERVER OK")
         } else if (response.data === 'success') {
@@ -134,7 +130,6 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     userFoodSender();
     setResultSave((prevState) => {
       return prevState.filter((item, idx) => {
@@ -153,10 +148,6 @@ const Calculator = ({ setCurrentPageIndex }) => {
       return returnObj;
     });
   }, [confirmData]);
-=======
-    userFoodSender()
-  }, [])
->>>>>>> client css in progress
 
   const deleteButtonHandle = () => {
     setResultSave((prevState) => {
