@@ -1,8 +1,7 @@
 const { Food_users } = require("../../model");
-
 module.exports = {
   post: async (req, res) => {
-    // const id = req.session.userid;
+    const id = req.session.userid;
     const { food_info } = req.body;
     /* 배열에 담긴 객체
     [
@@ -20,15 +19,20 @@ module.exports = {
         }
     ]
     */
-    for await (let i of food_info) {
-      Food_users.create({
-        amount: i.amount,
-        time: i.date,
-        UserId: 1,
-        FoodId: i.FoodId,
-      });
+    if (food_info === []) {
+      console.log(req)
+      res.send("empty array");
+    } else {
+      for await (let i of food_info) {
+        Food_users.create({
+          amount: i.amount,
+          time: i.date,
+          UserId: id,
+          FoodId: i.FoodId,
+        });
+      }
+      console.log(req)
+      res.send("success");
     }
-
-    res.send("success");
   },
 };
