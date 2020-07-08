@@ -42,12 +42,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const [autoComplete, setAutoComplete] = React.useState([]);
   const [openError, setOpenError] = React.useState(false);
 
-  const searchInputHandle = (e) => {
-    setSearchInput({
-      food_name: e,
-    });
-  };
-
+  // for autocomplete
   useEffect(() => {
     const timer = setTimeout(() => {
       if (inputRef.current.children[1].value === searchInput.food_name) {
@@ -70,6 +65,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   const searchResultHandle = (e) => {
     setSearchResult(e);
   };
+  // for searchResult
 
   const addDateHandle = (e) => {
     setStartDate(e);
@@ -77,55 +73,58 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   const addToCartButton = () => {
     if (startDate === undefined) {
-      setOpenError(!openError)
-    } else
-      if (searchResult.food_name === 'CAL-CULATOR') {
-        setOpenError(!openError)
-      } else {
-        setResultSave((prevState) => [
+      setOpenError(!openError);
+    } else if (searchResult.food_name === "CAL-CULATOR") {
+      setOpenError(!openError);
+    } else {
+      setResultSave((prevState) => [
+        ...prevState,
+        {
+          id: searchResult.id,
+          date: startDate,
+          foodname: searchResult.food_name,
+          calories: searchResult.calories,
+        },
+      ]);
+      setChecked((prevState) => {
+        let count = Object.keys(checked).length;
+        return {
           ...prevState,
-          {
-            id: searchResult.id,
-            date: startDate,
-            foodname: searchResult.food_name,
-            calories: searchResult.calories,
-          },
-        ]);
-        setChecked((prevState) => {
-          let count = Object.keys(checked).length;
-          return {
-            ...prevState,
-            [count]: false,
-          };
-        });
-      }
+          [count]: false,
+        };
+      });
+    }
   };
 
   const confirmButtonHandle = () => {
     for (let key in checked) {
       if (Object.keys(value).length === 0) {
-        console.log("please select AMOUT of food")
-      } else
-        if (checked[key]) {
-          setConfirmData((prevData) => [
-            ...prevData,
-            {
-              FoodId: resultSave[key].id,
-              date: resultSave[key].date,
-              amount: value[key][0],
-            },
-          ]);
-        }
+        console.log("please select AMOUT of food");
+      } else if (checked[key]) {
+        setConfirmData((prevData) => [
+          ...prevData,
+          {
+            FoodId: resultSave[key].id,
+            date: resultSave[key].date,
+            amount: value[key][0],
+          },
+        ]);
+      }
     }
   };
 
   const userFoodSender = () => {
-    axios.post('http://13.209.47.155:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
-      .then(response => {
+    axios
+      .post(
+        "http://13.209.47.155:4000/food/addfooduser",
+        { food_info: confirmData },
+        { withCredentials: true }
+      )
+      .then((response) => {
         if (response.data === "init response") {
-          console.log("SERVER OK")
-        } else if (response.data === 'success') {
-          setOpen(!open)
+          console.log("SERVER OK");
+        } else if (response.data === "success") {
+          setOpen(!open);
         }
       });
   };
@@ -148,6 +147,13 @@ const Calculator = ({ setCurrentPageIndex }) => {
         returnObj[i] = false;
       }
       return returnObj;
+    });
+    setTotalCalories(() => {
+      let currentTotal = 0;
+      for (let key in value) {
+        currentTotal += resultSave[key].calories * value[key][0];
+      }
+      return currentTotal;
     });
   }, [confirmData]);
 
@@ -180,19 +186,25 @@ const Calculator = ({ setCurrentPageIndex }) => {
   }, [value]);
 
   const totalCaloriesHandle = () => {
-    for (let key in value) {
-      setTotalCalories(
-        resultSave[key].calories * value[key][0] + totalCalories
-      );
-    }
+    // for (let key in value) {
+    //   setTotalCalories(
+    //     resultSave[key].calories * value[key][0] + totalCalories
+    //   );
+    // }
+    setTotalCalories(() => {
+      let currentTotal = 0;
+      for (let key in value) {
+        currentTotal += resultSave[key].calories * value[key][0];
+      }
+      return currentTotal;
+    });
   };
 
   return (
     <div className='calculator'>
       <div>
         <Search
-          searchInputHandle={searchInputHandle}
-          searchResultHandle={searchResultHandle}
+          setSearchResult={setSearchResult}
           searchInput={searchInput}
           inputRef={inputRef}
           autoComplete={autoComplete}

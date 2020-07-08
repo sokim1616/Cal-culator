@@ -10,8 +10,7 @@ import "./Calculator.css";
 
 const Search = ({
   inputRef,
-  searchInputHandle,
-  searchResultHandle,
+  setSearchResult,
   searchInput,
   autoComplete,
   setSearchInput,
@@ -27,7 +26,7 @@ const Search = ({
         }
       )
       .then((response) => {
-        searchResultHandle(response.data);
+        setSearchResult(response.data);
         setSearchInput({});
         setAutoComplete([]);
       })
@@ -46,7 +45,7 @@ const Search = ({
               withCredentials: true,
             })
             .then((response) => {
-              searchResultHandle(response.data);
+              setSearchResult(response.data);
             })
             .catch((error) => {
               console.log(error);
@@ -57,7 +56,7 @@ const Search = ({
           <div className='search-input'>
             <TextField
               ref={inputRef}
-              onChange={(e) => searchInputHandle(e.target.value)}
+              onChange={(e) => setSearchInput({ food_name: e.target.value })}
               style={{ width: "30rem" }}
               outlined
               placeholder='What did you eat today...?'
