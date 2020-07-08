@@ -121,7 +121,6 @@
           left: 145px;
         }
 
-
       // li {
       //   .trivia {
       //     position: absolute;
@@ -149,6 +148,7 @@
       //     }
       //   }
       // }
+<<<<<<< HEAD
 
       .sns {
         position: absolute;
@@ -178,9 +178,22 @@
           left: 140px;
           opacity: 0.5;
 
+=======
+      li {
+        .sns {
+          position: absolute;
+          .github {
+            position: absolute;
+            width: 100px;
+            height: 1000px;
+          }
+
+          .facebook {}
+
+          .insta {}
+>>>>>>> bd3aba91002928db2ef168888d585d12be7aba09
         }
       }
-
     }
   }
 
