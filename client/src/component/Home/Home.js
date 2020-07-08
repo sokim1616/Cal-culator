@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import './Home.scss';
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
-import axios from "axios";
+import github from './github.png';
+import facebook from './facebook.png';
+import insta from './instagram.png';
 
 const Home = () => {
-  const [trivia, setTrivia] = useState("");
-  useEffect(() => {
-    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
-      setTrivia(result.data);
-    });
-  }, []);
+  // const [trivia, setTrivia] = useState("");
+  // useEffect(() => {
+  //   axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+  //     setTrivia(result.data);
+  //   });
+  // }, []);
   return (
     <div className='home'>
       <ul>
         <li>
           <div className='calculator'>
-            <p className="cloud-text cloud-title">CAL-<br/>CULATOR!</p>
+            <p className="cloud-text cloud-title">CAL-<br />CULATOR!</p>
           </div>
         </li>
         <li>
@@ -43,9 +45,20 @@ const Home = () => {
             </div>
           </div>
         </li>
-        <li>
+        {/*<li>
           <div className='trivia'>
-            <Typography use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></Typography>
+            <p use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></p>
+          </div>
+        </li>*/}
+        <li className='sns'>
+          <div>
+            <img className='github' src={github} alt='github'/>
+          </div>
+          <div className='facebook'>
+            <img src={facebook} alt='facebook'/>
+          </div>
+          <div className='insta'>
+            <img src={insta} alt='insta'/>
           </div>
         </li>
       </ul>

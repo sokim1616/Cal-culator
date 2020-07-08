@@ -2,9 +2,13 @@ import React from "react";
 import Modal from "react-modal";
 import "./About.css";
 import philip from './image/philip.jpg'
+import jjun from './image/jjun.jpg'
 import douhyun from './image/douhyun.jpg'
+import ren from './image/ren.jpg'
 import junseob from './image/junseob.jpg'
+import mozzi from './image/mozzi.jpg'
 import sohyun from './image/sohyun.jpg'
+import mika from './image/mika.jpg'
 
 const customStyles = {
     content: {
@@ -19,7 +23,17 @@ const customStyles = {
     },
 };
 
+
 const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
+
+    //state에 담아서 덮어씌워주기
+    // isLogin 디폴트는 pet (true) -> 누르면 false로 바뀌고 사람으로 바뀌도록
+
+    const [isHwaejang, setIsHwaejang] = React.useState(false)
+    const changeHwaejang = () => {
+        setIsHwaejang(true)
+    }
+
     return (
         <div>
             <Modal
@@ -38,7 +52,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='hwaejang' htmlFor='hwaejang'><center>회장</center></div>
                                 <div>
-                                    <img src={philip} />
+                                    <img src={jjun} id="imgClickAndChange" onClick={changeHwaejang} />
                                     <div className='desc'>Name: PHILLIP CHOI</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
@@ -46,7 +60,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='gongjangjang' htmlFor='gongjangjang'><center>공장장</center></div>
                                 <div>
-                                    <img src={douhyun} />
+                                    <img src={ren} />
                                     <div className='desc'>Name: D.H KYUNG</div>
                                     <div className='desc'>Position: Front-end</div>
                                 </div>
@@ -58,7 +72,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='bujang' htmlFor='bujang'><center>부장</center></div>
                                 <div>
-                                    <img src={junseob} />
+                                    <img src={mozzi} />
                                     <div className='desc'>Name: JUNSEOB KIM</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
@@ -66,7 +80,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='employee' htmlFor='employee'><center>사원</center></div>
                                 <div>
-                                    <img src={sohyun} />
+                                    <img src={mika} />
                                     <div className='desc'>Name: SOHYUN KIM</div>
                                     <div className='desc'>Position: Front-end</div>
                                 </div>
