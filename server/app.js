@@ -1,7 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 
-const { Users } = require("./model");
+// const { Users } = require("./model");
 
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -19,7 +19,7 @@ const app = express();
 // use cors with credentials
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -35,8 +35,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-
-const passport = require("passport");
+/* const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 app.use(passport.initialize());
 app.use(passport.session());
@@ -59,12 +58,12 @@ passport.use(
     },
     function (accessToken, refreshToken, profile, cb) {
       // console.log(profile);
-      let user = profile.emails[0].value;
+      let users = profile.emails[0].value;
       // email : profile.emails[0].value
       // console.log("email ---------- ", profile.emails[0].value);
 
       Users.findOrCreate({
-        where: { email: user },
+        where: { email: users },
         defaults: {
           username: profile.displayName,
           password: profile.id,
@@ -77,19 +76,20 @@ passport.use(
         //   cb(null, user);
         // } else {
         //   // 이미 있을 때
+
         console.log("eeeeeewerwerwereeeeeee", user);
+        return cb(null, user);
         //   cb(null, user);
         // }
-        cb(null, user);
-        /* { id: 12,
-             username: 'JunSeob Kim',
-             email: 'wnstjq616@gmail.com',
-             password: '101853115948177116651',
-             gender: 'Male',
-             age: '20',
-             createdAt: 2020-07-07T16:55:17.000Z,
-             updatedAt: 2020-07-07T16:55:17.000Z
-           } */
+        //  { id: 12,
+        //   username: 'JunSeob Kim',
+        //   email: 'wnstjq616@gmail.com',
+        //   password: '101853115948177116651',
+        //   gender: 'Male',
+        //   age: '20',
+        //   createdAt: 2020-07-07T16:55:17.000Z,
+        //   updatedAt: 2020-07-07T16:55:17.000Z
+        // } 
 
         // 1. client에서 불러와서 정보를 받고 signin을 한다.
         // 2. 여기서 express session에 저장한다.
@@ -98,11 +98,16 @@ passport.use(
   )
 );
 
+
 app.get(
   "/auth/google",
   passport.authenticate("google", {
     scope: ["https://www.googleapis.com/auth/plus.login", "email"],
-  })
+  }),
+  function (req, res) {
+    res.writeHead({ "Access-Control-Allow-Origin": "*" });
+    res.send("ee");
+  }
 );
 
 app.get(
@@ -117,9 +122,12 @@ app.get(
     sess.userage = req.user.dataValues.age;
     sess.gender = req.user.dataValues.gender;
     console.log("sesssssss", sess);
+    res.writeHead({ "Access-Control-Allow-Origin": "*" });
     res.send(req.user.dataValues);
   }
 );
+
+*/
 
 app.use("/food", foodRouter);
 app.use("/user", userRouter);

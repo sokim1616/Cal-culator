@@ -104,57 +104,62 @@ const Login = ({
     }
   };
 
+  // const handleGoogleLogin = () => {
+  //   axios.get("http://localhost:4000/auth/google");
+  // };
+
   return (
     <div>
       <Modal
         isOpen={loginModalOpen}
         onRequestClose={closeLoginModal}
         style={customStyles}
-        contentLabel='Login Modal'
+        contentLabel="Login Modal"
       >
-        <div className='wrapper'>
-          <div className='form-wrapper'>
-            <h2 className='title'>LOGIN</h2>
+        <div className="wrapper">
+          <div className="form-wrapper">
+            <h2 className="title">LOGIN</h2>
             <form onSubmit={handleSubmit} noValidate>
-              <div className='email'>
-                <label htmlFor='email'>EMAIL</label>
+              <div className="email">
+                <label htmlFor="email">EMAIL</label>
                 <input
                   placeholder={""}
-                  type='email'
-                  name='email'
+                  type="email"
+                  name="email"
                   onChange={handleChange}
                   noValidate
                 />
                 {errors.email.length > 0 && (
-                  <span className='error'>{errors.email}</span>
+                  <span className="error">{errors.email}</span>
                 )}
               </div>
-              <div className='password'>
-                <label htmlFor='password'>PASSWORD</label>
+              <div className="password">
+                <label htmlFor="password">PASSWORD</label>
                 <input
                   placeholder={""}
-                  type='password'
-                  name='password'
+                  type="password"
+                  name="password"
                   onChange={handleChange}
                   noValidate
                 />
                 {errors.password.length > 0 && (
-                  <span className='error'>{errors.password}</span>
+                  <span className="error">{errors.password}</span>
                 )}
               </div>
-              <div className='button-div'>
-                <span className='submit'>
+              <div className="button-div">
+                <span className="submit">
                   <Button raised onClick={openSignupModal}>
                     Create
                   </Button>
                 </span>
-                <span className='loginnn'>
-                  <Button type='submit' raised>
+                <span className="loginnn">
+                  <Button type="submit" raised>
                     LOG IN
                   </Button>
                 </span>
               </div>
             </form>
+            {/* <button onClick={handleGoogleLogin}>Google Login</button> */}
           </div>
         </div>
       </Modal>
