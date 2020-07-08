@@ -52,7 +52,6 @@ const Home = () => {
         </li>*/}
         <li className='sns'>
           <div>
-<<<<<<< HEAD
             <img className='github' src={github} alt='github' />
           </div>
           <div >
@@ -60,15 +59,6 @@ const Home = () => {
           </div>
           <div >
             <img className='insta' src={insta} alt='insta' />
-=======
-            <img className='github' src={github} alt='github'/>
-          </div>
-          <div className='facebook'>
-            <img src={facebook} alt='facebook'/>
-          </div>
-          <div className='insta'>
-            <img src={insta} alt='insta'/>
->>>>>>> bd3aba91002928db2ef168888d585d12be7aba09
           </div>
         </li>
       </ul>
