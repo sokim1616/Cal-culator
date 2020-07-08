@@ -92,7 +92,8 @@ const Login = ({
             alert("Invalid Email or Password ");
           } else {
             if (response.status === 200) {
-              console.log("OK");
+              loginState();
+              closeLoginModal();
             }
           }
         })

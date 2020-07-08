@@ -47,7 +47,7 @@ const ChartBarWeekly = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {

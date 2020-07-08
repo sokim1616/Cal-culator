@@ -11,7 +11,7 @@ import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -21,8 +21,8 @@ const App = () => {
   };
 
   const logoutHandle = () => {
-    setIsLogin(false)
-  }
+    setIsLogin(false);
+  };
 
   function openLoginModal() {
     closeSignupModal();
@@ -66,10 +66,7 @@ const App = () => {
         <Switch>
           <Route
             path='/about'
-            render={() => <About
-              setCurrentPageIndex={setCurrentPageIndex}
-
-            />}
+            render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
           />
           <Route
             path='/summary'

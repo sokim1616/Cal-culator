@@ -38,7 +38,7 @@ const Summary = ({ setCurrentPageIndex }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {
@@ -60,7 +60,7 @@ const Summary = ({ setCurrentPageIndex }) => {
           )}
         </div>
         <div className='foodlist'>
-          <h2>언제 뭘 먹었나.</h2>
+          <h2>On {mainDate}, You Ate...</h2>
           <FoodList food={foodEaten} />
         </div>
       </div>

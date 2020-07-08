@@ -33,7 +33,7 @@ const ChartLineMonthly = () => {
       .get("http://localhost:4000/user/dailyCalorie", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        // withCredentials: true
+        withCredentials: true,
       })
       .then((result) => {
         setDailyCalorie(result.data);
@@ -48,7 +48,7 @@ const ChartLineMonthly = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {
