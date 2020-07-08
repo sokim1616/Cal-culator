@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Polar } from "react-chartjs-2";
+
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
 import "./Summary.css";
@@ -71,6 +72,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
       return { ...prevState };
     });
   }, [dailyNutrition]);
+
 
   return (
     <div className='heightSizing'>

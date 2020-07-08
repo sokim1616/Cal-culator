@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import getLastDayOfMonth from "../helperFunction/getLastDayOfMonth";
+
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
 
@@ -8,6 +9,7 @@ const ChartLineMonthly = () => {
   const [dailyCalorie, setDailyCalorie] = useState("");
   const [month, setMonth] = useState("2020-07");
   const [monthlyNutrition, setMonthlyNutrition] = useState({});
+
   const [consumedMonthly, setConsumedMonthly] = useState({
     labels: [],
     datasets: [
