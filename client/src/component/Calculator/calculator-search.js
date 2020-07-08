@@ -6,7 +6,7 @@ import "@rmwc/textfield/styles";
 import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
 import { TextField } from "@rmwc/textfield";
-import "./Calculator.css";
+import "./Calculator.scss";
 
 const Search = ({
   inputRef,
@@ -57,8 +57,8 @@ const Search = ({
             });
         }}
       >
-        <div className='search'>
-          <div className='search-input'>
+        <div>
+          <span className='search searchInput'>
             <TextField
               ref={inputRef}
               onChange={(e) => searchInputHandle(e.target.value)}
@@ -76,15 +76,15 @@ const Search = ({
                 </div>
               ))}
             </div>
-          </div>
-          <div className='search-button'>
+          </span>
+          <span className='search searchButton'>
             <Button
               type='submit'
               style={{ height: "3.5rem" }}
               label='Search'
               outlined
             />
-          </div>
+          </span>
         </div>
       </form>
     </div>

@@ -11,7 +11,7 @@ import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
 import "./About.css";
 import AboutTeam from "./AboutTeam";
-import AboutApp from './AboutApp';
+import AboutThisApp from './AboutThisApp';
 
 const About = () => {
   const history = useHistory();
@@ -39,14 +39,24 @@ const About = () => {
 
   return (
     <div className='aboutButtons'>
+      {/* <Switch>
+        <Route
+          path='/about/aboutthisapp'
+          render={() => <AboutThisApp
+            setCurrentPageIndex={setCurrentPageIndex}
+
+          />}
+        />
+      </Switch> */}
       <AboutTeam teamModalOpen={teamModalOpen} closeTeamModal={closeTeamModal} />
-      <AboutApp appModalOpen={appModalOpen} closeAppModal={closeAppModal} />
+      {/* <AboutApp appModalOpen={appModalOpen} closeAppModal={closeAppModal} /> */}
       <Button
         label='About this App'
         raised
         theme={["secondaryBg", "onSecondary"]}
         //onClick 하면 About Project 페이지가 나오도록
-        onClick={openAppModal}
+        onClick={() => history.push('/about/aboutthisapp')}
+
       />
       <div className="divider" />
       <Button
