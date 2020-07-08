@@ -31,7 +31,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
 
     const [isHwaejang, setIsHwaejang] = React.useState(false)
     const changeHwaejang = () => {
-        setIsHwaejang(true)
+        setIsHwaejang(!isHwaejang)
     }
 
     return (
@@ -52,7 +52,9 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='hwaejang' htmlFor='hwaejang'><center>회장</center></div>
                                 <div>
-                                    <img src={jjun} id="imgClickAndChange" onClick={changeHwaejang} />
+                                    <img src={
+                                        isHwaejang ? philip : jjun
+                                    } id="imgClickAndChange" onClick={changeHwaejang} />
                                     <div className='desc'>Name: PHILLIP CHOI</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
