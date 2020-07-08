@@ -22,7 +22,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoDay",
+        "http://13.209.47.155:4000/user/infoDay",
         { date },
         {
           method: "POST",

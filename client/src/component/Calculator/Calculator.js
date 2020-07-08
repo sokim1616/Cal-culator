@@ -52,7 +52,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
     const timer = setTimeout(() => {
       if (inputRef.current.children[1].value === searchInput.food_name) {
         axios
-          .get("http://localhost:4000/food/foodautocomplete", {
+          .get("http://13.209.47.155:4000/food/foodautocomplete", {
             params: {
               query: searchInput.food_name,
             },
@@ -120,7 +120,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const userFoodSender = () => {
-    axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
+    axios.post('http://13.209.47.155:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
       .then(response => {
         if (response.data === "init response") {
           console.log("SERVER OK")

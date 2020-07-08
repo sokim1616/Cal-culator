@@ -10,11 +10,6 @@ import formatDay from "../helperFunction/formatDay";
 const today = new Date();
 
 const Summary = ({ setCurrentPageIndex }) => {
-  const [sampleFood, setSampleFood] = useState([
-    { food_name: "pasta", amount: 1, calories: 1000 },
-    { food_name: "pizza", amount: 2, calories: 100 },
-  ]);
-
   const [mainDate, setMainDate] = useState(formatDay(today));
   const [foodEaten, setFoodEaten] = useState([]);
 
@@ -31,7 +26,7 @@ const Summary = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/eatenFoodDay",
+        "http://13.209.47.155:4000/user/eatenFoodDay",
         { date: mainDate },
         {
           method: "POST",

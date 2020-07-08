@@ -20,7 +20,7 @@ const Search = ({
   const clickSearch = (value) => {
     axios
       .post(
-        "http://localhost:4000/food/foodinfo/",
+        "http://13.209.47.155:4000/food/foodinfo/",
         { food_name: value },
         {
           withCredentials: true,
@@ -42,7 +42,7 @@ const Search = ({
         onSubmit={(e) => {
           e.preventDefault();
           axios
-            .post("http://localhost:4000/food/foodinfo/", searchInput, {
+            .post("http://13.209.47.155:4000/food/foodinfo/", searchInput, {
               withCredentials: true,
             })
             .then((response) => {
