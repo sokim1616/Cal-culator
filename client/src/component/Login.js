@@ -1,26 +1,16 @@
 import React from "react";
-import Modal from "react-modal";
+import { useHistory, withRouter} from "react-router-dom";
+import Modal from 'react-modal';
 import axios from "axios";
-import "./loginModal.css";
+import "./loginModal.scss";
 
 import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
+import { Typography } from "@rmwc/typography";
+import "@rmwc/typography/styles";
 
-const customStyles = {
-  content: {
-    position: "fixed",
-    top: "60%",
-    left: "50%",
-    width: "360px",
-    height: "540px",
-    transform: "translate(-50%,-50%)",
-    overflow: "none",
-    border: "0px",
-  },
-};
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement("#root");
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -31,6 +21,9 @@ const validateForm = (errors) => {
   return valid;
 };
 
+// const history = useHistory();
+
+
 const Login = ({
   loginState,
   loginModalOpen,
@@ -39,6 +32,8 @@ const Login = ({
 }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [errorCount, setErrorCount] = React.useState(null);
+  const [formValid, setFormValid] = React.useState(false);
   const [errors, setErrors] = React.useState({
     email: "",
     password: "",
@@ -54,20 +49,12 @@ const Login = ({
     const { name, value } = event.target;
 
     switch (name) {
-      case "fullName":
-        errors.fullName =
-          value.length < 5 ? "Full Name must be 5 characters long!" : "";
-        break;
       case "email":
         errors.email = validEmailRegex.test(value) ? "" : "Email is not valid!";
         break;
       case "password":
         errors.password =
           value.length < 8 ? "Password must be 8 characters long!" : "";
-        break;
-      case "age":
-        errors.age =
-          value.length < 2 ? "Please write your age in a correct form!" : "";
         break;
       default:
         break;
@@ -92,6 +79,8 @@ const Login = ({
             alert("Invalid Email or Password ");
           } else {
             if (response.status === 200) {
+              loginState();
+              closeLoginModal();
               console.log("OK");
             }
           }
@@ -109,62 +98,39 @@ const Login = ({
   // };
 
   return (
-    <div>
-      <Modal
-        isOpen={loginModalOpen}
-        onRequestClose={closeLoginModal}
-        style={customStyles}
-        contentLabel="Login Modal"
-      >
-        <div className="wrapper">
-          <div className="form-wrapper">
-            <h2 className="title">LOGIN</h2>
-            <form onSubmit={handleSubmit} noValidate>
-              <div className="email">
-                <label htmlFor="email">EMAIL</label>
-                <input
-                  placeholder={""}
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  noValidate
-                />
-                {errors.email.length > 0 && (
-                  <span className="error">{errors.email}</span>
-                )}
-              </div>
-              <div className="password">
-                <label htmlFor="password">PASSWORD</label>
-                <input
-                  placeholder={""}
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  noValidate
-                />
-                {errors.password.length > 0 && (
-                  <span className="error">{errors.password}</span>
-                )}
-              </div>
-              <div className="button-div">
-                <span className="submit">
-                  <Button raised onClick={openSignupModal}>
-                    Create
-                  </Button>
-                </span>
-                <span className="loginnn">
-                  <Button type="submit" raised>
-                    LOG IN
-                  </Button>
-                </span>
-              </div>
-            </form>
-            {/* <button onClick={handleGoogleLogin}>Google Login</button> */}
-          </div>
+    <Modal
+      className='login'
+      isOpen={loginModalOpen}
+      onRequestClose={closeLoginModal}
+      contentLabel="Login Modal"
+    >
+      <div className='wrapper'>
+        <div className='form-wrapper'>
+          <h2>LOGIN</h2>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className='email'>
+              <label htmlFor="email">EMAIL</label>
+              <input type='email' name='email' onChange={handleChange} noValidate />
+              {errors.email.length > 0 &&
+                <span className='error'>{errors.email}</span>}
+            </div>
+            <div className='password'>
+              <label htmlFor="password">PASSWORD</label>
+              <input type='password' name='password' onChange={handleChange} noValidate />
+              {errors.password.length > 0 &&
+                <span className='error'>{errors.password}</span>}
+            </div>
+            <div className='submit'>
+              <Button style={{ width: '280px' }} >LOGIN</Button>
+            </div>
+            <div>
+              <Button onClick={openSignupModal} style={{ width: '276.5px' }} >CREATE</Button>
+            </div>
+          </form>
         </div>
-      </Modal>
-    </div>
-  );
+      </div>
+    </Modal>
+  )
 };
 
-export default Login;
+export default withRouter(Login);

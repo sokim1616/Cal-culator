@@ -1,5 +1,9 @@
 @import "./css_rest.css";
 
+
+
+
+
 .footer {
   position: fixed;
   left: 0;
@@ -12,7 +16,7 @@
 }
 
 :root {
-  --mdc-theme-primary: #fb929e;
+  --mdc-theme-primary: #27ac27;
   --mdc-theme-secondary: #03dac4;
   --mdc-theme-error: #aedefc;
   --mdc-theme-background: #fff;
