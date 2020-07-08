@@ -30,7 +30,7 @@ const customStyles = {
     position: "fixed",
     top: "60%",
     left: "50%",
-    width: "360px",
+    width: "250px",
     height: "540px",
     transform: "translate(-50%,-50%)",
     overflow: "none",
@@ -146,8 +146,8 @@ const Signup = ({
         onRequestClose={closeSignupModal}
         style={customStyles}
       >
-        <div className="wrapper">
-          <div className="form-wrapper">
+        <div className="wrapper-signup">
+          <div className="form-wrapper-signup">
             <h2>Create Account</h2>
             <form onSubmit={handleSubmit} noValidate>
               <div className="email">

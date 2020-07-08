@@ -16,28 +16,28 @@ const Home = () => {
       <ul>
         <li>
           <div className='calculator'>
-            <p class="cloud-text cloud-title">CAL-<br/>CULATOR!</p>
+            <p className="cloud-text cloud-title">CAL-<br/>CULATOR!</p>
           </div>
         </li>
         <li>
-          <div class="perspective-text">
-            <div class="perspective-line">
+          <div className="perspective-text">
+            <div className="perspective-line">
               <p></p>
               <p className='nth-a'>A web application</p>
             </div>
-            <div class="perspective-line">
+            <div className="perspective-line">
               <p >a web application</p>
               <p>that calculates</p>
             </div>
-            <div class="perspective-line">
+            <div className="perspective-line">
               <p>that calculates</p>
               <p>your daily</p>
             </div>
-            <div class="perspective-line">
+            <div className="perspective-line">
               <p>your daily</p>
               <p>food intake</p>
             </div>
-            <div class="perspective-line">
+            <div className="perspective-line">
               <p className='nth-a'>food intake</p>
               <p></p>
             </div>
@@ -54,10 +54,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// <li>
-//           <Typography use='headline1' className='home__text homeTitle'><br /><span>Cal-culator</span></Typography>
-//           <Typography use='headline1' className='home__text homeDesc'>
-//             A web application that calculates <br /> Your daily food intake!!
-//           </Typography>
-//         </li>

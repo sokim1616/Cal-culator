@@ -1,5 +1,7 @@
 @import './css_rest.css';
 
+
+
 .footer {
   position: fixed;
   left: 0;
@@ -10,7 +12,6 @@
   color: #27ac27;
   background-color: rgb(235, 245, 232);
 }
-
 
 :root {
   --mdc-theme-primary: #27ac27;

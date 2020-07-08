@@ -49,8 +49,8 @@ label {
   font-weight: lighter;
 }
 
-.wrapper {
-  height: 50vh;
+.wrapper-signup {
+  height: 30vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@ label {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.form-wrapper {
+/* .form-wrapper {
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -70,9 +70,9 @@ label {
   border-radius: 6px;
   box-shadow: 0px 8px 36px #222;
   background-color: #fefefe;
-}
+} */
 
-.form-wrapper > h2 {
+.form-wrapper-signup>h2 {
   display: flex;
   justify-content: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -107,7 +107,7 @@ form {
 .createLogin {
 } */
 
-.mdc-form-field > label {
+.mdc-form-field>label {
   margin-left: 0;
   margin-right: auto;
   padding-left: 4px;
