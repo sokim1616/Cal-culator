@@ -34,44 +34,7 @@ const AboutApp = ({ appModalOpen, closeAppModal }) => {
                             <li>it recommends a diet plan based on your nutrition status</li>
                         </ul>
                         <div className='divider2'></div>
-                        <div className='choikyung'>
-                            <div>
-                                <div className='hwaejang' htmlFor='hwaejang'><center>회장</center></div>
-                                <div>
-                                    {/* <img src={philip} /> */}
-                                    <div className='desc'>Name: PHILLIP CHOI</div>
-                                    <div className='desc'>Position: Full-stack</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className='gongjangjang' htmlFor='gongjangjang'><center>공장장</center></div>
-                                <div>
-                                    {/* <img src={douhyun} /> */}
-                                    <div className='desc'>Name: D.H KYUNG</div>
-                                    <div className='desc'>Position: Front-end</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='divider2'></div>
 
-                        <div className='kims'>
-                            <div>
-                                <div className='bujang' htmlFor='bujang'><center>부장</center></div>
-                                <div>
-                                    {/* <img src={junseob} /> */}
-                                    <div className='desc'>Name: JUNSEOB KIM</div>
-                                    <div className='desc'>Position: Full-stack</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className='employee' htmlFor='employee'><center>사원</center></div>
-                                <div>
-                                    {/* <img src={sohyun} /> */}
-                                    <div className='desc'>Name: SOHYUN KIM</div>
-                                    <div className='desc'>Position: Front-end</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </Modal>

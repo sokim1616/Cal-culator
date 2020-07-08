@@ -33,6 +33,18 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
     const changeHwaejang = () => {
         setIsHwaejang(!isHwaejang)
     }
+    const [isGongjangjang, setIsGongjangjang] = React.useState(false)
+    const changeGongjangjang = () => {
+        setIsGongjangjang(!isGongjangjang)
+    }
+    const [isBujang, setIsBujang] = React.useState(false)
+    const changeBujang = () => {
+        setIsBujang(!isBujang)
+    }
+    const [isEmployee, setIsEmployee] = React.useState(false)
+    const changeEmployee = () => {
+        setIsEmployee(!isEmployee)
+    }
 
     return (
         <div>
@@ -46,15 +58,13 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                         <h2 className='title'>MEMBERS OF HELL-THY</h2>
                         {/* <form onSubmit={handleSubmit} noValidate> */}
                         <div className='divider2'></div>
-                        <div className='desc'>Hell-thy is a compound word that describes how much we care about your health, and how much hell of a time & effort we spent while making this application. Meet our crews!</div>
+                        <div className='desc'>Hell-thy is a compound word that describes how much we care about your health, and how much hell of a time & effort we spent while making this application. Meet our crews (by clicking on their pets)!</div>
                         <div className='divider2'></div>
                         <div className='choikyung'>
                             <div>
                                 <div className='hwaejang' htmlFor='hwaejang'><center>회장</center></div>
                                 <div>
-                                    <img src={
-                                        isHwaejang ? philip : jjun
-                                    } id="imgClickAndChange" onClick={changeHwaejang} />
+                                    <img src={isHwaejang ? philip : jjun} onClick={changeHwaejang} />
                                     <div className='desc'>Name: PHILLIP CHOI</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
@@ -62,7 +72,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='gongjangjang' htmlFor='gongjangjang'><center>공장장</center></div>
                                 <div>
-                                    <img src={ren} />
+                                    <img src={isGongjangjang ? douhyun : ren} onClick={changeGongjangjang} />
                                     <div className='desc'>Name: D.H KYUNG</div>
                                     <div className='desc'>Position: Front-end</div>
                                 </div>
@@ -74,7 +84,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='bujang' htmlFor='bujang'><center>부장</center></div>
                                 <div>
-                                    <img src={mozzi} />
+                                    <img src={isBujang ? junseob : mozzi} onClick={changeBujang} />
                                     <div className='desc'>Name: JUNSEOB KIM</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
@@ -82,7 +92,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='employee' htmlFor='employee'><center>사원</center></div>
                                 <div>
-                                    <img src={mika} />
+                                    <img src={isEmployee ? sohyun : mika} onClick={changeEmployee} />
                                     <div className='desc'>Name: SOHYUN KIM</div>
                                     <div className='desc'>Position: Front-end</div>
                                 </div>

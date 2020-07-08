@@ -9,6 +9,7 @@ import Footer from "./component/Footer";
 import Calculator from "./component/Calculator/Calculator";
 import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
+import AboutThisApp from "./component/About/AboutThisApp"
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -67,6 +68,13 @@ const App = () => {
           <Route
             path='/about'
             render={() => <About
+              setCurrentPageIndex={setCurrentPageIndex}
+
+            />}
+          />
+          <Route
+            path='/about/aboutthisapp'
+            render={() => <AboutThisApp
               setCurrentPageIndex={setCurrentPageIndex}
 
             />}

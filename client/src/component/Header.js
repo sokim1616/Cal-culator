@@ -14,29 +14,29 @@ const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin
   const history = useHistory();
 
   const summaryAuth = () => {
-    if(isLogin === false){
+    if (isLogin === false) {
       openLoginModal();
-    } else if(isLogin === true){
+    } else if (isLogin === true) {
       history.push('/summary')
     }
   }
 
   const calculatorAuth = () => {
-    if(isLogin === false){
+    if (isLogin === false) {
       openLoginModal();
-    } else if(isLogin === true){
+    } else if (isLogin === true) {
       history.push('/calculator')
     }
   }
 
   const dodontAuth = () => {
-    if(isLogin === false){
+    if (isLogin === false) {
       openLoginModal();
-    } else if(isLogin === true){
+    } else if (isLogin === true) {
       history.push('/dodont')
     }
   }
-  
+
   const destroyAuth = () => {
     logoutHandle()
     // axios.post('http://localhost:4000/user/signout', {withCredential: true})
@@ -49,9 +49,9 @@ const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin
   }
 
   const loginLogout = () => {
-    if(isLogin === true){
+    if (isLogin === true) {
       destroyAuth()
-    } else if(isLogin === false){
+    } else if (isLogin === false) {
       openLoginModal()
     }
   }
