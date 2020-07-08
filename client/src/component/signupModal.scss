@@ -14,7 +14,7 @@ SILVER PINK: #C9ADA7
 
 
 
-.login {
+.signup {
   position: absolute;
   top : 50%;
   left : 50%;
@@ -25,6 +25,7 @@ SILVER PINK: #C9ADA7
 
   .wrapper {
     width: 360px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +38,7 @@ SILVER PINK: #C9ADA7
       width: 280px;
       max-width: 80%;
       min-width: 100px;
-      min-height: 400px;
+      min-height: 580px;
       padding: 20px 40px;
       border-radius: 6px;
       box-shadow: 0px 8px 36px #222;
@@ -48,10 +49,10 @@ SILVER PINK: #C9ADA7
       display: flex;
       justify-content: center;
       font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
-      font-size: 3em;
+      font-size: 2em;
       font-weight: lighter;
-      margin-top: 0.25em;
-      margin-bottom: 0.25em;
+      margin-top: 1em;
+      margin-bottom: 1em;
       color: #222;
     }
 
@@ -61,11 +62,19 @@ SILVER PINK: #C9ADA7
       flex-wrap: wrap;
 
       .email,
-      .password{
+      .password,
+      .username,
+      .age,
+      .gender {
         display: flex;
         flex-direction: column;
         width: 100%;
         margin-bottom: 15px;
+      }
+
+      .gender-radio {
+        display: flex;
+        justify-content: space-around;
       }
 
       label {
@@ -87,11 +96,11 @@ SILVER PINK: #C9ADA7
         color: #bbb;
       }
 
-      Button {
+      button {
         min-width: 100%;
         cursor: pointer;
         margin-right: 0.25em;
-        margin-top: 2em;
+        margin-top: 1em;
         padding: 0.938em;
         border: none;
         border-radius: 4px;
@@ -117,4 +126,14 @@ SILVER PINK: #C9ADA7
       }
     }
   }
+}
+
+.mdc-form-field > label {
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 9px;
+  padding-left: 4px;
+  padding-right: 0;
+  order: 0;
+  font-size: 1.25em;
 }

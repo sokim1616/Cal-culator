@@ -9,7 +9,7 @@ import "./Calculator.scss";
 import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/snackbar/styles";
 
-const Calculator = ({ setCurrentPageIndex }) => {
+const Calculator = ({ setCurrentPageIndex, trivia }) => {
   const inputRef = useRef();
   const [searchResult, setSearchResult] = React.useState({
     calcium: 0,
@@ -225,6 +225,11 @@ const Calculator = ({ setCurrentPageIndex }) => {
             totalCalories={totalCalories}
             userFoodSender={userFoodSender}
           />
+        </li>
+        <li>
+          <div className='trivia'>
+            <p use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></p>
+          </div>
         </li>
         <div className='snackbar'>
           <Snackbar
