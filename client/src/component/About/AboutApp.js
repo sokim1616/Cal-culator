@@ -28,7 +28,7 @@ const AboutApp = ({ appModalOpen, closeAppModal }) => {
                         <h2 className='title'>WHAT IS CAL-CULATOR?</h2>
                         {/* <form onSubmit={handleSubmit} noValidate> */}
                         <div className='divider2'></div>
-                        <div className='desc'>Hell-thy is a compound word that describes how much we care about your health, and how much hell of a time & effort we spent while making this application. Meet our crews!</div>
+                        <div className='desc'>Cal-culator is a web application </div>
                         <div className='divider2'></div>
                         <div className='choikyung'>
                             <div>
