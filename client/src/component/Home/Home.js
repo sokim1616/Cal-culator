@@ -52,13 +52,19 @@ const Home = () => {
         </li>*/}
         <li className='sns'>
           <div>
-            <img className='github' src={github} alt='github' />
+            <a href='https://www.github.com/'>
+              <img className='github' src={github} alt='github' />
+            </a>
           </div>
           <div >
-            <img className='facebook' src={facebook} alt='facebook' />
+            <a href='http://www.facebook.com/'>
+              <img className='facebook' src={facebook} alt='facebook' />
+            </a>
           </div>
-          <div >
-            <img className='insta' src={insta} alt='insta' />
+          <div>
+            <a href='https://www.instagram.com/'>
+              <img className='insta' src={insta} alt='insta' />
+            </a>
           </div>
         </li>
       </ul>

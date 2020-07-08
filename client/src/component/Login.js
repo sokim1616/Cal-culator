@@ -121,10 +121,10 @@ const Login = ({
                 <span className='error'>{errors.password}</span>}
             </div>
             <div className='submit'>
-              <Button style={{ width: '280px' }} >LOGIN</Button>
+              <Button>LOGIN</Button>
             </div>
-            <div>
-              <Button onClick={openSignupModal} style={{ width: '276.5px' }} >CREATE</Button>
+            <div className='create'>
+              <Button onClick={openSignupModal}>CREATE</Button>
             </div>
           </form>
         </div>

@@ -208,7 +208,7 @@ const Signup = ({
               </div>
             </div>
             <div className="createLogin">
-              <Button style={{ width: '280px' }} type="submit" raised>
+              <Button type="submit" raised>
                 CREATE || LOG IN
                 </Button>
             </div>
