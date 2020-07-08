@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    username: "root",
+    username: "admin",
     password: process.env.PASSWORD,
     database: "cal_culator",
-    host: "localhost",
+    host: "cal-culator-database.c5f7ymdkzjkq.ap-northeast-2.rds.amazonaws.com",
     dialect: "mysql",
     logging: false,
   },
