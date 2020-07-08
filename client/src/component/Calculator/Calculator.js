@@ -150,6 +150,14 @@ const Calculator = ({ setCurrentPageIndex }) => {
       }
       return total;
     });
+
+    setValue(() => {
+      let returnObj = {};
+      for (let i = 0; i < resultSave.length; i++) {
+        returnObj[i] = 1;
+      }
+      return returnObj;
+    });
   }, [confirmData]);
 
   const deleteButtonHandle = () => {
@@ -178,8 +186,10 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   useEffect(() => {
     let currentTotal = 0;
-    for (let key in value) {
-      currentTotal += resultSave[key].calories * value[key][0];
+    for (let i = 0; i < resultSave.length; i++) {
+      if (value[i]) {
+        currentTotal += resultSave[i].calories * value[i][0];
+      }
     }
     setTotalCalories(currentTotal);
   }, [value]);
