@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory, withRouter} from "react-router-dom";
 import Modal from 'react-modal';
 import axios from "axios";
 import "./loginModal.scss";
@@ -7,6 +8,7 @@ import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
 import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
+
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
@@ -18,6 +20,9 @@ const validateForm = (errors) => {
   Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
   return valid;
 };
+
+// const history = useHistory();
+
 
 const Login = ({
   loginState,
@@ -75,6 +80,7 @@ const Login = ({
           } else {
             if (response.status === 200) {
               loginState();
+              closeLoginModal();
               console.log("OK");
             }
           }
@@ -182,4 +188,4 @@ const Login = ({
   )
 };
 
-export default Login;
+export default withRouter(Login);

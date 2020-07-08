@@ -24,7 +24,6 @@ const validateForm = (errors) => {
 };
 
 const Signup = ({
-  signupState,
   signupModalOpen,
   openLoginModal,
   closeSignupModal,

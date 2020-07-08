@@ -11,47 +11,49 @@ import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
 const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin, logoutHandle }) => {
-  const history = useHistory();
+const history = useHistory();
 
   const summaryAuth = () => {
-    if(isLogin === false){
+    if (isLogin === false) {
       openLoginModal();
-    } else if(isLogin === true){
+    } else if (isLogin === true) {
       history.push('/summary')
     }
   }
 
   const calculatorAuth = () => {
-    if(isLogin === false){
+    if (isLogin === false) {
       openLoginModal();
-    } else if(isLogin === true){
+    } else if (isLogin === true) {
       history.push('/calculator')
     }
   }
 
   const dodontAuth = () => {
-    if(isLogin === false){
+    if (isLogin === false) {
       openLoginModal();
-    } else if(isLogin === true){
+    } else if (isLogin === true) {
       history.push('/dodont')
     }
   }
-  
+
   const destroyAuth = () => {
     logoutHandle()
-    // axios.post('http://localhost:4000/user/signout', {withCredential: true})
-    //   .then(response => {
-    //     if(response.data === "signed out"){
-    //       logoutHandle();
-    //       console.log("SIGN OUT")
-    //     }
-    //   })
+    axios.post('http://localhost:4000/user/signout', { withCredential: true })
+      .then(response => {
+        if (response.data === "signed out") {
+          logoutHandle();
+          history.push("/");
+          console.log("SIGN OUT")
+        }
+      })
   }
 
   const loginLogout = () => {
-    if(isLogin === true){
+    if (isLogin === true) {
       destroyAuth()
-    } else if(isLogin === false){
+
+    } else if (isLogin === false) {
       openLoginModal()
     }
   }
