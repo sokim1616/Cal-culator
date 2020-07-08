@@ -59,7 +59,7 @@ const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin
 
   return (
     <div>
-      <header>
+      <header className='header'>
         <TabBar
           activeTabIndex={currentPageIndex}
           onActivate={(evt) => setCurrentPageIndex(evt.detail.index)}

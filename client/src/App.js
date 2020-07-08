@@ -66,7 +66,10 @@ const App = () => {
         <Switch>
           <Route
             path='/about'
-            render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
+            render={() => <About
+              setCurrentPageIndex={setCurrentPageIndex}
+
+            />}
           />
           <Route
             path='/summary'
