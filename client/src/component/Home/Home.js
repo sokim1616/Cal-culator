@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./Home.scss";
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
-import axios from "axios";
+import github from "./github.png";
+import facebook from "./facebook.png";
+import insta from "./instagram.png";
 
 const Home = () => {
   const [trivia, setTrivia] = useState("");
@@ -47,13 +49,20 @@ const Home = () => {
             </div>
           </div>
         </li>
-        <li>
+        {/*<li>
           <div className='trivia'>
-            <Typography use='headline1' className='home__text homeTrivia'>
-              <span className='home__text triviaTitle'>Did you know...?</span>
-              <br />
-              <span className='home__text triviaContent'>{trivia}</span>
-            </Typography>
+            <p use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></p>
+          </div>
+        </li>*/}
+        <li className='sns'>
+          <div>
+            <img className='github' src={github} alt='github' />
+          </div>
+          <div>
+            <img className='facebook' src={facebook} alt='facebook' />
+          </div>
+          <div>
+            <img className='insta' src={insta} alt='insta' />
           </div>
         </li>
       </ul>
@@ -62,10 +71,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// <li>
-//           <Typography use='headline1' className='home__text homeTitle'><br /><span>Cal-culator</span></Typography>
-//           <Typography use='headline1' className='home__text homeDesc'>
-//             A web application that calculates <br /> Your daily food intake!!
-//           </Typography>
-//         </li>

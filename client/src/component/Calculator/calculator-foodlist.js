@@ -1,6 +1,6 @@
 import React from "react";
 import AddFoodList from "./calculator-add-foodlist";
-import "./Calculator.css";
+import "./Calculator.scss";
 
 import "@rmwc/data-table/styles";
 import {
@@ -45,19 +45,22 @@ const FoodImage = ({
   };
 
   return (
-    <>
-      <Tab style={{ fontSize: "50px" }}>{searchResult.food_name}</Tab>
-      <div>
+    <div>
+      <div className='food__foodName'>
+        <Typography style={{}} use='headline2'>
+          {searchResult.food_name.toUpperCase()}
+        </Typography>
+      </div>
+      <div className='food__foodImage'>
         <img
-          className='food--image'
           src={`${searchResult.image}`}
           alt={searchResult.food_name}
           height='300'
           width='375'
         />
       </div>
-      <div>
-        <DataTable style={{ height: "300px", width: "375px" }}>
+      <div className='food__dataTable'>
+        <DataTable style={{ height: "300px", width: "300px" }}>
           <DataTableContent>
             <DataTableHead>
               <DataTableRow>
@@ -71,60 +74,65 @@ const FoodImage = ({
           </DataTableContent>
         </DataTable>
       </div>
-      <div className='food--addtocart'>
-        <div>
-          <TextField
-            selected={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            label='date'
-            type='date'
-          />
-        </div>
-        <div className='addtocart-button'>
-          <Dialog
-            open={open}
-            onClose={(evt) => {
-              setOpen(false);
-            }}
-            // onClosed={(evt) => console.log(evt.detail.action)}
-          >
-            <DialogTitle>ADD TO CART</DialogTitle>
-            <DialogContent>Did you really eat this...?</DialogContent>
-            <DialogActions>
-              <DialogButton action='close'>Cancel</DialogButton>
-              <DialogButton
-                onClick={addToCartButton}
-                action='accept'
-                isDefaultAction
-              >
-                Of Course!!
-              </DialogButton>
-            </DialogActions>
-          </Dialog>
-          <Button
-            className='add--to--cart--button'
-            style={{ height: "55px" }}
-            onClick={addToCartHandle}
-            raised
-          >
-            ADD TO CART
-          </Button>
-          <Snackbar
-            open={openError}
-            onClose={(evt) => setOpenError(false)}
-            message='Please search food or select date...'
-            dismissesOnAction
-            action={
-              <SnackbarAction
-                style={{ color: "#ffff" }}
-                label='Dismiss'
-                onClick={() => console.log("Click Me")}
-              />
-            }
-          />
-        </div>
+      <div className='food__datePicker'>
+        <TextField
+          style={{
+            height: "55px",
+            borderRadius: "4px",
+            backgroundColor: "#27ac27",
+          }}
+          selected={startDate}
+          onChange={(e) => addDateHandle(e.target.value)}
+          label='date'
+          type='date'
+        />
       </div>
-    </>
+      <div className='food__addButton'>
+        <Dialog
+          open={open}
+          onClose={(evt) => {
+            setOpen(false);
+          }}
+          // onClosed={(evt) => console.log(evt.detail.action)}
+        >
+          <DialogTitle>ADD TO CART</DialogTitle>
+          <DialogContent>Did you really eat this...?</DialogContent>
+          <DialogActions>
+            <DialogButton action='close'>Cancel</DialogButton>
+            <DialogButton
+              onClick={addToCartButton}
+              action='accept'
+              isDefaultAction
+            >
+              Of Course!!
+            </DialogButton>
+          </DialogActions>
+        </Dialog>
+        <Button
+          className='add--to--cart--button'
+          style={{ height: "55px", width: "10rem" }}
+          onClick={addToCartHandle}
+          raised
+        >
+          ADD TO CART
+        </Button>
+      </div>
+      <div>
+        <Snackbar
+          open={openError}
+          onClose={(evt) => setOpenError(false)}
+          message='Please search food or select date...'
+          dismissesOnAction
+          action={
+            <SnackbarAction
+              style={{ color: "#ffff" }}
+              label='Dismiss'
+              onClick={() => console.log("Click Me")}
+            />
+          }
+        />
+      </div>
+    </div>
   );
 };
 

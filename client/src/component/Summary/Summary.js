@@ -55,7 +55,7 @@ const Summary = ({ setCurrentPageIndex }) => {
           )}
         </div>
         <div className='foodlist'>
-          <h2>On {mainDate}, You Ate...</h2>
+          <h1>On {mainDate}, you ate...</h1>
           <FoodList food={foodEaten} />
         </div>
       </div>
