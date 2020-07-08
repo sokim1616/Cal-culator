@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Home.scss';
+import "./Home.scss";
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
 import axios from "axios";
@@ -16,28 +16,32 @@ const Home = () => {
       <ul>
         <li>
           <div className='calculator'>
-            <p class="cloud-text cloud-title">CAL-<br/>CULATOR!</p>
+            <p className='cloud-text cloud-title'>
+              CAL-
+              <br />
+              CULATOR!
+            </p>
           </div>
         </li>
         <li>
-          <div class="perspective-text">
-            <div class="perspective-line">
+          <div className='perspective-text'>
+            <div className='perspective-line'>
               <p></p>
               <p className='nth-a'>A web application</p>
             </div>
-            <div class="perspective-line">
-              <p >a web application</p>
+            <div className='perspective-line'>
+              <p>a web application</p>
               <p>that calculates</p>
             </div>
-            <div class="perspective-line">
+            <div className='perspective-line'>
               <p>that calculates</p>
               <p>your daily</p>
             </div>
-            <div class="perspective-line">
+            <div className='perspective-line'>
               <p>your daily</p>
               <p>food intake</p>
             </div>
-            <div class="perspective-line">
+            <div className='perspective-line'>
               <p className='nth-a'>food intake</p>
               <p></p>
             </div>
@@ -45,7 +49,11 @@ const Home = () => {
         </li>
         <li>
           <div className='trivia'>
-            <Typography use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></Typography>
+            <Typography use='headline1' className='home__text homeTrivia'>
+              <span className='home__text triviaTitle'>Did you know...?</span>
+              <br />
+              <span className='home__text triviaContent'>{trivia}</span>
+            </Typography>
           </div>
         </li>
       </ul>
