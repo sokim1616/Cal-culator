@@ -56,14 +56,15 @@ const ChartBarWeekly = () => {
   }, [week]);
 
   return (
-    <div className='heightSizing'>
+    <div className="heightSizing">
+      <h1>Weekly Calorie Report</h1>
       <Bar
         data={consumedWeekly}
         width={10}
         height={200}
         options={{
           title: {
-            display: true,
+            display: false,
             text: "Weekly Calorie Report",
             fontSize: 25,
           },
@@ -84,12 +85,13 @@ const ChartBarWeekly = () => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className='chart-daily'>
+      <div className="chart-daily">
         <TextField
           selected={week}
           onChange={(e) => setWeek(e.target.value)}
-          label='week'
-          type='week'
+          label="Week"
+          type="week"
+          outlined="false"
         />
       </div>
     </div>
