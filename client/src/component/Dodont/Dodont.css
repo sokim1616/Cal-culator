@@ -11,7 +11,28 @@
     font-size: 30px;
 }
 
-.head {
-    font-weight: bold;
-    background-color: olive;
+.list {
+    display: grid;
+    width: 50rem;
+    margin-top: 50px;
+}
+
+.head1 {
+    background-color: rgba(63, 134, 134, 0.5);
+}
+
+.head2 {
+    background-color: rgba(123, 188, 155, 0.5);
+}
+
+.head3 {
+    background-color: rgba(48, 171, 50, 0.4);
+}
+
+.body1 {
+    background-color: rgba(170, 218, 170, 0.5);
+}
+
+.body2 {
+    background-color: rgba(208, 239, 162, 0.5)
 }

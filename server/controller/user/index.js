@@ -6,4 +6,5 @@ module.exports = {
   infoWeek: require("./infoWeek"),
   infoMonth: require("./infoMonth"),
   dailyCalorie: require("./dailyCalorie"),
+  eatenFoodDay: require("./eatenFoodDay"),
 };

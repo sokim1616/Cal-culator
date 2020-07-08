@@ -22,7 +22,7 @@ const FoodList = ({ food }) => {
   return (
     <div>
       <div>
-        <DataTable style={{ height: "300px", width: "375px" }}>
+        <DataTable style={{ height: "400px", width: "475px" }}>
           <DataTableContent>
             <DataTableHead>
               <DataTableRow>
@@ -45,9 +45,9 @@ const FoodList = ({ food }) => {
                 <TableRow
                   key={idx}
                   foodData={{
-                    food_name: item.food_name,
-                    amount: item.amount,
-                    calories: item.calories,
+                    food_name: item.Food,
+                    amount: item.Servings,
+                    calories: item.Calories,
                   }}
                 />
               ))}

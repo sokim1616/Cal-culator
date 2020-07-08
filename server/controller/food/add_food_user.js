@@ -1,5 +1,4 @@
 const { Food_users } = require("../../model");
-
 module.exports = {
   post: async (req, res) => {
     const id = req.session.userid;
@@ -20,15 +19,19 @@ module.exports = {
         }
     ]
     */
-    for await (let i of food_info) {
-      Food_users.create({
-        amount: i.amount,
-        time: i.date,
-        UserId: id,
-        FoodId: i.FoodId,
-      });
+    if (food_info.length === 0) {
+      res.send("init response");
+    } else {
+      for await (let i of food_info) {
+        Food_users.create({
+          amount: i.amount,
+          time: i.date,
+          UserId: id,
+          FoodId: i.FoodId,
+        });
+      }
+      console.log(req.body.food_info)
+      res.send("success");
     }
-
-    res.send("success");
   },
 };

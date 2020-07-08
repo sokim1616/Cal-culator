@@ -12,4 +12,8 @@ router.post("/foodinfo", foodController.food_info.post);
 // * POST /addfooduser
 router.post("/addfooduser", foodController.add_food_user.post);
 
+router.get("/findmaxnutrient", foodController.find_max_nutrient.get);
+
+router.get("/foodautocomplete", foodController.food_autocomplete.get);
+
 module.exports = router;

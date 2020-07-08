@@ -17,17 +17,7 @@ import { Checkbox } from "@rmwc/checkbox";
 import "@rmwc/select/styles";
 import { Select } from "@rmwc/select";
 
-const AddCart = ({ resultSave, checked, checkedHandle }) => {
-  
-  // const [checked, setChecked] = React.useState({});
-  const [value, setValue] = React.useState({});
-
-  // const initObj = (i) => {
-  //   setChecked({
-  //       ...checked,
-  //       [i]: false
-  //   })
-  // }
+const AddCart = ({ resultSave, checked, checkedHandle, amountHandle, value }) => {
 
   return (
     <React.Fragment>
@@ -43,17 +33,13 @@ const AddCart = ({ resultSave, checked, checkedHandle }) => {
         />
       </DataTableCell>
       <DataTableCell>{v.date}</DataTableCell>
-      <DataTableCell>{v.foodname}</DataTableCell>
+      <DataTableCell>{v.foodname.toUpperCase()}</DataTableCell>
       <DataTableCell>
         <Select
           placeholder="--Select--"
           options={["1", "2", "3", "4", "5", "6", "7", "8", "9"]}
-          value={value[i]}
-          onChange={(evt) => setValue({
-              ...value,
-              [i]: evt.currentTarget.value
-          }
-          )}
+          value={value[i[0]]}
+          onChange={(evt) => amountHandle(i, evt.currentTarget.value)}
         />
           </DataTableCell>
           <DataTableCell>{((value[i]) * v.calories).toFixed(2)}</DataTableCell>
