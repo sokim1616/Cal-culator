@@ -99,7 +99,7 @@ const Cart = ({
         </DataTable>
       </div>
       <div className="cart__totalCalorie">
-        <SimpleDataTable style={{ height: '55px', paddingBottom: '16px' }} data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]} />
+        <SimpleDataTable style={{ height: '55px' }} data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]} />
       </div>
 
       <div className="cart__deleteButton">
