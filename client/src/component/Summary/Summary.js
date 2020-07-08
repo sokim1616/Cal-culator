@@ -47,10 +47,10 @@ const Summary = ({ setCurrentPageIndex }) => {
   }, [mainDate]);
 
   return (
-    <div className='summary'>
+    <div className="summary">
       <SelectButton selectDWM={setShowDWM} />
-      <div className='summary-container'>
-        <div className='chart'>
+      <div className="summary-container">
+        <div className="chart">
           {showDWM.daily ? (
             <ChartPolarDaily setMainDate={setMainDate} />
           ) : showDWM.weekly ? (
@@ -59,8 +59,8 @@ const Summary = ({ setCurrentPageIndex }) => {
             <ChartLineMonthly />
           )}
         </div>
-        <div className='foodlist'>
-          <h2>언제 뭘 먹었나.</h2>
+        <div className="foodlist">
+          <h1>On {mainDate}, you ate...</h1>
           <FoodList food={foodEaten} />
         </div>
       </div>

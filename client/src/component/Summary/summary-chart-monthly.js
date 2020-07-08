@@ -75,14 +75,15 @@ const ChartLineMonthly = () => {
   }, [monthlyNutrition, dailyCalorie]);
 
   return (
-    <div className='heightSizing'>
+    <div className="heightSizing">
+      <h1>Monthly Calorie Report</h1>
       <Line
         data={consumedMonthly}
         width={10}
         height={200}
         options={{
           title: {
-            display: true,
+            display: false,
             text: "Monthly Calorie Report",
             fontSize: 25,
           },
@@ -103,12 +104,13 @@ const ChartLineMonthly = () => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className='chart-daily'>
+      <div className="chart-daily">
         <TextField
           selected={month}
           onChange={(e) => setMonth(e.target.value)}
-          label='month'
-          type='month'
+          label="Month"
+          type="month"
+          outlined="false"
         />
       </div>
     </div>

@@ -30,7 +30,7 @@ module.exports = {
           FoodId: i.FoodId,
         });
       }
-      console.log(req.body.food_info)
+      console.log(req.body.food_info);
       res.send("success");
     }
   },

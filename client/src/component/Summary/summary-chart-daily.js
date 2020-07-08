@@ -48,6 +48,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
       },
     ],
   });
+
   useEffect(() => {
     axios
       .post(
@@ -73,17 +74,17 @@ const ChartPolarDaily = ({ setMainDate }) => {
   }, [dailyNutrition]);
 
   return (
-    <div className='heightSizing'>
+    <div className="heightSizing">
+      <h1>Daily Nutrition Report</h1>
       <Polar
         data={consumedDaily}
         width={1000}
         height={400}
         options={{
           title: {
-            display: true,
+            display: false,
             text: "Daily Nutrition Report",
             fontSize: 25,
-            fontColor: "rgba(67, 17, 59, 1)",
           },
           legend: {
             display: true,
@@ -102,13 +103,15 @@ const ChartPolarDaily = ({ setMainDate }) => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className='chart-daily'>
+      <div className="chart-daily">
         <TextField
-          className='center'
+          className="center"
           selected={date}
           onChange={(e) => setDate(e.target.value)}
-          label='date'
-          type='date'
+          label="Date"
+          type="date"
+          outlined="false"
+          // style={{ backgroundColor: "#f38181", color: "#ffffff" }}
         />
       </div>
     </div>
