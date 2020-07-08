@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory, withRouter} from "react-router-dom";
-import Modal from 'react-modal';
+import { useHistory, withRouter } from "react-router-dom";
+import Modal from "react-modal";
 import axios from "axios";
 import "./loginModal.scss";
 
@@ -8,7 +8,6 @@ import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
 import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
-
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
@@ -22,7 +21,6 @@ const validateForm = (errors) => {
 };
 
 // const history = useHistory();
-
 
 const Login = ({
   loginState,
@@ -80,10 +78,6 @@ const Login = ({
             if (response.status === 200) {
               loginState();
               closeLoginModal();
-<<<<<<< HEAD
-=======
-              console.log("OK");
->>>>>>> a341526550f5a7e0d354834a8965bc7621950bef
             }
           }
         })
@@ -104,35 +98,49 @@ const Login = ({
       className='login'
       isOpen={loginModalOpen}
       onRequestClose={closeLoginModal}
-      contentLabel="Login Modal"
+      contentLabel='Login Modal'
     >
       <div className='wrapper'>
         <div className='form-wrapper'>
           <h2>LOGIN</h2>
           <form onSubmit={handleSubmit} noValidate>
             <div className='email'>
-              <label htmlFor="email">EMAIL</label>
-              <input type='email' name='email' onChange={handleChange} noValidate />
-              {errors.email.length > 0 &&
-                <span className='error'>{errors.email}</span>}
+              <label htmlFor='email'>EMAIL</label>
+              <input
+                type='email'
+                name='email'
+                onChange={handleChange}
+                noValidate
+              />
+              {errors.email.length > 0 && (
+                <span className='error'>{errors.email}</span>
+              )}
             </div>
             <div className='password'>
-              <label htmlFor="password">PASSWORD</label>
-              <input type='password' name='password' onChange={handleChange} noValidate />
-              {errors.password.length > 0 &&
-                <span className='error'>{errors.password}</span>}
+              <label htmlFor='password'>PASSWORD</label>
+              <input
+                type='password'
+                name='password'
+                onChange={handleChange}
+                noValidate
+              />
+              {errors.password.length > 0 && (
+                <span className='error'>{errors.password}</span>
+              )}
             </div>
             <div className='submit'>
-              <Button style={{ width: '280px' }} >LOGIN</Button>
+              <Button style={{ width: "280px" }}>LOGIN</Button>
             </div>
             <div>
-              <Button onClick={openSignupModal} style={{ width: '276.5px' }} >CREATE</Button>
+              <Button onClick={openSignupModal} style={{ width: "276.5px" }}>
+                CREATE
+              </Button>
             </div>
           </form>
         </div>
       </div>
     </Modal>
-  )
+  );
 };
 
 export default withRouter(Login);

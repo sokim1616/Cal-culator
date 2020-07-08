@@ -199,8 +199,8 @@ const Calculator = ({ setCurrentPageIndex, trivia }) => {
       <ul>
         <li className='search'>
           <Search
-            searchInputHandle={searchInputHandle}
-            searchResultHandle={searchResultHandle}
+            searchInputHandle={setSearchInput}
+            searchResultHandle={setSearchResult}
             searchInput={searchInput}
             inputRef={inputRef}
             autoComplete={autoComplete}

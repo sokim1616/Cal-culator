@@ -82,7 +82,7 @@ const FoodImage = ({
             backgroundColor: "#27ac27",
           }}
           selected={startDate}
-          onChange={(e) => addDateHandle(e.target.value)}
+          onChange={(e) => setStartDate(e.target.value)}
           label='date'
           type='date'
         />
