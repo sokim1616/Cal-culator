@@ -52,13 +52,13 @@ const Home = () => {
         </li>*/}
         <li className='sns'>
           <div>
-            <img className='github' src={github} alt='github'/>
+            <img className='github' src={github} alt='github' />
           </div>
-          <div className='facebook'>
-            <img src={facebook} alt='facebook'/>
+          <div >
+            <img className='facebook' src={facebook} alt='facebook' />
           </div>
-          <div className='insta'>
-            <img src={insta} alt='insta'/>
+          <div >
+            <img className='insta' src={insta} alt='insta' />
           </div>
         </li>
       </ul>

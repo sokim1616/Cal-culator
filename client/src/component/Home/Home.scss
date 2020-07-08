@@ -54,7 +54,6 @@
         }
       }
 
-      li {
         .perspective-text {
           display: absolute;
           width: 180px;
@@ -121,7 +120,7 @@
         .perspective-line:nth-child(5) {
           left: 145px;
         }
-      }
+
 
       // li {
       //   .trivia {
@@ -150,20 +149,38 @@
       //     }
       //   }
       // }
-      li {
-        .sns {
+
+      .sns {
+        position: absolute;
+        left: 1450px;
+        top: 700px;
+        .github {
           position: absolute;
-          .github {
-            position: absolute;
-            width: 100px;
-            height: 1000px;
-          }
+          width: 50px;
+          height: 50px;
+          opacity: 0.5;
 
-          .facebook {}
+        }
 
-          .insta {}
+        .facebook {
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          left: 70px;
+          opacity: 0.5;
+
+        }
+
+        .insta {
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          left: 140px;
+          opacity: 0.5;
+
         }
       }
+
     }
   }
 

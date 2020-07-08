@@ -98,60 +98,6 @@ const Login = ({
   // };
 
   return (
-<<<<<<< HEAD
-    <div>
-      <Modal
-        className='loginModal'
-        isOpen={loginModalOpen}
-        onRequestClose={closeLoginModal}
-        contentLabel="Login Modal"
-      >
-        <div className="wrapper">
-          <div className="form-wrapper">
-            <h2 className="title">LOGIN</h2>
-            <form onSubmit={handleSubmit} noValidate>
-              <div className="email">
-                <label htmlFor="email">EMAIL</label>
-                <input
-                  placeholder={""}
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  noValidate
-                />
-                {errors.email.length > 0 && (
-                  <span className="error">{errors.email}</span>
-                )}
-              </div>
-              <div className="password">
-                <label htmlFor="password">PASSWORD</label>
-                <input
-                  placeholder={""}
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  noValidate
-                />
-                {errors.password.length > 0 && (
-                  <span className="error">{errors.password}</span>
-                )}
-              </div>
-              <div className="button-div">
-                <span className="submit">
-                  <Button raised onClick={openSignupModal}>
-                    Create
-                  </Button>
-                </span>
-                <span className="loginnn">
-                  <Button type="submit" raised>
-                    LOG IN
-                  </Button>
-                </span>
-              </div>
-            </form>
-            {/* <button onClick={handleGoogleLogin}>Google Login</button> */}
-          </div>
-=======
     <Modal
       className='login'
       isOpen={loginModalOpen}
@@ -181,7 +127,6 @@ const Login = ({
               <Button onClick={openSignupModal} style={{ width: '276.5px' }} >CREATE</Button>
             </div>
           </form>
->>>>>>> login/signup completed
         </div>
       </div>
     </Modal>

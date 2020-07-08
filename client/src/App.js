@@ -76,20 +76,14 @@ const App = () => {
       <div>
         <Switch>
           <Route
-<<<<<<< HEAD
             path="/about"
             render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
-=======
-            path='/about'
-            render={() => <About
-              setCurrentPageIndex={setCurrentPageIndex}
-            />}
->>>>>>> login/signup completed
           />
           <Route
             path="/summary"
             render={() => (
               <Summary
+                id='summary'
                 isLogin={isLogin}
                 setCurrentPageIndex={setCurrentPageIndex}
               />
