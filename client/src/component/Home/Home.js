@@ -5,12 +5,12 @@ import { Typography } from "@rmwc/typography";
 import axios from "axios";
 
 const Home = () => {
-  const [trivia, setTrivia] = useState("");
-  useEffect(() => {
-    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
-      setTrivia(result.data);
-    });
-  }, []);
+  // const [trivia, setTrivia] = useState("");
+  // useEffect(() => {
+  //   axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+  //     setTrivia(result.data);
+  //   });
+  // }, []);
   return (
     <div className='home'>
       <ul>
@@ -43,11 +43,11 @@ const Home = () => {
             </div>
           </div>
         </li>
-        <li>
+        {/*<li>
           <div className='trivia'>
-            <Typography use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></Typography>
+            <p use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></p>
           </div>
-        </li>
+        </li>*/}
       </ul>
     </div>
   );
