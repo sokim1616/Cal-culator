@@ -62,15 +62,6 @@ const Calculator = ({ setCurrentPageIndex }) => {
     };
   }, [searchInput, inputRef]);
 
-  const searchResultHandle = (e) => {
-    setSearchResult(e);
-  };
-  // for searchResult
-
-  const addDateHandle = (e) => {
-    setStartDate(e);
-  };
-
   const addToCartButton = () => {
     if (startDate === undefined) {
       setOpenError(!openError);
@@ -217,7 +208,8 @@ const Calculator = ({ setCurrentPageIndex }) => {
         <div className='food'>
           <FoodList
             searchResult={searchResult}
-            addDateHandle={addDateHandle}
+            startDate={startDate}
+            setStartDate={setStartDate}
             addToCartButton={addToCartButton}
             openError={openError}
             setOpenError={setOpenError}
