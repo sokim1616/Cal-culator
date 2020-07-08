@@ -36,7 +36,6 @@ app.use(
   })
 );
 
-const sess = req.session;
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 app.use(passport.initialize());
@@ -79,9 +78,6 @@ passport.use(
         // } else {
         //   // 이미 있을 때
         console.log("eeeeeewerwerwereeeeeee", user);
-        sess.userid = user.id;
-        sess.userage = user.age;
-        sess.gender = user.gender;
         //   cb(null, user);
         // }
         cb(null, user);
@@ -113,8 +109,14 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/auth/login" }),
   function (req, res) {
-    // console.log("req.starttttttttttttt : ", req.user.dataValues);
-    // console.log("req.enddddddddddddddd : ");
+    const sess = req.session;
+    console.log("req.starttttttttttttt : ", req.user.dataValues);
+    console.log("req.enddddddddddddddd : ");
+
+    sess.userid = req.user.dataValues.id;
+    sess.userage = req.user.dataValues.age;
+    sess.gender = req.user.dataValues.gender;
+    console.log("sesssssss", sess);
     res.send(req.user.dataValues);
   }
 );
