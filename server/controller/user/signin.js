@@ -17,9 +17,7 @@ module.exports = {
       sess.userid = result.id;
       sess.userage = result.age;
       sess.gender = result.gender;
-      res.status(200).json({
-        id: result.id,
-      });
+      res.send("ok");
     });
   },
 };
