@@ -127,7 +127,7 @@ const Cart = ({
               </DialogActions>
             </Dialog>
 
-            <Button className='cart-delete-button' style={{ height: "55px" }} raised onClick={() => setDeleteOpen(true)}>
+            <Button className='cart-delete-button' style={{ height: "55px" }} danger raised onClick={() => setDeleteOpen(true)}>
               DELETE
             </Button>
           </div>

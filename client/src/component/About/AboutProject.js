@@ -7,7 +7,9 @@ import {
 } from "react-router-dom";
 
 const AboutProject = () => {
-
+    return (
+        <div>Cal-culator</div>
+    )
 }
 
 export default AboutProject;

@@ -5,64 +5,60 @@ import {
   Route,
   NavLink,
   useHistory,
+  withRouter
 } from "react-router-dom";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
-import { Snackbar, SnackbarAction } from "@rmwc/snackbar"
-import '@rmwc/snackbar/styles'
+import "./About.css";
 import AboutTeam from "./AboutTeam";
+import AboutApp from './AboutApp';
 
 const About = () => {
   const history = useHistory();
 
-  const [flipped, setFlipped] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  //const [flipped, setFlipped] = React.useState(false);
+  const [teamModalOpen, setTeamModalOpen] = React.useState(false)
+  const [appModalOpen, setAppModalOpen] = React.useState(false)
 
-  function flipCard() {
-    setFlipped(true);
+
+  const openTeamModal = () => {
+    setTeamModalOpen(true);
   }
 
-  function toAboutTeam() {
-    history.push(`/AboutTeam`);
+  const closeTeamModal = () => {
+    setTeamModalOpen(false);
+  }
+
+  const openAppModal = () => {
+    setAppModalOpen(true);
+  }
+
+  const closeAppModal = () => {
+    setAppModalOpen(false);
   }
 
   return (
     <div className='aboutButtons'>
+      <AboutTeam teamModalOpen={teamModalOpen} closeTeamModal={closeTeamModal} />
+      <AboutApp appModalOpen={appModalOpen} closeAppModal={closeAppModal} />
       <Button
-        label='About Project'
+        label='About this App'
         raised
         theme={["secondaryBg", "onSecondary"]}
-      //onClick 하면 About Project 페이지가 나오도록
+        //onClick 하면 About Project 페이지가 나오도록
+        onClick={openAppModal}
       />
+      <div className="divider" />
       <Button
+        style={{ width: '10rem' }}
         label='About Team'
         raised
         theme={["secondaryBg", "onSecondary"]}
         //onClick 하면 About Team 페이지가 나오도록
-        onClick={toAboutTeam}
+        onClick={openTeamModal}
       />
-      <div>
-        <Snackbar
-          open={open}
-          onClose={evt => setOpen(false)}
-          message="This is a new message"
-          dismissesOnAction
-          action={
-            <SnackbarAction
-              label="Dismiss"
-              onClick={() => console.log('Click Me')}
-            />
-          }
-        />
-
-        <Button
-          raised
-          label="Show snackbar"
-          onClick={evt => setOpen(!open)}
-        />
-      </div>
     </div>
   );
 };
 
-export default About;
+export default withRouter(About);

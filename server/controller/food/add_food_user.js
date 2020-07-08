@@ -19,9 +19,8 @@ module.exports = {
         }
     ]
     */
-    if (food_info === []) {
-      console.log(req)
-      res.send("empty array");
+    if (food_info.length === 0) {
+      res.send("init response");
     } else {
       for await (let i of food_info) {
         Food_users.create({
@@ -31,7 +30,7 @@ module.exports = {
           FoodId: i.FoodId,
         });
       }
-      console.log(req)
+      console.log(req.body.food_info)
       res.send("success");
     }
   },
