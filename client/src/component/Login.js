@@ -1,23 +1,12 @@
 import React from "react";
 import Modal from "react-modal";
 import axios from "axios";
-import "./loginModal.css";
+import "./loginModal.scss";
 
 import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
-
-const customStyles = {
-  content: {
-    position: "fixed",
-    top: "60%",
-    left: "50%",
-    width: "360px",
-    height: "540px",
-    transform: "translate(-50%,-50%)",
-    overflow: "none",
-    border: "0px",
-  },
-};
+import { Typography } from "@rmwc/typography";
+import "@rmwc/typography/styles";
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
@@ -92,6 +81,7 @@ const Login = ({
             alert("Invalid Email or Password ");
           } else {
             if (response.status === 200) {
+              loginState();
               console.log("OK");
             }
           }
@@ -111,9 +101,9 @@ const Login = ({
   return (
     <div>
       <Modal
+        className='loginModal'
         isOpen={loginModalOpen}
         onRequestClose={closeLoginModal}
-        style={customStyles}
         contentLabel="Login Modal"
       >
         <div className="wrapper">

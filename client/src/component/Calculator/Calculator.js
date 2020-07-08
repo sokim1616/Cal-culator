@@ -4,7 +4,7 @@ import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
 import axios from "axios";
 import calImg from "./cal_culator.jpg";
-import "./Calculator.css";
+import "./Calculator.scss";
 
 import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/snackbar/styles";
@@ -189,20 +189,20 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   return (
     <div className='calculator'>
-      <div>
-        <Search
-          searchInputHandle={searchInputHandle}
-          searchResultHandle={searchResultHandle}
-          searchInput={searchInput}
-          inputRef={inputRef}
-          autoComplete={autoComplete}
-          setSearchResult={setSearchResult}
-          setSearchInput={setSearchInput}
-          setAutoComplete={setAutoComplete}
-        />
-      </div>
-      <div className='food-cart'>
-        <div className='food'>
+      <ul>
+        <li className='search'>
+          <Search
+            searchInputHandle={searchInputHandle}
+            searchResultHandle={searchResultHandle}
+            searchInput={searchInput}
+            inputRef={inputRef}
+            autoComplete={autoComplete}
+            setSearchResult={setSearchResult}
+            setSearchInput={setSearchInput}
+            setAutoComplete={setAutoComplete}
+          />
+        </li>
+        <li className='food'>
           <FoodList
             searchResult={searchResult}
             addDateHandle={addDateHandle}
@@ -210,8 +210,8 @@ const Calculator = ({ setCurrentPageIndex }) => {
             openError={openError}
             setOpenError={setOpenError}
           />
-        </div>
-        <div className='cart'>
+        </li>
+        <li className='cart'>
           <Cart
             searchResult={searchResult}
             startDate={startDate}
@@ -225,8 +225,8 @@ const Calculator = ({ setCurrentPageIndex }) => {
             totalCalories={totalCalories}
             userFoodSender={userFoodSender}
           />
-        </div>
-        <div>
+        </li>
+        <div className='snackbar'>
           <Snackbar
             open={open}
             onClose={(evt) => setOpen(false)}
@@ -241,9 +241,11 @@ const Calculator = ({ setCurrentPageIndex }) => {
             }
           />
         </div>
-      </div>
+      </ul>
     </div>
-  );
+  )
 };
 
 export default Calculator;
+
+
