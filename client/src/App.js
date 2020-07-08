@@ -20,6 +20,10 @@ const App = () => {
     setIsLogin(true);
   };
 
+  const logoutHandle = () => {
+    setIsLogin(false);
+  };
+
   function openLoginModal() {
     closeSignupModal();
     setLoginModalOpen(true);
@@ -45,6 +49,7 @@ const App = () => {
         setCurrentPageIndex={setCurrentPageIndex}
         openLoginModal={openLoginModal}
         isLogin={isLogin}
+        logoutHandle={logoutHandle}
       />
       <Login
         loginState={loginState}

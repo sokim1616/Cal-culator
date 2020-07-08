@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
-import axios from 'axios';
-import calImg from './cal_culator.jpg'
+import axios from "axios";
+import calImg from "./cal_culator.jpg";
 import "./Calculator.css";
 
-import { Snackbar, SnackbarAction } from "@rmwc/snackbar"
-import '@rmwc/snackbar/styles'
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
+import "@rmwc/snackbar/styles";
 
 const Calculator = ({ setCurrentPageIndex }) => {
+  const inputRef = useRef();
   const [searchResult, setSearchResult] = React.useState({
     calcium: 0,
     calories: 0,
@@ -27,22 +28,44 @@ const Calculator = ({ setCurrentPageIndex }) => {
     updatedAt: "",
     vitamin_A: 0,
     vitamin_D: 0,
-    zinc: 0
+    zinc: 0,
   });
+
   const [searchInput, setSearchInput] = React.useState({});
   const [startDate, setStartDate] = React.useState();
   const [resultSave, setResultSave] = React.useState([]);
   const [confirmData, setConfirmData] = React.useState([]);
-  const [checked, setChecked] = React.useState({ 0: false });
+  const [checked, setChecked] = React.useState({});
   const [value, setValue] = React.useState({});
   const [totalCalories, setTotalCalories] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+  const [autoComplete, setAutoComplete] = React.useState([]);
+  const [openError, setOpenError] = React.useState(false);
 
   const searchInputHandle = (e) => {
     setSearchInput({
-      food_name: e
+      food_name: e,
     });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputRef.current.children[1].value === searchInput.food_name) {
+        axios
+          .get("http://localhost:4000/food/foodautocomplete", {
+            params: {
+              query: searchInput.food_name,
+            },
+          })
+          .then((result) => {
+            setAutoComplete(result.data);
+          });
+      }
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchInput, inputRef]);
 
   const searchResultHandle = (e) => {
     setSearchResult(e);
@@ -53,55 +76,99 @@ const Calculator = ({ setCurrentPageIndex }) => {
   };
 
   const addToCartButton = () => {
-    setResultSave((prevState) => [
-      ...prevState,
-      {
-        id: searchResult.id,
-        date: startDate,
-        foodname: searchResult.food_name,
-        calories: searchResult.calories,
-      },
-    ]);
+    if (startDate === undefined) {
+      setOpenError(!openError)
+    } else
+      if (searchResult.food_name === 'CAL-CULATOR') {
+        setOpenError(!openError)
+      } else {
+        setResultSave((prevState) => [
+          ...prevState,
+          {
+            id: searchResult.id,
+            date: startDate,
+            foodname: searchResult.food_name,
+            calories: searchResult.calories,
+          },
+        ]);
+        setChecked((prevState) => {
+          let count = Object.keys(checked).length;
+          return {
+            ...prevState,
+            [count]: false,
+          };
+        });
+      }
   };
 
   const confirmButtonHandle = () => {
     for (let key in checked) {
-      if (checked[key]) {
-        setConfirmData((prevData) => [
-          ...prevData,
-          {
-            FoodId: resultSave[key].id,
-            date: resultSave[key].date,
-            amount: value[key][0]
-          }],
-        );
-      }
+      if (Object.keys(value).length === 0) {
+        console.log("please select AMOUT of food")
+      } else
+        if (checked[key]) {
+          setConfirmData((prevData) => [
+            ...prevData,
+            {
+              FoodId: resultSave[key].id,
+              date: resultSave[key].date,
+              amount: value[key][0],
+            },
+          ]);
+        }
     }
   };
 
   const userFoodSender = () => {
-    console.log(confirmData)
     axios.post('http://localhost:4000/food/addfooduser', { food_info: confirmData }, { withCredentials: true })
       .then(response => {
-        if (response.data === 'success') {
+        if (response.data === "init response") {
+          console.log("SERVER OK")
+        } else if (response.data === 'success') {
           setOpen(!open)
-          console.log('좋아')
         }
-      })
-  }
+      });
+  };
 
   useEffect(() => {
-    userFoodSender()
-  }, [confirmData])
+    userFoodSender();
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return !checked[idx];
+      });
+    });
+
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
+      }
+      return returnObj;
+    });
+  }, [confirmData]);
 
   const deleteButtonHandle = () => {
-    for (let key in checked) {
-      if (checked[key]) {
-        console.log(key);
-        setResultSave(resultSave.filter((ele, idx) => idx !== key));
-        setChecked({ [key]: false });
+    setResultSave((prevState) => {
+      return prevState.filter((item, idx) => {
+        return checked[idx] === false;
+      });
+    });
+
+    setChecked((prevState) => {
+      let checkedKeys = Object.keys(prevState);
+      let count = checkedKeys.filter((item) => {
+        return prevState[item] === false;
+      }).length;
+      let returnObj = {};
+      for (let i = 0; i < count; i++) {
+        returnObj[i] = false;
       }
-    }
+      return returnObj;
+    });
   };
 
   useEffect(() => {
@@ -127,6 +194,11 @@ const Calculator = ({ setCurrentPageIndex }) => {
           searchInputHandle={searchInputHandle}
           searchResultHandle={searchResultHandle}
           searchInput={searchInput}
+          inputRef={inputRef}
+          autoComplete={autoComplete}
+          setSearchResult={setSearchResult}
+          setSearchInput={setSearchInput}
+          setAutoComplete={setAutoComplete}
         />
       </div>
       <div className='food-cart'>
@@ -135,6 +207,8 @@ const Calculator = ({ setCurrentPageIndex }) => {
             searchResult={searchResult}
             addDateHandle={addDateHandle}
             addToCartButton={addToCartButton}
+            openError={openError}
+            setOpenError={setOpenError}
           />
         </div>
         <div className='cart'>
@@ -155,16 +229,14 @@ const Calculator = ({ setCurrentPageIndex }) => {
         <div>
           <Snackbar
             open={open}
-            onClose={evt => setOpen(false)}
-            message="Successfully registerd..."
+            onClose={(evt) => setOpen(false)}
+            message='Successfully registerd...'
             dismissesOnAction
             action={
               <SnackbarAction
-              style={
-                {color: '#ffff'}
-              }
-                label="Dismiss"
-                onClick={() => console.log('Click Me')}
+                style={{ color: "#ffff" }}
+                label='Dismiss'
+                onClick={() => console.log("Click Me")}
               />
             }
           />

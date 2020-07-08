@@ -10,7 +10,7 @@ import {
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
-const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin }) => {
+const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin, logoutHandle }) => {
   const history = useHistory();
 
   const summaryAuth = () => {
@@ -38,12 +38,14 @@ const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin
   }
   
   const destroyAuth = () => {
-    axios.post('http://localhost:4000/user/signout', {withCredential: true})
-      .then(response => {
-        if(response.data === "signed out"){
-          console.log("SIGN OUT")
-        }
-      })
+    logoutHandle()
+    // axios.post('http://localhost:4000/user/signout', {withCredential: true})
+    //   .then(response => {
+    //     if(response.data === "signed out"){
+    //       logoutHandle();
+    //       console.log("SIGN OUT")
+    //     }
+    //   })
   }
 
   const loginLogout = () => {
@@ -57,7 +59,7 @@ const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin
 
   return (
     <div>
-      <header>
+      <header className='header'>
         <TabBar
           activeTabIndex={currentPageIndex}
           onActivate={(evt) => setCurrentPageIndex(evt.detail.index)}

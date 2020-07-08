@@ -7,7 +7,7 @@ import "./Summary.css";
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
 
-const ChartPolarDaily = () => {
+const ChartPolarDaily = ({ setMainDate }) => {
   const [date, setDate] = useState(formatDay(today));
   const [dailyNutrition, setDailyNutrition] = useState({});
   const [consumedDaily, setConsumedDaily] = useState({
@@ -62,6 +62,7 @@ const ChartPolarDaily = () => {
       .then((result) => {
         setDailyNutrition(result.data);
       });
+    setMainDate(date);
   }, [date]);
 
   useEffect(() => {

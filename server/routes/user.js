@@ -15,4 +15,6 @@ router.post("/infoMonth", userController.infoMonth.post);
 
 router.get("/dailyCalorie", userController.dailyCalorie.get);
 
+router.post("/eatenFoodDay", userController.eatenFoodDay.post);
+
 module.exports = router;
