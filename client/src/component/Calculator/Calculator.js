@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import Search from "./calculator-search";
 import FoodList from "./calculator-foodlist";
 import Cart from "./calculator-cart";
@@ -64,9 +64,9 @@ const Calculator = ({ setCurrentPageIndex }) => {
 
   const addToCartButton = () => {
     if (startDate === undefined) {
-      setOpenError(!openError);
+      setOpenError((prevState) => !prevState);
     } else if (searchResult.food_name === "CAL-CULATOR") {
-      setOpenError(!openError);
+      setOpenError((prevState) => !prevState);
     } else {
       setResultSave((prevState) => [
         ...prevState,
@@ -115,7 +115,7 @@ const Calculator = ({ setCurrentPageIndex }) => {
         if (response.data === "init response") {
           console.log("SERVER OK");
         } else if (response.data === "success") {
-          setOpen(!open);
+          setOpen((prevState) => !prevState);
         }
       });
   };
@@ -139,12 +139,16 @@ const Calculator = ({ setCurrentPageIndex }) => {
       }
       return returnObj;
     });
+
     setTotalCalories(() => {
-      let currentTotal = 0;
-      for (let key in value) {
-        currentTotal += resultSave[key].calories * value[key][0];
+      let list = Object.keys(checked);
+      let total = 0;
+      for (let i = 0; i < list.length; i++) {
+        if (checked[list[i]] === false) {
+          total += resultSave[list[i]].calories * value[list[i]][0];
+        }
       }
-      return currentTotal;
+      return total;
     });
   }, [confirmData]);
 
@@ -173,23 +177,12 @@ const Calculator = ({ setCurrentPageIndex }) => {
   }, []);
 
   useEffect(() => {
-    totalCaloriesHandle();
+    let currentTotal = 0;
+    for (let key in value) {
+      currentTotal += resultSave[key].calories * value[key][0];
+    }
+    setTotalCalories(currentTotal);
   }, [value]);
-
-  const totalCaloriesHandle = () => {
-    // for (let key in value) {
-    //   setTotalCalories(
-    //     resultSave[key].calories * value[key][0] + totalCalories
-    //   );
-    // }
-    setTotalCalories(() => {
-      let currentTotal = 0;
-      for (let key in value) {
-        currentTotal += resultSave[key].calories * value[key][0];
-      }
-      return currentTotal;
-    });
-  };
 
   return (
     <div className='calculator'>
