@@ -20,15 +20,23 @@ module.exports = {
         }
     ]
     */
-    for await (let i of food_info) {
-      Food_users.create({
-        amount: i.amount,
-        time: i.date,
-        UserId: 1,
-        FoodId: i.FoodId,
-      });
-    }
+    console.log(typeof food_info);
+    console.log(food_info);
 
-    res.send("success");
+    if (food_info === []) {
+      console.log("food_info", food_info);
+      res.send("empty array");
+    } else {
+      for await (let i of food_info) {
+        Food_users.create({
+          amount: i.amount,
+          time: i.date,
+          UserId: id,
+          FoodId: i.FoodId,
+        });
+      }
+
+      res.send("success");
+    }
   },
 };

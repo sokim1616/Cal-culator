@@ -11,7 +11,7 @@ import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -60,25 +60,38 @@ const App = () => {
       <div>
         <Switch>
           <Route
-            path='/about'
+            path="/about"
             render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
           />
           <Route
-            path='/summary'
-            render={() => <Summary isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}
-          />
-          <Route
-            path='/calculator'
+            path="/summary"
             render={() => (
-              <Calculator isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />
+              <Summary
+                isLogin={isLogin}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />
             )}
           />
           <Route
-            path='/dodont'
-            render={() => <DoDont isLogin={isLogin} setCurrentPageIndex={setCurrentPageIndex} />}
+            path="/calculator"
+            render={() => (
+              <Calculator
+                isLogin={isLogin}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />
+            )}
           />
           <Route
-            path='/'
+            path="/dodont"
+            render={() => (
+              <DoDont
+                isLogin={isLogin}
+                setCurrentPageIndex={setCurrentPageIndex}
+              />
+            )}
+          />
+          <Route
+            path="/"
             render={() => <Home setCurrentPageIndex={setCurrentPageIndex} />}
           />
         </Switch>
