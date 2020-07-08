@@ -19,7 +19,7 @@ const app = express();
 // use cors with credentials
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
     credentials: true,
   })
