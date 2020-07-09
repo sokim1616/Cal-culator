@@ -137,7 +137,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
-                <SimpleListItem text={food.title} />
+                <SimpleListItem className='body2' text={food.title} />
                 <img
                   className='img__not'
                   src={require(`./img/${food.image}`)}
