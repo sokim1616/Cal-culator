@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Router, Redirect } from "react-router-dom";
+import Modal from "react-modal";
+import axios from "axios";
 import Home from "./component/Home/Home";
 import Signup from "./component/Signup";
 import Summary from "./component/Summary/Summary";
@@ -11,11 +13,20 @@ import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
 import AboutThisApp from "./component/About/AboutThisApp";
 
+Modal.setAppElement("#root");
+
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [trivia, setTrivia] = useState("");
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+      setTrivia(result.data);
+    });
+  }, []);
 
   const loginState = () => {
     setIsLogin(true);
@@ -70,7 +81,7 @@ const App = () => {
             render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
           />
           <Route
-            path="/about/aboutthisapp"
+            path="/aboutthisapp"
             render={() => (
               <AboutThisApp setCurrentPageIndex={setCurrentPageIndex} />
             )}
@@ -89,6 +100,7 @@ const App = () => {
             render={() => (
               <Calculator
                 isLogin={isLogin}
+                trivia={trivia}
                 setCurrentPageIndex={setCurrentPageIndex}
               />
             )}
