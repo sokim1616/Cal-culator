@@ -30,7 +30,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
       {
         label: "Total Consumed Calorie",
         backgroundColor: [
-          "rgba(232 , 55, 114, 0.5)",
+          "rgba(232, 55, 114, 0.5)",
           "rgba(82, 187, 172, 0.5)",
           "rgba(150, 215, 247, 0.5)",
           "rgba(253, 237, 106, 0.5)",
@@ -76,7 +76,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
 
   return (
     <div className='heightSizing'>
-      <h1>Daily Nutrition Report</h1>
+      <h1>Daily Nutrition Report (%)</h1>
       <Polar
         data={consumedDaily}
         width={700}
@@ -85,7 +85,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
           resposive: false,
           title: {
             display: false,
-            text: "Daily Nutrition Report",
+            text: "Daily Nutrition",
             fontSize: '50px',
           },
           legend: {

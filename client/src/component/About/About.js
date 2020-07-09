@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> ca56a52c8742a75ff21ac920f9e00782ccf776d4
 import {
   BrowserRouter as Router,
   useHistory,
@@ -13,10 +9,6 @@ import "@rmwc/button/styles";
 import "./About.css";
 import "./AboutThisApp.css";
 import AboutTeam from "./AboutTeam";
-<<<<<<< HEAD
-import AboutApp from "./AboutApp";
-=======
->>>>>>> ca56a52c8742a75ff21ac920f9e00782ccf776d4
 
 const About = () => {
   const [count, setCount] = useState(1);

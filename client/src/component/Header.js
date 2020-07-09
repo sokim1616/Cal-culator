@@ -38,6 +38,7 @@ const Header = ({
   };
 
   const destroyAuth = () => {
+    logoutHandle();
     axios
       .post("http://localhost:4000/user/signout", {}, { withCredentials: true })
       .then((response) => {

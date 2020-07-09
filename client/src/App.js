@@ -11,12 +11,11 @@ import Footer from "./component/Footer";
 import Calculator from "./component/Calculator/Calculator";
 import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
-import AboutThisApp from "./component/About/AboutThisApp";
 
 Modal.setAppElement("#root");
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);

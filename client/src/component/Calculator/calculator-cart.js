@@ -95,7 +95,7 @@ const Cart = ({
       </div>
       <div className='cart__totalCalorie'>
         <SimpleDataTable
-          style={{ height: "55px", paddingBottom: "16px" }}
+          style={{ height: "55px" }}
           data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]}
         />
       </div>
