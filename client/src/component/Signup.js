@@ -97,7 +97,7 @@ const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
       console.info("Valid Form");
       console.log(userState);
       axios
-        .post("http://13.209.47.155:4000/user/signup", userState)
+        .post("http://localhost:4000/user/signup", userState)
         .then((response) => {
           if (response.data === "conflict") {
             console.log("conflict");

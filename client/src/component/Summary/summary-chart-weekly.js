@@ -41,7 +41,7 @@ const ChartBarWeekly = () => {
   useEffect(() => {
     axios
       .post(
-        "http://13.209.47.155:4000/user/infoWeek",
+        "http://localhost:4000/user/infoWeek",
         { date: week },
         {
           method: "POST",

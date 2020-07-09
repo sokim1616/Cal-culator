@@ -52,7 +52,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
   useEffect(() => {
     axios
       .post(
-        "http://13.209.47.155:4000/user/infoDay",
+        "http://localhost:4000/user/infoDay",
         { date },
         {
           method: "POST",
@@ -74,7 +74,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
   }, [dailyNutrition]);
 
   return (
-    <div className="heightSizing">
+    <div className='heightSizing'>
       <h1>Daily Nutrition Report</h1>
       <Polar
         data={consumedDaily}
@@ -103,14 +103,14 @@ const ChartPolarDaily = ({ setMainDate }) => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className="chart-daily">
+      <div className='chart-daily'>
         <TextField
-          className="center"
+          className='center'
           selected={date}
           onChange={(e) => setDate(e.target.value)}
-          label="Date"
-          type="date"
-          outlined="false"
+          label='Date'
+          type='date'
+          outlined='false'
           // style={{ backgroundColor: "#f38181", color: "#ffffff" }}
         />
       </div>
