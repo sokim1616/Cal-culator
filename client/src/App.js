@@ -11,6 +11,7 @@ import Footer from "./component/Footer";
 import Calculator from "./component/Calculator/Calculator";
 import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
+import AboutThisApp from "./component/About/AboutThisApp";
 
 Modal.setAppElement("#root");
 

@@ -35,10 +35,10 @@ padding: 20%;
   justify-content: center;
 }
 
-.divider{ 
-width: 30%;
-height:auto;
-display:inline-block;
+.divider {
+  width: 30%;
+  height: auto;
+  display: inline-block;
 }
 
 .divider2 {
@@ -81,5 +81,13 @@ justify-content: center;
 }
 
 .desc {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  display: flex;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #5e915e;
+}
+
+.timeline__event__title1 {
+  color: red;
 }

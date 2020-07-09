@@ -146,7 +146,7 @@
 
 import React from "react";
 import { useHistory, withRouter } from "react-router-dom";
-import Modal from "react-modal";
+import Modal from 'react-modal';
 import axios from "axios";
 import "./loginModal.scss";
 import "@rmwc/button/styles";
@@ -233,13 +233,13 @@ const Login = ({
   // };
   return (
     <Modal
-      className='login'
+      className="login"
       isOpen={loginModalOpen}
       onRequestClose={closeLoginModal}
       contentLabel='Login Modal'
     >
-      <div className='wrapper'>
-        <div className='form-wrapper'>
+      <div className="wrapper">
+        <div className="form-wrapper">
           <h2>LOGIN</h2>
           <form onSubmit={handleSubmit} noValidate>
             <div className='email'>

@@ -7,12 +7,12 @@
   width: 100%;
   padding: 5px 0;
   text-align: center;
-  color: #27ac27;
+  color: #4e814e;
   background-color: rgb(235, 245, 232);
 }
 
 :root {
-  --mdc-theme-primary: #27ac27;
+  --mdc-theme-primary: #5e915e;
   --mdc-theme-secondary: #03dac4;
   --mdc-theme-error: #b00020;
   --mdc-theme-background: #fff;
