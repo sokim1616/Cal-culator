@@ -25,23 +25,27 @@ import { TextField } from "@rmwc/textfield";
 import "@rmwc/textfield/styles";
 import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
-import { Tab, TabBar } from "@rmwc/tabs";
-import "@rmwc/tabs/styles";
-import '@rmwc/snackbar/styles';
+import "@rmwc/snackbar/styles";
 import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 
-const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, setOpenError }) => {
+const FoodImage = ({
+  searchResult,
+  addToCartButton,
+  startDate,
+  setStartDate,
+  openError,
+  setOpenError,
+}) => {
   const [open, setOpen] = React.useState(false);
-  const [startDate, setStartDate] = React.useState();
 
   const addToCartHandle = () => {
     setOpen(true);
   };
-
+  // {searchResult.food_name.toUpperCase()}
   return (
     <div>
       <div className='food__foodName'>
-        <Typography style={{}}use='headline2'>{searchResult.food_name.toUpperCase()}</Typography>
+        <Typography style={{fontWeight: '200'}} use='headline3'>{searchResult.food_name.toUpperCase()}</Typography>
       </div>
       <div className='food__foodImage'>
         <img
@@ -68,9 +72,13 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, se
       </div>
       <div className='food__datePicker'>
         <TextField
-          style={{height: '55px',borderRadius: "4px",  backgroundColor: '#27ac27'}}
+          style={{
+            height: "55px",
+            borderRadius: "4px",
+            backgroundColor: "#27ac27",
+          }}
           selected={startDate}
-          onChange={(e) => addDateHandle(e.target.value)}
+          onChange={(e) => setStartDate(e.target.value)}
           label='date'
           type='date'
         />
@@ -81,7 +89,7 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, se
           onClose={(evt) => {
             setOpen(false);
           }}
-        // onClosed={(evt) => console.log(evt.detail.action)}
+          // onClosed={(evt) => console.log(evt.detail.action)}
         >
           <DialogTitle>ADD TO CART</DialogTitle>
           <DialogContent>Did you really eat this...?</DialogContent>
@@ -93,29 +101,29 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, se
               isDefaultAction
             >
               Of Course!!
-              </DialogButton>
+            </DialogButton>
           </DialogActions>
         </Dialog>
         <Button
           className='add--to--cart--button'
-          style={{ height: "55px", width: '10rem' }}
+          style={{ height: "55px", width: "10rem" }}
           onClick={addToCartHandle}
           raised
         >
           ADD TO CART
-          </Button>
+        </Button>
       </div>
       <div>
         <Snackbar
           open={openError}
-          onClose={evt => setOpenError(false)}
-          message="Please search food or select date..."
+          onClose={(evt) => setOpenError(false)}
+          message='Please search food or select date...'
           dismissesOnAction
           action={
             <SnackbarAction
               style={{ color: "#ffff" }}
-              label="Dismiss"
-              onClick={() => console.log('Click Me')}
+              label='Dismiss'
+              onClick={() => console.log("Click Me")}
             />
           }
         />

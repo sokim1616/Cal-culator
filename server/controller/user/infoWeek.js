@@ -7,11 +7,10 @@ const makeDateObj = require("../helperFunction/makeDateObj");
 
 module.exports = {
   post: (req, res) => {
-    // if (!req.session.userid) {
-    //   return res.status(403).send("forbidden");
-    // }
-    // const id = req.session.userid;
-    const id = 1;
+    if (!req.session.userid) {
+      return res.status(403).send("forbidden");
+    }
+    const id = req.session.userid;
     const { date } = req.body;
     const [formattedStartDate, formattedEndDate] = getMondayOfNthWeek(date);
 

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import { DataTableRow, DataTableCell } from "@rmwc/data-table";
 import "@rmwc/data-table/styles";
 import "@rmwc/textfield/styles";
 import "@rmwc/button/styles";
@@ -10,17 +9,12 @@ import "./Calculator.scss";
 
 const Search = ({
   inputRef,
-  searchInputHandle,
-  searchResultHandle,
+  setSearchResult,
   searchInput,
   autoComplete,
   setSearchInput,
   setAutoComplete,
 }) => {
-  // useEffect(() => {
-  //   setSearchInput({});
-  // }, [searchResult]);
-
   const clickSearch = (value) => {
     axios
       .post(
@@ -31,7 +25,7 @@ const Search = ({
         }
       )
       .then((response) => {
-        searchResultHandle(response.data);
+        setSearchResult(response.data);
         setSearchInput({});
         setAutoComplete([]);
       })
@@ -50,7 +44,7 @@ const Search = ({
               withCredentials: true,
             })
             .then((response) => {
-              searchResultHandle(response.data);
+              setSearchResult(response.data);
             })
             .catch((error) => {
               console.log(error);
@@ -61,7 +55,7 @@ const Search = ({
           <span className='search searchInput'>
             <TextField
               ref={inputRef}
-              onChange={(e) => searchInputHandle(e.target.value)}
+              onChange={(e) => setSearchInput({ food_name: e.target.value })}
               style={{ width: "30rem" }}
               outlined
               placeholder='What did you eat today...?'

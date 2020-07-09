@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "@rmwc/list/styles";
 import { List, CollapsibleList, SimpleListItem } from "@rmwc/list";
-import "./Dodont.css";
+import "./Dodont.scss";
 import axios from "axios";
 import formatDay from "../helperFunction/formatDay";
 import requiredNutrients from "../helperFunction/requiredNutrients";
+import ck from './img/ck.png'
+import salad from './img/salad.png'
+import ham from './img/hamber.png'
+import bro from './img/bro.png'
+
+
+
+
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
 
@@ -108,7 +116,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
           {whatToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
-                <SimpleListItem text={food.title} />
+                <SimpleListItem className='body1' text={food.title} />
                 <img
                   className='img__ok'
                   src={require(`./img/${food.image}`)}
@@ -122,6 +130,12 @@ const DoDont = ({ setCurrentPageIndex }) => {
       </span>
       <hr className='center__line'>
       </hr>
+      <div className='dodont__img'>
+        <img className='ck' src={ck} />
+        <img className='salad' src={salad} />
+        <img className='bro' src={bro} />
+        <img className='ham' src={ham} />
+      </div>
       <span className='head2'>
         <CollapsibleList
           handle={<SimpleListItem text='What NOT to eat' />}
@@ -129,7 +143,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
-                <SimpleListItem text={food.title} />
+                <SimpleListItem className='body2' text={food.title} />
                 <img
                   className='img__not'
                   src={require(`./img/${food.image}`)}

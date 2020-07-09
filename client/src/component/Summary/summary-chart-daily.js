@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Polar } from "react-chartjs-2";
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
-import "./Summary.css";
+// import "./Summary.css";
+import './summary.scss'
 
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
@@ -29,7 +30,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
       {
         label: "Total Consumed Calorie",
         backgroundColor: [
-          "rgba(232 , 55, 114, 0.5)",
+          "rgba(232, 55, 114, 0.5)",
           "rgba(82, 187, 172, 0.5)",
           "rgba(150, 215, 247, 0.5)",
           "rgba(253, 237, 106, 0.5)",
@@ -57,7 +58,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {
@@ -74,17 +75,18 @@ const ChartPolarDaily = ({ setMainDate }) => {
   }, [dailyNutrition]);
 
   return (
-    <div className="heightSizing">
-      <h1>Daily Nutrition Report</h1>
+    <div className='heightSizing'>
+      <h1>Daily Nutrition Requirements (%)</h1>
       <Polar
         data={consumedDaily}
-        width={1000}
-        height={400}
+        width={700}
+        height={515}
         options={{
+          resposive: false,
           title: {
             display: false,
-            text: "Daily Nutrition Report",
-            fontSize: 25,
+            text: "Daily Nutrition",
+            fontSize: '50px',
           },
           legend: {
             display: true,
@@ -100,17 +102,17 @@ const ChartPolarDaily = ({ setMainDate }) => {
               },
             ],
           },
-          maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
+          maintainAspectRatio: true, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className="chart-daily">
+      <div className="chart__datepicker">
         <TextField
-          className="center"
+          className='center'
           selected={date}
           onChange={(e) => setDate(e.target.value)}
-          label="Date"
-          type="date"
-          outlined="false"
+          label='Date'
+          type='date'
+          outlined='false'
           // style={{ backgroundColor: "#f38181", color: "#ffffff" }}
         />
       </div>

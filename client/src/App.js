@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Router, Redirect } from "react-router-dom";
-import Modal from 'react-modal';
-import axios from 'axios';
+import { Switch, Route, withRouter } from "react-router-dom";
+import Modal from "react-modal";
+import axios from "axios";
 import Home from "./component/Home/Home";
 import Signup from "./component/Signup";
 import Summary from "./component/Summary/Summary";
@@ -12,7 +12,7 @@ import Calculator from "./component/Calculator/Calculator";
 import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -21,10 +21,23 @@ const App = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [trivia, setTrivia] = useState("");
 
+
   useEffect(() => {
     axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
       setTrivia(result.data);
     });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/user/sessionExists", {
+        withCredentials: true,
+      })
+      .then((result) => {
+        if (result.data === "session exists") {
+          setIsLogin(true);
+        }
+      });
   }, []);
 
   const loginState = () => {
@@ -77,12 +90,10 @@ const App = () => {
         <Switch>
           <Route
             path='/about'
-            render={() => <About
-              setCurrentPageIndex={setCurrentPageIndex}
-            />}
+            render={() => <About setCurrentPageIndex={setCurrentPageIndex} />}
           />
           <Route
-            path="/summary"
+            path='/summary'
             render={() => (
               <Summary
                 id='summary'
@@ -92,7 +103,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/calculator"
+            path='/calculator'
             render={() => (
               <Calculator
                 isLogin={isLogin}
@@ -102,7 +113,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/dodont"
+            path='/dodont'
             render={() => (
               <DoDont
                 isLogin={isLogin}
@@ -111,8 +122,11 @@ const App = () => {
             )}
           />
           <Route
-            path="/"
-            render={() => <Home setCurrentPageIndex={setCurrentPageIndex} />}
+            path='/'
+            render={() => {
+              setCurrentPageIndex(0);
+              return <Home setCurrentPageIndex={setCurrentPageIndex} />;
+            }}
           />
         </Switch>
       </div>
@@ -121,4 +135,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
