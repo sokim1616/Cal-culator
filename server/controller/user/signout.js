@@ -1,7 +1,7 @@
 module.exports = {
   post: (req, res) => {
     const sess = req.session;
-
+    console.log(sess);
     if (sess.userid) {
       req.session.destroy((err) => {
         if (err) {

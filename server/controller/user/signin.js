@@ -17,6 +17,7 @@ module.exports = {
       sess.userid = result.id;
       sess.userage = result.age;
       sess.gender = result.gender;
+      console.log(sess);
       res.send("ok");
     });
   },

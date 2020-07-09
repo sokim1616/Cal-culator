@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 
 // use cors with credentials
+app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -22,7 +23,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
 // use session with secret key
 app.use(
   session({

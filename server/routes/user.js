@@ -17,4 +17,6 @@ router.get("/dailyCalorie", userController.dailyCalorie.get);
 
 router.post("/eatenFoodDay", userController.eatenFoodDay.post);
 
+router.get("/sessionExists", userController.sessionExists.get);
+
 module.exports = router;
