@@ -42,25 +42,22 @@ module.exports = {
         vitamin_D,
         zinc,
       ] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
       result.forEach((food) => {
-        calories += food.Food.calories;
-        fat += food.Food.fat;
-        carbohydrates += food.Food.carbohydrates;
-        sugar += food.Food.sugar;
-        protein += food.Food.protein;
-        sodium += food.Food.sodium;
-        cholesterol += food.Food.cholesterol;
-        iron += food.Food.iron;
-        calcium += food.Food.calcium;
-        vitamin_A += food.Food.vitamin_A;
-        vitamin_D += food.Food.vitamin_D;
-        zinc += food.Food.zinc;
+        calories += food.Food.calories * food.amount;
+        fat += food.Food.fat * food.amount;
+        carbohydrates += food.Food.carbohydrates * food.amount;
+        sugar += food.Food.sugar * food.amount;
+        protein += food.Food.protein * food.amount;
+        sodium += food.Food.sodium * food.amount;
+        cholesterol += food.Food.cholesterol * food.amount;
+        iron += food.Food.iron * food.amount;
+        calcium += food.Food.calcium * food.amount;
+        vitamin_A += food.Food.vitamin_A * food.amount;
+        vitamin_D += food.Food.vitamin_D * food.amount;
+        zinc += food.Food.zinc * food.amount;
       });
-
       // TODO: percentage for each nutrients
       const recommendedNutrition = recommendedDaily(age, gender);
-
       res.send({
         calories: +((calories / recommendedNutrition.calories) * 100).toFixed(),
         fat: +((fat / recommendedNutrition.fat) * 100).toFixed(),
