@@ -1,6 +1,5 @@
-## 프로젝트 README.md는 여러분이 작업한 프로젝트 레포의 얼굴입니다.
-
-### Readme에 들어가야 할 것들  
+## CODESTATES & TEAM HELL-THY
+### PROJECT-CAL-CULATOR
 
 ## - 서비스 설명
 Cal-Culator는....
@@ -31,8 +30,6 @@ PASSWORD = YOUR MYSQL PASSWORD
 NODE_ENV = development
 ```
 - 서버의 실행은 server 폴더에서 npm run server를, 클라이언트의 실행은 client 폴더에서 npm start를 터미널로 실행합니다.
-
-> 이 외에도 팀원 소개, 아키텍쳐, 스키마 등 여러분의 프로젝트를 더 잘 어필할 수 있는 내용들을 추가해 주세요. 
 
 <br/>
 <br/>
