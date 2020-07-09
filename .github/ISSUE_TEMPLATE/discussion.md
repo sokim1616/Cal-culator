@@ -9,7 +9,7 @@ assignees: ''
 
 ## Discussion 
 
-**Presenter** : (본명)
+**Presenter** : 최필립
 **Due Date** : 
 **Subject** : 
 
