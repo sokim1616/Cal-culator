@@ -137,9 +137,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
         <img className='ham'src={ham} />
       </div>
       <span className='head2'>
-        <CollapsibleList
-          handle={<SimpleListItem text='What NOT to eat' />}
-        >
+        <CollapsibleList handle={<SimpleListItem text='What NOT to eat' />}>
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>

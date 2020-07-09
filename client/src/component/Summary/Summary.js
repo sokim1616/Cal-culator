@@ -11,11 +11,6 @@ import formatDay from "../helperFunction/formatDay";
 const today = new Date();
 
 const Summary = ({ setCurrentPageIndex }) => {
-  const [sampleFood, setSampleFood] = useState([
-    { food_name: "pasta", amount: 1, calories: 1000 },
-    { food_name: "pizza", amount: 2, calories: 100 },
-  ]);
-
   const [mainDate, setMainDate] = useState(formatDay(today));
   const [foodEaten, setFoodEaten] = useState([]);
 
@@ -39,7 +34,7 @@ const Summary = ({ setCurrentPageIndex }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {
@@ -48,10 +43,15 @@ const Summary = ({ setCurrentPageIndex }) => {
   }, [mainDate]);
 
   return (
-    <div className="summary">
+    <div className='summary'>
       <SelectButton selectDWM={setShowDWM} />
+<<<<<<< HEAD
       {/*<div className="summary-container">*/}
         <div className="chart">
+=======
+      <div className='summary-container'>
+        <div className='chart'>
+>>>>>>> 055ee13d466d7b26586cde782459070e317c390e
           {showDWM.daily ? (
             <ChartPolarDaily setMainDate={setMainDate} />
           ) : showDWM.weekly ? (
@@ -59,10 +59,16 @@ const Summary = ({ setCurrentPageIndex }) => {
           ) : (
             <ChartLineMonthly />
           )}
+<<<<<<< HEAD
           </div>
           {/*<hr className='line'></hr>*/}
         <div className="foodlist">
           <p className='foodlist__title'>On {mainDate}, you ate...</p>
+=======
+        </div>
+        <div className='foodlist'>
+          <h1>On {mainDate}, you ate...</h1>
+>>>>>>> 055ee13d466d7b26586cde782459070e317c390e
           <FoodList food={foodEaten} />
         </div>
       {/*div>*/}

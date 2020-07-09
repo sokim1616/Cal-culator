@@ -7,10 +7,10 @@ const makeDateObj = require("../helperFunction/makeDateObj");
 
 module.exports = {
   post: (req, res) => {
-    // if (!req.session.userid) {
-    //   return res.status(403).send("forbidden");
-    // }
-    // const id = req.session.userid;
+    if (!req.session.userid) {
+      return res.status(403).send("forbidden");
+    }
+    const id = req.session.userid;
     const { date } = req.body;
     const year = date.slice(0, 4);
     const month = date.slice(5);
@@ -19,7 +19,7 @@ module.exports = {
     const endDay = `${year}-${month}-${lastDay}` + "T23:59:59Z";
     Food_users.findAll({
       where: {
-        UserId: 1,
+        UserId: id,
         time: {
           [Op.between]: [startDay, endDay],
         },

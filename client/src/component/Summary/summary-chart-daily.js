@@ -58,7 +58,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {
@@ -75,7 +75,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
   }, [dailyNutrition]);
 
   return (
-    <div className="heightSizing">
+    <div className='heightSizing'>
       <h1>Daily Nutrition Report</h1>
       <Polar
         data={consumedDaily}
@@ -105,14 +105,18 @@ const ChartPolarDaily = ({ setMainDate }) => {
           maintainAspectRatio: true, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
+<<<<<<< HEAD
       <div className="chart__datepicker">
+=======
+      <div className='chart-daily'>
+>>>>>>> 055ee13d466d7b26586cde782459070e317c390e
         <TextField
-          className="center"
+          className='center'
           selected={date}
           onChange={(e) => setDate(e.target.value)}
-          label="Date"
-          type="date"
-          outlined="false"
+          label='Date'
+          type='date'
+          outlined='false'
           // style={{ backgroundColor: "#f38181", color: "#ffffff" }}
         />
       </div>

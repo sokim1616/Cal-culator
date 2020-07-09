@@ -20,9 +20,8 @@ module.exports = {
       sess.userid = result.id;
       sess.userage = result.age;
       sess.gender = result.gender;
-      res.status(200).json({
-        id: result.id,
-      });
+      console.log(sess);
+      res.send("ok");
     });
   },
 };

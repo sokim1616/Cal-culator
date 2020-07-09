@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import getLastDayOfMonth from "../helperFunction/getLastDayOfMonth";
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
 // import "./Summary.css";
@@ -35,7 +34,7 @@ const ChartLineMonthly = () => {
       .get("http://localhost:4000/user/dailyCalorie", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        // withCredentials: true
+        withCredentials: true,
       })
       .then((result) => {
         setDailyCalorie(result.data);
@@ -50,7 +49,7 @@ const ChartLineMonthly = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          // withCredentials: true
+          withCredentials: true,
         }
       )
       .then((result) => {
@@ -77,7 +76,7 @@ const ChartLineMonthly = () => {
   }, [monthlyNutrition, dailyCalorie]);
 
   return (
-    <div className="heightSizing">
+    <div className='heightSizing'>
       <h1>Monthly Calorie Report</h1>
       <Line
         data={consumedMonthly}
@@ -107,13 +106,17 @@ const ChartLineMonthly = () => {
           maintainAspectRatio: true, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
+<<<<<<< HEAD
       <div className="chart__datepicker">
+=======
+      <div className='chart-daily'>
+>>>>>>> 055ee13d466d7b26586cde782459070e317c390e
         <TextField
           selected={month}
           onChange={(e) => setMonth(e.target.value)}
-          label="Month"
-          type="month"
-          outlined="false"
+          label='Month'
+          type='month'
+          outlined='false'
         />
       </div>
     </div>
