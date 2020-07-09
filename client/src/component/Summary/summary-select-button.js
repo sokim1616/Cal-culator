@@ -12,9 +12,7 @@ const Selectbutton = ({ selectDWM }) => {
   const btnClicked = (dwm, dwmStatus) => {
     if (!dwmStatus) {
       setDwmIsOpen((prevState) => {
-        {
-          return { ...prevState, [dwm]: false };
-        }
+        return { ...prevState, [dwm]: false };
       });
     }
   };
@@ -24,7 +22,7 @@ const Selectbutton = ({ selectDWM }) => {
   }, [dwmIsOpen]);
 
   return (
-    <div className="button">
+    <div className='button'>
       {dwmIsOpen.daily ? (
         <Button
           onClick={(e) => {

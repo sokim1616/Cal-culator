@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Home.scss";
 import "@rmwc/typography/styles";
-import { Typography } from "@rmwc/typography";
 import github from "./github.png";
 import facebook from "./facebook.png";
 import insta from "./instagram.png";

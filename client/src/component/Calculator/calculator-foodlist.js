@@ -25,8 +25,6 @@ import { TextField } from "@rmwc/textfield";
 import "@rmwc/textfield/styles";
 import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
-import { Tab, TabBar } from "@rmwc/tabs";
-import "@rmwc/tabs/styles";
 import "@rmwc/snackbar/styles";
 import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 

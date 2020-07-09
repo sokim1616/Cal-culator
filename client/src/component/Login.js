@@ -6,7 +6,6 @@ import "./loginModal.scss";
 
 import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
-import { Typography } from "@rmwc/typography";
 import "@rmwc/typography/styles";
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)

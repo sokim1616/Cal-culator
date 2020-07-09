@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Router, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
 import Home from "./component/Home/Home";
@@ -22,7 +22,7 @@ const App = () => {
   const [trivia, setTrivia] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+    axios.get("http://13.209.47.155:4000/food/foodtrivia").then((result) => {
       setTrivia(result.data);
     });
   }, []);

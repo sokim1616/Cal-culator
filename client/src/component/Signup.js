@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 import "./signupModal.scss";
@@ -7,8 +7,6 @@ import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
 import "@rmwc/radio/styles";
 import { Radio } from "@rmwc/radio";
-import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
-import "@rmwc/snackbar/styles";
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -29,7 +27,7 @@ const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [value, setValue] = useState("");
-  const [errors, setErrors] = useState({
+  const [errors] = useState({
     username: "",
     email: "",
     password: "",

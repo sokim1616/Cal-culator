@@ -1,15 +1,7 @@
 import React from "react";
 
 import "@rmwc/data-table/styles";
-import {
-  DataTable,
-  DataTableContent,
-  DataTableHead,
-  DataTableRow,
-  DataTableHeadCell,
-  DataTableBody,
-  DataTableCell,
-} from "@rmwc/data-table";
+import { DataTableRow, DataTableCell } from "@rmwc/data-table";
 
 const AddFoodList = ({ searchResult }) => {
   return (

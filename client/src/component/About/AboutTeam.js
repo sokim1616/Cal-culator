@@ -58,6 +58,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                 <div>
                   <img
                     src={isHwaejang ? philip : jjun}
+                    alt='phillip'
                     id='imgClickAndChange'
                     onClick={changeHwaejang}
                   />
@@ -70,7 +71,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                   <center>공장장</center>
                 </div>
                 <div>
-                  <img src={ren} />
+                  <img src={ren} alt='douhyun' />
                   <div className='desc'>Name: D.H KYUNG</div>
                   <div className='desc'>Position: Front-end</div>
                 </div>
@@ -84,7 +85,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                   <center>부장</center>
                 </div>
                 <div>
-                  <img src={mozzi} />
+                  <img src={mozzi} alt='junseob' />
                   <div className='desc'>Name: JUNSEOB KIM</div>
                   <div className='desc'>Position: Full-stack</div>
                 </div>
@@ -94,7 +95,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                   <center>사원</center>
                 </div>
                 <div>
-                  <img src={mika} />
+                  <img src={mika} alt='sohyun' />
                   <div className='desc'>Name: SOHYUN KIM</div>
                   <div className='desc'>Position: Front-end</div>
                 </div>
