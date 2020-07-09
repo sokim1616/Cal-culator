@@ -87,11 +87,7 @@ const ChartBarWeekly = () => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-<<<<<<< HEAD
       <div className="chart__datepicker">
-=======
-      <div className='chart-daily'>
->>>>>>> 055ee13d466d7b26586cde782459070e317c390e
         <TextField
           selected={week}
           onChange={(e) => setWeek(e.target.value)}

@@ -1,14 +1,9 @@
 .home {
 
-<<<<<<< HEAD
-    position: relative;
-    top: 40px;
-    left: 0 px;
-=======
   position: relative;
-  top: 80px;
-  left: 250px;
->>>>>>> 055ee13d466d7b26586cde782459070e317c390e
+  top: 20px;
+  left: px;
+  margin-left: 150px;
 
   ul {
     li {
@@ -24,7 +19,7 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-image: url('../Home/salad.jpg');
+        background-image: url('../Home/Image/salad.jpg');
         // background-color: rgb(234,245,234);
         background-size: auto;
         background-attachment: unset;
@@ -45,38 +40,9 @@
         // text-shadow: 2px -2.5px 5px lightgray;
       }
 
-<<<<<<< HEAD
-        .cloud-text {
-          position: absolute;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-image: url('../Home/Image/salad.jpg');
-          // background-color: rgb(234,245,234);
-          background-size: auto;
-          background-attachment: unset;
-          background-position: 0%;
-          font-weight: 500;
-          width: 700px;
-          top: 100px;
-          // top: 50px;
-          left: 300px;
-          // left: 50px;
-          height: 300px;
-          font-size: 134px;
-          line-height: 1;
-          animation: clouds-moving infinite 220s;
-          animation-fill-mode: forwards;
-          animation-play-state: running;
-          animation-timing-function: linear;
-          text-align: left;
-          transform: rotate(-30deg);
-          // text-shadow: 2px -2.5px 5px lightgray;
-=======
       @keyframes clouds-moving {
         0% {
           background-position: 0%;
->>>>>>> 055ee13d466d7b26586cde782459070e317c390e
         }
 
         50% {
@@ -89,76 +55,76 @@
       }
     }
 
-      li {
-        .perspective-text {
-          display: absolute;
-          width: 180px;
-          color: white;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-          font-size: 58px;
-          font-weight: 300;
-          letter-spacing: -2px;
-          text-transform: uppercase;
-          padding-top: 250px;
-          // padding-top: 350px;
-          padding-left: 850px;
-          // padding-left: 1150px;
-        }
-
+    li {
+      .perspective-text {
+        display: absolute;
+        width: 180px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 58px;
+        font-weight: 300;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        padding-top: 250px;
+        // padding-top: 350px;
+        padding-left: 850px;
+        // padding-left: 1150px;
       }
 
-      .perspective-line {
-        height: 50px;
-        width: 600px;
-        overflow: hidden;
-        position: relative;
-      }
+    }
 
-      p {
-        margin: 0;
-        height: 50px;
-        line-height: 50px;
-        transition: all 0.5s ease-in-out;
-      }
+    .perspective-line {
+      height: 50px;
+      width: 600px;
+      overflow: hidden;
+      position: relative;
+    }
 
-      .perspective-line:nth-child(odd) {
-        transform: skew(60deg, -30deg) scaleY(0.667);
-      }
+    p {
+      margin: 0;
+      height: 50px;
+      line-height: 50px;
+      transition: all 0.5s ease-in-out;
+    }
 
-      .nth-a {
-        text-shadow: 1px -2.5px 2.5px lightgray;
-      }
+    .perspective-line:nth-child(odd) {
+      transform: skew(60deg, -30deg) scaleY(0.667);
+    }
 
-      .perspective-line:nth-child(even) {
-        transform: skew(0deg, -30deg) scaleY(1.337);
-      }
+    .nth-a {
+      text-shadow: 1px -2.5px 2.5px lightgray;
+    }
 
-      .perspective-text:hover p {
-        transform: translate(0, -50px);
-      }
+    .perspective-line:nth-child(even) {
+      transform: skew(0deg, -30deg) scaleY(1.337);
+    }
 
-      .perspective-line:nth-child(1) {
-        left: 29px;
-      }
+    .perspective-text:hover p {
+      transform: translate(0, -50px);
+    }
 
-      .perspective-line:nth-child(2) {
-        left: 58px;
-        background: #f07e6e;
-      }
+    .perspective-line:nth-child(1) {
+      left: 29px;
+    }
 
-      .perspective-line:nth-child(3) {
-        left: 87px;
-        background: #84cdfa;
-      }
+    .perspective-line:nth-child(2) {
+      left: 58px;
+      background: #f07e6e;
+    }
 
-      .perspective-line:nth-child(4) {
-        left: 116px;
-        background: #5ad1cd;
-      }
+    .perspective-line:nth-child(3) {
+      left: 87px;
+      background: #84cdfa;
+    }
 
-      .perspective-line:nth-child(5) {
-        left: 145px;
-      }
+    .perspective-line:nth-child(4) {
+      left: 116px;
+      background: #5ad1cd;
+    }
+
+    .perspective-line:nth-child(5) {
+      left: 145px;
+    }
 
     // li {
     //   .trivia {
@@ -190,24 +156,14 @@
 
     .sns {
       position: absolute;
-      left: 1450px;
+      left: 1550px;
       top: 700px;
+
       .github {
         position: absolute;
-<<<<<<< HEAD
-        left: 1700px;
-        top: 700px;
-
-        .github {
-          position: absolute;
-          width: 50px;
-          height: 50px;
-          opacity: 0.5;
-=======
         width: 50px;
         height: 50px;
         opacity: 0.5;
->>>>>>> 055ee13d466d7b26586cde782459070e317c390e
 
       }
 
