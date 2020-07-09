@@ -8,7 +8,7 @@ const TableRow = ({ foodData }) => {
     <DataTableRow>
       <DataTableCell>{food_name}</DataTableCell>
       <DataTableCell alignEnd>{amount}</DataTableCell>
-      <DataTableCell alignEnd>{calories * amount}</DataTableCell>
+      <DataTableCell alignEnd>{calories}</DataTableCell>
     </DataTableRow>
   );
 };
