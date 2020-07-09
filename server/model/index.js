@@ -5,7 +5,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const basename = path.basename(__filename);
 
 dotenv.config({ path: path.join(__dirname, "../.env") });
-const env = "development";
+const env = "deployment";
 const config = require(__dirname + "/../config/config.js")[env];
 
 const db = {};
