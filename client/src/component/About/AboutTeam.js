@@ -109,44 +109,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                     </div>
                 </div>
             </Modal>
-
         </div >
-        // <Card style={{ width: '12.5rem' }}>
-        //     <CardPrimaryAction>
-        //         <CardMedia
-        //             square
-        //             style={{
-        //                 backgroundImage: 'url(images/backgrounds/mb-bg-fb-06.png)'
-        //             }}
-        //         >
-        //             <CardMediaContent>
-        //                 <Typography
-        //                     use="subtitle2"
-        //                     tag="div"
-        //                     theme="textPrimaryOnDark"
-        //                     style={{
-        //                         padding: '0.5rem 1rem',
-        //                         backgroundImage:
-        //                             'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 100%)',
-        //                         bottom: '0',
-        //                         left: '0',
-        //                         right: '0',
-        //                         position: 'absolute'
-        //                     }}
-        //                 >
-        //                     Vacation Photos
-        //     </Typography>
-        //             </CardMediaContent>
-        //         </CardMedia>
-        //     </CardPrimaryAction>
-        //     <CardActions>
-        //         <CardActionIcons>
-        //             <CardActionIcon onIcon="favorite" icon="favorite_border" />
-        //             <CardActionIcon icon="bookmark_border" />
-        //             <CardActionIcon icon="share" />
-        //         </CardActionIcons>
-        //     </CardActions>
-        // </Card>
     )
 }
 
