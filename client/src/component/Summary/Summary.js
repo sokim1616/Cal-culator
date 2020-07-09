@@ -4,7 +4,8 @@ import ChartLineMonthly from "./summary-chart-monthly";
 import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
-import "./Summary.css";
+// import "./Summary.css";
+import './summary.scss'
 import axios from "axios";
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
@@ -49,7 +50,7 @@ const Summary = ({ setCurrentPageIndex }) => {
   return (
     <div className="summary">
       <SelectButton selectDWM={setShowDWM} />
-      <div className="summary-container">
+      {/*<div className="summary-container">*/}
         <div className="chart">
           {showDWM.daily ? (
             <ChartPolarDaily setMainDate={setMainDate} />
@@ -58,12 +59,13 @@ const Summary = ({ setCurrentPageIndex }) => {
           ) : (
             <ChartLineMonthly />
           )}
-        </div>
+          </div>
+          {/*<hr className='line'></hr>*/}
         <div className="foodlist">
-          <h1>On {mainDate}, you ate...</h1>
+          <p className='foodlist__title'>On {mainDate}, you ate...</p>
           <FoodList food={foodEaten} />
         </div>
-      </div>
+      {/*div>*/}
     </div>
   );
 };

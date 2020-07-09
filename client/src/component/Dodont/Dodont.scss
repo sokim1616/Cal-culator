@@ -1,0 +1,65 @@
+.list {
+    position: relative;
+}
+
+.head1 {
+    background-color: rgba(63, 134, 134, 0.5);
+    position: absolute;
+    width: 650px;
+    left: 130px;
+    top: 120px;
+}
+
+.body1,
+.img__ok {
+    background-color: rgba(234, 134, 134, 0.5);
+}
+
+.center__line {
+    position: absolute;
+    border: 1ps solid #3d3d3d;
+    width: 600px;
+    left: 650px;
+    top: 400px;
+    transform: rotate(90deg);
+}
+
+.head2 {
+    background-color: rgba(123, 188, 155, 0.5);
+    position: absolute;
+    left: 1120px;
+    top: 120px;
+    width: 650px;
+}
+
+.dodont__img {
+    position: absolute;
+    .ck{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 550px;
+        left: 200px;
+    }
+    .salad{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 550px;
+        left: 500px;
+    }
+    .bro {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 550px;
+        left: 1200px;
+    }
+    .ham{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 550px;
+        left: 1500px;
+    }
+}

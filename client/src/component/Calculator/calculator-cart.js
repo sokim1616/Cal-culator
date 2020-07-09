@@ -67,7 +67,7 @@ const Cart = ({
   return (
     <div>
       <div className='cart__title'>
-        <Typography use='headline2'>CART</Typography>
+        <Typography style={{fontWeight: '200'}} use='headline3'>CART</Typography>
       </div>
       <div className="cart__foodlist">
         <DataTable

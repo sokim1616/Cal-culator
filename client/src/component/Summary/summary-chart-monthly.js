@@ -3,6 +3,8 @@ import { Line } from "react-chartjs-2";
 import getLastDayOfMonth from "../helperFunction/getLastDayOfMonth";
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
+// import "./Summary.css";
+import './summary.scss'
 
 const ChartLineMonthly = () => {
   const [dailyCalorie, setDailyCalorie] = useState("");
@@ -79,9 +81,10 @@ const ChartLineMonthly = () => {
       <h1>Monthly Calorie Report</h1>
       <Line
         data={consumedMonthly}
-        width={10}
-        height={200}
+        width={700}
+        height={515}
         options={{
+          responsive: false,
           title: {
             display: false,
             text: "Monthly Calorie Report",
@@ -101,10 +104,10 @@ const ChartLineMonthly = () => {
               },
             ],
           },
-          maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
+          maintainAspectRatio: true, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className="chart-daily">
+      <div className="chart__datepicker">
         <TextField
           selected={month}
           onChange={(e) => setMonth(e.target.value)}

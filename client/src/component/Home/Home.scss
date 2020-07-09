@@ -1,7 +1,7 @@
   .home {
 
     position: relative;
-    top: 80px;
+    top: 40px;
     left: 0 px;
 
     ul {
@@ -18,17 +18,17 @@
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          background-image: url('../Home/salad.jpg');
+          background-image: url('../Home/Image/salad.jpg');
           // background-color: rgb(234,245,234);
           background-size: auto;
           background-attachment: unset;
           background-position: 0%;
           font-weight: 500;
           width: 700px;
-          // top: 100px;
-          top: 50px;
-          // left: 300px;
-          left: 50px;
+          top: 100px;
+          // top: 50px;
+          left: 300px;
+          // left: 50px;
           height: 300px;
           font-size: 134px;
           line-height: 1;
@@ -66,10 +66,10 @@
           font-weight: 300;
           letter-spacing: -2px;
           text-transform: uppercase;
-          // padding-top: 250px;
-          padding-top: 350px;
-          // padding-left: 850px;
-          padding-left: 1150px;
+          padding-top: 250px;
+          // padding-top: 350px;
+          padding-left: 850px;
+          // padding-left: 1150px;
         }
 
         .perspective-line {
@@ -130,7 +130,7 @@
 
       .sns {
         position: absolute;
-        left: 1650px;
+        left: 1700px;
         top: 700px;
 
         .github {

@@ -81,6 +81,7 @@ const Login = ({
             if (response.status === 200) {
               loginState();
               closeLoginModal();
+              console.log(response)
               console.log("OK");
             }
           }

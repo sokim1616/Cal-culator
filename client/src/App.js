@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Router, Redirect } from "react-router-dom";
+import { Switch, Route, Router, Redirect, useHistory, withRouter } from "react-router-dom";
 import Modal from 'react-modal';
 import axios from 'axios';
 import Home from "./component/Home/Home";
@@ -15,11 +15,12 @@ import About from "./component/About/About";
 Modal.setAppElement('#root')
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [trivia, setTrivia] = useState("");
+
 
   useEffect(() => {
     axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
@@ -121,4 +122,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);

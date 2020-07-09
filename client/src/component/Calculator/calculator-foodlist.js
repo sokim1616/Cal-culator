@@ -37,11 +37,11 @@ const FoodImage = ({ searchResult, addDateHandle, addToCartButton, openError, se
   const addToCartHandle = () => {
     setOpen(true);
   };
-
+  // {searchResult.food_name.toUpperCase()}
   return (
     <div>
       <div className='food__foodName'>
-        <Typography style={{}}use='headline2'>{searchResult.food_name.toUpperCase()}</Typography>
+        <Typography style={{fontWeight: '200'}} use='headline3'>{searchResult.food_name.toUpperCase()}</Typography>
       </div>
       <div className='food__foodImage'>
         <img

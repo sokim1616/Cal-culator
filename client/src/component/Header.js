@@ -1,17 +1,11 @@
 import React, { useState } from "react";
+import { useHistory, withRouter } from "react-router-dom";
 import axios from 'axios'
-import {
-  Switch,
-  Route,
-  Router,
-  useHistory,
-  withRouter,
-} from "react-router-dom";
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
 const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin, logoutHandle }) => {
-const history = useHistory();
+  const history = useHistory();
 
   const summaryAuth = () => {
     if (isLogin === false) {
@@ -38,13 +32,15 @@ const history = useHistory();
   }
 
   const destroyAuth = () => {
-    logoutHandle()
-    axios.post('http://localhost:4000/user/signout', { withCredential: true })
+    console.log("LOGOUT")
+    logoutHandle();
+    axios.post('http://localhost:4000/user/signout/', { withCredentials: true })
       .then(response => {
+        console.log(response)
         if (response.data === "signed out") {
-          logoutHandle();
+          console.log(response)
           history.push("/");
-          console.log("SIGN OUT")
+          logoutHandle();
         }
       })
   }
