@@ -68,3 +68,7 @@ h1 {
   font-family: Roboto;
   font-weight: lighter;
 }
+
+.chartjs-render-monitor {
+  margin-top: -30px;
+}

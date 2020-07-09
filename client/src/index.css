@@ -18,7 +18,7 @@
 :root {
   --mdc-theme-primary: #27ac27;
   --mdc-theme-secondary: #03dac4;
-  --mdc-theme-error: #aedefc;
+  --mdc-theme-error: #b00020;
   --mdc-theme-background: #fff;
   --mdc-theme-surface: #fff;
   --mdc-theme-on-primary: rgba(255, 255, 255, 1);

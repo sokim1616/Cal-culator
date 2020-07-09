@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "@rmwc/list/styles";
-// 해당하는 부분 import 해오기
 import { List, CollapsibleList, SimpleListItem } from "@rmwc/list";
 import "./Dodont.css";
 import axios from "axios";
@@ -99,10 +98,10 @@ const DoDont = ({ setCurrentPageIndex }) => {
   }, []);
 
   return (
-    <center>
-      <List className='list'>
+    <List className='list'>
+      <span className='head1'>
         <CollapsibleList
-          handle={<SimpleListItem className='head1' text='What to eat' />}
+          handle={<SimpleListItem text='What to eat' />}
           onOpen={() => console.log("open")}
           onClose={() => console.log("close")}
         >
@@ -111,6 +110,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
               <React.Fragment key={idx}>
                 <SimpleListItem text={food.title} />
                 <img
+                  className='img__ok'
                   src={require(`./img/${food.image}`)}
                   alt='foodImage'
                   style={{ width: "50%", height: "50%" }}
@@ -119,15 +119,19 @@ const DoDont = ({ setCurrentPageIndex }) => {
             );
           })}
         </CollapsibleList>
-
+      </span>
+      <hr className='center__line'>
+      </hr>
+      <span className='head2'>
         <CollapsibleList
-          handle={<SimpleListItem className='head2' text='What NOT to eat' />}
+          handle={<SimpleListItem text='What NOT to eat' />}
         >
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
                 <SimpleListItem text={food.title} />
                 <img
+                  className='img__not'
                   src={require(`./img/${food.image}`)}
                   alt='foodImage'
                   style={{ width: "50%", height: "50%" }}
@@ -135,19 +139,9 @@ const DoDont = ({ setCurrentPageIndex }) => {
               </React.Fragment>
             );
           })}
-          {/* <SimpleListItem text='Flour' />
-          <SimpleListItem text='Pizza' />
-          <SimpleListItem text='Coke' /> */}
         </CollapsibleList>
-
-        {/* <CollapsibleList
-          handle={<SimpleListItem className='head3' text='What to do' />}
-        >
-          <SimpleListItem text='Walk 20 mins a day' />
-          <SimpleListItem text='Squat 200 times a day' />
-        </CollapsibleList> */}
-      </List>
-    </center>
+      </span>
+    </List>
   );
 };
 

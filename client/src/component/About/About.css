@@ -31,6 +31,8 @@ padding: 20%;
 }
 
 .title {
+  display: flex;
+  justify-content: center;
 }
 
 .divider{ 
@@ -72,10 +74,10 @@ flex-direction: column;
 justify-content: center;
 }
 
-.employee {
-display: flex;
-flex-direction: column;
-justify-content: center;
+.intern {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .desc {
