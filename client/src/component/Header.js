@@ -3,6 +3,8 @@ import axios from "axios";
 import { useHistory, withRouter } from "react-router-dom";
 import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
+import "@rmwc/snackbar/styles";
 
 const Header = ({
   setCurrentPageIndex,
@@ -11,6 +13,8 @@ const Header = ({
   isLogin,
   logoutHandle,
 }) => {
+
+  const [open, setOpen] = React.useState(false);
   const history = useHistory();
 
   const summaryAuth = () => {
@@ -44,7 +48,7 @@ const Header = ({
       .then((response) => {
         console.log(response.data);
         if (response.data === "signed out") {
-          console.log(response)
+          setOpen(!open)
           logoutHandle();
           history.push("/");
         }
@@ -62,6 +66,19 @@ const Header = ({
 
   return (
     <div>
+      <Snackbar
+        open={open}
+        onClose={(evt) => setOpen(false)}
+        message='이제는 우리가 헤어져야 할 시간, 다음에 또 만나요~'
+        dismissesOnAction
+        action={
+          <SnackbarAction
+            style={{ color: "#ffff" }}
+            label='Dismiss'
+            onClick={() => console.log("Click Me")}
+          />
+        }
+      />
       <header className='header'>
         <TabBar
           activeTabIndex={currentPageIndex}
