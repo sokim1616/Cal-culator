@@ -11,7 +11,7 @@ import { Tab, TabBar } from "@rmwc/tabs";
 import "@rmwc/tabs/styles";
 
 const Header = ({ setCurrentPageIndex, currentPageIndex, openLoginModal, isLogin, logoutHandle }) => {
-const history = useHistory();
+  const history = useHistory();
 
   const summaryAuth = () => {
     if (isLogin === false) {
@@ -52,7 +52,6 @@ const history = useHistory();
   const loginLogout = () => {
     if (isLogin === true) {
       destroyAuth()
-
     } else if (isLogin === false) {
       openLoginModal()
     }

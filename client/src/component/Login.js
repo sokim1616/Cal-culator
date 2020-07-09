@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, withRouter} from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import Modal from 'react-modal';
 import axios from "axios";
 import "./loginModal.scss";
@@ -99,26 +99,38 @@ const Login = ({
 
   return (
     <Modal
-      className='login'
+      className="login"
       isOpen={loginModalOpen}
       onRequestClose={closeLoginModal}
       contentLabel="Login Modal"
     >
-      <div className='wrapper'>
-        <div className='form-wrapper'>
+      <div className="wrapper">
+        <div className="form-wrapper">
           <h2>LOGIN</h2>
           <form onSubmit={handleSubmit} noValidate>
-            <div className='email'>
+            <div className="email">
               <label htmlFor="email">EMAIL</label>
-              <input type='email' name='email' onChange={handleChange} noValidate />
-              {errors.email.length > 0 &&
-                <span className='error'>{errors.email}</span>}
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                noValidate
+              />
+              {errors.email.length > 0 && (
+                <span className="error">{errors.email}</span>
+              )}
             </div>
-            <div className='password'>
+            <div className="password">
               <label htmlFor="password">PASSWORD</label>
-              <input type='password' name='password' onChange={handleChange} noValidate />
-              {errors.password.length > 0 &&
-                <span className='error'>{errors.password}</span>}
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                noValidate
+              />
+              {errors.password.length > 0 && (
+                <span className="error">{errors.password}</span>
+              )}
             </div>
             <div className='submit'>
               <Button>LOGIN</Button>
@@ -130,7 +142,7 @@ const Login = ({
         </div>
       </div>
     </Modal>
-  )
+  );
 };
 
 export default withRouter(Login);

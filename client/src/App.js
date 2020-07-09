@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Router, Redirect } from "react-router-dom";
-import Modal from 'react-modal';
-import axios from 'axios';
+import Modal from "react-modal";
+import axios from "axios";
 import Home from "./component/Home/Home";
 import Signup from "./component/Signup";
 import Summary from "./component/Summary/Summary";
@@ -11,11 +11,12 @@ import Footer from "./component/Footer";
 import Calculator from "./component/Calculator/Calculator";
 import DoDont from "./component/Dodont/Dodont";
 import About from "./component/About/About";
+import AboutThisApp from "./component/About/AboutThisApp";
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
