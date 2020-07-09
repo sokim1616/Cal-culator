@@ -33,6 +33,18 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
     const changeHwaejang = () => {
         setIsHwaejang(!isHwaejang)
     }
+    const [isGongjangjang, setIsGongjangjang] = React.useState(false)
+    const changeGongjangjang = () => {
+        setIsGongjangjang(!isGongjangjang)
+    }
+    const [isBujang, setIsBujang] = React.useState(false)
+    const changeBujang = () => {
+        setIsBujang(!isBujang)
+    }
+    const [isIntern, setIsIntern] = React.useState(false)
+    const changeIntern = () => {
+        setIsIntern(!isIntern)
+    }
 
     return (
         <div>
@@ -54,7 +66,7 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                                 <div>
                                     <img src={
                                         isHwaejang ? philip : jjun
-                                    } id="imgClickAndChange" onClick={changeHwaejang} />
+                                    } onClick={changeHwaejang} />
                                     <div className='desc'>Name: PHILLIP CHOI</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
@@ -62,7 +74,9 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='gongjangjang' htmlFor='gongjangjang'><center>공장장</center></div>
                                 <div>
-                                    <img src={ren} />
+                                    <img src={
+                                        isGongjangjang ? douhyun : ren
+                                    } onClick={changeGongjangjang} />
                                     <div className='desc'>Name: D.H KYUNG</div>
                                     <div className='desc'>Position: Front-end</div>
                                 </div>
@@ -74,15 +88,19 @@ const AboutTeam = ({ teamModalOpen, closeTeamModal }) => {
                             <div>
                                 <div className='bujang' htmlFor='bujang'><center>부장</center></div>
                                 <div>
-                                    <img src={mozzi} />
+                                    <img src={
+                                        isBujang ? junseob : mozzi
+                                    } onClick={changeBujang} />
                                     <div className='desc'>Name: JUNSEOB KIM</div>
                                     <div className='desc'>Position: Full-stack</div>
                                 </div>
                             </div>
                             <div>
-                                <div className='employee' htmlFor='employee'><center>사원</center></div>
+                                <div className='intern' htmlFor='intern'><center>인턴</center></div>
                                 <div>
-                                    <img src={mika} />
+                                    <img src={
+                                        isIntern ? sohyun : mika
+                                    } onClick={changeIntern} />
                                     <div className='desc'>Name: SOHYUN KIM</div>
                                     <div className='desc'>Position: Front-end</div>
                                 </div>

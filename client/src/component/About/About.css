@@ -31,6 +31,8 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
 }
 
 .divider{ 
@@ -40,7 +42,7 @@
 }
 
 .divider2 {
-  height: 10%;
+  height: 30%;
   /* display:inline-block; */
 }
 
@@ -72,7 +74,7 @@
   justify-content: center;
 }
 
-.employee {
+.intern {
   display: flex;
   flex-direction: column;
   justify-content: center;
