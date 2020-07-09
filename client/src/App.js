@@ -27,6 +27,18 @@ const App = () => {
     });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/user/sessionExists", {
+        withCredentials: true,
+      })
+      .then((result) => {
+        if (result.data === "session exists") {
+          setIsLogin(true);
+        }
+      });
+  }, []);
+
   const loginState = () => {
     setIsLogin(true);
   };
@@ -110,7 +122,10 @@ const App = () => {
           />
           <Route
             path='/'
-            render={() => <Home setCurrentPageIndex={setCurrentPageIndex} />}
+            render={() => {
+              setCurrentPageIndex(0);
+              return <Home setCurrentPageIndex={setCurrentPageIndex} />;
+            }}
           />
         </Switch>
       </div>

@@ -40,13 +40,15 @@ const Header = ({
   const destroyAuth = () => {
     logoutHandle();
     axios
-      .post("http://localhost:4000/user/signout", { withCredential: true })
+      .post("http://localhost:4000/user/signout", {}, { withCredentials: true })
       .then((response) => {
+        console.log(response.data);
         if (response.data === "signed out") {
           logoutHandle();
           history.push("/");
         }
-      });
+      })
+      .catch((err) => console.log(err, "error happened"));
   };
 
   const loginLogout = () => {
