@@ -7,6 +7,8 @@ import "@rmwc/button/styles";
 import { Button } from "@rmwc/button";
 import "@rmwc/radio/styles";
 import { Radio } from "@rmwc/radio";
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
+import "@rmwc/snackbar/styles";
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -22,6 +24,7 @@ const validateForm = (errors) => {
 };
 
 const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
+  const [open, setOpen] = React.useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,6 +106,7 @@ const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
             console.log("conflict");
           } else {
             if (response.status === 200) {
+              setOpen(!open);
               openLoginModal();
             }
           }
@@ -116,94 +120,113 @@ const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
   };
 
   return (
-    <Modal
-      className='signup'
-      isOpen={signupModalOpen}
-      onRequestClose={closeSignupModal}
-      contentLabel='SignUp Modal'
-    >
-      <div className='wrapper'>
-        <div className='form-wrapper'>
-          <h2>CREATE ACCOUNT</h2>
-          <form onSubmit={handleSubmit} noValidate>
-            <div className='email'>
-              <label htmlFor='email'>EMAIL</label>
-              <input
-                type='email'
-                name='email'
-                onChange={handleChange}
-                noValidate
-              />
-              {errors.email.length > 0 && (
-                <span className='error'>{errors.email}</span>
-              )}
-            </div>
-            <div className='password'>
-              <label htmlFor='password'>PASSWORD</label>
-              <input
-                type='password'
-                name='password'
-                onChange={handleChange}
-                noValidate
-              />
-              {errors.password.length > 0 && (
-                <span className='error'>{errors.password}</span>
-              )}
-            </div>
-            <div className='username'>
-              <label htmlFor='username'>USERNAME</label>
-              <input
-                type='text'
-                name='username'
-                onChange={handleChange}
-                noValidate
-              />
-              {errors.username.length > 0 && (
-                <span className='error'>{errors.username}</span>
-              )}
-            </div>
-            <div className='age'>
-              <label htmlFor='age'>AGE</label>
-              <input
-                type='text'
-                name='age'
-                onChange={handleChange}
-                noValidate
-              />
-              {errors.age.length > 0 && (
-                <span className='error'>{errors.age}</span>
-              )}
-            </div>
-            <div className='gender'>
-              <label htmlFor='gender'>GENDER</label>
-              <div className='gender-radio'>
-                <Radio
-                  className='male-radio'
-                  value='Male'
-                  checked={value === "Male"}
-                  onChange={(evt) => setValue(String(evt.currentTarget.value))}
-                >
-                  MALE
-                </Radio>
-                <Radio
-                  className='female-radio'
-                  value='Female'
-                  checked={value === "Female"}
-                  onChange={(evt) => setValue(String(evt.currentTarget.value))}
-                >
-                  FEMALE
-                </Radio>
+    <div>
+      <Snackbar
+        open={open}
+        onClose={(evt) => setOpen(false)}
+        message='Welcome to CAL-CULATOR!!'
+        dismissesOnAction
+        action={
+          <SnackbarAction
+            style={{ color: "#ffff" }}
+            label='Dismiss'
+            onClick={() => console.log("Click Me")}
+          />
+        }
+      />
+      <Modal
+        className='signup'
+        isOpen={signupModalOpen}
+        onRequestClose={closeSignupModal}
+        contentLabel='SignUp Modal'
+      >
+        <div className='wrapper'>
+          <div className='form-wrapper'>
+            <h2>CREATE ACCOUNT</h2>
+            <form onSubmit={handleSubmit} noValidate>
+              <div className='email'>
+                <label htmlFor='email'>EMAIL</label>
+                <input
+                  type='email'
+                  name='email'
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.email.length > 0 && (
+                  <span className='error'>{errors.email}</span>
+                )}
               </div>
-            </div>
-            <div className='createLogin'>
-              <Button style={{ width: "280px" }} type='submit' raised>
-                CREATE || LOG IN
-              </Button>
-            </div>
-          </form>
+              <div className='password'>
+                <label htmlFor='password'>PASSWORD</label>
+                <input
+                  type='password'
+                  name='password'
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.password.length > 0 && (
+                  <span className='error'>{errors.password}</span>
+                )}
+              </div>
+              <div className='username'>
+                <label htmlFor='username'>USERNAME</label>
+                <input
+                  type='text'
+                  name='username'
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.username.length > 0 && (
+                  <span className='error'>{errors.username}</span>
+                )}
+              </div>
+              <div className='age'>
+                <label htmlFor='age'>AGE</label>
+                <input
+                  type='text'
+                  name='age'
+                  onChange={handleChange}
+                  noValidate
+                />
+                {errors.age.length > 0 && (
+                  <span className='error'>{errors.age}</span>
+                )}
+              </div>
+              <div className='gender'>
+                <label htmlFor='gender'>GENDER</label>
+                <div className='gender-radio'>
+                  <Radio
+                    className='male-radio'
+                    value='Male'
+                    checked={value === "Male"}
+                    onChange={(evt) =>
+                      setValue(String(evt.currentTarget.value))
+                    }
+                  >
+                    MALE
+                  </Radio>
+                  <Radio
+                    className='female-radio'
+                    value='Female'
+                    checked={value === "Female"}
+                    onChange={(evt) =>
+                      setValue(String(evt.currentTarget.value))
+                    }
+                  >
+                    FEMALE
+                  </Radio>
+                </div>
+              </div>
+              <div className='createLogin'>
+                <Button style={{ width: "280px" }} type='submit' raised>
+                  CREATE || LOG IN
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+    </div>
   );
 };
 

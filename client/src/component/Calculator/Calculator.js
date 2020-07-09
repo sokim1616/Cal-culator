@@ -247,7 +247,7 @@ const Calculator = ({ setCurrentPageIndex, trivia }) => {
           <Snackbar
             open={open}
             onClose={(evt) => setOpen(false)}
-            message='Successfully registerd...'
+            message='Successfully registerd..., There is no turning back...'
             dismissesOnAction
             action={
               <SnackbarAction

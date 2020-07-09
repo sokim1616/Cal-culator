@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useHistory, withRouter } from "react-router-dom";
 import { Tab, TabBar } from "@rmwc/tabs";
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/tabs/styles";
 
 const Header = ({
@@ -12,7 +13,7 @@ const Header = ({
   logoutHandle,
 }) => {
   const history = useHistory();
-
+  const [open, setOpen] = React.useState(false);
   const summaryAuth = () => {
     if (isLogin === false) {
       openLoginModal();
@@ -66,6 +67,19 @@ const Header = ({
 
   return (
     <div>
+      <Snackbar
+        open={open}
+        onClose={(evt) => setOpen(false)}
+        message='Do you promise to come back tomorrow...? Pinky promise...?'
+        dismissesOnAction
+        action={
+          <SnackbarAction
+            style={{ color: "#ffff" }}
+            label='Dismiss'
+            onClick={() => console.log("Click Me")}
+          />
+        }
+      />
       <header className='header'>
         <TabBar
           activeTabIndex={currentPageIndex}
