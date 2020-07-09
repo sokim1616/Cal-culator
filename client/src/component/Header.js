@@ -40,11 +40,15 @@ const Header = ({
   const destroyAuth = () => {
     logoutHandle();
     axios
-      .post("http://localhost:4000/user/signout", {}, { withCredentials: true })
+      .post(
+        "http://13.209.47.155:4000/user/signout",
+        {},
+        { withCredentials: true }
+      )
       .then((response) => {
         console.log(response.data);
         if (response.data === "signed out") {
-          console.log(response)
+          console.log(response);
           logoutHandle();
           history.push("/");
         }

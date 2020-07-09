@@ -47,7 +47,7 @@ const Calculator = ({ setCurrentPageIndex, trivia }) => {
     const timer = setTimeout(() => {
       if (inputRef.current.children[1].value === searchInput.food_name) {
         axios
-          .get("http://localhost:4000/food/foodautocomplete", {
+          .get("http://13.209.47.155:4000/food/foodautocomplete", {
             params: {
               query: searchInput.food_name,
             },
@@ -107,7 +107,7 @@ const Calculator = ({ setCurrentPageIndex, trivia }) => {
   const userFoodSender = () => {
     axios
       .post(
-        "http://localhost:4000/food/addfooduser",
+        "http://13.209.47.155:4000/food/addfooduser",
         { food_info: confirmData },
         { withCredentials: true }
       )

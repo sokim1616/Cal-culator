@@ -8,11 +8,20 @@
     width: 650px;
     left: 130px;
     top: 120px;
+    z-index: 99;
+    border-radius: 5px;
+    .img__ok {
+        position: relative;
+        left: 162.5px;
+    }
 }
 
 .body1,
 .img__ok {
-    background-color: rgba(234, 134, 134, 0.5);
+    display: flex;
+    justify-content: center;
+    background-color: rgba(63, 134, 134, 0.3);
+    
 }
 
 .center__line {
@@ -25,29 +34,46 @@
 }
 
 .head2 {
-    background-color: rgba(123, 188, 155, 0.5);
+    background-color: rgba(234, 134, 134, 0.5);
     position: absolute;
     left: 1120px;
     top: 120px;
     width: 650px;
+    border-radius: 5px;
+    z-index: 99;
+
+    .img__not {
+        position: relative;
+        left: 162.5px;
+    }
+}
+
+.body2,
+.img__not {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(234, 134, 134, 0.3);
 }
 
 .dodont__img {
     position: absolute;
-    .ck{
+
+    .ck {
         position: absolute;
         width: 200px;
         height: 200px;
         top: 550px;
         left: 200px;
     }
-    .salad{
+
+    .salad {
         position: absolute;
         width: 200px;
         height: 200px;
         top: 550px;
         left: 500px;
     }
+
     .bro {
         position: absolute;
         width: 200px;
@@ -55,11 +81,63 @@
         top: 550px;
         left: 1200px;
     }
-    .ham{
+
+    .ham {
         position: absolute;
         width: 200px;
         height: 200px;
         top: 550px;
         left: 1500px;
     }
+}
+
+
+
+.head1 {
+    background-color: rgba(63, 134, 134, 0.5);
+    position: absolute;
+    width: 650px;
+    left: 130px;
+    top: 120px;
+
+    .img__ok {
+        position: relative;
+        left: 162.5px;
+    }
+}
+
+.body1,
+.img__ok {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(63, 134, 134, 0.3);
+}
+
+.center__line {
+    position: absolute;
+    border: 1ps solid #3d3d3d;
+    width: 600px;
+    left: 650px;
+    top: 400px;
+    transform: rotate(90deg);
+}
+
+.head2 {
+    background-color: rgba(234, 134, 134, 0.5);
+    position: absolute;
+    left: 1120px;
+    top: 120px;
+    width: 650px;
+
+    .img__not {
+        position: relative;
+        left: 162.5px;
+    }
+}
+
+.body2,
+.img__not {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(234, 134, 134, 0.3);
 }
