@@ -76,7 +76,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
 
   return (
     <div className='heightSizing'>
-      <h1>Daily Nutrition Report (%)</h1>
+      <h1>Daily Nutrition Requirements (%)</h1>
       <Polar
         data={consumedDaily}
         width={700}

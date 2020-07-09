@@ -134,14 +134,16 @@ const DoDont = ({ setCurrentPageIndex }) => {
         <img className='ck' src={ck} />
         <img className='salad' src={salad} />
         <img className='bro' src={bro} />
-        <img className='ham'src={ham} />
+        <img className='ham' src={ham} />
       </div>
       <span className='head2'>
-        <CollapsibleList handle={<SimpleListItem text='What NOT to eat' />}>
+        <CollapsibleList
+          handle={<SimpleListItem text='What NOT to eat' />}
+        >
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
-                <SimpleListItem text={food.title} />
+                <SimpleListItem className='body2' text={food.title} />
                 <img
                   className='img__not'
                   src={require(`./img/${food.image}`)}
