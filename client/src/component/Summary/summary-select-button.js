@@ -16,11 +16,10 @@ const Selectbutton = ({ selectDWM }) => {
       });
     }
   };
-
+  
   useEffect(() => {
     selectDWM(dwmIsOpen);
   }, [dwmIsOpen]);
-
   return (
     <div className='button'>
       {dwmIsOpen.daily ? (

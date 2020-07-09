@@ -4,8 +4,13 @@ import ChartLineMonthly from "./summary-chart-monthly";
 import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
+<<<<<<< HEAD
 // import "./Summary.css";
 import './summary.scss'
+=======
+import "./Summary.css";
+
+>>>>>>> e087e72e732e6705e1e96d9336293968b59117f6
 import axios from "axios";
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
