@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
 import "./loginModal.scss";
@@ -27,8 +27,6 @@ const Login = ({
 }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [errorCount, setErrorCount] = React.useState(null);
-  const [formValid, setFormValid] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [errors, setErrors] = React.useState({
     email: "",

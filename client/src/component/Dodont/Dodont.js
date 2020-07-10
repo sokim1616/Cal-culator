@@ -127,10 +127,10 @@ const DoDont = ({ setCurrentPageIndex }) => {
       </span>
       <hr className='center__line'></hr>
       <div className='dodont__img'>
-        <img className='ck' src={ck} />
-        <img className='salad' src={salad} />
-        <img className='bro' src={bro} />
-        <img className='ham' src={ham} />
+        <img alt='dodont' className='ck' src={ck} />
+        <img alt='dodont' className='salad' src={salad} />
+        <img alt='dodont' className='bro' src={bro} />
+        <img alt='dodont' className='ham' src={ham} />
       </div>
       <span className='head2'>
         <CollapsibleList handle={<SimpleListItem text='What NOT to eat' />}>
