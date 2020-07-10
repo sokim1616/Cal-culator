@@ -31,15 +31,19 @@ module.exports = {
         },
       ],
       order: [["time", "ASC"]],
-    }).then((result) => {
-      const dateCalorieObj = makeDateObj(`${year}-${month}-01`, lastDay);
-      result.forEach((dateObj) => {
-        const dateStr = formatDay(dateObj.time);
-        dateCalorieObj[dateStr]
-          ? (dateCalorieObj[dateStr] += dateObj.Food.calories * dateObj.amount)
-          : (dateCalorieObj[dateStr] = dateObj.Food.calories * dateObj.amount);
-      });
-      res.send(dateCalorieObj);
-    });
+    })
+      .then((result) => {
+        const dateCalorieObj = makeDateObj(`${year}-${month}-01`, lastDay);
+        result.forEach((dateObj) => {
+          const dateStr = formatDay(dateObj.time);
+          dateCalorieObj[dateStr]
+            ? (dateCalorieObj[dateStr] +=
+                dateObj.Food.calories * dateObj.amount)
+            : (dateCalorieObj[dateStr] =
+                dateObj.Food.calories * dateObj.amount);
+        });
+        res.send(dateCalorieObj);
+      })
+      .catch((err) => res.send(err));
   },
 };

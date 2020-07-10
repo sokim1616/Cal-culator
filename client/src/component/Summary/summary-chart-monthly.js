@@ -3,12 +3,13 @@ import { Line } from "react-chartjs-2";
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
 // import "./Summary.css";
-import './summary.scss'
+import "./summary.scss";
 
 const ChartLineMonthly = () => {
   const [dailyCalorie, setDailyCalorie] = useState("");
   const [month, setMonth] = useState("2020-07");
   const [monthlyNutrition, setMonthlyNutrition] = useState({});
+
   const [consumedMonthly, setConsumedMonthly] = useState({
     labels: [],
     datasets: [
@@ -31,7 +32,7 @@ const ChartLineMonthly = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/user/dailyCalorie", {
+      .get("http://13.209.47.155:4000/user/dailyCalorie", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
@@ -44,7 +45,7 @@ const ChartLineMonthly = () => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoMonth",
+        "http://13.209.47.155:4000/user/infoMonth",
         { date: month },
         {
           method: "POST",
@@ -106,7 +107,7 @@ const ChartLineMonthly = () => {
           maintainAspectRatio: true, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className="chart__datepicker">
+      <div className='chart__datepicker'>
         <TextField
           selected={month}
           onChange={(e) => setMonth(e.target.value)}

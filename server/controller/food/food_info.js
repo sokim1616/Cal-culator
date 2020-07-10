@@ -56,7 +56,8 @@ module.exports = {
           }).then((result) => {
             res.send(result.dataValues);
           });
-        });
+        })
+        .catch((err) => res.send(err));
     } else {
       // 음식이 database에 존재할 때
       res.send(foodExistenceStatus);

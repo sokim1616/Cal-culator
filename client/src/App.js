@@ -21,16 +21,15 @@ const App = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [trivia, setTrivia] = useState("");
 
-
   useEffect(() => {
-    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+    axios.get("http://13.209.47.155:4000/food/foodtrivia").then((result) => {
       setTrivia(result.data);
     });
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/user/sessionExists", {
+      .get("http://13.209.47.155:4000/user/sessionExists", {
         withCredentials: true,
       })
       .then((result) => {

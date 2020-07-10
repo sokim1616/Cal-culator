@@ -5,13 +5,10 @@ import "./Dodont.scss";
 import axios from "axios";
 import formatDay from "../helperFunction/formatDay";
 import requiredNutrients from "../helperFunction/requiredNutrients";
-import ck from './img/ck.png'
-import salad from './img/salad.png'
-import ham from './img/hamber.png'
-import bro from './img/bro.png'
-
-
-
+import ck from "./img/ck.png";
+import salad from "./img/salad.png";
+import ham from "./img/hamber.png";
+import bro from "./img/bro.png";
 
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
@@ -29,7 +26,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoDay",
+        "http://13.209.47.155:4000/user/infoDay",
         { date },
         {
           method: "POST",
@@ -128,18 +125,15 @@ const DoDont = ({ setCurrentPageIndex }) => {
           })}
         </CollapsibleList>
       </span>
-      <hr className='center__line'>
-      </hr>
+      <hr className='center__line'></hr>
       <div className='dodont__img'>
-        <img className='ck' src={ck} />
-        <img className='salad' src={salad} />
-        <img className='bro' src={bro} />
-        <img className='ham' src={ham} />
+        <img alt='dodont' className='ck' src={ck} />
+        <img alt='dodont' className='salad' src={salad} />
+        <img alt='dodont' className='bro' src={bro} />
+        <img alt='dodont' className='ham' src={ham} />
       </div>
       <span className='head2'>
-        <CollapsibleList
-          handle={<SimpleListItem text='What NOT to eat' />}
-        >
+        <CollapsibleList handle={<SimpleListItem text='What NOT to eat' />}>
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>

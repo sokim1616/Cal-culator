@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Polar } from "react-chartjs-2";
+
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
 // import "./Summary.css";
-import './summary.scss'
+import "./summary.scss";
 
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
@@ -53,7 +54,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoDay",
+        "http://13.209.47.155:4000/user/infoDay",
         { date },
         {
           method: "POST",
@@ -86,7 +87,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
           title: {
             display: false,
             text: "Daily Nutrition",
-            fontSize: '50px',
+            fontSize: "50px",
           },
           legend: {
             display: true,
@@ -105,7 +106,7 @@ const ChartPolarDaily = ({ setMainDate }) => {
           maintainAspectRatio: true, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className="chart__datepicker">
+      <div className='chart__datepicker'>
         <TextField
           className='center'
           selected={date}

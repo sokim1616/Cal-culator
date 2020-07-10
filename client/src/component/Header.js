@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useHistory, withRouter } from "react-router-dom";
 import { Tab, TabBar } from "@rmwc/tabs";
+import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/tabs/styles";
 import { Snackbar, SnackbarAction } from "@rmwc/snackbar";
 import "@rmwc/snackbar/styles";
@@ -13,10 +14,9 @@ const Header = ({
   isLogin,
   logoutHandle,
 }) => {
-
   const [open, setOpen] = React.useState(false);
   const history = useHistory();
-
+  const [open, setOpen] = React.useState(false);
   const summaryAuth = () => {
     if (isLogin === false) {
       openLoginModal();
@@ -44,11 +44,15 @@ const Header = ({
   const destroyAuth = () => {
     logoutHandle();
     axios
-      .post("http://localhost:4000/user/signout", {}, { withCredentials: true })
+      .post(
+        "http://13.209.47.155:4000/user/signout",
+        {},
+        { withCredentials: true }
+      )
       .then((response) => {
         console.log(response.data);
         if (response.data === "signed out") {
-          setOpen(!open)
+          setOpen(!open);
           logoutHandle();
           history.push("/");
         }
@@ -69,7 +73,7 @@ const Header = ({
       <Snackbar
         open={open}
         onClose={(evt) => setOpen(false)}
-        message='이제는 우리가 헤어져야 할 시간, 다음에 또 만나요~'
+        message='Do you promise to come back tomorrow...? Pinky promise...?'
         dismissesOnAction
         action={
           <SnackbarAction

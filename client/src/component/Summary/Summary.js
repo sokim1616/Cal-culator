@@ -5,7 +5,7 @@ import ChartPolarDaily from "./summary-chart-daily";
 import FoodList from "./summary-foodlist";
 import SelectButton from "./summary-select-button";
 // import "./Summary.css";
-import './summary.scss'
+import "./summary.scss";
 import axios from "axios";
 import formatDay from "../helperFunction/formatDay";
 const today = new Date();
@@ -27,7 +27,7 @@ const Summary = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/eatenFoodDay",
+        "http://13.209.47.155:4000/user/eatenFoodDay",
         { date: mainDate },
         {
           method: "POST",
@@ -46,20 +46,20 @@ const Summary = ({ setCurrentPageIndex }) => {
     <div className='summary'>
       <SelectButton selectDWM={setShowDWM} />
       {/*<div className="summary-container">*/}
-        <div className="chart">
-          {showDWM.daily ? (
-            <ChartPolarDaily setMainDate={setMainDate} />
-          ) : showDWM.weekly ? (
-            <ChartBarWeekly />
-          ) : (
-            <ChartLineMonthly />
-          )}
-          </div>
-          {/*<hr className='line'></hr>*/}
-        <div className="foodlist">
-          <p className='foodlist__title'>On {mainDate}, you ate...</p>
-          <FoodList food={foodEaten} />
-        </div>
+      <div className='chart'>
+        {showDWM.daily ? (
+          <ChartPolarDaily setMainDate={setMainDate} />
+        ) : showDWM.weekly ? (
+          <ChartBarWeekly />
+        ) : (
+          <ChartLineMonthly />
+        )}
+      </div>
+      {/*<hr className='line'></hr>*/}
+      <div className='foodlist'>
+        <p className='foodlist__title'>On {mainDate}, you ate...</p>
+        <FoodList food={foodEaten} />
+      </div>
       {/*div>*/}
     </div>
   );

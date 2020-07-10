@@ -100,13 +100,13 @@ const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
       console.info("Valid Form");
       console.log(userState);
       axios
-        .post("http://localhost:4000/user/signup", userState)
+        .post("http://13.209.47.155:4000/user/signup", userState)
         .then((response) => {
           if (response.data === "conflict") {
             console.log("conflict");
           } else {
             if (response.status === 200) {
-              setOpen(!open)
+              setOpen(!open);
               openLoginModal();
             }
           }
@@ -199,24 +199,28 @@ const Signup = ({ signupModalOpen, openLoginModal, closeSignupModal }) => {
                     className='male-radio'
                     value='Male'
                     checked={value === "Male"}
-                    onChange={(evt) => setValue(String(evt.currentTarget.value))}
+                    onChange={(evt) =>
+                      setValue(String(evt.currentTarget.value))
+                    }
                   >
                     MALE
-                </Radio>
+                  </Radio>
                   <Radio
                     className='female-radio'
                     value='Female'
                     checked={value === "Female"}
-                    onChange={(evt) => setValue(String(evt.currentTarget.value))}
+                    onChange={(evt) =>
+                      setValue(String(evt.currentTarget.value))
+                    }
                   >
                     FEMALE
-                </Radio>
+                  </Radio>
                 </div>
               </div>
               <div className='createLogin'>
                 <Button style={{ width: "280px" }} type='submit' raised>
                   CREATE || LOG IN
-              </Button>
+                </Button>
               </div>
             </form>
           </div>

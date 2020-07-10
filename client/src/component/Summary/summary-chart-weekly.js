@@ -4,7 +4,7 @@ import { TextField } from "@rmwc/textfield";
 import axios from "axios";
 import "../helperFunction/getTodaysWeekNum";
 // import "./Summary.css";
-import './summary.scss'
+import "./summary.scss";
 
 const today = new Date();
 const thisWeek = today.getWeekNumber();
@@ -43,7 +43,7 @@ const ChartBarWeekly = () => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoWeek",
+        "http://13.209.47.155:4000/user/infoWeek",
         { date: week },
         {
           method: "POST",
@@ -87,7 +87,7 @@ const ChartBarWeekly = () => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className="chart__datepicker">
+      <div className='chart__datepicker'>
         <TextField
           selected={week}
           onChange={(e) => setWeek(e.target.value)}
