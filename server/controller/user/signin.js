@@ -10,16 +10,20 @@ module.exports = {
         email,
         password,
       },
-    }).then((result) => {
-      if (!result) {
-        return res.send("invalid");
-      }
-      sess.userid = result.id;
-      sess.userage = result.age;
-      sess.gender = result.gender;
-      res.status(200).json({
-        id: result.id,
-      });
-    });
+    })
+      .then((result) => {
+        if (!result) {
+          console.log("로그인실패");
+          return res.send("invalid");
+        }
+        console.log("로그인성공");
+        console.log(result);
+        sess.userid = result.id;
+        sess.userage = result.age;
+        sess.gender = result.gender;
+        console.log(sess);
+        res.send("ok");
+      })
+      .catch((err) => res.send(err));
   },
 };

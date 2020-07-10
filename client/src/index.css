@@ -1,4 +1,4 @@
-@import './css_rest.css';
+@import "./css_rest.css";
 
 .footer {
   position: fixed;
@@ -7,13 +7,12 @@
   width: 100%;
   padding: 5px 0;
   text-align: center;
-  color: #27ac27;
+  color: ##27AC27;
   background-color: rgb(235, 245, 232);
 }
 
-
 :root {
-  --mdc-theme-primary: #27ac27;
+  --mdc-theme-primary: #27AC27;
   --mdc-theme-secondary: #03dac4;
   --mdc-theme-error: #b00020;
   --mdc-theme-background: #fff;

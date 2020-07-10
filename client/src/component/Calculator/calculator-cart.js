@@ -1,6 +1,6 @@
 import React from "react";
 import AddCart from "./calculator-add-cart";
-import "./Calculator.css";
+import "./Calculator.scss";
 
 import "@rmwc/data-table/styles";
 import {
@@ -11,11 +11,8 @@ import {
   DataTableRow,
   DataTableHeadCell,
   DataTableBody,
-  DataTableCell,
 } from "@rmwc/data-table";
 import "@rmwc/checkbox/styles";
-import { Checkbox } from "@rmwc/checkbox";
-import { SimpleDialog } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
 import { Button } from "@rmwc/button";
 import "@rmwc/button/styles";
@@ -27,8 +24,8 @@ import {
   DialogButton,
 } from "@rmwc/dialog";
 import "@rmwc/dialog/styles";
-import { Tab, TabBar } from "@rmwc/tabs";
-import "@rmwc/tabs/styles";
+import { Typography } from "@rmwc/typography";
+import "@rmwc/typography/styles";
 // import stcp from "styled-components"
 
 const Cart = ({
@@ -42,7 +39,7 @@ const Cart = ({
   setChecked,
   value,
   setValue,
-  totalCalories
+  totalCalories,
 }) => {
   const [deleteOpen, setDeleteOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
@@ -60,18 +57,17 @@ const Cart = ({
 
   const confirmButton = () => {
     confirmButtonHandle();
-  }
+  };
 
   // const TabStyle = stcp(Tab)`border: 1px solid black`;
 
   return (
-    <>
-      <Tab style={{ fontSize: "50px" }}>CART</Tab>
-      <div className="cart--foodlist">
-        <DataTable
-          className="cart-table"
-          style={{ height: "600px", width: "100%" }}
-        >
+    <div>
+      <div className='cart__title'>
+        <Typography style={{fontWeight: '200'}} use='headline3'>CART</Typography>
+      </div>
+      <div className='cart__foodlist'>
+        <DataTable style={{ height: "380px", width: "600px" }}>
           <DataTableContent>
             <DataTableHead>
               <DataTableRow>
@@ -97,72 +93,82 @@ const Cart = ({
           </DataTableContent>
         </DataTable>
       </div>
-      <div className="cart--confirm">
-        <div className="total-calorie">
-          <SimpleDataTable style={{ height: '55px' }} data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]} />
-        </div>
-        <div className="cart-button">
-          <div className="cart-button__delete">
-            <Dialog
-              open={deleteOpen}
-              onClose={(evt) => {
-                console.log(evt.detail.action);
-                setDeleteOpen(false);
-              }}
-              onClosed={(evt) => console.log(evt.detail.action)}
-            >
-              <DialogTitle>Delete</DialogTitle>
-              <DialogContent>
-                Do you really want to delete the selected item(s)...? really...?
-              </DialogContent>
-              <DialogActions>
-                <DialogButton action="close">Cancel</DialogButton>
-                <DialogButton
-                  onClick={deleteButtonHandle}
-                  action="accept"
-                  isDefaultAction
-                >
-                  Delete
-                </DialogButton>
-              </DialogActions>
-            </Dialog>
-
-            <Button className='cart-delete-button' style={{ height: "55px" }} danger raised onClick={() => setDeleteOpen(true)}>
-              DELETE
-            </Button>
-          </div>
-          <div>
-            <Dialog
-              open={confirmOpen}
-              onClose={(evt) => {
-                console.log(evt.detail.action);
-                setConfirmOpen(false);
-              }}
-              onClosed={(evt) => console.log(evt.detail.action)}
-            >
-              <DialogTitle>Confirm</DialogTitle>
-              <DialogContent>
-                Do you really want to confirm the selected item(s)...?
-                really...?
-              </DialogContent>
-              <DialogActions>
-                <DialogButton action="close">Cancel</DialogButton>
-                <DialogButton
-                  onClick={confirmButton}
-                  action="accept"
-                  isDefaultAction
-                >
-                  Confirm
-                </DialogButton>
-              </DialogActions>
-            </Dialog>
-            <Button className='cart-confirm-button' style={{ height: "55px" }} raised onClick={() => setConfirmOpen(true)}>
-              CONFIRM
-            </Button>
-          </div>
-        </div>
+      <div className='cart__totalCalorie'>
+        <SimpleDataTable
+          style={{ height: "55px" }}
+          data={[["Total Calorie", `${totalCalories.toFixed(2)}`]]}
+        />
       </div>
-    </>
+
+      <div className='cart__deleteButton'>
+        <Dialog
+          open={deleteOpen}
+          onClose={(evt) => {
+            console.log(evt.detail.action);
+            setDeleteOpen(false);
+          }}
+          onClosed={(evt) => console.log(evt.detail.action)}
+        >
+          <DialogTitle>Delete</DialogTitle>
+          <DialogContent>
+            Do you really want to delete the selected item(s)...? really...?
+          </DialogContent>
+          <DialogActions>
+            <DialogButton action='close'>Cancel</DialogButton>
+            <DialogButton
+              onClick={deleteButtonHandle}
+              action='accept'
+              isDefaultAction
+            >
+              Delete
+            </DialogButton>
+          </DialogActions>
+        </Dialog>
+
+        <Button
+          className='cart-delete-button'
+          style={{ height: "55px", width: "10rem" }}
+          danger
+          raised
+          onClick={() => setDeleteOpen(true)}
+        >
+          DELETE
+        </Button>
+      </div>
+      <div className='cart__confirmButton'>
+        <Dialog
+          open={confirmOpen}
+          onClose={(evt) => {
+            console.log(evt.detail.action);
+            setConfirmOpen(false);
+          }}
+          onClosed={(evt) => console.log(evt.detail.action)}
+        >
+          <DialogTitle>Confirm</DialogTitle>
+          <DialogContent>
+            Do you really want to confirm the selected item(s)...? really...?
+          </DialogContent>
+          <DialogActions>
+            <DialogButton action='close'>Cancel</DialogButton>
+            <DialogButton
+              onClick={confirmButton}
+              action='accept'
+              isDefaultAction
+            >
+              Confirm
+            </DialogButton>
+          </DialogActions>
+        </Dialog>
+        <Button
+          className='cart-confirm-button'
+          style={{ height: "55px", width: "10rem" }}
+          raised
+          onClick={() => setConfirmOpen(true)}
+        >
+          CONFIRM
+        </Button>
+      </div>
+    </div>
   );
 };
 

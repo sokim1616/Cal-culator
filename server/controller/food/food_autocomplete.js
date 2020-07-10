@@ -8,12 +8,16 @@ dotenv.config({ path: path.join(__dirname, "../.env") });
 module.exports = {
   get: (req, res) => {
     let { query } = req.query;
-    axios
-      .get(
-        `https://api.spoonacular.com/recipes/autocomplete?number=5&query=${query}&apiKey=${process.env.FOOD_API_KEY}`
-      )
-      .then((response) => {
-        res.send(response.data);
-      });
+    try {
+      axios
+        .get(
+          `https://api.spoonacular.com/recipes/autocomplete?number=5&query=${query}&apiKey=${process.env.FOOD_API_KEY}`
+        )
+        .then((response) => {
+          res.send(response.data);
+        });
+    } catch (err) {
+      res.send(err);
+    }
   },
 };

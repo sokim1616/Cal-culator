@@ -4,13 +4,12 @@ const { Op } = require("sequelize");
 
 module.exports = {
   post: (req, res) => {
-    // if (!req.session.userid) {
-    //   return res.status(403).send("forbidden");
-    // }
-    const [id, age, gender] = [1, 27, "Male"];
-    // const id = req.session.userid;
-    // const age = req.session.userage;
-    // const gender = req.session.gender;
+    if (!req.session.userid) {
+      return res.status(403).send("forbidden");
+    }
+    const id = req.session.userid;
+    const age = req.session.userage;
+    const gender = req.session.gender;
     const { date } = req.body;
     const startDay = date + "T00:00:00Z";
     const endDay = date + "T23:59:59Z";
@@ -27,16 +26,18 @@ module.exports = {
           required: true,
         },
       ],
-    }).then((result) => {
-      const eatenFood = [];
-      result.forEach((food) => {
-        eatenFood.push({
-          Food: food.Food.food_name,
-          Servings: food.amount,
-          Calories: food.Food.calories * food.amount,
+    })
+      .then((result) => {
+        const eatenFood = [];
+        result.forEach((food) => {
+          eatenFood.push({
+            Food: food.Food.food_name,
+            Servings: food.amount,
+            Calories: food.Food.calories * food.amount,
+          });
         });
-      });
-      res.send(eatenFood);
-    });
+        res.send(eatenFood);
+      })
+      .catch((err) => res.send(err));
   },
 };

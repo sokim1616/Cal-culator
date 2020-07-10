@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Home.scss";
 import "@rmwc/typography/styles";
 import { Typography } from "@rmwc/typography";
-import axios from "axios";
+import github from './Image/github.png';
+import facebook from './Image/facebook.png';
+import insta from './Image/instagram.png';
 
 const Home = () => {
-  const [trivia, setTrivia] = useState("");
-  useEffect(() => {
-    axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
-      setTrivia(result.data);
-    });
-  }, []);
+  // const [trivia, setTrivia] = useState("");
+  // useEffect(() => {
+  //   axios.get("http://localhost:4000/food/foodtrivia").then((result) => {
+  //     setTrivia(result.data);
+  //   });
+  // }, []);
   return (
     <div className='home'>
       <ul>
@@ -47,13 +49,26 @@ const Home = () => {
             </div>
           </div>
         </li>
-        <li>
+        {/*<li>
           <div className='trivia'>
-            <Typography use='headline1' className='home__text homeTrivia'>
-              <span className='home__text triviaTitle'>Did you know...?</span>
-              <br />
-              <span className='home__text triviaContent'>{trivia}</span>
-            </Typography>
+            <p use='headline1' className='home__text homeTrivia'><span className='home__text triviaTitle'>Did you know...?</span><br /><span className='home__text triviaContent'>{trivia}</span></p>
+          </div>
+        </li>*/}
+        <li className='sns'>
+          <div>
+            <a href='https://www.github.com/'>
+              <img className='github' src={github} alt='github' />
+            </a>
+          </div>
+          <div>
+            <a href='http://www.facebook.com/'>
+              <img className='facebook' src={facebook} alt='facebook' />
+            </a>
+          </div>
+          <div>
+            <a href='https://www.instagram.com/'>
+              <img className='insta' src={insta} alt='insta' />
+            </a>
           </div>
         </li>
       </ul>
@@ -62,10 +77,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// <li>
-//           <Typography use='headline1' className='home__text homeTitle'><br /><span>Cal-culator</span></Typography>
-//           <Typography use='headline1' className='home__text homeDesc'>
-//             A web application that calculates <br /> Your daily food intake!!
-//           </Typography>
-//         </li>

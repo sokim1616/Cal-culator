@@ -12,9 +12,7 @@ const Selectbutton = ({ selectDWM }) => {
   const btnClicked = (dwm, dwmStatus) => {
     if (!dwmStatus) {
       setDwmIsOpen((prevState) => {
-        {
-          return { ...prevState, [dwm]: false };
-        }
+        return { ...prevState, [dwm]: false };
       });
     }
   };
@@ -29,6 +27,7 @@ const Selectbutton = ({ selectDWM }) => {
           onClick={(e) => {
             btnClicked(e.target.nextSibling.textContent, dwmIsOpen.daily);
           }}
+          // style={{ backgroundColor: "#f38181" }}
           raised
         >
           daily
@@ -38,6 +37,7 @@ const Selectbutton = ({ selectDWM }) => {
           onClick={() =>
             setDwmIsOpen({ daily: true, weekly: false, monthly: false })
           }
+          // style={{ color: "#f38181" }}
           outlined
         >
           daily
@@ -48,6 +48,7 @@ const Selectbutton = ({ selectDWM }) => {
           onClick={(e) => {
             btnClicked(e.target.nextSibling.textContent, dwmIsOpen.weekly);
           }}
+          // style={{ backgroundColor: "#f38181" }}
           raised
         >
           weekly
@@ -57,6 +58,7 @@ const Selectbutton = ({ selectDWM }) => {
           onClick={() =>
             setDwmIsOpen({ daily: false, weekly: true, monthly: false })
           }
+          // style={{ color: "#f38181" }}
           outlined
         >
           weekly
@@ -67,6 +69,7 @@ const Selectbutton = ({ selectDWM }) => {
           onClick={(e) => {
             btnClicked(e.target.nextSibling.textContent, dwmIsOpen.month);
           }}
+          // style={{ backgroundColor: "#f38181" }}
           raised
         >
           monthly
@@ -76,6 +79,7 @@ const Selectbutton = ({ selectDWM }) => {
           onClick={() =>
             setDwmIsOpen({ daily: false, weekly: false, monthly: true })
           }
+          // style={{ color: "#f38181" }}
           outlined
         >
           monthly

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { TextField } from "@rmwc/textfield";
 import axios from "axios";
-import formatDay from "../helperFunction/formatDay";
 import "../helperFunction/getTodaysWeekNum";
+// import "./Summary.css";
+import "./summary.scss";
 
 const today = new Date();
 const thisWeek = today.getWeekNumber();
@@ -42,7 +43,7 @@ const ChartBarWeekly = () => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoWeek",
+        "http://13.209.47.155:4000/user/infoWeek",
         { date: week },
         {
           method: "POST",
@@ -57,13 +58,15 @@ const ChartBarWeekly = () => {
 
   return (
     <div className='heightSizing'>
+      <h1>Weekly Calorie Report</h1>
       <Bar
         data={consumedWeekly}
-        width={10}
-        height={200}
+        width={700}
+        height={515}
         options={{
+          responsive: false,
           title: {
-            display: true,
+            display: false,
             text: "Weekly Calorie Report",
             fontSize: 25,
           },
@@ -84,12 +87,13 @@ const ChartBarWeekly = () => {
           maintainAspectRatio: false, // false로 설정 시 사용자 정의 크기에 따라 그래프 크기가 결정됨.
         }}
       />
-      <div className='chart-daily'>
+      <div className='chart__datepicker'>
         <TextField
           selected={week}
           onChange={(e) => setWeek(e.target.value)}
-          label='week'
+          label='Week'
           type='week'
+          outlined='false'
         />
       </div>
     </div>

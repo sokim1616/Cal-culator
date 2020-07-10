@@ -19,19 +19,22 @@ module.exports = {
         }
     ]
     */
-    if (food_info.length === 0) {
-      res.send("init response");
-    } else {
-      for await (let i of food_info) {
-        Food_users.create({
-          amount: i.amount,
-          time: i.date,
-          UserId: id,
-          FoodId: i.FoodId,
-        });
+    try {
+      if (food_info.length === 0) {
+        res.send("init response");
+      } else {
+        for await (let i of food_info) {
+          Food_users.create({
+            amount: i.amount,
+            time: i.date,
+            UserId: id,
+            FoodId: i.FoodId,
+          }).catch((err) => console.log(err));
+        }
+        res.send("success");
       }
-      console.log(req.body.food_info)
-      res.send("success");
+    } catch (err) {
+      res.send(err);
     }
   },
 };

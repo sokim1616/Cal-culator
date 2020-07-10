@@ -7,11 +7,10 @@ const makeDateObj = require("../helperFunction/makeDateObj");
 
 module.exports = {
   post: (req, res) => {
-    // if (!req.session.userid) {
-    //   return res.status(403).send("forbidden");
-    // }
-    // const id = req.session.userid;
-    const id = 1;
+    if (!req.session.userid) {
+      return res.status(403).send("forbidden");
+    }
+    const id = req.session.userid;
     const { date } = req.body;
     const [formattedStartDate, formattedEndDate] = getMondayOfNthWeek(date);
 
@@ -31,15 +30,19 @@ module.exports = {
         },
       ],
       order: [["time", "ASC"]],
-    }).then((result) => {
-      const dateCalorieObj = makeDateObj(startDay, 7);
-      result.forEach((dateObj) => {
-        const dateStr = formatDay(dateObj.time);
-        dateCalorieObj[dateStr]
-          ? (dateCalorieObj[dateStr] += dateObj.Food.calories * dateObj.amount)
-          : (dateCalorieObj[dateStr] = dateObj.Food.calories * dateObj.amount);
-      });
-      res.send(dateCalorieObj);
-    });
+    })
+      .then((result) => {
+        const dateCalorieObj = makeDateObj(startDay, 7);
+        result.forEach((dateObj) => {
+          const dateStr = formatDay(dateObj.time);
+          dateCalorieObj[dateStr]
+            ? (dateCalorieObj[dateStr] +=
+                dateObj.Food.calories * dateObj.amount)
+            : (dateCalorieObj[dateStr] =
+                dateObj.Food.calories * dateObj.amount);
+        });
+        res.send(dateCalorieObj);
+      })
+      .catch((err) => res.send(err));
   },
 };

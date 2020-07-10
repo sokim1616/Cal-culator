@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "@rmwc/list/styles";
-// 해당하는 부분 import 해오기
 import { List, CollapsibleList, SimpleListItem } from "@rmwc/list";
-import "./Dodont.css";
+import "./Dodont.scss";
 import axios from "axios";
 import formatDay from "../helperFunction/formatDay";
 import requiredNutrients from "../helperFunction/requiredNutrients";
+import ck from "./img/ck.png";
+import salad from "./img/salad.png";
+import ham from "./img/hamber.png";
+import bro from "./img/bro.png";
+
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
 
@@ -22,7 +26,7 @@ const DoDont = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:4000/user/infoDay",
+        "http://13.209.47.155:4000/user/infoDay",
         { date },
         {
           method: "POST",
@@ -99,18 +103,19 @@ const DoDont = ({ setCurrentPageIndex }) => {
   }, []);
 
   return (
-    <center>
-      <List className='list'>
+    <List className='list'>
+      <span className='head1'>
         <CollapsibleList
-          handle={<SimpleListItem className='head1' text='What to eat' />}
+          handle={<SimpleListItem text='What to eat' />}
           onOpen={() => console.log("open")}
           onClose={() => console.log("close")}
         >
           {whatToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
-                <SimpleListItem text={food.title} />
+                <SimpleListItem className='body1' text={food.title} />
                 <img
+                  className='img__ok'
                   src={require(`./img/${food.image}`)}
                   alt='foodImage'
                   style={{ width: "50%", height: "50%" }}
@@ -119,15 +124,22 @@ const DoDont = ({ setCurrentPageIndex }) => {
             );
           })}
         </CollapsibleList>
-
-        <CollapsibleList
-          handle={<SimpleListItem className='head2' text='What NOT to eat' />}
-        >
+      </span>
+      <hr className='center__line'></hr>
+      <div className='dodont__img'>
+        <img alt='dodont' className='ck' src={ck} />
+        <img alt='dodont' className='salad' src={salad} />
+        <img alt='dodont' className='bro' src={bro} />
+        <img alt='dodont' className='ham' src={ham} />
+      </div>
+      <span className='head2'>
+        <CollapsibleList handle={<SimpleListItem text='What NOT to eat' />}>
           {whatNotToEat.map((food, idx) => {
             return (
               <React.Fragment key={idx}>
-                <SimpleListItem text={food.title} />
+                <SimpleListItem className='body2' text={food.title} />
                 <img
+                  className='img__not'
                   src={require(`./img/${food.image}`)}
                   alt='foodImage'
                   style={{ width: "50%", height: "50%" }}
@@ -135,19 +147,9 @@ const DoDont = ({ setCurrentPageIndex }) => {
               </React.Fragment>
             );
           })}
-          {/* <SimpleListItem text='Flour' />
-          <SimpleListItem text='Pizza' />
-          <SimpleListItem text='Coke' /> */}
         </CollapsibleList>
-
-        {/* <CollapsibleList
-          handle={<SimpleListItem className='head3' text='What to do' />}
-        >
-          <SimpleListItem text='Walk 20 mins a day' />
-          <SimpleListItem text='Squat 200 times a day' />
-        </CollapsibleList> */}
-      </List>
-    </center>
+      </span>
+    </List>
   );
 };
 

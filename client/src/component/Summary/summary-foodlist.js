@@ -6,23 +6,18 @@ import {
   DataTableRow,
   DataTableHeadCell,
   DataTableBody,
-  DataTableCell,
 } from "@rmwc/data-table";
 import "@rmwc/data-table/styles";
 import "@rmwc/textfield/styles";
-import { TextField } from "@rmwc/textfield";
 import TableRow from "./TableRow";
 
 const FoodList = ({ food }) => {
   const [sortDir, setSortDir] = React.useState(null);
-  const [startDate, setStartDate] = React.useState();
-  const [startWeek, setStartWeek] = React.useState();
-  const [startMonth, setStartMonth] = React.useState();
 
   return (
-    <div>
+    <div className='summary--foodlist'>
       <div>
-        <DataTable style={{ height: "400px", width: "475px" }}>
+        <DataTable style={{ height: "500px", width: "575px" }}>
           <DataTableContent>
             <DataTableHead>
               <DataTableRow>

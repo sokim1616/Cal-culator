@@ -12,9 +12,6 @@ module.exports = {
   post: async (req, res) => {
     const { food_name } = req.body;
     let nutrition = {};
-    // let test = ["pasta", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    // let food_name = "pizza";
-
     // findOne 하고 찾으면 database 가져다 쓰고 아니면 api 불러와서 create로 database 넣어주기.
 
     let foodExistenceStatus = await Foods.findOne({
@@ -59,13 +56,11 @@ module.exports = {
           }).then((result) => {
             res.send(result.dataValues);
           });
-        });
+        })
+        .catch((err) => res.send(err));
     } else {
       // 음식이 database에 존재할 때
       res.send(foodExistenceStatus);
     }
-
-    // api로 검색
-    // insert foods table
   },
 };
