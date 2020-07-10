@@ -14,6 +14,7 @@ module.exports = {
       )
       .then((response) => {
         res.send(response.data.text);
-      });
+      })
+      .catch((err) => res.send(err));
   },
 };

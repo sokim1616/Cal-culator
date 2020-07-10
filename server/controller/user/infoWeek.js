@@ -30,15 +30,19 @@ module.exports = {
         },
       ],
       order: [["time", "ASC"]],
-    }).then((result) => {
-      const dateCalorieObj = makeDateObj(startDay, 7);
-      result.forEach((dateObj) => {
-        const dateStr = formatDay(dateObj.time);
-        dateCalorieObj[dateStr]
-          ? (dateCalorieObj[dateStr] += dateObj.Food.calories * dateObj.amount)
-          : (dateCalorieObj[dateStr] = dateObj.Food.calories * dateObj.amount);
-      });
-      res.send(dateCalorieObj);
-    });
+    })
+      .then((result) => {
+        const dateCalorieObj = makeDateObj(startDay, 7);
+        result.forEach((dateObj) => {
+          const dateStr = formatDay(dateObj.time);
+          dateCalorieObj[dateStr]
+            ? (dateCalorieObj[dateStr] +=
+                dateObj.Food.calories * dateObj.amount)
+            : (dateCalorieObj[dateStr] =
+                dateObj.Food.calories * dateObj.amount);
+        });
+        res.send(dateCalorieObj);
+      })
+      .catch((err) => res.send(err));
   },
 };

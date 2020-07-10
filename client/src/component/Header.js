@@ -49,7 +49,7 @@ const Header = ({
       .then((response) => {
         console.log(response.data);
         if (response.data === "signed out") {
-          console.log(response);
+          setOpen(!open);
           logoutHandle();
           history.push("/");
         }

@@ -14,12 +14,14 @@ module.exports = {
         gender,
         age,
       },
-    }).then(async ([user, created]) => {
-      if (!created) {
-        return res.send("conflict");
-      }
-      const data = await user.get({ plain: true });
-      res.status(200).json(data);
-    });
+    })
+      .then(async ([user, created]) => {
+        if (!created) {
+          return res.send("conflict");
+        }
+        const data = await user.get({ plain: true });
+        res.status(200).json(data);
+      })
+      .catch((err) => res.send(err));
   },
 };
