@@ -27,7 +27,7 @@ const Summary = ({ setCurrentPageIndex }) => {
   useEffect(() => {
     axios
       .post(
-        "http://13.209.47.155:4000/user/eatenFoodDay",
+        "http://localhost:4000/user/eatenFoodDay",
         { date: mainDate },
         {
           method: "POST",

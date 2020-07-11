@@ -32,7 +32,7 @@ const ChartLineMonthly = () => {
 
   useEffect(() => {
     axios
-      .get("http://13.209.47.155:4000/user/dailyCalorie", {
+      .get("http://localhost:4000/user/dailyCalorie", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
@@ -45,7 +45,7 @@ const ChartLineMonthly = () => {
   useEffect(() => {
     axios
       .post(
-        "http://13.209.47.155:4000/user/infoMonth",
+        "http://localhost:4000/user/infoMonth",
         { date: month },
         {
           method: "POST",
