@@ -1,0 +1,79 @@
+.wrapper {
+  height: 30vh;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto;
+  width: 1000px;
+  max-width: 100%;
+  min-width: 100px;
+  min-height: 680px;
+  padding: 20px 40px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 36px #222;
+  background-color: #fefefe00;
+}
+.aboutButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20%;
+}
+.title {
+  display: flex;
+  justify-content: center;
+}
+.divider {
+  width: 30%;
+  height: auto;
+  display: inline-block;
+}
+.divider2 {
+  height: 30%;
+  /* display:inline-block; */
+}
+.choikyung {
+  display: flex;
+  justify-content: space-around;
+}
+.kims {
+  display: flex;
+  justify-content: space-around;
+}
+.hwaejang {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bujang {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gongjangjang {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.intern {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.desc {
+  display: flex;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #5e915e;
+}
+.timeline__event__title1 {
+  color: red;
+}
