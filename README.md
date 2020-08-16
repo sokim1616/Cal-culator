@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# cal-culator
-=======
 ## CODESTATES & TEAM HELL-THY
 ### :poultry_leg: PROJECT-CAL-CULATOR
 ## :green_book: 서비스 설명
@@ -61,4 +58,3 @@ NODE_ENV = development
 
 <br/>
 **이 외에 프로젝트 과정에서의 기획과정, 회고, 진행 현황등 자세한 사항들은 Wiki에 기록하게 됩니다. [여기](https://github.com/codestates/im20-project-cal-culator/wiki)를 눌러 이동해 주세요**
->>>>>>> f049d18671e61374f6c24cc979e77887872452f3
